@@ -16,14 +16,24 @@ type Service interface {
 	GetLocations(ctx context.Context, driverID string, timeInterval time.Duration) ([]*Location, error)
 }
 
-type service struct {
-	redis          *redis.Client
-	logger         *log.Logger
-	locationsLimit int
+type ServiceImpl struct {
+	redis                *redis.Client
+	logger               *log.Logger
+	driverLocationsLimit int
+	timeNowFn            func() time.Time
 }
 
-func (s service) UpdateLocations(ctx context.Context, driverID string, coordinates *Coordinates) error {
-	now := time.Now().UTC()
+func NewService(r *redis.Client, logger *log.Logger, driverLocationsLimit int) *ServiceImpl {
+	return &ServiceImpl{
+		redis:                r,
+		logger:               logger,
+		driverLocationsLimit: driverLocationsLimit,
+		timeNowFn:            time.Now,
+	}
+}
+
+func (s *ServiceImpl) UpdateLocations(ctx context.Context, driverID string, coordinates *Coordinates) error {
+	now := s.timeNowFn().UTC()
 	loc := &Location{Coordinates: coordinates, Time: now}
 	locationData, err := json.Marshal(loc)
 	if err != nil {
@@ -34,31 +44,31 @@ func (s service) UpdateLocations(ctx context.Context, driverID string, coordinat
 		Score:  float64(now.Unix()),
 		Member: string(locationData),
 	}
-	driverLogger := s.logger.WithField("driver_id", driverID)
-	driverLogger.WithField("location", redisSetMember.Member).Info("Save new driver location into Redis")
+	ctxLogger := s.logger.WithField("driver_id", driverID)
+	ctxLogger.WithField("location", redisSetMember.Member).Info("Save new driver location into Redis")
 	if err := s.redis.ZAdd(ctx, driverID, redisSetMember).Err(); err != nil {
 		return errors.Wrap(err, "failed to save new driver location into Redis")
 	}
 
-	driverLogger.Info("Clean old driver locations in Redis")
-	cleanedNum, err := s.redis.ZRemRangeByRank(ctx, driverID, 0, -1-int64(s.locationsLimit)).Result()
+	ctxLogger.Info("Clean old driver locations in Redis")
+	cleanedNum, err := s.redis.ZRemRangeByRank(ctx, driverID, 0, -1-int64(s.driverLocationsLimit)).Result()
 	if err != nil {
 		return errors.Wrap(err, "failed to clean old driver locations in Redis")
 	}
-	driverLogger.WithField("cleaned_num", cleanedNum).Info("Cleaned old driver locations in Redis")
+	ctxLogger.WithField("cleaned_num", cleanedNum).Info("Cleaned old driver locations in Redis")
 
 	return nil
 }
 
-func (s service) GetLocations(ctx context.Context, driverID string, timeInterval time.Duration) ([]*Location, error) {
-	now := time.Now().UTC()
+func (s *ServiceImpl) GetLocations(ctx context.Context, driverID string, timeInterval time.Duration) ([]*Location, error) {
+	now := s.timeNowFn().UTC()
 	minScore := timeToRedisScore(now.Add(-timeInterval))
 	redisRange := &redis.ZRangeBy{
 		Min: fmt.Sprintf("%f", minScore),
 		Max: "+inf",
 	}
-	driverLogger := s.logger.WithField("driver_id", driverID)
-	driverLogger.WithFields(log.Fields{
+	ctxLogger := s.logger.WithField("driver_id", driverID)
+	ctxLogger.WithFields(log.Fields{
 		"min_time": redisRange.Min,
 		"max_time": redisRange.Max,
 	}).Info("Get driver locations from Redis by time range")
@@ -66,7 +76,7 @@ func (s service) GetLocations(ctx context.Context, driverID string, timeInterval
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get driver locations from Redis")
 	}
-	driverLogger.WithField("locations_num", len(locationsData)).Info("Retrieved driver locations from Redis")
+	ctxLogger.WithField("locations_num", len(locationsData)).Info("Retrieved driver locations from Redis")
 
 	locations, err := decodeLocations(locationsData)
 	return locations, errors.WithStack(err)
