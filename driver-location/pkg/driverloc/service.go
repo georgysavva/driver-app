@@ -30,12 +30,12 @@ type Service interface {
 
 type ServiceImpl struct {
 	redis                *redis.Client
-	logger               *log.Logger
+	logger               log.FieldLogger
 	driverLocationsLimit int
 	timeNowFn            func() time.Time
 }
 
-func NewService(r *redis.Client, logger *log.Logger, driverLocationsLimit int) *ServiceImpl {
+func NewService(r *redis.Client, logger log.FieldLogger, driverLocationsLimit int) *ServiceImpl {
 	return &ServiceImpl{
 		redis:                r,
 		logger:               logger,

@@ -1,0 +1,9 @@
+redis:
+  address: "localhost:6379"
+
+app:
+  driver_locations_limit: 1000
+
+http_server:
+  port: 8000
+  shutdown_timeout: "5s"

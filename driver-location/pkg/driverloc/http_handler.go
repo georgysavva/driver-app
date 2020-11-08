@@ -11,17 +11,16 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-func MakeHTTPHandler(service GetterService, logger *log.Logger) http.Handler {
+func MakeHTTPHandler(service GetterService, logger log.FieldLogger) http.Handler {
 	router := mux.NewRouter()
 	ha := &httpAPI{service: service, logger: logger}
 	router.HandleFunc("/drivers/{id}/locations", ha.getLocations).Methods("GET")
-
 	return router
 }
 
 type httpAPI struct {
 	service GetterService
-	logger  *log.Logger
+	logger  log.FieldLogger
 }
 
 func (ha *httpAPI) getLocations(w http.ResponseWriter, r *http.Request) {
