@@ -11,9 +11,21 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-type Service interface {
+type UpdaterService interface {
 	UpdateLocations(ctx context.Context, driverID string, coordinates *Coordinates) error
+}
+
+//go:generate mockery --name UpdaterService
+
+type GetterService interface {
 	GetLocations(ctx context.Context, driverID string, timeInterval time.Duration) ([]*Location, error)
+}
+
+//go:generate mockery --name GetterService
+
+type Service interface {
+	UpdaterService
+	GetterService
 }
 
 type ServiceImpl struct {

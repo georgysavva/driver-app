@@ -11,7 +11,7 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-func MakeHTTPHandler(service Service, logger *log.Logger) http.Handler {
+func MakeHTTPHandler(service GetterService, logger *log.Logger) http.Handler {
 	router := mux.NewRouter()
 	ha := &httpAPI{service: service, logger: logger}
 	router.HandleFunc("/drivers/{id}/locations", ha.getLocations).Methods("GET")
@@ -20,7 +20,7 @@ func MakeHTTPHandler(service Service, logger *log.Logger) http.Handler {
 }
 
 type httpAPI struct {
-	service Service
+	service GetterService
 	logger  *log.Logger
 }
 
@@ -31,6 +31,7 @@ func (ha *httpAPI) getLocations(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		ctxLogger.WithError(err).Info("Query params are invalid, return 400")
 		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
 	}
 
 	timeInterval := time.Minute * time.Duration(timeIntervalMinutes)
@@ -45,6 +46,7 @@ func (ha *httpAPI) getLocations(w http.ResponseWriter, r *http.Request) {
 	if err := returnJSONData(w, locations); err != nil {
 		ha.logUnhandledError(err)
 		internalServerError(w)
+		return
 	}
 }
 

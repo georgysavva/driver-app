@@ -20,13 +20,13 @@ const (
 )
 
 var (
-	baseTime = time.Date(2020, 11, 7, 00, 00, 00, 00, time.UTC)
+	baseTime = time.Date(2020, 11, 07, 00, 00, 00, 00, time.UTC)
 	ctx      = context.Background()
 )
 
 func TestService_UpdateLocations(t *testing.T) {
 	t.Parallel()
-	service, fakeRedis := setup(t)
+	service, fakeRedis := setupService(t)
 	defer fakeRedis.Close()
 
 	insertLocations(t, service, defaultDriverID, []*toInsert{
@@ -51,7 +51,7 @@ func TestService_UpdateLocations(t *testing.T) {
 
 func TestService_UpdateLocations_OlderLocationsAreCleaned(t *testing.T) {
 	t.Parallel()
-	service, fakeRedis := setup(t)
+	service, fakeRedis := setupService(t)
 	defer fakeRedis.Close()
 
 	insertLocations(t, service, defaultDriverID, []*toInsert{
@@ -89,7 +89,7 @@ func TestService_UpdateLocations_OlderLocationsAreCleaned(t *testing.T) {
 
 func TestService_UpdateLocations_DuplicateCoordinatesAtDifferentTimes(t *testing.T) {
 	t.Parallel()
-	service, fakeRedis := setup(t)
+	service, fakeRedis := setupService(t)
 	defer fakeRedis.Close()
 
 	insertLocations(t, service, defaultDriverID, []*toInsert{
@@ -114,7 +114,7 @@ func TestService_UpdateLocations_DuplicateCoordinatesAtDifferentTimes(t *testing
 
 func TestService_UpdateLocations_DuplicateCoordinatesAtTheSameTime(t *testing.T) {
 	t.Parallel()
-	service, fakeRedis := setup(t)
+	service, fakeRedis := setupService(t)
 	defer fakeRedis.Close()
 
 	insertLocations(t, service, defaultDriverID, []*toInsert{
@@ -138,7 +138,7 @@ func TestService_UpdateLocations_DuplicateCoordinatesAtTheSameTime(t *testing.T)
 
 func TestService_UpdateLocations_DifferentCoordinatesAtTheSameTime(t *testing.T) {
 	t.Parallel()
-	service, fakeRedis := setup(t)
+	service, fakeRedis := setupService(t)
 	defer fakeRedis.Close()
 
 	insertLocations(t, service, defaultDriverID, []*toInsert{
@@ -163,7 +163,7 @@ func TestService_UpdateLocations_DifferentCoordinatesAtTheSameTime(t *testing.T)
 
 func TestService_GetLocations(t *testing.T) {
 	t.Parallel()
-	service, fakeRedis := setup(t)
+	service, fakeRedis := setupService(t)
 	defer fakeRedis.Close()
 
 	insertLocations(t, service, defaultDriverID, []*toInsert{
@@ -203,7 +203,7 @@ func TestService_GetLocations(t *testing.T) {
 
 func TestService_GetLocations_NoLocationsInTheTimeInterval(t *testing.T) {
 	t.Parallel()
-	service, fakeRedis := setup(t)
+	service, fakeRedis := setupService(t)
 	defer fakeRedis.Close()
 
 	insertLocations(t, service, defaultDriverID, []*toInsert{
@@ -225,7 +225,7 @@ func TestService_GetLocations_NoLocationsInTheTimeInterval(t *testing.T) {
 
 func TestService_GetLocations_NoLocationsAtAll(t *testing.T) {
 	t.Parallel()
-	service, fakeRedis := setup(t)
+	service, fakeRedis := setupService(t)
 	defer fakeRedis.Close()
 
 	service.SetTimeNowFn(func() time.Time {
@@ -238,7 +238,7 @@ func TestService_GetLocations_NoLocationsAtAll(t *testing.T) {
 	assert.Empty(t, actual)
 }
 
-func setup(t *testing.T) (*driverloc.ServiceImpl, *miniredis.Miniredis) {
+func setupService(t *testing.T) (*driverloc.ServiceImpl, *miniredis.Miniredis) {
 	t.Helper()
 	fakeRedis, err := miniredis.Run()
 	require.NoError(t, err)
