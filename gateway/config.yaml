@@ -1,11 +1,12 @@
 urls:
-  -
-    path: "/drivers/:id/locations"
+  - path: "/drivers/{id}/locations"
     method: "PATCH"
     nsq:
       topic: "locations"
-  -
-    path: "/drivers/:id"
+      message:
+        command: "update-driver-locations"
+
+  - path: "/drivers/{id}"
     method: "GET"
     http:
       host: "zombie-driver"

@@ -37,13 +37,13 @@ func (ha *httpAPI) getLocations(w http.ResponseWriter, r *http.Request) {
 	ctxLogger.WithField("time_interval", timeInterval).Info("Request driver locations from the service")
 	locations, err := ha.service.GetLocations(r.Context(), driverID, timeInterval)
 	if err != nil {
-		ha.logUnhandledError(errors.Wrap(err, "failed to request locations from the service"))
+		logUnhandledError(ctxLogger, errors.Wrap(err, "failed to request locations from the service"))
 		internalServerError(w)
 		return
 	}
 
 	if err := returnJSONData(w, locations); err != nil {
-		ha.logUnhandledError(err)
+		logUnhandledError(ctxLogger, err)
 		internalServerError(w)
 		return
 	}
@@ -59,10 +59,6 @@ func parseMinutesParam(r *http.Request) (int, error) {
 		return 0, errors.New("'minutes' query param must be a number")
 	}
 	return minutesValue, nil
-}
-
-func (ha *httpAPI) logUnhandledError(err error) {
-	ha.logger.WithError(err).Error("Unhandled error occurred")
 }
 
 func internalServerError(w http.ResponseWriter) {

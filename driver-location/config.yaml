@@ -7,3 +7,10 @@ app:
 http_server:
   port: 8000
   shutdown_timeout: "5s"
+
+nsq:
+  topic: "locations"
+  channel: "driver-location-service"
+  lookupd_addresses:
+    - "localhost:4161"
+  workers_num: 16
