@@ -1,0 +1,11 @@
+app:
+  zombie_predicate:
+    distance_threshold: 500 # In meters.
+    time_interval: "5m"
+
+driver_location_service:
+  base_url: "http://driver-location"
+
+http_server:
+  port: 8000
+  shutdown_timeout: "5s"

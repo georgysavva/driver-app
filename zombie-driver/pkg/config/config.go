@@ -10,23 +10,20 @@ import (
 
 type Config struct {
 	App struct {
-		DriverLocationsLimit int `yaml:"driver_locations_limit"`
+		ZombiePredicate struct {
+			DistanceThreshold int           `yaml:"distance_threshold"`
+			TimeInterval      time.Duration `yaml:"time_interval"`
+		}
 	} `yaml:"app"`
 
-	Redis struct {
-		Address string `yaml:"address"`
-	} `yaml:"redis"`
+	DriverLocationService struct {
+		URL string `yaml:"url"`
+	} `yaml:"driver_location_service"`
 
 	HTTPServer struct {
 		Port            int           `yaml:"port"`
 		ShutdownTimeout time.Duration `yaml:"shutdown_timeout"`
 	} `yaml:"http_server"`
-	NSQ struct {
-		Topic            string   `yaml:"topic"`
-		Channel          string   `yaml:"channel"`
-		LookupdAddresses []string `yaml:"lookupd_addresses"`
-		WorkersNum       int      `yaml:"workers_num"`
-	} `yaml:"nsq"`
 }
 
 func ParseConfig(configPath string) (*Config, error) {
