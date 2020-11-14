@@ -47,7 +47,7 @@ func (nh *NSQHandler) HandleMessage(m *nsq.Message) error {
 	}
 
 	ctxLogger.Info("Handle nsq request")
-	if err := nh.updateDriverLocations(ctx, req); err != nil {
+	if err := nh.updateLocations(ctx, req); err != nil {
 		logUnhandledError(ctxLogger, err)
 		return err
 	}
@@ -55,7 +55,7 @@ func (nh *NSQHandler) HandleMessage(m *nsq.Message) error {
 	return nil
 }
 
-func (nh *NSQHandler) updateDriverLocations(ctx context.Context, req *nsqRequest) error {
+func (nh *NSQHandler) updateLocations(ctx context.Context, req *nsqRequest) error {
 	data := req.Data
 	if data.DriverID == nil || data.Latitude == nil || data.Longitude == nil {
 		nh.logger.Info("NSQ request data is incomplete: " +
