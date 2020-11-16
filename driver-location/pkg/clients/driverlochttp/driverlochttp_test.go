@@ -53,6 +53,7 @@ func TestClient_GetLocations(t *testing.T) {
 	require.NoError(t, err)
 
 	assert.Equal(t, expected, actual)
+	serviceMock.AssertExpectations(t)
 }
 
 func setupHTTPServer() (*httptest.Server, *mocks.GetterService) {

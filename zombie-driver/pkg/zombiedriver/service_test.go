@@ -19,37 +19,8 @@ const defaultDriverID = "foo"
 
 func TestService_GetDriver(t *testing.T) {
 	t.Parallel()
-	driverlocMock := &mocks.GetterService{}
-	logger := log.New()
-	logger.SetLevel(log.ErrorLevel)
 	timeInterval := 5 * time.Minute
 	baseTime := time.Now()
-	driverlocMock.On("GetLocations",
-		mock.MatchedBy(func(_ context.Context) bool { return true }), // anything of type context.Context
-		defaultDriverID, timeInterval,
-	).Return([]*driverloc.Location{
-		{
-			Coordinates: &driverloc.Coordinates{
-				Latitude:  48.864193,
-				Longitude: 2.350498,
-			},
-			Time: baseTime.Add(-15 * time.Second),
-		},
-		{
-			Coordinates: &driverloc.Coordinates{
-				Latitude:  48.863193,
-				Longitude: 2.351498,
-			},
-			Time: baseTime.Add(-10 * time.Second),
-		},
-		{
-			Coordinates: &driverloc.Coordinates{
-				Latitude:  48.862193,
-				Longitude: 2.352498,
-			},
-			Time: baseTime.Add(-5 * time.Second),
-		},
-	}, nil)
 
 	cases := []struct {
 		name              string
@@ -71,6 +42,37 @@ func TestService_GetDriver(t *testing.T) {
 		tc := tc
 		t.Run(tc.name, func(t *testing.T) {
 			t.Parallel()
+
+			driverlocMock := &mocks.GetterService{}
+			driverlocMock.On("GetLocations",
+				mock.MatchedBy(func(_ context.Context) bool { return true }), // anything of type context.Context
+				defaultDriverID, timeInterval,
+			).Return([]*driverloc.Location{
+				{
+					Coordinates: &driverloc.Coordinates{
+						Latitude:  48.864193,
+						Longitude: 2.350498,
+					},
+					Time: baseTime.Add(-15 * time.Second),
+				},
+				{
+					Coordinates: &driverloc.Coordinates{
+						Latitude:  48.863193,
+						Longitude: 2.351498,
+					},
+					Time: baseTime.Add(-10 * time.Second),
+				},
+				{
+					Coordinates: &driverloc.Coordinates{
+						Latitude:  48.862193,
+						Longitude: 2.352498,
+					},
+					Time: baseTime.Add(-5 * time.Second),
+				},
+			}, nil)
+
+			logger := log.New()
+			logger.SetLevel(log.ErrorLevel)
 			service := zombiedriver.NewService(driverlocMock, logger, &zombiedriver.ZombiePredicate{
 				DistanceThreshold: tc.distanceThreshold,
 				TimeInterval:      timeInterval,
@@ -80,6 +82,7 @@ func TestService_GetDriver(t *testing.T) {
 			require.NoError(t, err)
 
 			assert.Equal(t, &zombiedriver.Driver{ID: defaultDriverID, IsZombie: tc.isZombie}, actual)
+			driverlocMock.AssertExpectations(t)
 		})
 	}
 }

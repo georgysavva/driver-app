@@ -51,6 +51,7 @@ func TestHTTP_GetLocations(t *testing.T) {
 
 	queryParams := map[string]string{"minutes": strconv.Itoa(minutesArg)}
 	response, responseData := callGetLocationsEndpoint(t, ts, queryParams)
+
 	expectedResponseData := `
 	[{
 		"latitude": 48.864193,
@@ -64,30 +65,45 @@ func TestHTTP_GetLocations(t *testing.T) {
 	assert.Equal(t, http.StatusOK, response.StatusCode)
 	assert.Equal(t, "application/json", response.Header.Get("Content-Type"))
 	assert.JSONEq(t, expectedResponseData, responseData)
+	serviceMock.AssertExpectations(t)
 }
 
-func TestHTTP_GetLocations_MinutesParamMissing(t *testing.T) {
+func TestHTTP_GetLocations_RequestError(t *testing.T) {
 	t.Parallel()
-	ts, _ := setupHTTPServer()
-	defer ts.Close()
+	cases := []struct {
+		name        string
+		queryParams map[string]string
+		expected    string
+	}{
+		{
+			name:        "'minutes' param is missing",
+			queryParams: map[string]string{},
+			expected:    "'minutes' query param is missing\n",
+		},
+		{
+			name:        "'minutes' param is not a number",
+			queryParams: map[string]string{"minutes": "five"},
+			expected:    "'minutes' query param must be a number\n",
+		},
+	}
 
-	queryParams := map[string]string{}
-	response, responseData := callGetLocationsEndpoint(t, ts, queryParams)
+	for _, tc := range cases {
+		tc := tc
+		t.Run(tc.name, func(t *testing.T) {
+			t.Parallel()
+			ts, serviceMock := setupHTTPServer()
+			defer ts.Close()
+			serviceMock.On(
+				"GetLocations",
+				mock.Anything /* ctx */, mock.Anything /* driverID */, mock.Anything, /* timeInterval */
+			).Return(nil, nil)
+			response, responseData := callGetLocationsEndpoint(t, ts, tc.queryParams)
 
-	assert.Equal(t, http.StatusBadRequest, response.StatusCode)
-	assert.Equal(t, "'minutes' query param is missing\n", responseData)
-}
-
-func TestHTTP_GetLocations_MinutesParamNotANumber(t *testing.T) {
-	t.Parallel()
-	ts, _ := setupHTTPServer()
-	defer ts.Close()
-
-	queryParams := map[string]string{"minutes": "five"}
-	response, responseData := callGetLocationsEndpoint(t, ts, queryParams)
-
-	assert.Equal(t, http.StatusBadRequest, response.StatusCode)
-	assert.Equal(t, "'minutes' query param must be a number\n", responseData)
+			assert.Equal(t, http.StatusBadRequest, response.StatusCode)
+			assert.Equal(t, tc.expected, responseData)
+			serviceMock.AssertNumberOfCalls(t, "GetLocations", 0)
+		})
+	}
 }
 
 func callGetLocationsEndpoint(t *testing.T, ts *httptest.Server, queryParams map[string]string) (*http.Response, string) {

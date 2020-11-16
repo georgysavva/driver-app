@@ -59,11 +59,11 @@ func (np *NSQProxy) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, errors.Wrap(err, "request body parsing failed").Error(), http.StatusBadRequest)
 		return
 	}
-	mes := &Message{
+	msg := &Message{
 		Command: np.conf.Message.Command,
 		Data:    mergeRequestData(requestVars, requestData),
 	}
-	mesBody, err := json.Marshal(mes)
+	mesBody, err := json.Marshal(msg)
 	if err != nil {
 		logUnhandledError(np.logger, errors.Wrap(err, "can't encode nsq message body"))
 		internalServerError(w)

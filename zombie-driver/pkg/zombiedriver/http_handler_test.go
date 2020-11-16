@@ -47,6 +47,7 @@ func TestHTTP_GetLocations(t *testing.T) {
 	assert.Equal(t, http.StatusOK, response.StatusCode)
 	assert.Equal(t, "application/json", response.Header.Get("Content-Type"))
 	assert.JSONEq(t, expectedResponseData, responseData)
+	serviceMock.AssertExpectations(t)
 }
 
 func setupHTTPServer() (*httptest.Server, *mocks.Service) {
