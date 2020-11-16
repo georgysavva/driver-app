@@ -16,6 +16,8 @@ type Service interface {
 	GetDriver(ctx context.Context, driverID string) (*Driver, error)
 }
 
+//go:generate mockery --name Service
+
 type ZombiePredicate struct {
 	DistanceThreshold int           `yaml:"distance_threshold"` // In meters.
 	TimeInterval      time.Duration `yaml:"time_interval"`
