@@ -16,7 +16,7 @@ import (
 	"github.com/heetch/georgysavva-technical-test/driver-location/pkg/driverloc"
 )
 
-// Improvement: Allow to pass a custom config path.
+// Improvement: allow to pass a custom config path.
 const defaultConfigPath = "config.yaml"
 
 func main() {

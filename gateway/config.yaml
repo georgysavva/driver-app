@@ -6,6 +6,13 @@ urls:
       message:
         command: "update-driver-locations"
 
+    # Improvement: make message building more flexible via a template:
+    # message_template:
+    #   command: "update-driver-locations"
+    #   data:
+    #     driver_id: "{request_vars.id}"
+    #     coordinates: "{request_body}"
+
   - path: "/drivers/{id}"
     method: "GET"
     http:

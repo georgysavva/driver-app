@@ -28,6 +28,7 @@ type Service interface {
 	GetterService
 }
 
+// Improvement: move redis interaction to a separate storage layer and use an abstraction in service.
 type ServiceImpl struct {
 	redis                *redis.Client
 	logger               log.FieldLogger
