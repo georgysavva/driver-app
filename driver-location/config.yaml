@@ -5,7 +5,7 @@ redis:
   address: "localhost:6379"
 
 http_server:
-  port: 8000
+  port: 8010
   shutdown_timeout: "5s"
 
 nsq:

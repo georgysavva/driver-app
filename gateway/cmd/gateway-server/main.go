@@ -8,11 +8,11 @@ import (
 	"os/signal"
 	"syscall"
 
+	"github.com/nsqio/go-nsq"
 	log "github.com/sirupsen/logrus"
 
-	"github.com/heetch/georgysavva-technical-test/driver-location/pkg/clients/driverlochttp"
-	"github.com/heetch/georgysavva-technical-test/zombie-driver/pkg/config"
-	"github.com/heetch/georgysavva-technical-test/zombie-driver/pkg/zombiedriver"
+	"github.com/heetch/georgysavva-technical-test/gateway/pkg/config"
+	"github.com/heetch/georgysavva-technical-test/gateway/pkg/gateway"
 )
 
 // Improvement: allow to pass a custom config path.
@@ -25,16 +25,18 @@ func main() {
 	if err != nil {
 		logger.WithError(err).Fatal("Failed to parse config")
 	}
-
-	driverLocationClient, err := driverlochttp.NewClient(conf.DriverLocationService.BaseURL)
+	nsqProducer, err := nsq.NewProducer(conf.NSQ.DaemonAddress, nsq.NewConfig())
 	if err != nil {
-		logger.WithError(err).Fatal("Failed initialize driver-location service http client")
+		logger.WithError(err).Fatal("Failed to connect nsq producer to daemon")
+	}
+	nsqProxyFactory := gateway.NewNSQProxyFactory(nsqProducer, logger.WithField("component", "nsq-proxy"))
+
+	gatewayHandler, err := gateway.NewGateway(nsqProxyFactory, conf.URLs)
+	if err != nil {
+		logger.WithError(err).Fatal("Couldn't setup gateway handler")
 	}
 
-	service := zombiedriver.NewService(driverLocationClient, logger.WithField("component", "service"), conf.App.ZombiePredicate)
-
-	httpHandler := zombiedriver.MakeHTTPHandler(service, logger.WithField("component", "http-handler"))
-	httpServer := http.Server{Addr: fmt.Sprintf(":%d", conf.HTTPServer.Port), Handler: httpHandler}
+	httpServer := http.Server{Addr: fmt.Sprintf(":%d", conf.HTTPServer.Port), Handler: gatewayHandler}
 	go func() {
 		if err := httpServer.ListenAndServe(); err != nil && err != http.ErrServerClosed {
 			logger.WithError(err).Fatal("HTTP server unexpectedly stopped")
@@ -53,4 +55,8 @@ func main() {
 		logger.WithError(err).Fatal("Couldn't properly shutdown http server")
 	}
 	logger.Info("HTTP server was successfully shutdown")
+
+	logger.Info("Stopping NSQ producer")
+	nsqProducer.Stop()
+	logger.Info("NSQ producer stopped")
 }

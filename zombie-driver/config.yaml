@@ -4,8 +4,8 @@ app:
     time_interval: "5m"
 
 driver_location_service:
-  base_url: "http://driver-location"
+  base_url: "http://localhost:8010"
 
 http_server:
-  port: 8000
+  port: 8020
   shutdown_timeout: "5s"

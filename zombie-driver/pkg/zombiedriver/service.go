@@ -17,15 +17,8 @@ type Service interface {
 }
 
 type ZombiePredicate struct {
-	DistanceThreshold int // In meters.
-	TimeInterval      time.Duration
-}
-
-func NewZombiePredicate(distanceThreshold int, timeInterval time.Duration) *ZombiePredicate {
-	return &ZombiePredicate{
-		DistanceThreshold: distanceThreshold,
-		TimeInterval:      timeInterval,
-	}
+	DistanceThreshold int           `yaml:"distance_threshold"` // In meters.
+	TimeInterval      time.Duration `yaml:"time_interval"`
 }
 
 type ServiceImpl struct {

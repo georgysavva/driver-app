@@ -9,19 +9,20 @@ import (
 )
 
 type Config struct {
-	App struct {
+	App *struct {
 		DriverLocationsLimit int `yaml:"driver_locations_limit"`
 	} `yaml:"app"`
 
-	Redis struct {
+	Redis *struct {
 		Address string `yaml:"address"`
 	} `yaml:"redis"`
 
-	HTTPServer struct {
+	HTTPServer *struct {
 		Port            int           `yaml:"port"`
 		ShutdownTimeout time.Duration `yaml:"shutdown_timeout"`
 	} `yaml:"http_server"`
-	NSQ struct {
+
+	NSQ *struct {
 		Topic            string   `yaml:"topic"`
 		Channel          string   `yaml:"channel"`
 		LookupdAddresses []string `yaml:"lookupd_addresses"`

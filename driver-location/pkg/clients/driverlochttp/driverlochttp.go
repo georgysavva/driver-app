@@ -8,7 +8,6 @@ import (
 	"math"
 	"net/http"
 	"net/url"
-	"path"
 	"strconv"
 	"time"
 
@@ -19,27 +18,33 @@ import (
 
 type Client struct {
 	httpClient *http.Client
-	baseURL    string
+	baseURL    *url.URL
 }
 
-func NewClient(baseURL string) *Client {
+func NewClient(baseURL string) (*Client, error) {
 	// Improvement: make http timeout configurable
 	httpClient := &http.Client{Timeout: 5 * time.Second}
-	return &Client{httpClient: httpClient, baseURL: baseURL}
+	baseURLParsed, err := url.Parse(baseURL)
+	if err != nil {
+		return nil, errors.Wrap(err, "couldn't parse driver-location service base url")
+	}
+	return &Client{httpClient: httpClient, baseURL: baseURLParsed}, nil
 }
 
 func (c *Client) GetLocations(ctx context.Context, driverID string, timeInterval time.Duration) (
 	[]*driverloc.Location, error) {
 	timeIntervalMinutes := int(math.Round(timeInterval.Minutes()))
-	urlQuery := url.Values{}
-	urlQuery.Add("minutes", strconv.Itoa(timeIntervalMinutes))
-	urlQuery.Encode()
-	req, err := http.NewRequestWithContext(ctx, "GET", c.baseURL, nil /* body */)
+	queryParams := url.Values{}
+	queryParams.Set("minutes", strconv.Itoa(timeIntervalMinutes))
+	reqURL := c.baseURL.ResolveReference(&url.URL{
+		Path:     fmt.Sprintf("drivers/%s/locations", driverID),
+		RawQuery: queryParams.Encode(),
+	})
+
+	req, err := http.NewRequestWithContext(ctx, "GET", reqURL.String(), nil /* body */)
 	if err != nil {
 		return nil, errors.Wrap(err, "couldn't initialize a new http request with base url")
 	}
-	req.URL.Path = path.Join(req.URL.Path, fmt.Sprintf("drivers/%s/locations", driverID))
-	req.URL.RawQuery = urlQuery.Encode()
 	resp, err := c.httpClient.Do(req)
 	if err != nil {
 		return nil, errors.Wrap(err, "http get request to driver locations endpoint failed")

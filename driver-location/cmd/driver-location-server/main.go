@@ -50,15 +50,15 @@ func main() {
 	if err := nsqConsumer.ConnectToNSQLookupds(conf.NSQ.LookupdAddresses); err != nil {
 		logger.WithError(err).Fatal("Couldn't connect nsq consumer to nsqlookupds")
 	}
-	logger.Info("NSQ nsqConsumer successfully started")
+	logger.Info("NSQ consumer successfully started")
 
 	terminationChan := make(chan os.Signal, 1)
 	signal.Notify(terminationChan, syscall.SIGINT, syscall.SIGTERM)
 	<-terminationChan
 
-	logger.Info("Stopping NSQ nsqConsumer")
+	logger.Info("Stopping NSQ consumer")
 	nsqConsumer.Stop()
-	logger.Info("NSQ nsqConsumer stopped")
+	logger.Info("NSQ consumer stopped")
 
 	logger.WithField("shutdown_timeout", conf.HTTPServer.ShutdownTimeout).Info("Stopping http server")
 	ctx, cancel := context.WithTimeout(context.Background(), conf.HTTPServer.ShutdownTimeout)

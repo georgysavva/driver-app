@@ -3,6 +3,7 @@ package driverloc
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 
 	"github.com/nsqio/go-nsq"
 	"github.com/pkg/errors"
@@ -31,7 +32,7 @@ type nsqRequest struct {
 
 func (nh *NSQHandler) HandleMessage(m *nsq.Message) error {
 	ctx := context.Background()
-	ctxLogger := nh.logger.WithField("message_id", m.ID)
+	ctxLogger := nh.logger.WithField("message_id", fmt.Sprintf("%s", m.ID))
 	ctxLogger.WithField("message_body", string(m.Body)).Info("Received a new message")
 
 	req, err := parseNSQRequest(m)

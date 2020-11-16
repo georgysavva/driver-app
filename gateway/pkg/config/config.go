@@ -7,22 +7,20 @@ import (
 	"github.com/pkg/errors"
 	"gopkg.in/yaml.v2"
 
-	"github.com/heetch/georgysavva-technical-test/zombie-driver/pkg/zombiedriver"
+	"github.com/heetch/georgysavva-technical-test/gateway/pkg/gateway"
 )
 
 type Config struct {
-	App struct {
-		ZombiePredicate *zombiedriver.ZombiePredicate `yaml:"zombie_predicate"`
-	} `yaml:"app"`
-
-	DriverLocationService *struct {
-		BaseURL string `yaml:"base_url"`
-	} `yaml:"driver_location_service"`
+	URLs []*gateway.Endpoint `yaml:"urls"`
 
 	HTTPServer *struct {
 		Port            int           `yaml:"port"`
 		ShutdownTimeout time.Duration `yaml:"shutdown_timeout"`
 	} `yaml:"http_server"`
+
+	NSQ *struct {
+		DaemonAddress string `yaml:"daemon_address"`
+	} `yaml:"nsq"`
 }
 
 func ParseConfig(configPath string) (*Config, error) {

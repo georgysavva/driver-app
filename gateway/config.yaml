@@ -9,4 +9,11 @@ urls:
   - path: "/drivers/{id}"
     method: "GET"
     http:
-      host: "zombie-driver"
+      host: "localhost:8020"
+
+http_server:
+  port: 8000
+  shutdown_timeout: "5s"
+
+nsq:
+  daemon_address: "localhost:4150"
