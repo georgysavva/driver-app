@@ -19,10 +19,12 @@ type Endpoint struct {
 }
 
 type NSQProxyConf struct {
-	Topic   string `yaml:"topic"`
-	Message struct {
-		Command string `yaml:"command"`
-	} `yaml:"message"`
+	Topic   string          `yaml:"topic"`
+	Message *NSQMessageConf `yaml:"message"`
+}
+
+type NSQMessageConf struct {
+	Command string `yaml:"command"`
 }
 
 type HTTPProxyConf struct {

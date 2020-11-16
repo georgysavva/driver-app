@@ -3,20 +3,26 @@ package gateway
 import (
 	"encoding/json"
 	"fmt"
+	"io"
 	"net/http"
 
 	"github.com/gorilla/mux"
-	"github.com/nsqio/go-nsq"
 	"github.com/pkg/errors"
 	log "github.com/sirupsen/logrus"
 )
 
+type NSQProducer interface {
+	Publish(topic string, body []byte) error
+}
+
+//go:generate mockery --name NSQProducer
+
 type NSQProxyFactory struct {
-	producer *nsq.Producer
+	producer NSQProducer
 	logger   log.FieldLogger
 }
 
-func NewNSQProxyFactory(producer *nsq.Producer, logger log.FieldLogger) *NSQProxyFactory {
+func NewNSQProxyFactory(producer NSQProducer, logger log.FieldLogger) *NSQProxyFactory {
 	return &NSQProxyFactory{
 		producer: producer,
 		logger:   logger,
@@ -24,7 +30,7 @@ func NewNSQProxyFactory(producer *nsq.Producer, logger log.FieldLogger) *NSQProx
 }
 
 type NSQProxy struct {
-	producer *nsq.Producer
+	producer NSQProducer
 	logger   log.FieldLogger
 	conf     *NSQProxyConf
 }
@@ -48,7 +54,7 @@ type Message struct {
 func (np *NSQProxy) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	requestVars := mux.Vars(r)
 	var requestData map[string]interface{}
-	if err := json.NewDecoder(r.Body).Decode(&requestData); err != nil {
+	if err := json.NewDecoder(r.Body).Decode(&requestData); err != nil && err != io.EOF {
 		np.logger.WithError(err).Info("Can't decode request body into json")
 		http.Error(w, errors.Wrap(err, "request body parsing failed").Error(), http.StatusBadRequest)
 		return

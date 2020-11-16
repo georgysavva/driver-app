@@ -7,7 +7,6 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"net/url"
-	"path"
 	"strconv"
 	"testing"
 	"time"
@@ -93,18 +92,20 @@ func TestHTTP_GetLocations_MinutesParamNotANumber(t *testing.T) {
 
 func callGetLocationsEndpoint(t *testing.T, ts *httptest.Server, queryParams map[string]string) (*http.Response, string) {
 	t.Helper()
-	reqURLParsed, err := url.Parse(ts.URL)
+	serverURL, err := url.Parse(ts.URL)
 	require.NoError(t, err)
-	reqURLParsed.Path = path.Join(reqURLParsed.Path, fmt.Sprintf("drivers/%s/locations", defaultDriverID))
 
-	query := reqURLParsed.Query()
+	query := url.Values{}
 	for k, v := range queryParams {
 		query.Set(k, v)
 	}
-	reqURLParsed.RawQuery = query.Encode()
-	reqURL := reqURLParsed.String()
 
-	resp, err := http.Get(reqURL)
+	reqURL := serverURL.ResolveReference(&url.URL{
+		Path:     fmt.Sprintf("drivers/%s/locations", defaultDriverID),
+		RawQuery: query.Encode(),
+	})
+
+	resp, err := http.Get(reqURL.String())
 	require.NoError(t, err)
 	defer resp.Body.Close()
 
