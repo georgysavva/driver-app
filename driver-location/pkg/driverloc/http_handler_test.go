@@ -1,6 +1,7 @@
 package driverloc_test
 
 import (
+	"context"
 	"fmt"
 	"io/ioutil"
 	"net/http"
@@ -29,7 +30,7 @@ func TestHTTP_GetLocations(t *testing.T) {
 	minutesArg := 5
 	serviceMock.On(
 		"GetLocations",
-		mock.Anything,
+		mock.MatchedBy(func(_ context.Context) bool { return true }), // match anything of type context.Context
 		defaultDriverID,
 		time.Duration(minutesArg)*time.Minute,
 	).Return([]*driverloc.Location{
