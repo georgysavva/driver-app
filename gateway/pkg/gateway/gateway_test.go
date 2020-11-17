@@ -41,7 +41,7 @@ func TestNSQProxy(t *testing.T) {
 	ts := httptest.NewServer(gatewayHandler)
 	defer ts.Close()
 
-	response, responseText := callEndpoint(t, ts, "/" /* endpointPath */)
+	response, responseText := callEndpoint(t, ts)
 
 	assert.Equal(t, response.StatusCode, http.StatusOK)
 	assert.Equal(t, responseText, "OK\n")
@@ -72,18 +72,18 @@ func TestHTTPProxy(t *testing.T) {
 	ts := httptest.NewServer(gatewayHandler)
 	defer ts.Close()
 
-	response, responseText := callEndpoint(t, ts, "/" /* endpointPath */)
+	response, responseText := callEndpoint(t, ts)
 
 	assert.Equal(t, response.StatusCode, http.StatusOK)
 	assert.Equal(t, responseText, "OK\n")
 }
 
-func callEndpoint(t *testing.T, ts *httptest.Server, endpointPath string) (*http.Response, string) {
+func callEndpoint(t *testing.T, ts *httptest.Server) (*http.Response, string) {
 	t.Helper()
 	serverURL, err := url.Parse(ts.URL)
 	require.NoError(t, err)
 
-	reqURL := serverURL.ResolveReference(&url.URL{Path: endpointPath})
+	reqURL := serverURL.ResolveReference(&url.URL{Path: "/"})
 
 	resp, err := http.Post(reqURL.String(), "application/json", nil /* body */)
 	require.NoError(t, err)

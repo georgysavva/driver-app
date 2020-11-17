@@ -2,6 +2,7 @@ package config
 
 import (
 	"io/ioutil"
+	"path/filepath"
 	"time"
 
 	"github.com/pkg/errors"
@@ -26,7 +27,7 @@ type Config struct {
 }
 
 func ParseConfig(configPath string) (*Config, error) {
-	fileContent, err := ioutil.ReadFile(configPath)
+	fileContent, err := ioutil.ReadFile(filepath.Clean(configPath))
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to read config file content")
 	}

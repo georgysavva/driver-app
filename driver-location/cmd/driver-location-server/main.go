@@ -10,6 +10,7 @@ import (
 
 	"github.com/go-redis/redis/v8"
 	"github.com/nsqio/go-nsq"
+	"github.com/pkg/errors"
 	log "github.com/sirupsen/logrus"
 
 	"github.com/heetch/georgysavva-technical-test/driver-location/pkg/config"
@@ -28,7 +29,7 @@ func main() {
 		logger.WithError(err).Fatal("Failed to parse config")
 	}
 	redisClient := redis.NewClient(&redis.Options{Addr: conf.Redis.Address})
-	defer redisClient.Close()
+	defer redisClient.Close() // nolint: errcheck
 	service := driverloc.NewService(redisClient, logger.WithField("component", "service"), conf.App.DriverLocationsLimit)
 
 	// HTTP server
@@ -37,7 +38,7 @@ func main() {
 	httpHandler = httpmiddleware.NewLoggingMiddleware(httpHandler, logger)
 	httpServer := http.Server{Addr: fmt.Sprintf(":%d", conf.HTTPServer.Port), Handler: httpHandler}
 	go func() {
-		if err := httpServer.ListenAndServe(); err != nil && err != http.ErrServerClosed {
+		if err := httpServer.ListenAndServe(); err != nil && errors.Is(err, http.ErrServerClosed) {
 			logger.WithError(err).Fatal("HTTP server unexpectedly stopped")
 		}
 	}()

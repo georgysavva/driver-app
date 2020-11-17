@@ -8,6 +8,7 @@ import (
 	"os/signal"
 	"syscall"
 
+	"github.com/pkg/errors"
 	log "github.com/sirupsen/logrus"
 
 	"github.com/heetch/georgysavva-technical-test/driver-location/pkg/clients/driverlochttp"
@@ -32,14 +33,16 @@ func main() {
 		logger.WithError(err).Fatal("Failed initialize driver-location service http client")
 	}
 
-	service := zombiedriver.NewService(driverLocationClient, logger.WithField("component", "service"), conf.App.ZombiePredicate)
+	service := zombiedriver.NewService(
+		driverLocationClient, logger.WithField("component", "service"), conf.App.ZombiePredicate,
+	)
 
 	httpHandler := zombiedriver.MakeHTTPHandler(service, logger.WithField("component", "http-handler"))
 
 	httpHandler = httpmiddleware.NewLoggingMiddleware(httpHandler, logger)
 	httpServer := http.Server{Addr: fmt.Sprintf(":%d", conf.HTTPServer.Port), Handler: httpHandler}
 	go func() {
-		if err := httpServer.ListenAndServe(); err != nil && err != http.ErrServerClosed {
+		if err := httpServer.ListenAndServe(); err != nil && errors.Is(err, http.ErrServerClosed) {
 			logger.WithError(err).Fatal("HTTP server unexpectedly stopped")
 		}
 	}()

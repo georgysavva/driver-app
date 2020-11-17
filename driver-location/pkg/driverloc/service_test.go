@@ -29,7 +29,7 @@ func TestService_UpdateLocations(t *testing.T) {
 	service, fakeRedis := setupService(t)
 	defer fakeRedis.Close()
 
-	insertLocations(t, service, defaultDriverID, []*toInsert{
+	insertLocations(t, service, []*toInsert{
 		{
 			coords:          &driverloc.Coordinates{Latitude: 48.864193, Longitude: 2.350498},
 			fakeCurrentTime: baseTime.Add(0 * time.Second),
@@ -54,7 +54,7 @@ func TestService_UpdateLocations_OlderLocationsAreCleaned(t *testing.T) {
 	service, fakeRedis := setupService(t)
 	defer fakeRedis.Close()
 
-	insertLocations(t, service, defaultDriverID, []*toInsert{
+	insertLocations(t, service, []*toInsert{
 		{
 			coords:          &driverloc.Coordinates{Latitude: 48.864193, Longitude: 2.350498},
 			fakeCurrentTime: baseTime.Add(0 * time.Second),
@@ -92,7 +92,7 @@ func TestService_UpdateLocations_DuplicateCoordinatesAtDifferentTimes(t *testing
 	service, fakeRedis := setupService(t)
 	defer fakeRedis.Close()
 
-	insertLocations(t, service, defaultDriverID, []*toInsert{
+	insertLocations(t, service, []*toInsert{
 		{
 			coords:          &driverloc.Coordinates{Latitude: 48.864193, Longitude: 2.350498},
 			fakeCurrentTime: baseTime.Add(0 * time.Second),
@@ -117,7 +117,7 @@ func TestService_UpdateLocations_DuplicateCoordinatesAtTheSameTime(t *testing.T)
 	service, fakeRedis := setupService(t)
 	defer fakeRedis.Close()
 
-	insertLocations(t, service, defaultDriverID, []*toInsert{
+	insertLocations(t, service, []*toInsert{
 		{
 			coords:          &driverloc.Coordinates{Latitude: 48.864193, Longitude: 2.350498},
 			fakeCurrentTime: baseTime,
@@ -141,7 +141,7 @@ func TestService_UpdateLocations_DifferentCoordinatesAtTheSameTime(t *testing.T)
 	service, fakeRedis := setupService(t)
 	defer fakeRedis.Close()
 
-	insertLocations(t, service, defaultDriverID, []*toInsert{
+	insertLocations(t, service, []*toInsert{
 		{
 			coords:          &driverloc.Coordinates{Latitude: 48.864193, Longitude: 2.350498},
 			fakeCurrentTime: baseTime,
@@ -166,7 +166,7 @@ func TestService_GetLocations(t *testing.T) {
 	service, fakeRedis := setupService(t)
 	defer fakeRedis.Close()
 
-	insertLocations(t, service, defaultDriverID, []*toInsert{
+	insertLocations(t, service, []*toInsert{
 		{
 			coords:          &driverloc.Coordinates{Latitude: 48.864193, Longitude: 2.350498},
 			fakeCurrentTime: baseTime.Add(0 * time.Second),
@@ -206,7 +206,7 @@ func TestService_GetLocations_NoLocationsInTheTimeInterval(t *testing.T) {
 	service, fakeRedis := setupService(t)
 	defer fakeRedis.Close()
 
-	insertLocations(t, service, defaultDriverID, []*toInsert{
+	insertLocations(t, service, []*toInsert{
 		{
 			coords:          &driverloc.Coordinates{Latitude: 48.864193, Longitude: 2.350498},
 			fakeCurrentTime: baseTime.Add(0 * time.Second),
@@ -254,13 +254,14 @@ type toInsert struct {
 	fakeCurrentTime time.Time
 }
 
-func insertLocations(t *testing.T, s *driverloc.ServiceImpl, driverID string, inserts []*toInsert) {
+func insertLocations(t *testing.T, s *driverloc.ServiceImpl, inserts []*toInsert) {
 	t.Helper()
 	for _, insert := range inserts {
+		insert := insert
 		s.SetTimeNowFn(func() time.Time {
 			return insert.fakeCurrentTime
 		})
-		err := s.UpdateLocations(ctx, driverID, insert.coords)
+		err := s.UpdateLocations(ctx, defaultDriverID, insert.coords)
 		require.NoError(t, err)
 	}
 }

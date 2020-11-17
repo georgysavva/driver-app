@@ -9,6 +9,7 @@ import (
 	"syscall"
 
 	"github.com/nsqio/go-nsq"
+	"github.com/pkg/errors"
 	log "github.com/sirupsen/logrus"
 
 	"github.com/heetch/georgysavva-technical-test/gateway/pkg/config"
@@ -40,7 +41,7 @@ func main() {
 	gatewayHandler = httpmiddleware.NewLoggingMiddleware(gatewayHandler, logger)
 	httpServer := http.Server{Addr: fmt.Sprintf(":%d", conf.HTTPServer.Port), Handler: gatewayHandler}
 	go func() {
-		if err := httpServer.ListenAndServe(); err != nil && err != http.ErrServerClosed {
+		if err := httpServer.ListenAndServe(); err != nil && errors.Is(err, http.ErrServerClosed) {
 			logger.WithError(err).Fatal("HTTP server unexpectedly stopped")
 		}
 	}()

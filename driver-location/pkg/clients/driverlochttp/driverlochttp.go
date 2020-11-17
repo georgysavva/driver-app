@@ -21,9 +21,11 @@ type Client struct {
 	baseURL    *url.URL
 }
 
+const defaultTimeout = 5 * time.Second
+
 func NewClient(baseURL string) (*Client, error) {
 	// Improvement: make http timeout configurable
-	httpClient := &http.Client{Timeout: 5 * time.Second}
+	httpClient := &http.Client{Timeout: defaultTimeout}
 	baseURLParsed, err := url.Parse(baseURL)
 	if err != nil {
 		return nil, errors.Wrap(err, "couldn't parse driver-location service base url")
@@ -49,7 +51,7 @@ func (c *Client) GetLocations(ctx context.Context, driverID string, timeInterval
 	if err != nil {
 		return nil, errors.Wrap(err, "http get request to driver locations endpoint failed")
 	}
-	defer resp.Body.Close()
+	defer resp.Body.Close() // nolint: errcheck
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		return nil, errors.Wrap(err, "couldn't read http response content")

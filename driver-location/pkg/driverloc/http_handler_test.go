@@ -106,7 +106,8 @@ func TestHTTP_GetLocations_RequestError(t *testing.T) {
 	}
 }
 
-func callGetLocationsEndpoint(t *testing.T, ts *httptest.Server, queryParams map[string]string) (*http.Response, string) {
+func callGetLocationsEndpoint(t *testing.T, ts *httptest.Server, queryParams map[string]string) (
+	*http.Response, string) {
 	t.Helper()
 	serverURL, err := url.Parse(ts.URL)
 	require.NoError(t, err)

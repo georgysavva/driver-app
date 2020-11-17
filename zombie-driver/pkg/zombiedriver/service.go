@@ -62,7 +62,7 @@ func (s *ServiceImpl) GetDriver(ctx context.Context, driverID string) (*Driver, 
 }
 
 func calculateDistanceDriven(locations []*driverloc.Location) int {
-	if len(locations) < 2 {
+	if len(locations) <= 1 {
 		return 0
 	}
 	var distanceDriven float64

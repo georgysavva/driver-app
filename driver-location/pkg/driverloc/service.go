@@ -73,7 +73,8 @@ func (s *ServiceImpl) UpdateLocations(ctx context.Context, driverID string, coor
 	return nil
 }
 
-func (s *ServiceImpl) GetLocations(ctx context.Context, driverID string, timeInterval time.Duration) ([]*Location, error) {
+func (s *ServiceImpl) GetLocations(ctx context.Context, driverID string, timeInterval time.Duration) (
+	[]*Location, error) {
 	now := s.timeNowFn().UTC()
 	minScore := timeToRedisScore(now.Add(-timeInterval))
 	redisRange := &redis.ZRangeBy{
