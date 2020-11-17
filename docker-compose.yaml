@@ -15,7 +15,7 @@ services:
 
   nsqd:
     image: nsqio/nsq:v0.3.8
-    command: /nsqd --lookupd-tcp-address=nsqlookupd:4160 --broadcast-address=127.0.0.1
+    command: /nsqd --lookupd-tcp-address=nsqlookupd:4160
     links:
       - nsqlookupd:nsqlookupd
     ports:
@@ -29,3 +29,21 @@ services:
     links:
       - nsqlookupd:nsqlookupd
     command: /nsqadmin --lookupd-http-address=nsqlookupd:4161
+
+  driver-location:
+    image: driver-location
+    links:
+      - nsqlookupd:nsqlookupd
+      - nsqd:nsqd
+    ports:
+      - "8010:8010"
+
+  gateway:
+    image: gateway
+    ports:
+      - "8000:8000"
+
+  zombie-driver:
+    image: zombie-driver
+    ports:
+      - "8020:8020"

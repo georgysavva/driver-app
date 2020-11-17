@@ -50,6 +50,9 @@ func main() {
 	if err := nsqConsumer.ConnectToNSQLookupds(conf.NSQ.LookupdAddresses); err != nil {
 		logger.WithError(err).Fatal("Couldn't connect nsq consumer to nsqlookupds")
 	}
+	if err := nsqConsumer.ConnectToNSQDs(conf.NSQ.DaemonAddresses); err != nil {
+		logger.WithError(err).Fatal("Couldn't connect nsq consumer to nsqds")
+	}
 	logger.Info("NSQ consumer successfully started")
 
 	terminationChan := make(chan os.Signal, 1)

@@ -25,6 +25,7 @@ type Config struct {
 	NSQ *struct {
 		Topic            string   `yaml:"topic"`
 		Channel          string   `yaml:"channel"`
+		DaemonAddresses  []string `yaml:"daemon_addresses"`
 		LookupdAddresses []string `yaml:"lookupd_addresses"`
 		WorkersNum       int      `yaml:"workers_num"`
 	} `yaml:"nsq"`

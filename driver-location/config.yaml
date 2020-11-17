@@ -2,7 +2,7 @@ app:
   driver_locations_limit: 1000
 
 redis:
-  address: "localhost:6379"
+  address: "redis:6379"
 
 http_server:
   port: 8010
@@ -12,5 +12,7 @@ nsq:
   topic: "locations"
   channel: "driver-location-service"
   lookupd_addresses:
-    - "localhost:4161"
+    - "nsqlookupd:4161"
+  daemon_addresses:
+    - "nsqd:4150"
   workers_num: 16
