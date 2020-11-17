@@ -16,6 +16,14 @@ Your task is to implement three services as follows:
 - a `driver location` service that consumes location update events and stores them
 - a `zombie driver` service that allows users to check whether a driver is a zombie or not
 
+## Setup
+
+In the project root:
+
+- Run all tests: `make test`
+- Build docker images: `make all`
+- Run all services `docker-compose up`
+
 ### 1. Gateway Service
 
 The `Gateway` service is a _public facing service_.
