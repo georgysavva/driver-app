@@ -13,6 +13,7 @@ import (
 
 	"github.com/heetch/georgysavva-technical-test/gateway/pkg/config"
 	"github.com/heetch/georgysavva-technical-test/gateway/pkg/gateway"
+	"github.com/heetch/georgysavva-technical-test/gateway/pkg/httpmiddleware"
 )
 
 // Improvement: allow to pass a custom config path.
@@ -36,6 +37,7 @@ func main() {
 		logger.WithError(err).Fatal("Couldn't setup gateway handler")
 	}
 
+	gatewayHandler = httpmiddleware.NewLoggingMiddleware(gatewayHandler, logger)
 	httpServer := http.Server{Addr: fmt.Sprintf(":%d", conf.HTTPServer.Port), Handler: gatewayHandler}
 	go func() {
 		if err := httpServer.ListenAndServe(); err != nil && err != http.ErrServerClosed {

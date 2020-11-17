@@ -14,6 +14,7 @@ import (
 
 	"github.com/heetch/georgysavva-technical-test/driver-location/pkg/config"
 	"github.com/heetch/georgysavva-technical-test/driver-location/pkg/driverloc"
+	"github.com/heetch/georgysavva-technical-test/driver-location/pkg/httpmiddleware"
 )
 
 // Improvement: allow to pass a custom config path.
@@ -32,6 +33,8 @@ func main() {
 
 	// HTTP server
 	httpHandler := driverloc.MakeHTTPHandler(service, logger.WithField("component", "http-handler"))
+
+	httpHandler = httpmiddleware.NewLoggingMiddleware(httpHandler, logger)
 	httpServer := http.Server{Addr: fmt.Sprintf(":%d", conf.HTTPServer.Port), Handler: httpHandler}
 	go func() {
 		if err := httpServer.ListenAndServe(); err != nil && err != http.ErrServerClosed {

@@ -12,6 +12,7 @@ import (
 
 	"github.com/heetch/georgysavva-technical-test/driver-location/pkg/clients/driverlochttp"
 	"github.com/heetch/georgysavva-technical-test/zombie-driver/pkg/config"
+	"github.com/heetch/georgysavva-technical-test/zombie-driver/pkg/httpmiddleware"
 	"github.com/heetch/georgysavva-technical-test/zombie-driver/pkg/zombiedriver"
 )
 
@@ -34,6 +35,8 @@ func main() {
 	service := zombiedriver.NewService(driverLocationClient, logger.WithField("component", "service"), conf.App.ZombiePredicate)
 
 	httpHandler := zombiedriver.MakeHTTPHandler(service, logger.WithField("component", "http-handler"))
+
+	httpHandler = httpmiddleware.NewLoggingMiddleware(httpHandler, logger)
 	httpServer := http.Server{Addr: fmt.Sprintf(":%d", conf.HTTPServer.Port), Handler: httpHandler}
 	go func() {
 		if err := httpServer.ListenAndServe(); err != nil && err != http.ErrServerClosed {
