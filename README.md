@@ -1,37 +1,24 @@
-![Heetch](heetch.png)
+## Overview
 
-## Test
+When you open the app as a passenger, you can see a few drivers surrounding you.
+These drivers are usually displayed as a car icon. For the release of a new Zombie-based TV show, we want to display a zombie icon instead of the usual car icon for specific drivers.
 
+Drivers send their current coordinates to the backend every five seconds. Our application will use those location updates to differentiate between living and zombie drivers, based on a specific predicate (see below).
 
-When you open the Heetch app as a passenger, you are able to see a few drivers surrounding you.
-These drivers are usually displayed as a car icon. For the release of a new Zombie-based TV show, we are doing a fun partnership! During the week of the TV show release, we will display a zombie icon instead of the usual car icon for specific drivers.
+The app consists of three microservices:
 
-Heetch drivers send their current coordinates to the backend every five seconds. Our application will use those location updates to differentiate between living and zombie drivers, based on a specific predicate (see below).
-
-To support our growth, we have taken the microservice route. So let’s tackle the basics with a HTTP gateway that either forwards requests or transforms them into [NSQ](https://github.com/nsqio/nsq) messages for asynchronous processing. Then we’ll add services that perform tasks related to our mission of transporting people from A to B.
-
-Your task is to implement three services as follows:
-
-- a `gateway` service that either forwards or transforms requests to be respectively processed synchronously or asynchronously
+- a `gateway` HTTP gateway service that either forwards or transforms requests into [NSQ](https://github.com/nsqio/nsq) messages to be respectively processed synchronously or asynchronously
 - a `driver location` service that consumes location update events and stores them
 - a `zombie driver` service that allows users to check whether a driver is a zombie or not
-
-## Setup
-
-In the project root:
-
-- Run all tests: `make test`
-- Build docker images: `make all`
-- Run all services `docker-compose up`
 
 ### 1. Gateway Service
 
 The `Gateway` service is a _public facing service_.
 HTTP requests hitting this service are either transformed into [NSQ](https://github.com/nsqio/nsq) messages or forwarded via HTTP to specific services.
 
-The service must be configurable dynamically by loading the provided `gateway/config.yaml` file to register endpoints during its initialization.
+The service is dynamically configured by loading the provided `gateway/config.yaml` file to register endpoints during its initialization.
 
-Adding new endpoints shouldn't require any code modification except for the `gateway/config.yaml` file, do not hardcode the values in the code.
+Adding new endpoints don't require any code modification except for the `gateway/config.yaml` file.
 
 #### Public Endpoints
 
@@ -136,35 +123,24 @@ This endpoint is called by the `Gateway` service.
 > A driver is a zombie if he has driven less than 500 meters in the last 5 minutes.
 
 
-Given that this is the first time we do such a partnership, our operational team mentioned that they might need to change the predicate values (duration and distance) through the duration of the partnership. That would allow them to increase the chances of having passengers encounter zombie drivers. For example, on the second day they might decide that a zombie is a driver that hasn't moved more than 2km over the last 30 minutes. So, bonus points if you make these configurable! ;)
+The predicate values (duration and distance) are configurable. That allows us to increase the chances of having passengers encounter zombie drivers. For example, a zombie is a driver that hasn't moved more than 2km over the last 30 minutes.
 
 
 **Behaviour**
 
 Returns the zombie state of a given driver.
 
+## Implementation details
+- All services follow clean/hex architecture
+- The code is tested. All tests are running without any external dependency and don’t require any specific environment.
+- The code is protected by `golangci-lint`
+- The app is configurable via `.yaml` files
+- All services packaged with Docker
 
-### Prerequisites
-- handle all failure cases
-- your code should be tested
-- the gateway should be configured using the `gateway/config.yaml` file
-- provide a clear explanation of your approach and design choices (while submitting your pull request)
-- provide a proper `README.md`:
-  - explaining how to setup and run your code
-  - including all information you consider useful for a seamless coworker on-boarding
+## Setup
 
-### Workflow
-- write your code in **Go**
-- you can use the provided `docker-compose.yaml` file to run NSQ and Redis
-- create a new branch
-- commit and push to this branch
-- submit a pull request once you have finished
+In the project root do:
 
-We will then write a review for your pull request!
-
-### Bonus
-
-- Add metrics / request tracing / circuit breaker 📈
-- Add whatever you think is necessary to make the app awesome ✨
-
-⚠️ Do not add your vendors to the git repository. ⚠️
+- Run all tests: `make test`
+- Build Docker images for each service: `make all`
+- Run everything `docker-compose up`
