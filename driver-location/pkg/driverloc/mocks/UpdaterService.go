@@ -5,7 +5,7 @@ package mocks
 import (
 	context "context"
 
-	driverloc "github.com/heetch/georgysavva-technical-test/driver-location/pkg/driverloc"
+	driverloc "github.com/georgysavva/driver-app/driver-location/pkg/driverloc"
 	mock "github.com/stretchr/testify/mock"
 )
 

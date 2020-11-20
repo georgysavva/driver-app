@@ -11,10 +11,10 @@ import (
 	"github.com/pkg/errors"
 	log "github.com/sirupsen/logrus"
 
-	"github.com/heetch/georgysavva-technical-test/driver-location/pkg/clients/driverlochttp"
-	"github.com/heetch/georgysavva-technical-test/zombie-driver/pkg/config"
-	"github.com/heetch/georgysavva-technical-test/zombie-driver/pkg/httpmiddleware"
-	"github.com/heetch/georgysavva-technical-test/zombie-driver/pkg/zombiedriver"
+	"github.com/georgysavva/driver-app/driver-location/pkg/clients/driverlochttp"
+	"github.com/georgysavva/driver-app/zombie-driver/pkg/config"
+	"github.com/georgysavva/driver-app/zombie-driver/pkg/httpmiddleware"
+	"github.com/georgysavva/driver-app/zombie-driver/pkg/zombiedriver"
 )
 
 // Improvement: allow to pass a custom config path.

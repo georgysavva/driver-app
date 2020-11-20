@@ -8,7 +8,7 @@ import (
 	"github.com/pkg/errors"
 	"gopkg.in/yaml.v2"
 
-	"github.com/heetch/georgysavva-technical-test/zombie-driver/pkg/zombiedriver"
+	"github.com/georgysavva/driver-app/zombie-driver/pkg/zombiedriver"
 )
 
 type Config struct {

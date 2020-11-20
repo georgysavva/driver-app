@@ -13,8 +13,8 @@ import (
 	"github.com/stretchr/testify/mock"
 	"github.com/stretchr/testify/require"
 
-	"github.com/heetch/georgysavva-technical-test/gateway/pkg/gateway"
-	"github.com/heetch/georgysavva-technical-test/gateway/pkg/gateway/mocks"
+	"github.com/georgysavva/driver-app/gateway/pkg/gateway"
+	"github.com/georgysavva/driver-app/gateway/pkg/gateway/mocks"
 )
 
 func TestNSQProxy(t *testing.T) {

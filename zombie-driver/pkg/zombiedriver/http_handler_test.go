@@ -14,8 +14,8 @@ import (
 	"github.com/stretchr/testify/mock"
 	"github.com/stretchr/testify/require"
 
-	"github.com/heetch/georgysavva-technical-test/zombie-driver/pkg/zombiedriver"
-	"github.com/heetch/georgysavva-technical-test/zombie-driver/pkg/zombiedriver/mocks"
+	"github.com/georgysavva/driver-app/zombie-driver/pkg/zombiedriver"
+	"github.com/georgysavva/driver-app/zombie-driver/pkg/zombiedriver/mocks"
 )
 
 func TestHTTP_GetLocations(t *testing.T) {

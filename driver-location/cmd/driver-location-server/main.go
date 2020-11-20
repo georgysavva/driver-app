@@ -13,9 +13,9 @@ import (
 	"github.com/pkg/errors"
 	log "github.com/sirupsen/logrus"
 
-	"github.com/heetch/georgysavva-technical-test/driver-location/pkg/config"
-	"github.com/heetch/georgysavva-technical-test/driver-location/pkg/driverloc"
-	"github.com/heetch/georgysavva-technical-test/driver-location/pkg/httpmiddleware"
+	"github.com/georgysavva/driver-app/driver-location/pkg/config"
+	"github.com/georgysavva/driver-app/driver-location/pkg/driverloc"
+	"github.com/georgysavva/driver-app/driver-location/pkg/httpmiddleware"
 )
 
 // Improvement: allow to pass a custom config path.

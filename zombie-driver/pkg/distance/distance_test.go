@@ -5,7 +5,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/heetch/georgysavva-technical-test/zombie-driver/pkg/distance"
+	"github.com/georgysavva/driver-app/zombie-driver/pkg/distance"
 )
 
 func TestCalculate(t *testing.T) {

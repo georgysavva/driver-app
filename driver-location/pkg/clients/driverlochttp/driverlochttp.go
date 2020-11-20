@@ -13,7 +13,7 @@ import (
 
 	"github.com/pkg/errors"
 
-	"github.com/heetch/georgysavva-technical-test/driver-location/pkg/driverloc"
+	"github.com/georgysavva/driver-app/driver-location/pkg/driverloc"
 )
 
 type Client struct {

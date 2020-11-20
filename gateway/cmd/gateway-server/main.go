@@ -12,9 +12,9 @@ import (
 	"github.com/pkg/errors"
 	log "github.com/sirupsen/logrus"
 
-	"github.com/heetch/georgysavva-technical-test/gateway/pkg/config"
-	"github.com/heetch/georgysavva-technical-test/gateway/pkg/gateway"
-	"github.com/heetch/georgysavva-technical-test/gateway/pkg/httpmiddleware"
+	"github.com/georgysavva/driver-app/gateway/pkg/config"
+	"github.com/georgysavva/driver-app/gateway/pkg/gateway"
+	"github.com/georgysavva/driver-app/gateway/pkg/httpmiddleware"
 )
 
 // Improvement: allow to pass a custom config path.

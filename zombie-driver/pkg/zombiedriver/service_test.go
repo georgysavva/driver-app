@@ -10,9 +10,9 @@ import (
 	"github.com/stretchr/testify/mock"
 	"github.com/stretchr/testify/require"
 
-	"github.com/heetch/georgysavva-technical-test/driver-location/pkg/driverloc"
-	"github.com/heetch/georgysavva-technical-test/driver-location/pkg/driverloc/mocks"
-	"github.com/heetch/georgysavva-technical-test/zombie-driver/pkg/zombiedriver"
+	"github.com/georgysavva/driver-app/driver-location/pkg/driverloc"
+	"github.com/georgysavva/driver-app/driver-location/pkg/driverloc/mocks"
+	"github.com/georgysavva/driver-app/zombie-driver/pkg/zombiedriver"
 )
 
 const defaultDriverID = "foo"

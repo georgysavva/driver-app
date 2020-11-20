@@ -5,7 +5,7 @@ package mocks
 import (
 	context "context"
 
-	zombiedriver "github.com/heetch/georgysavva-technical-test/zombie-driver/pkg/zombiedriver"
+	zombiedriver "github.com/georgysavva/driver-app/zombie-driver/pkg/zombiedriver"
 	mock "github.com/stretchr/testify/mock"
 )
 

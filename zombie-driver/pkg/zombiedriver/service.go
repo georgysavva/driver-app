@@ -8,8 +8,8 @@ import (
 	"github.com/pkg/errors"
 	log "github.com/sirupsen/logrus"
 
-	"github.com/heetch/georgysavva-technical-test/driver-location/pkg/driverloc"
-	"github.com/heetch/georgysavva-technical-test/zombie-driver/pkg/distance"
+	"github.com/georgysavva/driver-app/driver-location/pkg/driverloc"
+	"github.com/georgysavva/driver-app/zombie-driver/pkg/distance"
 )
 
 type Service interface {
