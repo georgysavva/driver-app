@@ -21,11 +21,7 @@ type Client struct {
 	baseURL    *url.URL
 }
 
-const defaultTimeout = 5 * time.Second
-
-func NewClient(baseURL string) (*Client, error) {
-	// Improvement: make http timeout configurable
-	httpClient := &http.Client{Timeout: defaultTimeout}
+func NewClient(httpClient *http.Client, baseURL string) (*Client, error) {
 	baseURLParsed, err := url.Parse(baseURL)
 	if err != nil {
 		return nil, errors.Wrap(err, "couldn't parse driver-location service base url")

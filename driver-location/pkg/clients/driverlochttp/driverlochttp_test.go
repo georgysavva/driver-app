@@ -2,6 +2,7 @@ package driverlochttp_test
 
 import (
 	"context"
+	"net/http"
 	"net/http/httptest"
 	"testing"
 	"time"
@@ -47,7 +48,7 @@ func TestClient_GetLocations(t *testing.T) {
 		defaultDriverID, timeInterval,
 	).Return(expected, nil)
 
-	client, err := driverlochttp.NewClient(ts.URL)
+	client, err := driverlochttp.NewClient(http.DefaultClient, ts.URL)
 	require.NoError(t, err)
 	actual, err := client.GetLocations(context.Background(), defaultDriverID, timeInterval)
 	require.NoError(t, err)
