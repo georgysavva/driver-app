@@ -1,7 +1,7 @@
 .PHONY: all test
 
 all:
-	docker build -t zombie-driver -f Dockerfile ../.
+	docker build -t zombie-driver .
 
 test:
 	go test -v -race ./...

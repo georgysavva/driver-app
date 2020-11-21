@@ -2,7 +2,7 @@ FROM golang:1.14.11
 
 ADD . /go/src/app
 
-WORKDIR /go/src/app/zombie-driver
+WORKDIR /go/src/app
 
 RUN go install ./...
 

@@ -1,7 +1,7 @@
 .PHONY: all test
 
 all:
-	docker build -t driver-location -f Dockerfile ../.
+	docker build -t driver-location .
 
 test:
 	go test -v -race ./...
