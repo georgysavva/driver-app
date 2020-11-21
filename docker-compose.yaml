@@ -6,18 +6,9 @@ services:
     ports:
       - "6379:6379"
 
-  nsqlookupd:
-    image: nsqio/nsq:v0.3.8
-    command: /nsqlookupd
-    ports:
-      - "4160:4160"
-      - "4161:4161"
-
   nsqd:
     image: nsqio/nsq:v0.3.8
-    command: /nsqd --lookupd-tcp-address=nsqlookupd:4160
-    links:
-      - nsqlookupd:nsqlookupd
+    command: /nsqd
     ports:
       - "4150:4150"
       - "4151:4151"
@@ -26,14 +17,11 @@ services:
     image: nsqio/nsq:v0.3.8
     ports:
       - "4171:4171"
-    links:
-      - nsqlookupd:nsqlookupd
-    command: /nsqadmin --lookupd-http-address=nsqlookupd:4161
+    command: /nsqadmin --nsqd-http-address=nsqd:4151
 
   driver-location:
     image: driver-location
     links:
-      - nsqlookupd:nsqlookupd
       - nsqd:nsqd
     ports:
       - "8010:8010"

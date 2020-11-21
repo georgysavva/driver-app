@@ -11,8 +11,6 @@ http_server:
 nsq:
   topic: "locations"
   channel: "driver-location-service"
-  lookupd_addresses:
-    - "nsqlookupd:4161"
   daemon_addresses:
     - "nsqd:4150"
   workers_num: 16

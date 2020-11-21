@@ -51,9 +51,6 @@ func main() {
 		logger.WithError(err).Fatal("Couldn't initialize nsq consumer")
 	}
 	nsqConsumer.AddConcurrentHandlers(nsqHandler, conf.NSQ.WorkersNum)
-	if err := nsqConsumer.ConnectToNSQLookupds(conf.NSQ.LookupdAddresses); err != nil {
-		logger.WithError(err).Fatal("Couldn't connect nsq consumer to nsqlookupds")
-	}
 	if err := nsqConsumer.ConnectToNSQDs(conf.NSQ.DaemonAddresses); err != nil {
 		logger.WithError(err).Fatal("Couldn't connect nsq consumer to nsqds")
 	}
