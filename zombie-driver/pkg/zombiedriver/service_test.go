@@ -5,13 +5,13 @@ import (
 	"testing"
 	"time"
 
+	"github.com/georgysavva/driver-app/driver-location/pkg/driverloc"
+	"github.com/georgysavva/driver-app/driver-location/pkg/driverloc/mocks"
 	log "github.com/sirupsen/logrus"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
 	"github.com/stretchr/testify/require"
 
-	"github.com/georgysavva/driver-app/driver-location/pkg/driverloc"
-	"github.com/georgysavva/driver-app/driver-location/pkg/driverloc/mocks"
 	"github.com/georgysavva/driver-app/zombie-driver/pkg/zombiedriver"
 )
 

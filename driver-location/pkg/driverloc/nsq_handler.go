@@ -31,7 +31,7 @@ type nsqRequest struct {
 
 func (nh *NSQHandler) HandleMessage(m *nsq.Message) error {
 	ctx := context.Background()
-	ctxLogger := nh.logger.WithField("message_id", string(m.ID[:]))
+	ctxLogger := nh.logger.WithField("message_id", getMessageID(m))
 	ctxLogger.WithField("message_body", string(m.Body)).Info("Received a new message")
 
 	req, err := parseNSQRequest(m)
@@ -66,7 +66,10 @@ func (nh *NSQHandler) updateLocations(ctx context.Context, req *nsqRequest) erro
 		Latitude:  *data.Latitude,
 		Longitude: *data.Longitude,
 	}
-	nh.logger.WithField("driver_id", data.DriverID).Info("Call service to update driver locations")
+	nh.logger.WithFields(log.Fields{
+		"driver_id":   data.DriverID,
+		"coordinates": coordinates,
+	}).Info("Call service to update driver locations")
 	err := nh.service.UpdateLocations(ctx, *data.DriverID, coordinates)
 	return errors.Wrap(err, "failed to call service to update driver locations")
 }
@@ -80,4 +83,8 @@ func parseNSQRequest(m *nsq.Message) (*nsqRequest, error) {
 		return nil, errors.Wrap(err, "cannot decode message body into as request struct")
 	}
 	return req, nil
+}
+
+func getMessageID(m *nsq.Message) string {
+	return string(m.ID[:])
 }

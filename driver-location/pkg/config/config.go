@@ -24,10 +24,10 @@ type Config struct {
 	} `yaml:"http_server"`
 
 	NSQ *struct {
-		Topic            string   `yaml:"topic"`
-		Channel          string   `yaml:"channel"`
-		DaemonAddresses  []string `yaml:"daemon_addresses"`
-		WorkersNum       int      `yaml:"workers_num"`
+		Topic           string   `yaml:"topic"`
+		Channel         string   `yaml:"channel"`
+		DaemonAddresses []string `yaml:"daemon_addresses"`
+		WorkersNum      int      `yaml:"workers_num"`
 	} `yaml:"nsq"`
 }
 

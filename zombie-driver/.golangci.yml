@@ -1,0 +1,90 @@
+linters:
+  disable-all: true
+  enable:
+    - bodyclose
+    - deadcode
+    - dogsled
+    - dupl
+    - errcheck
+    - exhaustive
+    - gochecknoinits
+    - goconst
+    - gocritic
+    - gocyclo
+    - godot
+    - goerr113
+    - gofumpt
+    - goimports
+    - golint
+    - gomnd
+    - gosec
+    - gosimple
+    - govet
+    - ineffassign
+    - lll
+    - misspell
+    - nakedret
+    - noctx
+    - nolintlint
+    - scopelint
+    - sqlclosecheck
+    - staticcheck
+    - structcheck
+    - testpackage
+    - unconvert
+    - unparam
+    - unused
+    - varcheck
+
+  # don't enable:
+  # - asciicheck
+  # - depguard
+  # - exportloopref
+  # - funlen
+  # - gochecknoglobals
+  # - gocognit
+  # - godox
+  # - gofmt
+  # - goheader
+  # - gomodguard
+  # - goprintffuncname
+  # - interfacer
+  # - maligned
+  # - nestif
+  # - prealloc
+  # - rowserrcheck
+  # - stylecheck
+  # - typecheck
+  # - whitespace
+  # - wsl
+
+linters-settings:
+  exhaustive:
+    default-signifies-exhaustive: true
+  goconst:
+    min-occurrences: 2
+  godot:
+    check-all: true
+  goimports:
+    local-prefixes: github.com/georgysavva/driver-app/zombie-driver
+  misspell:
+    locale: US
+  unparam:
+    check-exported: true
+
+
+issues:
+  exclude-use-default: false
+  exclude:
+    - (comment on exported (method|function|type|const)|should have( a package)? comment|comment should be of the form)
+  exclude-rules:
+    - path: _test\.go
+      linters:
+        - errcheck
+        - bodyclose
+        - noctx
+    - path: distance\.go
+      linters:
+        - gomnd
+
+  max-same-issues: 0

@@ -8,10 +8,10 @@ import (
 	"os/signal"
 	"syscall"
 
+	"github.com/georgysavva/driver-app/driver-location/pkg/clients/driverlochttp"
 	"github.com/pkg/errors"
 	log "github.com/sirupsen/logrus"
 
-	"github.com/georgysavva/driver-app/driver-location/pkg/clients/driverlochttp"
 	"github.com/georgysavva/driver-app/zombie-driver/pkg/config"
 	"github.com/georgysavva/driver-app/zombie-driver/pkg/httpmiddleware"
 	"github.com/georgysavva/driver-app/zombie-driver/pkg/zombiedriver"
@@ -22,7 +22,7 @@ const defaultConfigPath = "config.yaml"
 
 func main() {
 	logger := log.New()
-	logger.SetFormatter(&log.TextFormatter{FullTimestamp: true})
+	logger.SetFormatter(&log.JSONFormatter{})
 	conf, err := config.ParseConfig(defaultConfigPath)
 	if err != nil {
 		logger.WithError(err).Fatal("Failed to parse config")

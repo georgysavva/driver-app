@@ -58,7 +58,7 @@ func (s *ServiceImpl) UpdateLocations(ctx context.Context, driverID string, coor
 		Member: string(locationData),
 	}
 	ctxLogger := s.logger.WithField("driver_id", driverID)
-	ctxLogger.WithField("location", redisSetMember.Member).Info("Save new driver location into Redis")
+	ctxLogger.WithField("location", loc).Info("Save new driver location into Redis")
 	if err := s.redis.ZAdd(ctx, driverID, redisSetMember).Err(); err != nil {
 		return errors.Wrap(err, "failed to save new driver location into Redis")
 	}

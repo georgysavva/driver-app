@@ -5,10 +5,10 @@ import (
 	"math"
 	"time"
 
+	"github.com/georgysavva/driver-app/driver-location/pkg/driverloc"
 	"github.com/pkg/errors"
 	log "github.com/sirupsen/logrus"
 
-	"github.com/georgysavva/driver-app/driver-location/pkg/driverloc"
 	"github.com/georgysavva/driver-app/zombie-driver/pkg/distance"
 )
 

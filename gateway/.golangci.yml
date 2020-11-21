@@ -66,7 +66,7 @@ linters-settings:
   godot:
     check-all: true
   goimports:
-    local-prefixes: github.com/georgysavva/news-app
+    local-prefixes: github.com/georgysavva/driver-app/gateway
   misspell:
     locale: US
   unparam:
@@ -83,8 +83,5 @@ issues:
         - errcheck
         - bodyclose
         - noctx
-    - path: distance\.go
-      linters:
-        - gomnd
 
   max-same-issues: 0

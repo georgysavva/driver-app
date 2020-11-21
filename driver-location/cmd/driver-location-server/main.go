@@ -23,7 +23,7 @@ const defaultConfigPath = "config.yaml"
 
 func main() {
 	logger := log.New()
-	logger.SetFormatter(&log.TextFormatter{FullTimestamp: true})
+	logger.SetFormatter(&log.JSONFormatter{})
 	conf, err := config.ParseConfig(defaultConfigPath)
 	if err != nil {
 		logger.WithError(err).Fatal("Failed to parse config")
