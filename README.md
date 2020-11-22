@@ -133,11 +133,14 @@ The predicate values (duration and distance) are configurable. That allows us to
 Returns the zombie state of a given driver.
 
 ## Implementation details
+- The code doesn't use any framework
 - All services follow clean/hex architecture
-- The code is tested. All tests are running without any external dependency and don’t require any specific environment
+- The code is testable and tested. All tests are running without any external dependency and don’t require any specific environment
+- Data is stored in Redis
 - Code high quality is ensured by `golangci-lint`
 - The app is configurable via `.yaml` files
-- All services packaged with Docker
+- Dependencies management is done via Go modules
+- All services are packaged with Docker
 
 ## Setup
 
