@@ -1,5 +1,7 @@
 ## Overview
 
+This repository contains the backend for the driver app in a ride-hailing service. The only purpose of this project is to demonstrate the basic Go code architecture and design.
+
 When you open the app as a passenger, you can see a few drivers surrounding you.
 These drivers are usually displayed as a car icon. For the release of a new Zombie-based TV show, we want to display a zombie icon instead of the usual car icon for specific drivers.
 
@@ -132,8 +134,8 @@ Returns the zombie state of a given driver.
 
 ## Implementation details
 - All services follow clean/hex architecture
-- The code is tested. All tests are running without any external dependency and don’t require any specific environment.
-- The code is protected by `golangci-lint`
+- The code is tested. All tests are running without any external dependency and don’t require any specific environment
+- Code high quality is ensured by `golangci-lint`
 - The app is configurable via `.yaml` files
 - All services packaged with Docker
 
