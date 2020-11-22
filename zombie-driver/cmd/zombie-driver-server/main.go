@@ -27,8 +27,9 @@ func main() {
 	if err != nil {
 		logger.WithError(err).Fatal("Failed to parse config")
 	}
+	httpClient := http.DefaultClient
 
-	driverLocationClient, err := driverlochttp.NewClient(conf.DriverLocationService.BaseURL)
+	driverLocationClient, err := driverlochttp.NewClient(httpClient, conf.DriverLocationService.BaseURL)
 	if err != nil {
 		logger.WithError(err).Fatal("Failed initialize driver-location service http client")
 	}
@@ -59,4 +60,7 @@ func main() {
 		logger.WithError(err).Fatal("Couldn't properly shutdown http server")
 	}
 	logger.Info("HTTP server was successfully shutdown")
+
+	httpClient.CloseIdleConnections()
 }
+
