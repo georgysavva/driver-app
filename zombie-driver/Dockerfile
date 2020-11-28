@@ -1,9 +1,23 @@
-FROM golang:1.14.11
-
-ADD . /go/src/app
+# Build stage
+FROM golang:1.15.5-alpine3.12 as build
 
 WORKDIR /go/src/app
 
-RUN go install ./...
+# Cache Go dependencies
+COPY go.mod go.sum ./
+RUN go mod download
 
-ENTRYPOINT ["/go/bin/zombie-driver-server"]
+COPY . .
+
+RUN go build -o /go/bin/ ./...
+
+
+# Final stage
+FROM alpine:3.12 as final
+RUN apk --no-cache add ca-certificates
+
+WORKDIR /root/
+
+COPY --from=build /go/bin/zombie-driver-server /go/src/app/config.yaml ./
+
+ENTRYPOINT ["./zombie-driver-server"]
