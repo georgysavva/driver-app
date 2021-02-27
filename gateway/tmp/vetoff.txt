@@ -1,0 +1,615 @@
+docker build -t gateway .
+Sending build context to Docker daemon  10.42MB
+Step 1/11 : FROM golang:1.15.5 as build
+ ---> 6d8772fbd285
+Step 2/11 : WORKDIR /go/src/app
+ ---> Using cache
+ ---> a10171c8026f
+Step 3/11 : COPY go.mod go.sum ./
+ ---> Using cache
+ ---> ab1819db1171
+Step 4/11 : RUN go mod download
+ ---> Using cache
+ ---> a08c4d8d9357
+Step 5/11 : COPY . .
+ ---> 1c0808019a6a
+Step 6/11 : RUN go test -vet=off -x -v ./...
+ ---> Running in 4b747246c257
+[91mWORK=/tmp/go-build777262368
+[0m[91mmkdir -p $WORK/b123/
+[0m[91mmkdir -p $WORK/b114/
+[0m[91mcat >$WORK/b114/importcfg << 'EOF' # internal
+# import config
+packagefile errors=/usr/local/go/pkg/linux_amd64/errors.a
+packagefile fmt=/usr/local/go/pkg/linux_amd64/fmt.a
+packagefile io=/usr/local/go/pkg/linux_amd64/io.a
+packagefile path=/usr/local/go/pkg/linux_amd64/path.a
+packagefile runtime=/usr/local/go/pkg/linux_amd64/runtime.a
+packagefile strconv=/usr/local/go/pkg/linux_amd64/strconv.a
+packagefile strings=/usr/local/go/pkg/linux_amd64/strings.a
+EOF
+[0m[91mcd /go/pkg/mod/github.com/pkg/errors@v0.9.1
+/usr/local/go/pkg/tool/linux_amd64/compile -o $WORK/b114/_pkg_.a -trimpath "$WORK/b114=>" -p github.com/pkg/errors -complete -buildid 3z9LIRdP4YSwHXlVHuDv/3z9LIRdP4YSwHXlVHuDv -goversion go1.15.5 -D "" -importcfg $WORK/b114/importcfg -pack -c=2 ./errors.go ./go113.go ./stack.go
+[0m[91mmkdir -p $WORK/b043/
+[0m[91mcat >$WORK/b043/importcfg << 'EOF' # internal
+# import config
+packagefile bytes=/usr/local/go/pkg/linux_amd64/bytes.a
+packagefile context=/usr/local/go/pkg/linux_amd64/context.a
+packagefile errors=/usr/local/go/pkg/linux_amd64/errors.a
+packagefile fmt=/usr/local/go/pkg/linux_amd64/fmt.a
+packagefile net/http=/usr/local/go/pkg/linux_amd64/net/http.a
+packagefile net/url=/usr/local/go/pkg/linux_amd64/net/url.a
+packagefile path=/usr/local/go/pkg/linux_amd64/path.a
+packagefile regexp=/usr/local/go/pkg/linux_amd64/regexp.a
+packagefile strconv=/usr/local/go/pkg/linux_amd64/strconv.a
+packagefile strings=/usr/local/go/pkg/linux_amd64/strings.a
+EOF
+[0m[91mcd /go/pkg/mod/github.com/gorilla/mux@v1.8.0
+/usr/local/go/pkg/tool/linux_amd64/compile -o $WORK/b043/_pkg_.a -trimpath "$WORK/b043=>" -p github.com/gorilla/mux -lang=go1.12 -complete -buildid T9NVGypZhfnRDpt3gllQ/T9NVGypZhfnRDpt3gllQ -goversion go1.15.5 -D "" -importcfg $WORK/b043/importcfg -pack -c=2 ./doc.go ./middleware.go ./mux.go ./regexp.go ./route.go ./test_helpers.go
+[0m[91m/usr/local/go/pkg/tool/linux_amd64/buildid -w $WORK/b114/_pkg_.a # internal
+[0m[91mcp $WORK/b114/_pkg_.a /root/.cache/go-build/21/2187427e8e9ca45f0aa33c2fda89ca9d4a0f050831b2bdabd7afe6e33440e951-d # internal
+[0m[91mmkdir -p $WORK/b116/
+[0m[91mcat >$WORK/b116/go_asm.h << 'EOF' # internal
+EOF
+[0m[91mcd /go/pkg/mod/golang.org/x/sys@v0.0.0-20191026070338-33540a1f6037/unix
+/usr/local/go/pkg/tool/linux_amd64/asm -p golang.org/x/sys/unix -trimpath "$WORK/b116=>" -I $WORK/b116/ -I /usr/local/go/pkg/include -D GOOS_linux -D GOARCH_amd64 -gensymabis -o $WORK/b116/symabis ./asm_linux_amd64.s
+[0m[91mcat >$WORK/b116/importcfg << 'EOF' # internal
+# import config
+packagefile bytes=/usr/local/go/pkg/linux_amd64/bytes.a
+packagefile encoding/binary=/usr/local/go/pkg/linux_amd64/encoding/binary.a
+packagefile math/bits=/usr/local/go/pkg/linux_amd64/math/bits.a
+packagefile runtime=/usr/local/go/pkg/linux_amd64/runtime.a
+packagefile sort=/usr/local/go/pkg/linux_amd64/sort.a
+packagefile strings=/usr/local/go/pkg/linux_amd64/strings.a
+packagefile sync=/usr/local/go/pkg/linux_amd64/sync.a
+packagefile syscall=/usr/local/go/pkg/linux_amd64/syscall.a
+packagefile time=/usr/local/go/pkg/linux_amd64/time.a
+EOF
+[0m[91m/usr/local/go/pkg/tool/linux_amd64/compile -o $WORK/b116/_pkg_.a -trimpath "$WORK/b116=>" -p golang.org/x/sys/unix -lang=go1.12 -buildid p40E0qMvrfylQ_xcb-xH/p40E0qMvrfylQ_xcb-xH -goversion go1.15.5 -symabis $WORK/b116/symabis -D "" -importcfg $WORK/b116/importcfg -pack -asmhdr $WORK/b116/go_asm.h -c=2 ./affinity_linux.go ./aliases.go ./bluetooth_linux.go ./constants.go ./dev_linux.go ./dirent.go ./endian_little.go ./env_unix.go ./fcntl.go ./ioctl.go ./pagesize_unix.go ./race0.go ./readdirent_getdents.go ./sockcmsg_linux.go ./sockcmsg_unix.go ./sockcmsg_unix_other.go ./str.go ./syscall.go ./syscall_linux.go ./syscall_linux_amd64.go ./syscall_linux_amd64_gc.go ./syscall_linux_gc.go ./syscall_unix.go ./syscall_unix_gc.go ./timestruct.go ./zerrors_linux_amd64.go ./zptrace386_linux.go ./zsyscall_linux_amd64.go ./zsysnum_linux_amd64.go ./ztypes_linux_amd64.go
+[0m[91m/usr/local/go/pkg/tool/linux_amd64/buildid -w $WORK/b043/_pkg_.a # internal
+[0m[91mcp $WORK/b043/_pkg_.a /root/.cache/go-build/dc/dcfc61ee97d79d19edfbaca3ae9b2f969714ac24fd448bdd773f5ccef6705c25-d # internal
+[0m[91mmkdir -p $WORK/b118/
+[0m[91mcat >$WORK/b118/importcfg << 'EOF' # internal
+# import config
+packagefile bytes=/usr/local/go/pkg/linux_amd64/bytes.a
+packagefile encoding=/usr/local/go/pkg/linux_amd64/encoding.a
+packagefile encoding/base64=/usr/local/go/pkg/linux_amd64/encoding/base64.a
+packagefile errors=/usr/local/go/pkg/linux_amd64/errors.a
+packagefile fmt=/usr/local/go/pkg/linux_amd64/fmt.a
+packagefile io=/usr/local/go/pkg/linux_amd64/io.a
+packagefile math=/usr/local/go/pkg/linux_amd64/math.a
+packagefile reflect=/usr/local/go/pkg/linux_amd64/reflect.a
+packagefile regexp=/usr/local/go/pkg/linux_amd64/regexp.a
+packagefile sort=/usr/local/go/pkg/linux_amd64/sort.a
+packagefile strconv=/usr/local/go/pkg/linux_amd64/strconv.a
+packagefile strings=/usr/local/go/pkg/linux_amd64/strings.a
+packagefile sync=/usr/local/go/pkg/linux_amd64/sync.a
+packagefile time=/usr/local/go/pkg/linux_amd64/time.a
+packagefile unicode=/usr/local/go/pkg/linux_amd64/unicode.a
+packagefile unicode/utf8=/usr/local/go/pkg/linux_amd64/unicode/utf8.a
+EOF
+[0m[91mcd /go/pkg/mod/gopkg.in/yaml.v2@v2.3.0
+/usr/local/go/pkg/tool/linux_amd64/compile -o $WORK/b118/_pkg_.a -trimpath "$WORK/b118=>" -p gopkg.in/yaml.v2 -complete -buildid I6TnpWiohDKoA4gbBOxM/I6TnpWiohDKoA4gbBOxM -goversion go1.15.5 -D "" -importcfg $WORK/b118/importcfg -pack -c=2 ./apic.go ./decode.go ./emitterc.go ./encode.go ./parserc.go ./readerc.go ./resolve.go ./scannerc.go ./sorter.go ./writerc.go ./yaml.go ./yamlh.go ./yamlprivateh.go
+[0m[91mcd /go/pkg/mod/golang.org/x/sys@v0.0.0-20191026070338-33540a1f6037/unix
+/usr/local/go/pkg/tool/linux_amd64/asm -p golang.org/x/sys/unix -trimpath "$WORK/b116=>" -I $WORK/b116/ -I /usr/local/go/pkg/include -D GOOS_linux -D GOARCH_amd64 -o $WORK/b116/asm_linux_amd64.o ./asm_linux_amd64.s
+[0m[91m/usr/local/go/pkg/tool/linux_amd64/pack r $WORK/b116/_pkg_.a $WORK/b116/asm_linux_amd64.o # internal
+[0m[91m/usr/local/go/pkg/tool/linux_amd64/buildid -w $WORK/b116/_pkg_.a # internal
+[0m[91mcp $WORK/b116/_pkg_.a /root/.cache/go-build/4e/4eeb3d1fb353280911ef0ab36fa3fac1948184098f0d68a99393c251abbae959-d # internal
+[0m[91m/usr/local/go/pkg/tool/linux_amd64/buildid -w $WORK/b118/_pkg_.a # internal
+[0m[91mmkdir -p $WORK/b115/
+[0m[91mcat >$WORK/b115/importcfg << 'EOF' # internal
+# import config
+packagefile bufio=/usr/local/go/pkg/linux_amd64/bufio.a
+packagefile bytes=/usr/local/go/pkg/linux_amd64/bytes.a
+packagefile context=/usr/local/go/pkg/linux_amd64/context.a
+packagefile encoding/json=/usr/local/go/pkg/linux_amd64/encoding/json.a
+packagefile fmt=/usr/local/go/pkg/linux_amd64/fmt.a
+packagefile golang.org/x/sys/unix=$WORK/b116/_pkg_.a
+packagefile io=/usr/local/go/pkg/linux_amd64/io.a
+packagefile log=/usr/local/go/pkg/linux_amd64/log.a
+packagefile os=/usr/local/go/pkg/linux_amd64/os.a
+packagefile reflect=/usr/local/go/pkg/linux_amd64/reflect.a
+packagefile runtime=/usr/local/go/pkg/linux_amd64/runtime.a
+packagefile sort=/usr/local/go/pkg/linux_amd64/sort.a
+packagefile strconv=/usr/local/go/pkg/linux_amd64/strconv.a
+packagefile strings=/usr/local/go/pkg/linux_amd64/strings.a
+packagefile sync=/usr/local/go/pkg/linux_amd64/sync.a
+packagefile sync/atomic=/usr/local/go/pkg/linux_amd64/sync/atomic.a
+packagefile time=/usr/local/go/pkg/linux_amd64/time.a
+packagefile unicode/utf8=/usr/local/go/pkg/linux_amd64/unicode/utf8.a
+EOF
+[0m[91mcd /go/pkg/mod/github.com/sirupsen/logrus@v1.7.0
+/usr/local/go/pkg/tool/linux_amd64/compile -o $WORK/b115/_pkg_.a -trimpath "$WORK/b115=>" -p github.com/sirupsen/logrus -lang=go1.13 -complete -buildid 8aUkUhu0feVcmbgYgOYI/8aUkUhu0feVcmbgYgOYI -goversion go1.15.5 -D "" -importcfg $WORK/b115/importcfg -pack -c=2 ./alt_exit.go ./buffer_pool.go ./doc.go ./entry.go ./exported.go ./formatter.go ./hooks.go ./json_formatter.go ./logger.go ./logrus.go ./terminal_check_notappengine.go ./terminal_check_unix.go ./text_formatter.go ./writer.go
+[0m[91mcp $WORK/b118/_pkg_.a /root/.cache/go-build/cb/cb663b03fe7e867f927e977a1c68ed2c2643f25f9e789bc72fd777c035b19a53-d # internal
+[0m[91mmkdir -p $WORK/b121/
+[0m[91mcat >$WORK/b121/go_asm.h << 'EOF' # internal
+EOF
+[0m[91mcd /go/pkg/mod/github.com/golang/snappy@v0.0.1
+/usr/local/go/pkg/tool/linux_amd64/asm -p github.com/golang/snappy -trimpath "$WORK/b121=>" -I $WORK/b121/ -I /usr/local/go/pkg/include -D GOOS_linux -D GOARCH_amd64 -gensymabis -o $WORK/b121/symabis ./decode_amd64.s ./encode_amd64.s
+[0m[91mcat >$WORK/b121/importcfg << 'EOF' # internal
+# import config
+packagefile encoding/binary=/usr/local/go/pkg/linux_amd64/encoding/binary.a
+packagefile errors=/usr/local/go/pkg/linux_amd64/errors.a
+packagefile hash/crc32=/usr/local/go/pkg/linux_amd64/hash/crc32.a
+packagefile io=/usr/local/go/pkg/linux_amd64/io.a
+EOF
+[0m[91m/usr/local/go/pkg/tool/linux_amd64/compile -o $WORK/b121/_pkg_.a -trimpath "$WORK/b121=>" -p github.com/golang/snappy -buildid OoAOLZB6bRskpTBBTdOi/OoAOLZB6bRskpTBBTdOi -goversion go1.15.5 -symabis $WORK/b121/symabis -D "" -importcfg $WORK/b121/importcfg -pack -asmhdr $WORK/b121/go_asm.h -c=2 ./decode.go ./decode_amd64.go ./encode.go ./encode_amd64.go ./snappy.go
+[0m[91m/usr/local/go/pkg/tool/linux_amd64/asm -p github.com/golang/snappy -trimpath "$WORK/b121=>" -I $WORK/b121/ -I /usr/local/go/pkg/include -D GOOS_linux -D GOARCH_amd64 -o $WORK/b121/decode_amd64.o ./decode_amd64.s
+[0m[91m/usr/local/go/pkg/tool/linux_amd64/asm -p github.com/golang/snappy -trimpath "$WORK/b121=>" -I $WORK/b121/ -I /usr/local/go/pkg/include -D GOOS_linux -D GOARCH_amd64 -o $WORK/b121/encode_amd64.o ./encode_amd64.s
+[0m[91m/usr/local/go/pkg/tool/linux_amd64/pack r $WORK/b121/_pkg_.a $WORK/b121/decode_amd64.o $WORK/b121/encode_amd64.o # internal
+[0m[91m/usr/local/go/pkg/tool/linux_amd64/buildid -w $WORK/b121/_pkg_.a # internal
+[0m[91mcp $WORK/b121/_pkg_.a /root/.cache/go-build/34/342a3efe42affed3f0a2bbf59d38a154aa9bd37625a193d04d9d27e2a8905aad-d # internal
+[0m[91mmkdir -p $WORK/b120/
+[0m[91mcat >$WORK/b120/importcfg << 'EOF' # internal
+# import config
+packagefile bufio=/usr/local/go/pkg/linux_amd64/bufio.a
+packagefile bytes=/usr/local/go/pkg/linux_amd64/bytes.a
+packagefile compress/flate=/usr/local/go/pkg/linux_amd64/compress/flate.a
+packagefile crypto/tls=/usr/local/go/pkg/linux_amd64/crypto/tls.a
+packagefile crypto/x509=/usr/local/go/pkg/linux_amd64/crypto/x509.a
+packagefile encoding/binary=/usr/local/go/pkg/linux_amd64/encoding/binary.a
+packagefile encoding/json=/usr/local/go/pkg/linux_amd64/encoding/json.a
+packagefile errors=/usr/local/go/pkg/linux_amd64/errors.a
+packagefile fmt=/usr/local/go/pkg/linux_amd64/fmt.a
+packagefile github.com/golang/snappy=$WORK/b121/_pkg_.a
+packagefile io=/usr/local/go/pkg/linux_amd64/io.a
+packagefile io/ioutil=/usr/local/go/pkg/linux_amd64/io/ioutil.a
+packagefile log=/usr/local/go/pkg/linux_amd64/log.a
+packagefile math=/usr/local/go/pkg/linux_amd64/math.a
+packagefile math/rand=/usr/local/go/pkg/linux_amd64/math/rand.a
+packagefile net=/usr/local/go/pkg/linux_amd64/net.a
+packagefile net/http=/usr/local/go/pkg/linux_amd64/net/http.a
+packagefile net/url=/usr/local/go/pkg/linux_amd64/net/url.a
+packagefile os=/usr/local/go/pkg/linux_amd64/os.a
+packagefile reflect=/usr/local/go/pkg/linux_amd64/reflect.a
+packagefile regexp=/usr/local/go/pkg/linux_amd64/regexp.a
+packagefile strconv=/usr/local/go/pkg/linux_amd64/strconv.a
+packagefile strings=/usr/local/go/pkg/linux_amd64/strings.a
+packagefile sync=/usr/local/go/pkg/linux_amd64/sync.a
+packagefile sync/atomic=/usr/local/go/pkg/linux_amd64/sync/atomic.a
+packagefile time=/usr/local/go/pkg/linux_amd64/time.a
+EOF
+[0m[91mcd /go/pkg/mod/github.com/nsqio/go-nsq@v1.0.8
+/usr/local/go/pkg/tool/linux_amd64/compile -o $WORK/b120/_pkg_.a -trimpath "$WORK/b120=>" -p github.com/nsqio/go-nsq -lang=go1.11 -complete -buildid GwmlGMwQCAKRb6_9D60d/GwmlGMwQCAKRb6_9D60d -goversion go1.15.5 -D "" -importcfg $WORK/b120/importcfg -pack -c=2 ./api_request.go ./command.go ./config.go ./config_flag.go ./conn.go ./consumer.go ./delegates.go ./doc.go ./errors.go ./message.go ./producer.go ./protocol.go ./states.go ./version.go
+[0m[91m/usr/local/go/pkg/tool/linux_amd64/buildid -w $WORK/b115/_pkg_.a # internal
+[0m[91mcp $WORK/b115/_pkg_.a /root/.cache/go-build/e8/e8612609fc6fa1b24caefdcf7c63413b7fb130e7a35810a6423b264e623d003a-d # internal
+[0m[91mmkdir -p $WORK/b035/
+[0m[91mcat >$WORK/b035/importcfg << 'EOF' # internal
+# import config
+packagefile encoding/json=/usr/local/go/pkg/linux_amd64/encoding/json.a
+packagefile fmt=/usr/local/go/pkg/linux_amd64/fmt.a
+packagefile github.com/gorilla/mux=$WORK/b043/_pkg_.a
+packagefile github.com/pkg/errors=$WORK/b114/_pkg_.a
+packagefile github.com/sirupsen/logrus=$WORK/b115/_pkg_.a
+packagefile io=/usr/local/go/pkg/linux_amd64/io.a
+packagefile net/http=/usr/local/go/pkg/linux_amd64/net/http.a
+packagefile net/http/httputil=/usr/local/go/pkg/linux_amd64/net/http/httputil.a
+packagefile net/url=/usr/local/go/pkg/linux_amd64/net/url.a
+EOF
+[0m[91mcd /go/src/app/pkg/gateway
+/usr/local/go/pkg/tool/linux_amd64/compile -o $WORK/b035/_pkg_.a -trimpath "$WORK/b035=>" -p github.com/georgysavva/driver-app/gateway/pkg/gateway -lang=go1.14 -complete -buildid dfauf-3URCauZq1sPDqI/dfauf-3URCauZq1sPDqI -goversion go1.15.5 -D "" -importcfg $WORK/b035/importcfg -pack -c=2 ./gateway.go ./nsq_proxy.go ./util.go
+[0m[91m/usr/local/go/pkg/tool/linux_amd64/buildid -w $WORK/b035/_pkg_.a # internal
+[0m[91mcp $WORK/b035/_pkg_.a /root/.cache/go-build/cc/cc9d65442e7bd8122274540035c440dbde190d78f1296a9d1607dbe67bd55e23-d # internal
+[0m[91mmkdir -p $WORK/b034/
+[0m[91mcat >$WORK/b034/importcfg << 'EOF' # internal
+# import config
+packagefile github.com/georgysavva/driver-app/gateway/pkg/gateway=$WORK/b035/_pkg_.a
+packagefile github.com/pkg/errors=$WORK/b114/_pkg_.a
+packagefile gopkg.in/yaml.v2=$WORK/b118/_pkg_.a
+packagefile io/ioutil=/usr/local/go/pkg/linux_amd64/io/ioutil.a
+packagefile path/filepath=/usr/local/go/pkg/linux_amd64/path/filepath.a
+packagefile time=/usr/local/go/pkg/linux_amd64/time.a
+EOF
+[0m[91mcd /go/src/app/pkg/config
+/usr/local/go/pkg/tool/linux_amd64/compile -o $WORK/b034/_pkg_.a -trimpath "$WORK/b034=>" -p github.com/georgysavva/driver-app/gateway/pkg/config -lang=go1.14 -complete -buildid sHqsIVk1hkMc0l0mlHnX/sHqsIVk1hkMc0l0mlHnX -goversion go1.15.5 -D "" -importcfg $WORK/b034/importcfg -pack -c=2 ./config.go
+[0m[91m/usr/local/go/pkg/tool/linux_amd64/buildid -w $WORK/b034/_pkg_.a # internal
+[0m[91mcp $WORK/b034/_pkg_.a /root/.cache/go-build/ec/ec28fef771505809f89c0a72acb69bd54a90833de17287fa5b76388f655aec52-d # internal
+[0m[91mmkdir -p $WORK/b119/
+[0m[91mcat >$WORK/b119/importcfg << 'EOF' # internal
+# import config
+packagefile github.com/sirupsen/logrus=$WORK/b115/_pkg_.a
+packagefile net/http=/usr/local/go/pkg/linux_amd64/net/http.a
+EOF
+[0m[91mcd /go/src/app/pkg/httpmiddleware
+/usr/local/go/pkg/tool/linux_amd64/compile -o $WORK/b119/_pkg_.a -trimpath "$WORK/b119=>" -p github.com/georgysavva/driver-app/gateway/pkg/httpmiddleware -lang=go1.14 -complete -buildid X_ZRDcvSojD34pbMfhGz/X_ZRDcvSojD34pbMfhGz -goversion go1.15.5 -D "" -importcfg $WORK/b119/importcfg -pack -c=2 ./httpmiddleware.go
+[0m[91m/usr/local/go/pkg/tool/linux_amd64/buildid -w $WORK/b119/_pkg_.a # internal
+[0m[91mcp $WORK/b119/_pkg_.a /root/.cache/go-build/72/72534ec67b9e68a0fd4db6990624bd7b7056aabda5da61ed389699d1daf510de-d # internal
+[0m[91mmkdir -p $WORK/b135/
+[0m[91mcat >$WORK/b135/importcfg << 'EOF' # internal
+# import config
+packagefile bytes=/usr/local/go/pkg/linux_amd64/bytes.a
+packagefile encoding/hex=/usr/local/go/pkg/linux_amd64/encoding/hex.a
+packagefile fmt=/usr/local/go/pkg/linux_amd64/fmt.a
+packagefile io=/usr/local/go/pkg/linux_amd64/io.a
+packagefile os=/usr/local/go/pkg/linux_amd64/os.a
+packagefile reflect=/usr/local/go/pkg/linux_amd64/reflect.a
+packagefile regexp=/usr/local/go/pkg/linux_amd64/regexp.a
+packagefile sort=/usr/local/go/pkg/linux_amd64/sort.a
+packagefile strconv=/usr/local/go/pkg/linux_amd64/strconv.a
+packagefile strings=/usr/local/go/pkg/linux_amd64/strings.a
+EOF
+[0m[91mcd /go/pkg/mod/github.com/davecgh/go-spew@v1.1.1/spew
+/usr/local/go/pkg/tool/linux_amd64/compile -o $WORK/b135/_pkg_.a -trimpath "$WORK/b135=>" -p github.com/davecgh/go-spew/spew -complete -buildid WHPmLq2yZplxYPhaa6BM/WHPmLq2yZplxYPhaa6BM -goversion go1.15.5 -D "" -importcfg $WORK/b135/importcfg -pack -c=2 ./bypass.go ./common.go ./config.go ./doc.go ./dump.go ./format.go ./spew.go
+[0m[91m/usr/local/go/pkg/tool/linux_amd64/buildid -w $WORK/b135/_pkg_.a # internal
+[0m[91mcp $WORK/b135/_pkg_.a /root/.cache/go-build/f1/f18a5eb3e2c42afd4248d4fdb2d5f120cccc82ff979178cc727b04d0aa192c7b-d # internal
+[0m[91mmkdir -p $WORK/b136/
+[0m[91mcat >$WORK/b136/importcfg << 'EOF' # internal
+# import config
+packagefile bufio=/usr/local/go/pkg/linux_amd64/bufio.a
+packagefile bytes=/usr/local/go/pkg/linux_amd64/bytes.a
+packagefile fmt=/usr/local/go/pkg/linux_amd64/fmt.a
+packagefile io=/usr/local/go/pkg/linux_amd64/io.a
+packagefile strings=/usr/local/go/pkg/linux_amd64/strings.a
+EOF
+[0m[91mcd /go/pkg/mod/github.com/pmezard/go-difflib@v1.0.0/difflib
+/usr/local/go/pkg/tool/linux_amd64/compile -o $WORK/b136/_pkg_.a -trimpath "$WORK/b136=>" -p github.com/pmezard/go-difflib/difflib -complete -buildid Q4Ml3vFCEFKW-rdlMsFk/Q4Ml3vFCEFKW-rdlMsFk -goversion go1.15.5 -D "" -importcfg $WORK/b136/importcfg -pack -c=2 ./difflib.go
+[0m[91m/usr/local/go/pkg/tool/linux_amd64/buildid -w $WORK/b120/_pkg_.a # internal
+[0m[91mcp $WORK/b120/_pkg_.a /root/.cache/go-build/44/4496f545125e8fa621db319326c4a2c640f22986015c768b5d99223af49add85-d # internal
+[0m[91mmkdir -p $WORK/b001/
+[0m[91mcat >$WORK/b001/_gomod_.go << 'EOF' # internal
+package main
+import _ "unsafe"
+//go:linkname __debug_modinfo__ runtime.modinfo
+var __debug_modinfo__ = "0w\xaf\f\x92t\b\x02A\xe1\xc1\a\xe6\xd6\x18\xe6path\tgithub.com/georgysavva/driver-app/gateway/cmd/gateway-server\nmod\tgithub.com/georgysavva/driver-app/gateway\t(devel)\t\ndep\tgithub.com/golang/snappy\tv0.0.1\th1:Qgr9rKW7uDUkrbSmQeiDsGa8SjGyCOGtuasMWwvp2P4=\ndep\tgithub.com/gorilla/mux\tv1.8.0\th1:i40aqfkR1h2SlN9hojwV5ZA91wcXFOvkdNIeFDP5koI=\ndep\tgithub.com/nsqio/go-nsq\tv1.0.8\th1:3L2F8tNLlwXXlp2slDUrUWSBn2O3nMh8R1/KEDFTHPk=\ndep\tgithub.com/pkg/errors\tv0.9.1\th1:FEBLx1zS214owpjy7qsBeixbURkuhQAwrK5UwLGTwt4=\ndep\tgithub.com/sirupsen/logrus\tv1.7.0\th1:ShrD1U9pZB12TX0cVy0DtePoCH97K8EtX+mg7ZARUtM=\ndep\tgolang.org/x/sys\tv0.0.0-20191026070338-33540a1f6037\th1:YyJpGZS1sBuBCzLAR1VEpK193GlqGZbnPFnPV/5Rsb4=\ndep\tgopkg.in/yaml.v2\tv2.3.0\th1:clyUAQHOM3G0M3f5vQj7LuJrETvjVot3Z5el9nffUtU=\n\xf92C1\x86\x18 r\x00\x82B\x10A\x16\xd8\xf2"
+	EOF
+[0m[91mcat >$WORK/b001/importcfg << 'EOF' # internal
+# import config
+packagefile context=/usr/local/go/pkg/linux_amd64/context.a
+packagefile fmt=/usr/local/go/pkg/linux_amd64/fmt.a
+packagefile github.com/georgysavva/driver-app/gateway/pkg/config=$WORK/b034/_pkg_.a
+packagefile github.com/georgysavva/driver-app/gateway/pkg/gateway=$WORK/b035/_pkg_.a
+packagefile github.com/georgysavva/driver-app/gateway/pkg/httpmiddleware=$WORK/b119/_pkg_.a
+packagefile github.com/nsqio/go-nsq=$WORK/b120/_pkg_.a
+packagefile github.com/pkg/errors=$WORK/b114/_pkg_.a
+packagefile github.com/sirupsen/logrus=$WORK/b115/_pkg_.a
+packagefile net/http=/usr/local/go/pkg/linux_amd64/net/http.a
+packagefile os=/usr/local/go/pkg/linux_amd64/os.a
+packagefile os/signal=/usr/local/go/pkg/linux_amd64/os/signal.a
+packagefile syscall=/usr/local/go/pkg/linux_amd64/syscall.a
+packagefile runtime=/usr/local/go/pkg/linux_amd64/runtime.a
+EOF
+[0m[91mcd /go/src/app/cmd/gateway-server
+/usr/local/go/pkg/tool/linux_amd64/compile -o $WORK/b001/_pkg_.a -trimpath "$WORK/b001=>" -p main -lang=go1.14 -complete -buildid rL10kbbk0Tuml1mr71rz/rL10kbbk0Tuml1mr71rz -goversion go1.15.5 -D "" -importcfg $WORK/b001/importcfg -pack -c=2 ./main.go $WORK/b001/_gomod_.go
+[0m[91m/usr/local/go/pkg/tool/linux_amd64/buildid -w $WORK/b001/_pkg_.a # internal
+[0m[91mcp $WORK/b001/_pkg_.a /root/.cache/go-build/22/22fb99a855e4440bbe683dd7cd01394fdcab4af25fdf760e9b14bd0b2e8e440f-d # internal
+[0m?   	github.com/georgysavva/driver-app/gateway/cmd/gateway-server	[no test files]
+?   	github.com/georgysavva/driver-app/gateway/pkg/config	[no test files]
+[91mmkdir -p $WORK/b137/
+[0m[91mcat >$WORK/b137/importcfg << 'EOF' # internal
+# import config
+packagefile bytes=/usr/local/go/pkg/linux_amd64/bytes.a
+packagefile crypto/sha1=/usr/local/go/pkg/linux_amd64/crypto/sha1.a
+packagefile encoding/base64=/usr/local/go/pkg/linux_amd64/encoding/base64.a
+packagefile encoding/hex=/usr/local/go/pkg/linux_amd64/encoding/hex.a
+packagefile encoding/json=/usr/local/go/pkg/linux_amd64/encoding/json.a
+packagefile errors=/usr/local/go/pkg/linux_amd64/errors.a
+packagefile fmt=/usr/local/go/pkg/linux_amd64/fmt.a
+packagefile io/ioutil=/usr/local/go/pkg/linux_amd64/io/ioutil.a
+packagefile net/url=/usr/local/go/pkg/linux_amd64/net/url.a
+packagefile regexp=/usr/local/go/pkg/linux_amd64/regexp.a
+packagefile strconv=/usr/local/go/pkg/linux_amd64/strconv.a
+packagefile strings=/usr/local/go/pkg/linux_amd64/strings.a
+EOF
+[0m[91mcd /go/pkg/mod/github.com/stretchr/objx@v0.1.0
+/usr/local/go/pkg/tool/linux_amd64/compile -o $WORK/b137/_pkg_.a -trimpath "$WORK/b137=>" -p github.com/stretchr/objx -complete -buildid qpIAzQCx0AAiwftWJz8G/qpIAzQCx0AAiwftWJz8G -goversion go1.15.5 -D "" -importcfg $WORK/b137/importcfg -pack -c=2 ./accessors.go ./constants.go ./conversions.go ./doc.go ./map.go ./mutations.go ./security.go ./tests.go ./type_specific_codegen.go ./value.go
+[0m[91m/usr/local/go/pkg/tool/linux_amd64/buildid -w $WORK/b136/_pkg_.a # internal
+[0m[91mcp $WORK/b136/_pkg_.a /root/.cache/go-build/8b/8bd6416f4af898502d002f48f8868e3c743401ecf54d03fe29bab70b03ba837e-d # internal
+[0m[91mmkdir -p $WORK/b139/
+[0m[91mcat >$WORK/b139/importcfg << 'EOF' # internal
+# import config
+packagefile bytes=/usr/local/go/pkg/linux_amd64/bytes.a
+packagefile encoding=/usr/local/go/pkg/linux_amd64/encoding.a
+packagefile encoding/base64=/usr/local/go/pkg/linux_amd64/encoding/base64.a
+packagefile errors=/usr/local/go/pkg/linux_amd64/errors.a
+packagefile fmt=/usr/local/go/pkg/linux_amd64/fmt.a
+packagefile io=/usr/local/go/pkg/linux_amd64/io.a
+packagefile math=/usr/local/go/pkg/linux_amd64/math.a
+packagefile reflect=/usr/local/go/pkg/linux_amd64/reflect.a
+packagefile regexp=/usr/local/go/pkg/linux_amd64/regexp.a
+packagefile sort=/usr/local/go/pkg/linux_amd64/sort.a
+packagefile strconv=/usr/local/go/pkg/linux_amd64/strconv.a
+packagefile strings=/usr/local/go/pkg/linux_amd64/strings.a
+packagefile sync=/usr/local/go/pkg/linux_amd64/sync.a
+packagefile time=/usr/local/go/pkg/linux_amd64/time.a
+packagefile unicode=/usr/local/go/pkg/linux_amd64/unicode.a
+packagefile unicode/utf8=/usr/local/go/pkg/linux_amd64/unicode/utf8.a
+EOF
+[0m[91mcd /go/pkg/mod/gopkg.in/yaml.v3@v3.0.0-20200313102051-9f266ea9e77c
+/usr/local/go/pkg/tool/linux_amd64/compile -o $WORK/b139/_pkg_.a -trimpath "$WORK/b139=>" -p gopkg.in/yaml.v3 -complete -buildid gbRGp2R7yXepbLfVg15K/gbRGp2R7yXepbLfVg15K -goversion go1.15.5 -D "" -importcfg $WORK/b139/importcfg -pack -c=2 ./apic.go ./decode.go ./emitterc.go ./encode.go ./parserc.go ./readerc.go ./resolve.go ./scannerc.go ./sorter.go ./writerc.go ./yaml.go ./yamlh.go ./yamlprivateh.go
+[0m[91m/usr/local/go/pkg/tool/linux_amd64/buildid -w $WORK/b137/_pkg_.a # internal
+[0m[91mcp $WORK/b137/_pkg_.a /root/.cache/go-build/8b/8b653f52353758f309f9fe5a9ea06b56774ee583961bd049c5a9f834c2242607-d # internal
+[0m[91mmkdir -p $WORK/b141/
+[0m[91mcat >$WORK/b141/importcfg << 'EOF' # internal
+# import config
+packagefile encoding=/usr/local/go/pkg/linux_amd64/encoding.a
+packagefile errors=/usr/local/go/pkg/linux_amd64/errors.a
+packagefile fmt=/usr/local/go/pkg/linux_amd64/fmt.a
+packagefile io=/usr/local/go/pkg/linux_amd64/io.a
+packagefile os=/usr/local/go/pkg/linux_amd64/os.a
+packagefile reflect=/usr/local/go/pkg/linux_amd64/reflect.a
+packagefile regexp=/usr/local/go/pkg/linux_amd64/regexp.a
+packagefile strconv=/usr/local/go/pkg/linux_amd64/strconv.a
+packagefile strings=/usr/local/go/pkg/linux_amd64/strings.a
+packagefile text/tabwriter=/usr/local/go/pkg/linux_amd64/text/tabwriter.a
+packagefile text/template=/usr/local/go/pkg/linux_amd64/text/template.a
+packagefile time=/usr/local/go/pkg/linux_amd64/time.a
+EOF
+[0m[91mcd /go/pkg/mod/github.com/kelseyhightower/envconfig@v1.4.0
+/usr/local/go/pkg/tool/linux_amd64/compile -o $WORK/b141/_pkg_.a -trimpath "$WORK/b141=>" -p github.com/kelseyhightower/envconfig -complete -buildid 7ho2xnzpgG1AhsVeX3Q0/7ho2xnzpgG1AhsVeX3Q0 -goversion go1.15.5 -D "" -importcfg $WORK/b141/importcfg -pack -c=2 ./doc.go ./env_os.go ./envconfig.go ./usage.go
+[0m[91m/usr/local/go/pkg/tool/linux_amd64/buildid -w $WORK/b141/_pkg_.a # internal
+[0m[91mcp $WORK/b141/_pkg_.a /root/.cache/go-build/ba/bab7d77aefc927ce36d86cd729335db599bdb28e6cc6535964b2cf9d2f671c35-d # internal
+[0m[91m/usr/local/go/pkg/tool/linux_amd64/buildid -w $WORK/b139/_pkg_.a # internal
+[0m[91mcp $WORK/b139/_pkg_.a /root/.cache/go-build/aa/aa12c3b77d9d58a37259929811731fc1396d36e175b2dbb39dc16dafe5ee4f5b-d # internal
+[0m[91mmkdir -p $WORK/b138/
+[0m[91mcat >$WORK/b138/importcfg << 'EOF' # internal
+# import config
+packagefile bufio=/usr/local/go/pkg/linux_amd64/bufio.a
+packagefile bytes=/usr/local/go/pkg/linux_amd64/bytes.a
+packagefile encoding/json=/usr/local/go/pkg/linux_amd64/encoding/json.a
+packagefile errors=/usr/local/go/pkg/linux_amd64/errors.a
+packagefile fmt=/usr/local/go/pkg/linux_amd64/fmt.a
+packagefile github.com/davecgh/go-spew/spew=$WORK/b135/_pkg_.a
+packagefile github.com/pmezard/go-difflib/difflib=$WORK/b136/_pkg_.a
+packagefile gopkg.in/yaml.v3=$WORK/b139/_pkg_.a
+packagefile math=/usr/local/go/pkg/linux_amd64/math.a
+packagefile net/http=/usr/local/go/pkg/linux_amd64/net/http.a
+packagefile net/http/httptest=/usr/local/go/pkg/linux_amd64/net/http/httptest.a
+packagefile net/url=/usr/local/go/pkg/linux_amd64/net/url.a
+packagefile os=/usr/local/go/pkg/linux_amd64/os.a
+packagefile reflect=/usr/local/go/pkg/linux_amd64/reflect.a
+packagefile regexp=/usr/local/go/pkg/linux_amd64/regexp.a
+packagefile runtime=/usr/local/go/pkg/linux_amd64/runtime.a
+packagefile runtime/debug=/usr/local/go/pkg/linux_amd64/runtime/debug.a
+packagefile strings=/usr/local/go/pkg/linux_amd64/strings.a
+packagefile time=/usr/local/go/pkg/linux_amd64/time.a
+packagefile unicode=/usr/local/go/pkg/linux_amd64/unicode.a
+packagefile unicode/utf8=/usr/local/go/pkg/linux_amd64/unicode/utf8.a
+EOF
+cd /go/pkg/mod/github.com/stretchr/testify@v1.6.1/assert
+/usr/local/go/pkg/tool/linux_amd64/compile -o $WORK/b138/_pkg_.a -trimpath "$WORK/b138=>" -p github.com/stretchr/testify/assert -lang=go1.13 -complete -buildid 2e2gzqPxzNpNw4VqVj3u/2e2gzqPxzNpNw4VqVj3u -goversion go1.15.5 -D "" -importcfg $WORK/b138/importcfg -pack -c=2 ./assertion_compare.go ./assertion_format.go ./assertion_forward.go ./assertions.go ./doc.go ./errors.go ./forward_assertions.go ./http_assertions.go
+[0m[91m/usr/local/go/pkg/tool/linux_amd64/buildid -w $WORK/b138/_pkg_.a # internal
+[0m[91mcp $WORK/b138/_pkg_.a /root/.cache/go-build/90/907bbf6f072806efa12e078df3b44f12efa1b75e07b6023f83ec79573b3d9c03-d # internal
+[0m[91mmkdir -p $WORK/b134/
+[0m[91mcat >$WORK/b134/importcfg << 'EOF' # internal
+# import config
+packagefile errors=/usr/local/go/pkg/linux_amd64/errors.a
+packagefile fmt=/usr/local/go/pkg/linux_amd64/fmt.a
+packagefile github.com/davecgh/go-spew/spew=$WORK/b135/_pkg_.a
+packagefile github.com/pmezard/go-difflib/difflib=$WORK/b136/_pkg_.a
+packagefile github.com/stretchr/objx=$WORK/b137/_pkg_.a
+packagefile github.com/stretchr/testify/assert=$WORK/b138/_pkg_.a
+packagefile reflect=/usr/local/go/pkg/linux_amd64/reflect.a
+packagefile regexp=/usr/local/go/pkg/linux_amd64/regexp.a
+packagefile runtime=/usr/local/go/pkg/linux_amd64/runtime.a
+packagefile strings=/usr/local/go/pkg/linux_amd64/strings.a
+packagefile sync=/usr/local/go/pkg/linux_amd64/sync.a
+packagefile time=/usr/local/go/pkg/linux_amd64/time.a
+EOF
+[0m[91mcd /go/pkg/mod/github.com/stretchr/testify@v1.6.1/mock
+/usr/local/go/pkg/tool/linux_amd64/compile -o $WORK/b134/_pkg_.a -trimpath "$WORK/b134=>" -p github.com/stretchr/testify/mock -lang=go1.13 -complete -buildid xuoaL4uYfSUYiME_l7Oh/xuoaL4uYfSUYiME_l7Oh -goversion go1.15.5 -D "" -importcfg $WORK/b134/importcfg -pack -c=2 ./doc.go ./mock.go
+[0m[91mmkdir -p $WORK/b144/
+[0m[91mcat >$WORK/b144/importcfg << 'EOF' # internal
+# import config
+packagefile github.com/stretchr/testify/assert=$WORK/b138/_pkg_.a
+packagefile net/http=/usr/local/go/pkg/linux_amd64/net/http.a
+packagefile net/url=/usr/local/go/pkg/linux_amd64/net/url.a
+packagefile time=/usr/local/go/pkg/linux_amd64/time.a
+EOF
+[0m[91mcd /go/pkg/mod/github.com/stretchr/testify@v1.6.1/require
+/usr/local/go/pkg/tool/linux_amd64/compile -o $WORK/b144/_pkg_.a -trimpath "$WORK/b144=>" -p github.com/stretchr/testify/require -lang=go1.13 -complete -buildid GWgIpewFolax7cA2gv3X/GWgIpewFolax7cA2gv3X -goversion go1.15.5 -D "" -importcfg $WORK/b144/importcfg -pack -c=2 ./doc.go ./forward_requirements.go ./require.go ./require_forward.go ./requirements.go
+[0m[91m/usr/local/go/pkg/tool/linux_amd64/buildid -w $WORK/b134/_pkg_.a # internal
+[0m[91mcp $WORK/b134/_pkg_.a /root/.cache/go-build/19/19bc088fd693014e89a7f73d143cc5cd89b9c462d77e23c6999a55d4bb26d115-d # internal
+[0m[91mmkdir -p $WORK/b133/
+[0m[91mcat >$WORK/b133/importcfg << 'EOF' # internal
+# import config
+packagefile github.com/stretchr/testify/mock=$WORK/b134/_pkg_.a
+EOF
+[0m[91mcd /go/src/app/pkg/gateway/mocks
+/usr/local/go/pkg/tool/linux_amd64/compile -o $WORK/b133/_pkg_.a -trimpath "$WORK/b133=>" -p github.com/georgysavva/driver-app/gateway/pkg/gateway/mocks -lang=go1.14 -complete -buildid Rvw36K_3O2uCtliJrQy5/Rvw36K_3O2uCtliJrQy5 -goversion go1.15.5 -D "" -importcfg $WORK/b133/importcfg -pack -c=2 ./NSQProducer.go
+[0m[91m/usr/local/go/pkg/tool/linux_amd64/buildid -w $WORK/b133/_pkg_.a # internal
+[0m[91mcp $WORK/b133/_pkg_.a /root/.cache/go-build/27/27006057fde46e244774b7d47bb41928e21b15c5eeae54eedbf342cf42ca46b1-d # internal
+[0m[91m/usr/local/go/pkg/tool/linux_amd64/buildid -w $WORK/b144/_pkg_.a # internal
+[0m[91mcp $WORK/b144/_pkg_.a /root/.cache/go-build/7e/7eca335eb904fb15e8b899171f04aecf8bb0d91529039f4f8db6324701b37505-d # internal
+[0m[91mmkdir -p $WORK/b132/
+[0m[91mcat >$WORK/b132/importcfg << 'EOF' # internal
+# import config
+packagefile fmt=/usr/local/go/pkg/linux_amd64/fmt.a
+packagefile github.com/georgysavva/driver-app/gateway/pkg/gateway/mocks=$WORK/b133/_pkg_.a
+packagefile github.com/kelseyhightower/envconfig=$WORK/b141/_pkg_.a
+packagefile github.com/sirupsen/logrus=$WORK/b115/_pkg_.a
+packagefile github.com/stretchr/testify/assert=$WORK/b138/_pkg_.a
+packagefile github.com/stretchr/testify/mock=$WORK/b134/_pkg_.a
+packagefile github.com/stretchr/testify/require=$WORK/b144/_pkg_.a
+packagefile io/ioutil=/usr/local/go/pkg/linux_amd64/io/ioutil.a
+packagefile net/http=/usr/local/go/pkg/linux_amd64/net/http.a
+packagefile net/http/httptest=/usr/local/go/pkg/linux_amd64/net/http/httptest.a
+packagefile net/url=/usr/local/go/pkg/linux_amd64/net/url.a
+packagefile testing=/usr/local/go/pkg/linux_amd64/testing.a
+packagefile github.com/georgysavva/driver-app/gateway/pkg/gateway=$WORK/b035/_pkg_.a
+EOF
+[0m[91mcd /go/src/app/pkg/gateway
+/usr/local/go/pkg/tool/linux_amd64/compile -o $WORK/b132/_pkg_.a -trimpath "$WORK/b132=>" -p github.com/georgysavva/driver-app/gateway/pkg/gateway_test -complete -buildid eh8Mrpk_2fXAD1DFcbct/eh8Mrpk_2fXAD1DFcbct -goversion go1.15.5 -D "" -importcfg $WORK/b132/importcfg -pack -c=2 ./gateway_test.go
+[0m[91m/usr/local/go/pkg/tool/linux_amd64/buildid -w $WORK/b132/_pkg_.a # internal
+[0m[91mcp $WORK/b132/_pkg_.a /root/.cache/go-build/6a/6a5d1b90bdc0333390b65e77a34c68d9ad82d43f760e0f4ca9329f1e4bb8610f-d # internal
+[0m[91mcat >$WORK/b123/importcfg << 'EOF' # internal
+# import config
+packagefile os=/usr/local/go/pkg/linux_amd64/os.a
+packagefile reflect=/usr/local/go/pkg/linux_amd64/reflect.a
+packagefile testing=/usr/local/go/pkg/linux_amd64/testing.a
+packagefile testing/internal/testdeps=/usr/local/go/pkg/linux_amd64/testing/internal/testdeps.a
+packagefile runtime=/usr/local/go/pkg/linux_amd64/runtime.a
+packagefile github.com/georgysavva/driver-app/gateway/pkg/gateway=$WORK/b035/_pkg_.a
+packagefile github.com/georgysavva/driver-app/gateway/pkg/gateway_test=$WORK/b132/_pkg_.a
+EOF
+[0m[91mcd $WORK/b123/
+/usr/local/go/pkg/tool/linux_amd64/compile -o ./_pkg_.a -trimpath "$WORK/b123=>" -p main -complete -buildid q6zDE9G361v-2X_vS0zy/q6zDE9G361v-2X_vS0zy -dwarf=false -goversion go1.15.5 -D "" -importcfg ./importcfg -pack -c=2 ./_testmain.go
+[0m[91m/usr/local/go/pkg/tool/linux_amd64/buildid -w $WORK/b123/_pkg_.a # internal
+[0m[91mcp $WORK/b123/_pkg_.a /root/.cache/go-build/bf/bf6f4840fbdc3d8c0631a7d4ef1cab6f51454b8e28887242b71bf0d571ed45ea-d # internal
+[0m[91mcat >$WORK/b123/importcfg.link << 'EOF' # internal
+packagefile github.com/georgysavva/driver-app/gateway/pkg/gateway.test=$WORK/b123/_pkg_.a
+packagefile os=/usr/local/go/pkg/linux_amd64/os.a
+packagefile reflect=/usr/local/go/pkg/linux_amd64/reflect.a
+packagefile testing=/usr/local/go/pkg/linux_amd64/testing.a
+packagefile testing/internal/testdeps=/usr/local/go/pkg/linux_amd64/testing/internal/testdeps.a
+packagefile runtime=/usr/local/go/pkg/linux_amd64/runtime.a
+packagefile github.com/georgysavva/driver-app/gateway/pkg/gateway=$WORK/b035/_pkg_.a
+packagefile github.com/georgysavva/driver-app/gateway/pkg/gateway_test=$WORK/b132/_pkg_.a
+packagefile errors=/usr/local/go/pkg/linux_amd64/errors.a
+packagefile internal/oserror=/usr/local/go/pkg/linux_amd64/internal/oserror.a
+packagefile internal/poll=/usr/local/go/pkg/linux_amd64/internal/poll.a
+packagefile internal/syscall/execenv=/usr/local/go/pkg/linux_amd64/internal/syscall/execenv.a
+packagefile internal/syscall/unix=/usr/local/go/pkg/linux_amd64/internal/syscall/unix.a
+packagefile internal/testlog=/usr/local/go/pkg/linux_amd64/internal/testlog.a
+packagefile io=/usr/local/go/pkg/linux_amd64/io.a
+packagefile sync=/usr/local/go/pkg/linux_amd64/sync.a
+packagefile sync/atomic=/usr/local/go/pkg/linux_amd64/sync/atomic.a
+packagefile syscall=/usr/local/go/pkg/linux_amd64/syscall.a
+packagefile time=/usr/local/go/pkg/linux_amd64/time.a
+packagefile internal/unsafeheader=/usr/local/go/pkg/linux_amd64/internal/unsafeheader.a
+packagefile math=/usr/local/go/pkg/linux_amd64/math.a
+packagefile strconv=/usr/local/go/pkg/linux_amd64/strconv.a
+packagefile unicode=/usr/local/go/pkg/linux_amd64/unicode.a
+packagefile unicode/utf8=/usr/local/go/pkg/linux_amd64/unicode/utf8.a
+packagefile bytes=/usr/local/go/pkg/linux_amd64/bytes.a
+packagefile flag=/usr/local/go/pkg/linux_amd64/flag.a
+packagefile fmt=/usr/local/go/pkg/linux_amd64/fmt.a
+packagefile internal/race=/usr/local/go/pkg/linux_amd64/internal/race.a
+packagefile io/ioutil=/usr/local/go/pkg/linux_amd64/io/ioutil.a
+packagefile runtime/debug=/usr/local/go/pkg/linux_amd64/runtime/debug.a
+packagefile runtime/trace=/usr/local/go/pkg/linux_amd64/runtime/trace.a
+packagefile sort=/usr/local/go/pkg/linux_amd64/sort.a
+packagefile strings=/usr/local/go/pkg/linux_amd64/strings.a
+packagefile bufio=/usr/local/go/pkg/linux_amd64/bufio.a
+packagefile regexp=/usr/local/go/pkg/linux_amd64/regexp.a
+packagefile runtime/pprof=/usr/local/go/pkg/linux_amd64/runtime/pprof.a
+packagefile internal/bytealg=/usr/local/go/pkg/linux_amd64/internal/bytealg.a
+packagefile internal/cpu=/usr/local/go/pkg/linux_amd64/internal/cpu.a
+packagefile runtime/internal/atomic=/usr/local/go/pkg/linux_amd64/runtime/internal/atomic.a
+packagefile runtime/internal/math=/usr/local/go/pkg/linux_amd64/runtime/internal/math.a
+packagefile runtime/internal/sys=/usr/local/go/pkg/linux_amd64/runtime/internal/sys.a
+packagefile encoding/json=/usr/local/go/pkg/linux_amd64/encoding/json.a
+packagefile github.com/gorilla/mux=$WORK/b043/_pkg_.a
+packagefile github.com/pkg/errors=$WORK/b114/_pkg_.a
+packagefile github.com/sirupsen/logrus=$WORK/b115/_pkg_.a
+packagefile net/http=/usr/local/go/pkg/linux_amd64/net/http.a
+packagefile net/http/httputil=/usr/local/go/pkg/linux_amd64/net/http/httputil.a
+packagefile net/url=/usr/local/go/pkg/linux_amd64/net/url.a
+packagefile github.com/georgysavva/driver-app/gateway/pkg/gateway/mocks=$WORK/b133/_pkg_.a
+packagefile github.com/kelseyhightower/envconfig=$WORK/b141/_pkg_.a
+packagefile github.com/stretchr/testify/assert=$WORK/b138/_pkg_.a
+packagefile github.com/stretchr/testify/mock=$WORK/b134/_pkg_.a
+packagefile github.com/stretchr/testify/require=$WORK/b144/_pkg_.a
+packagefile net/http/httptest=/usr/local/go/pkg/linux_amd64/net/http/httptest.a
+packagefile internal/reflectlite=/usr/local/go/pkg/linux_amd64/internal/reflectlite.a
+packagefile math/bits=/usr/local/go/pkg/linux_amd64/math/bits.a
+packagefile internal/fmtsort=/usr/local/go/pkg/linux_amd64/internal/fmtsort.a
+packagefile path/filepath=/usr/local/go/pkg/linux_amd64/path/filepath.a
+packagefile context=/usr/local/go/pkg/linux_amd64/context.a
+packagefile regexp/syntax=/usr/local/go/pkg/linux_amd64/regexp/syntax.a
+packagefile compress/gzip=/usr/local/go/pkg/linux_amd64/compress/gzip.a
+packagefile encoding/binary=/usr/local/go/pkg/linux_amd64/encoding/binary.a
+packagefile text/tabwriter=/usr/local/go/pkg/linux_amd64/text/tabwriter.a
+packagefile encoding=/usr/local/go/pkg/linux_amd64/encoding.a
+packagefile encoding/base64=/usr/local/go/pkg/linux_amd64/encoding/base64.a
+packagefile unicode/utf16=/usr/local/go/pkg/linux_amd64/unicode/utf16.a
+packagefile path=/usr/local/go/pkg/linux_amd64/path.a
+packagefile golang.org/x/sys/unix=$WORK/b116/_pkg_.a
+packagefile log=/usr/local/go/pkg/linux_amd64/log.a
+packagefile container/list=/usr/local/go/pkg/linux_amd64/container/list.a
+packagefile crypto/rand=/usr/local/go/pkg/linux_amd64/crypto/rand.a
+packagefile crypto/tls=/usr/local/go/pkg/linux_amd64/crypto/tls.a
+packagefile vendor/golang.org/x/net/http/httpguts=/usr/local/go/pkg/linux_amd64/vendor/golang.org/x/net/http/httpguts.a
+packagefile vendor/golang.org/x/net/http/httpproxy=/usr/local/go/pkg/linux_amd64/vendor/golang.org/x/net/http/httpproxy.a
+packagefile vendor/golang.org/x/net/http2/hpack=/usr/local/go/pkg/linux_amd64/vendor/golang.org/x/net/http2/hpack.a
+packagefile vendor/golang.org/x/net/idna=/usr/local/go/pkg/linux_amd64/vendor/golang.org/x/net/idna.a
+packagefile math/rand=/usr/local/go/pkg/linux_amd64/math/rand.a
+packagefile mime=/usr/local/go/pkg/linux_amd64/mime.a
+packagefile mime/multipart=/usr/local/go/pkg/linux_amd64/mime/multipart.a
+packagefile net=/usr/local/go/pkg/linux_amd64/net.a
+packagefile net/http/httptrace=/usr/local/go/pkg/linux_amd64/net/http/httptrace.a
+packagefile net/http/internal=/usr/local/go/pkg/linux_amd64/net/http/internal.a
+packagefile net/textproto=/usr/local/go/pkg/linux_amd64/net/textproto.a
+packagefile text/template=/usr/local/go/pkg/linux_amd64/text/template.a
+packagefile github.com/davecgh/go-spew/spew=$WORK/b135/_pkg_.a
+packagefile github.com/pmezard/go-difflib/difflib=$WORK/b136/_pkg_.a
+packagefile gopkg.in/yaml.v3=$WORK/b139/_pkg_.a
+packagefile github.com/stretchr/objx=$WORK/b137/_pkg_.a
+packagefile crypto/x509=/usr/local/go/pkg/linux_amd64/crypto/x509.a
+packagefile compress/flate=/usr/local/go/pkg/linux_amd64/compress/flate.a
+packagefile hash/crc32=/usr/local/go/pkg/linux_amd64/hash/crc32.a
+packagefile crypto/aes=/usr/local/go/pkg/linux_amd64/crypto/aes.a
+packagefile crypto/cipher=/usr/local/go/pkg/linux_amd64/crypto/cipher.a
+packagefile math/big=/usr/local/go/pkg/linux_amd64/math/big.a
+packagefile crypto=/usr/local/go/pkg/linux_amd64/crypto.a
+packagefile crypto/des=/usr/local/go/pkg/linux_amd64/crypto/des.a
+packagefile crypto/ecdsa=/usr/local/go/pkg/linux_amd64/crypto/ecdsa.a
+packagefile crypto/ed25519=/usr/local/go/pkg/linux_amd64/crypto/ed25519.a
+packagefile crypto/elliptic=/usr/local/go/pkg/linux_amd64/crypto/elliptic.a
+packagefile crypto/hmac=/usr/local/go/pkg/linux_amd64/crypto/hmac.a
+packagefile crypto/md5=/usr/local/go/pkg/linux_amd64/crypto/md5.a
+packagefile crypto/rc4=/usr/local/go/pkg/linux_amd64/crypto/rc4.a
+packagefile crypto/rsa=/usr/local/go/pkg/linux_amd64/crypto/rsa.a
+packagefile crypto/sha1=/usr/local/go/pkg/linux_amd64/crypto/sha1.a
+packagefile crypto/sha256=/usr/local/go/pkg/linux_amd64/crypto/sha256.a
+packagefile crypto/sha512=/usr/local/go/pkg/linux_amd64/crypto/sha512.a
+packagefile crypto/subtle=/usr/local/go/pkg/linux_amd64/crypto/subtle.a
+packagefile encoding/pem=/usr/local/go/pkg/linux_amd64/encoding/pem.a
+packagefile vendor/golang.org/x/crypto/chacha20poly1305=/usr/local/go/pkg/linux_amd64/vendor/golang.org/x/crypto/chacha20poly1305.a
+packagefile vendor/golang.org/x/crypto/cryptobyte=/usr/local/go/pkg/linux_amd64/vendor/golang.org/x/crypto/cryptobyte.a
+packagefile vendor/golang.org/x/crypto/curve25519=/usr/local/go/pkg/linux_amd64/vendor/golang.org/x/crypto/curve25519.a
+packagefile vendor/golang.org/x/crypto/hkdf=/usr/local/go/pkg/linux_amd64/vendor/golang.org/x/crypto/hkdf.a
+packagefile hash=/usr/local/go/pkg/linux_amd64/hash.a
+packagefile vendor/golang.org/x/text/secure/bidirule=/usr/local/go/pkg/linux_amd64/vendor/golang.org/x/text/secure/bidirule.a
+packagefile vendor/golang.org/x/text/unicode/bidi=/usr/local/go/pkg/linux_amd64/vendor/golang.org/x/text/unicode/bidi.a
+packagefile vendor/golang.org/x/text/unicode/norm=/usr/local/go/pkg/linux_amd64/vendor/golang.org/x/text/unicode/norm.a
+packagefile mime/quotedprintable=/usr/local/go/pkg/linux_amd64/mime/quotedprintable.a
+packagefile vendor/golang.org/x/net/dns/dnsmessage=/usr/local/go/pkg/linux_amd64/vendor/golang.org/x/net/dns/dnsmessage.a
+packagefile internal/nettrace=/usr/local/go/pkg/linux_amd64/internal/nettrace.a
+packagefile internal/singleflight=/usr/local/go/pkg/linux_amd64/internal/singleflight.a
+packagefile runtime/cgo=/usr/local/go/pkg/linux_amd64/runtime/cgo.a
+packagefile text/template/parse=/usr/local/go/pkg/linux_amd64/text/template/parse.a
+packagefile encoding/hex=/usr/local/go/pkg/linux_amd64/encoding/hex.a
+packagefile crypto/dsa=/usr/local/go/pkg/linux_amd64/crypto/dsa.a
+packagefile crypto/x509/pkix=/usr/local/go/pkg/linux_amd64/crypto/x509/pkix.a
+packagefile encoding/asn1=/usr/local/go/pkg/linux_amd64/encoding/asn1.a
+packagefile vendor/golang.org/x/crypto/cryptobyte/asn1=/usr/local/go/pkg/linux_amd64/vendor/golang.org/x/crypto/cryptobyte/asn1.a
+packagefile crypto/internal/subtle=/usr/local/go/pkg/linux_amd64/crypto/internal/subtle.a
+packagefile crypto/internal/randutil=/usr/local/go/pkg/linux_amd64/crypto/internal/randutil.a
+packagefile crypto/ed25519/internal/edwards25519=/usr/local/go/pkg/linux_amd64/crypto/ed25519/internal/edwards25519.a
+packagefile vendor/golang.org/x/crypto/chacha20=/usr/local/go/pkg/linux_amd64/vendor/golang.org/x/crypto/chacha20.a
+packagefile vendor/golang.org/x/crypto/internal/subtle=/usr/local/go/pkg/linux_amd64/vendor/golang.org/x/crypto/internal/subtle.a
+packagefile vendor/golang.org/x/crypto/poly1305=/usr/local/go/pkg/linux_amd64/vendor/golang.org/x/crypto/poly1305.a
+packagefile vendor/golang.org/x/sys/cpu=/usr/local/go/pkg/linux_amd64/vendor/golang.org/x/sys/cpu.a
+packagefile vendor/golang.org/x/text/transform=/usr/local/go/pkg/linux_amd64/vendor/golang.org/x/text/transform.a
+EOF
+[0m[91mcd .
+/usr/local/go/pkg/tool/linux_amd64/link -o $WORK/b123/gateway.test -importcfg $WORK/b123/importcfg.link -s -w -buildmode=exe -buildid=twZbJt3mDZ00-LekhXaC/q6zDE9G361v-2X_vS0zy/OveSITWSJNk6qzEdJiQe/twZbJt3mDZ00-LekhXaC -extld=gcc $WORK/b123/_pkg_.a
+[0m[91m$WORK/b123/gateway.test -test.testlogfile=$WORK/b123/testlog.txt -test.timeout=10m0s -test.v=true
+[0m[91mrm -r $WORK/b123/
+[0m=== RUN   TestNSQProxy
+=== PAUSE TestNSQProxy
+=== RUN   TestHTTPProxy
+=== PAUSE TestHTTPProxy
+=== CONT  TestNSQProxy
+=== CONT  TestHTTPProxy
+=== CONT  TestNSQProxy
+    gateway_test.go:51: PASS:	Publish(string,mock.AnythingOfTypeArgument)
+--- PASS: TestNSQProxy (0.00s)
+--- PASS: TestHTTPProxy (0.00s)
+PASS
+ok  	github.com/georgysavva/driver-app/gateway/pkg/gateway	0.008s
+?   	github.com/georgysavva/driver-app/gateway/pkg/gateway/mocks	[no test files]
+?   	github.com/georgysavva/driver-app/gateway/pkg/httpmiddleware	[no test files]
+Removing intermediate container 4b747246c257
+ ---> 1aa4718e3e8d
+Step 7/11 : FROM alpine:3.12 as final
+ ---> d6e46aa2470d
+Step 8/11 : RUN apk --no-cache add ca-certificates
+ ---> Using cache
+ ---> 82aa291b1855
+Step 9/11 : WORKDIR /root/
+ ---> Using cache
+ ---> 94c61544cb53
+Step 10/11 : COPY --from=build /go/bin/gateway-server /go/src/app/config.yaml ./
+COPY failed: stat /var/lib/docker/overlay2/7caea668cf2cd97e3cb97bec281d434d8a5d345510a5a905e807e9f0b77e9c41/merged/go/bin/gateway-server: no such file or directory
+make: *** [all] Error 1

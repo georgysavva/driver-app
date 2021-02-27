@@ -1,0 +1,1278 @@
+docker build -t gateway .
+Sending build context to Docker daemon  9.791MB
+Step 1/12 : FROM golang:1.15.5 as build
+ ---> 6d8772fbd285
+Step 2/12 : WORKDIR /go/src/app
+ ---> Using cache
+ ---> a10171c8026f
+Step 3/12 : COPY go.mod go.sum ./
+ ---> Using cache
+ ---> ab1819db1171
+Step 4/12 : RUN go mod download
+ ---> Using cache
+ ---> a08c4d8d9357
+Step 5/12 : COPY . .
+ ---> e5c83f5306cd
+Step 6/12 : RUN go test std
+ ---> Running in 9ec14b7e3d3e
+ok  	archive/tar	0.060s
+ok  	archive/zip	40.012s
+ok  	bufio	0.087s
+ok  	bytes	2.054s
+ok  	compress/bzip2	0.094s
+ok  	compress/flate	11.899s
+ok  	compress/gzip	0.039s
+ok  	compress/lzw	0.064s
+ok  	compress/zlib	0.907s
+ok  	container/heap	0.018s
+ok  	container/list	0.016s
+ok  	container/ring	0.016s
+ok  	context	0.043s
+ok  	crypto	0.015s
+ok  	crypto/aes	0.040s
+ok  	crypto/cipher	0.879s
+ok  	crypto/des	0.006s
+ok  	crypto/dsa	11.021s
+ok  	crypto/ecdsa	3.203s
+ok  	crypto/ed25519	0.043s
+?   	crypto/ed25519/internal/edwards25519	[no test files]
+ok  	crypto/elliptic	2.378s
+ok  	crypto/hmac	0.012s
+?   	crypto/internal/randutil	[no test files]
+ok  	crypto/internal/subtle	0.008s
+ok  	crypto/md5	0.004s
+ok  	crypto/rand	0.261s
+ok  	crypto/rc4	0.045s
+ok  	crypto/rsa	0.454s
+ok  	crypto/sha1	0.025s
+ok  	crypto/sha256	0.007s
+ok  	crypto/sha512	0.007s
+ok  	crypto/subtle	0.009s
+ok  	crypto/tls	3.280s
+ok  	crypto/x509	1.001s
+?   	crypto/x509/pkix	[no test files]
+ok  	database/sql	1.496s
+ok  	database/sql/driver	0.019s
+ok  	debug/dwarf	0.008s
+ok  	debug/elf	0.013s
+ok  	debug/gosym	0.242s
+ok  	debug/macho	0.028s
+ok  	debug/pe	0.016s
+ok  	debug/plan9obj	0.004s
+?   	encoding	[no test files]
+ok  	encoding/ascii85	0.024s
+ok  	encoding/asn1	0.006s
+ok  	encoding/base32	0.037s
+ok  	encoding/base64	0.010s
+ok  	encoding/binary	0.010s
+ok  	encoding/csv	0.013s
+ok  	encoding/gob	0.033s
+ok  	encoding/hex	0.016s
+ok  	encoding/json	1.514s
+ok  	encoding/pem	0.020s
+ok  	encoding/xml	0.038s
+ok  	errors	0.018s
+ok  	expvar	0.019s
+ok  	flag	0.043s
+ok  	fmt	0.065s
+ok  	go/ast	0.015s
+ok  	go/build	1.067s
+ok  	go/constant	0.006s
+ok  	go/doc	0.045s
+ok  	go/format	0.008s
+ok  	go/importer	0.149s
+ok  	go/internal/gccgoimporter	0.017s
+ok  	go/internal/gcimporter	0.920s
+ok  	go/internal/srcimporter	6.272s
+ok  	go/parser	0.039s
+ok  	go/printer	0.183s
+ok  	go/scanner	0.006s
+ok  	go/token	0.029s
+--- FAIL: TestCheck (0.17s)
+    check_test.go:238: testdata/issues.src:9:6: no error expected: "could not import cmd/compile/internal/syntax (can't find import: \"cmd/compile/internal/syntax\")"
+    check_test.go:293: --- issues: 2 source positions with expected (but not reported) errors:
+    check_test.go:296: testdata/issues.src:335:4: "f.foo undefined \\(type \\*syntax.File has no field or method foo\\)"
+    check_test.go:296: testdata/issues.src:360:20: "cannot convert 0 \\(untyped int constant\\) to \\*syntax.File"
+--- FAIL: TestStdlib (11.53s)
+    stdlib_test.go:233: /usr/local/go/src/cmd/addr2line/main.go:29:2: could not import cmd/internal/objfile (can't find import: "cmd/internal/objfile")
+    stdlib_test.go:233: /usr/local/go/src/cmd/asm/main.go:14:2: could not import cmd/asm/internal/arch (can't find import: "cmd/asm/internal/arch")
+    stdlib_test.go:233: /usr/local/go/src/cmd/asm/main.go:15:2: could not import cmd/asm/internal/asm (can't find import: "cmd/asm/internal/asm")
+    stdlib_test.go:233: /usr/local/go/src/cmd/asm/main.go:16:2: could not import cmd/asm/internal/flags (can't find import: "cmd/asm/internal/flags")
+    stdlib_test.go:233: /usr/local/go/src/cmd/asm/main.go:17:2: could not import cmd/asm/internal/lex (can't find import: "cmd/asm/internal/lex")
+    stdlib_test.go:233: /usr/local/go/src/cmd/asm/main.go:19:2: could not import cmd/internal/bio (can't find import: "cmd/internal/bio")
+    stdlib_test.go:233: /usr/local/go/src/cmd/asm/main.go:20:2: could not import cmd/internal/obj (can't find import: "cmd/internal/obj")
+    stdlib_test.go:233: /usr/local/go/src/cmd/asm/main.go:21:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/asm/internal/arch/arch.go:9:2: could not import cmd/internal/obj (can't find import: "cmd/internal/obj")
+    stdlib_test.go:233: /usr/local/go/src/cmd/asm/internal/arch/arch.go:10:2: could not import cmd/internal/obj/arm (can't find import: "cmd/internal/obj/arm")
+    stdlib_test.go:233: /usr/local/go/src/cmd/asm/internal/arch/arch.go:11:2: could not import cmd/internal/obj/arm64 (can't find import: "cmd/internal/obj/arm64")
+    stdlib_test.go:233: /usr/local/go/src/cmd/asm/internal/arch/arch.go:12:2: could not import cmd/internal/obj/mips (can't find import: "cmd/internal/obj/mips")
+    stdlib_test.go:233: /usr/local/go/src/cmd/asm/internal/arch/arch.go:13:2: could not import cmd/internal/obj/ppc64 (can't find import: "cmd/internal/obj/ppc64")
+    stdlib_test.go:233: /usr/local/go/src/cmd/asm/internal/arch/arch.go:14:2: could not import cmd/internal/obj/riscv (can't find import: "cmd/internal/obj/riscv")
+    stdlib_test.go:233: /usr/local/go/src/cmd/asm/internal/arch/arch.go:15:2: could not import cmd/internal/obj/s390x (can't find import: "cmd/internal/obj/s390x")
+    stdlib_test.go:233: /usr/local/go/src/cmd/asm/internal/arch/arch.go:16:2: could not import cmd/internal/obj/wasm (can't find import: "cmd/internal/obj/wasm")
+    stdlib_test.go:233: /usr/local/go/src/cmd/asm/internal/arch/arch.go:17:2: could not import cmd/internal/obj/x86 (can't find import: "cmd/internal/obj/x86")
+    stdlib_test.go:233: /usr/local/go/src/cmd/asm/internal/asm/asm.go:13:2: could not import cmd/asm/internal/arch (can't find import: "cmd/asm/internal/arch")
+    stdlib_test.go:233: /usr/local/go/src/cmd/asm/internal/asm/asm.go:14:2: could not import cmd/asm/internal/flags (can't find import: "cmd/asm/internal/flags")
+    stdlib_test.go:233: /usr/local/go/src/cmd/asm/internal/asm/asm.go:15:2: could not import cmd/asm/internal/lex (can't find import: "cmd/asm/internal/lex")
+    stdlib_test.go:233: /usr/local/go/src/cmd/asm/internal/asm/asm.go:16:2: could not import cmd/internal/obj (can't find import: "cmd/internal/obj")
+    stdlib_test.go:233: /usr/local/go/src/cmd/asm/internal/asm/asm.go:17:2: could not import cmd/internal/obj/x86 (can't find import: "cmd/internal/obj/x86")
+    stdlib_test.go:233: /usr/local/go/src/cmd/asm/internal/asm/asm.go:18:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/asm/internal/asm/asm.go:19:2: could not import cmd/internal/sys (can't find import: "cmd/internal/sys")
+    stdlib_test.go:233: /usr/local/go/src/cmd/asm/internal/asm/parse.go:23:2: could not import cmd/internal/src (can't find import: "cmd/internal/src")
+    stdlib_test.go:233: /usr/local/go/src/cmd/asm/internal/flags/flags.go:9:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/asm/internal/lex/input.go:15:2: could not import cmd/asm/internal/flags (can't find import: "cmd/asm/internal/flags")
+    stdlib_test.go:233: /usr/local/go/src/cmd/asm/internal/lex/input.go:16:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/asm/internal/lex/input.go:17:2: could not import cmd/internal/src (can't find import: "cmd/internal/src")
+    stdlib_test.go:233: /usr/local/go/src/cmd/buildid/buildid.go:14:2: could not import cmd/internal/buildid (can't find import: "cmd/internal/buildid")
+    stdlib_test.go:233: /usr/local/go/src/cmd/cgo/main.go:29:2: could not import cmd/internal/edit (can't find import: "cmd/internal/edit")
+    stdlib_test.go:233: /usr/local/go/src/cmd/cgo/main.go:30:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/main.go:8:2: could not import cmd/compile/internal/amd64 (can't find import: "cmd/compile/internal/amd64")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/main.go:9:2: could not import cmd/compile/internal/arm (can't find import: "cmd/compile/internal/arm")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/main.go:10:2: could not import cmd/compile/internal/arm64 (can't find import: "cmd/compile/internal/arm64")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/main.go:11:2: could not import cmd/compile/internal/gc (can't find import: "cmd/compile/internal/gc")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/main.go:12:2: could not import cmd/compile/internal/mips (can't find import: "cmd/compile/internal/mips")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/main.go:13:2: could not import cmd/compile/internal/mips64 (can't find import: "cmd/compile/internal/mips64")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/main.go:14:2: could not import cmd/compile/internal/ppc64 (can't find import: "cmd/compile/internal/ppc64")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/main.go:15:2: could not import cmd/compile/internal/riscv64 (can't find import: "cmd/compile/internal/riscv64")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/main.go:16:2: could not import cmd/compile/internal/s390x (can't find import: "cmd/compile/internal/s390x")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/main.go:17:2: could not import cmd/compile/internal/wasm (can't find import: "cmd/compile/internal/wasm")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/main.go:18:2: could not import cmd/compile/internal/x86 (can't find import: "cmd/compile/internal/x86")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/main.go:19:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/amd64/galign.go:8:2: could not import cmd/compile/internal/gc (can't find import: "cmd/compile/internal/gc")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/amd64/galign.go:9:2: could not import cmd/internal/obj/x86 (can't find import: "cmd/internal/obj/x86")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/amd64/ggen.go:9:2: could not import cmd/internal/obj (can't find import: "cmd/internal/obj")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/amd64/ggen.go:11:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/amd64/ssa.go:12:2: could not import cmd/compile/internal/logopt (can't find import: "cmd/compile/internal/logopt")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/amd64/ssa.go:13:2: could not import cmd/compile/internal/ssa (can't find import: "cmd/compile/internal/ssa")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/amd64/ssa.go:14:2: could not import cmd/compile/internal/types (can't find import: "cmd/compile/internal/types")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/arm/galign.go:8:2: could not import cmd/compile/internal/gc (can't find import: "cmd/compile/internal/gc")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/arm/galign.go:9:2: could not import cmd/compile/internal/ssa (can't find import: "cmd/compile/internal/ssa")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/arm/galign.go:10:2: could not import cmd/internal/obj/arm (can't find import: "cmd/internal/obj/arm")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/arm/galign.go:11:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/arm/ggen.go:9:2: could not import cmd/internal/obj (can't find import: "cmd/internal/obj")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/arm/ssa.go:13:2: could not import cmd/compile/internal/logopt (can't find import: "cmd/compile/internal/logopt")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/arm/ssa.go:15:2: could not import cmd/compile/internal/types (can't find import: "cmd/compile/internal/types")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/arm64/galign.go:8:2: could not import cmd/compile/internal/gc (can't find import: "cmd/compile/internal/gc")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/arm64/galign.go:9:2: could not import cmd/compile/internal/ssa (can't find import: "cmd/compile/internal/ssa")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/arm64/galign.go:10:2: could not import cmd/internal/obj/arm64 (can't find import: "cmd/internal/obj/arm64")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/arm64/ggen.go:9:2: could not import cmd/internal/obj (can't find import: "cmd/internal/obj")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/arm64/ggen.go:11:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/arm64/ssa.go:11:2: could not import cmd/compile/internal/logopt (can't find import: "cmd/compile/internal/logopt")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/arm64/ssa.go:13:2: could not import cmd/compile/internal/types (can't find import: "cmd/compile/internal/types")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/gc/alg.go:8:2: could not import cmd/compile/internal/types (can't find import: "cmd/compile/internal/types")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/gc/alg.go:9:2: could not import cmd/internal/obj (can't find import: "cmd/internal/obj")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/gc/bimport.go:8:2: could not import cmd/internal/src (can't find import: "cmd/internal/src")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/gc/closure.go:8:2: could not import cmd/compile/internal/syntax (can't find import: "cmd/compile/internal/syntax")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/gc/dwinl.go:8:2: could not import cmd/internal/dwarf (can't find import: "cmd/internal/dwarf")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/gc/escape.go:8:2: could not import cmd/compile/internal/logopt (can't find import: "cmd/compile/internal/logopt")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/gc/export.go:9:2: could not import cmd/internal/bio (can't find import: "cmd/internal/bio")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/gc/go.go:8:2: could not import cmd/compile/internal/ssa (can't find import: "cmd/compile/internal/ssa")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/gc/gsubr.go:36:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/gc/iexport.go:208:2: could not import cmd/internal/goobj2 (can't find import: "cmd/internal/goobj2")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/gc/main.go:21:2: could not import cmd/internal/sys (can't find import: "cmd/internal/sys")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/gc/reflect.go:9:2: could not import cmd/internal/gcprog (can't find import: "cmd/internal/gcprog")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/gc/ssa.go:19:2: could not import cmd/internal/obj/x86 (can't find import: "cmd/internal/obj/x86")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/gc/dwinl.go:253:2: ic declared but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/gc/gsubr.go:105:7: i declared but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/gc/noder.go:287:6: cs declared but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/logopt/log_opts.go:8:2: could not import cmd/internal/obj (can't find import: "cmd/internal/obj")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/logopt/log_opts.go:9:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/logopt/log_opts.go:10:2: could not import cmd/internal/src (can't find import: "cmd/internal/src")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/mips/galign.go:8:2: could not import cmd/compile/internal/gc (can't find import: "cmd/compile/internal/gc")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/mips/galign.go:9:2: could not import cmd/compile/internal/ssa (can't find import: "cmd/compile/internal/ssa")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/mips/galign.go:10:2: could not import cmd/internal/obj/mips (can't find import: "cmd/internal/obj/mips")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/mips/galign.go:11:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/mips/ggen.go:9:2: could not import cmd/internal/obj (can't find import: "cmd/internal/obj")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/mips/ssa.go:11:2: could not import cmd/compile/internal/logopt (can't find import: "cmd/compile/internal/logopt")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/mips/ssa.go:13:2: could not import cmd/compile/internal/types (can't find import: "cmd/compile/internal/types")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/mips64/galign.go:8:2: could not import cmd/compile/internal/gc (can't find import: "cmd/compile/internal/gc")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/mips64/galign.go:9:2: could not import cmd/compile/internal/ssa (can't find import: "cmd/compile/internal/ssa")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/mips64/galign.go:10:2: could not import cmd/internal/obj/mips (can't find import: "cmd/internal/obj/mips")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/mips64/galign.go:11:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/mips64/ggen.go:9:2: could not import cmd/internal/obj (can't find import: "cmd/internal/obj")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/mips64/ssa.go:11:2: could not import cmd/compile/internal/logopt (can't find import: "cmd/compile/internal/logopt")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/mips64/ssa.go:13:2: could not import cmd/compile/internal/types (can't find import: "cmd/compile/internal/types")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/ppc64/galign.go:8:2: could not import cmd/compile/internal/gc (can't find import: "cmd/compile/internal/gc")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/ppc64/galign.go:9:2: could not import cmd/internal/obj/ppc64 (can't find import: "cmd/internal/obj/ppc64")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/ppc64/galign.go:10:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/ppc64/ggen.go:9:2: could not import cmd/internal/obj (can't find import: "cmd/internal/obj")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/ppc64/ssa.go:9:2: could not import cmd/compile/internal/logopt (can't find import: "cmd/compile/internal/logopt")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/ppc64/ssa.go:10:2: could not import cmd/compile/internal/ssa (can't find import: "cmd/compile/internal/ssa")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/ppc64/ssa.go:11:2: could not import cmd/compile/internal/types (can't find import: "cmd/compile/internal/types")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/ppc64/ssa.go:16:2: "strings" imported but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/riscv64/galign.go:8:2: could not import cmd/compile/internal/gc (can't find import: "cmd/compile/internal/gc")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/riscv64/galign.go:9:2: could not import cmd/internal/obj/riscv (can't find import: "cmd/internal/obj/riscv")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/riscv64/ggen.go:9:2: could not import cmd/internal/obj (can't find import: "cmd/internal/obj")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/riscv64/ssa.go:9:2: could not import cmd/compile/internal/ssa (can't find import: "cmd/compile/internal/ssa")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/riscv64/ssa.go:10:2: could not import cmd/compile/internal/types (can't find import: "cmd/compile/internal/types")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/s390x/galign.go:8:2: could not import cmd/compile/internal/gc (can't find import: "cmd/compile/internal/gc")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/s390x/galign.go:9:2: could not import cmd/internal/obj/s390x (can't find import: "cmd/internal/obj/s390x")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/s390x/ggen.go:9:2: could not import cmd/internal/obj (can't find import: "cmd/internal/obj")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/s390x/ssa.go:11:2: could not import cmd/compile/internal/logopt (can't find import: "cmd/compile/internal/logopt")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/s390x/ssa.go:12:2: could not import cmd/compile/internal/ssa (can't find import: "cmd/compile/internal/ssa")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/s390x/ssa.go:13:2: could not import cmd/compile/internal/types (can't find import: "cmd/compile/internal/types")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/ssa/biasedsparsemap.go:8:2: could not import cmd/internal/src (can't find import: "cmd/internal/src")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/ssa/cache.go:8:2: could not import cmd/internal/obj (can't find import: "cmd/internal/obj")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/ssa/check.go:8:2: could not import cmd/internal/obj/s390x (can't find import: "cmd/internal/obj/s390x")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/ssa/checkbce.go:7:8: could not import cmd/compile/internal/logopt (can't find import: "cmd/compile/internal/logopt")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/ssa/compile.go:9:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/ssa/config.go:8:2: could not import cmd/compile/internal/types (can't find import: "cmd/compile/internal/types")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/ssa/debug.go:7:2: could not import cmd/internal/dwarf (can't find import: "cmd/internal/dwarf")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/ssa/opGen.go:7:2: could not import cmd/internal/obj/arm (can't find import: "cmd/internal/obj/arm")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/ssa/opGen.go:8:2: could not import cmd/internal/obj/arm64 (can't find import: "cmd/internal/obj/arm64")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/ssa/opGen.go:9:2: could not import cmd/internal/obj/mips (can't find import: "cmd/internal/obj/mips")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/ssa/opGen.go:10:2: could not import cmd/internal/obj/ppc64 (can't find import: "cmd/internal/obj/ppc64")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/ssa/opGen.go:11:2: could not import cmd/internal/obj/riscv (can't find import: "cmd/internal/obj/riscv")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/ssa/opGen.go:13:2: could not import cmd/internal/obj/wasm (can't find import: "cmd/internal/obj/wasm")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/ssa/opGen.go:14:2: could not import cmd/internal/obj/x86 (can't find import: "cmd/internal/obj/x86")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/ssa/regalloc.go:120:2: could not import cmd/internal/sys (can't find import: "cmd/internal/sys")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/types/pkg.go:8:2: could not import cmd/internal/obj (can't find import: "cmd/internal/obj")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/types/pkg.go:9:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/types/scope.go:7:8: could not import cmd/internal/src (can't find import: "cmd/internal/src")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/wasm/ssa.go:8:2: could not import cmd/compile/internal/gc (can't find import: "cmd/compile/internal/gc")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/wasm/ssa.go:9:2: could not import cmd/compile/internal/logopt (can't find import: "cmd/compile/internal/logopt")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/wasm/ssa.go:10:2: could not import cmd/compile/internal/ssa (can't find import: "cmd/compile/internal/ssa")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/wasm/ssa.go:11:2: could not import cmd/compile/internal/types (can't find import: "cmd/compile/internal/types")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/wasm/ssa.go:12:2: could not import cmd/internal/obj (can't find import: "cmd/internal/obj")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/wasm/ssa.go:13:2: could not import cmd/internal/obj/wasm (can't find import: "cmd/internal/obj/wasm")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/wasm/ssa.go:14:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/wasm/ssa.go:98:3: p declared but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/wasm/ssa.go:148:3: p declared but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/wasm/ssa.go:154:3: p declared but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/wasm/ssa.go:161:3: p declared but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/wasm/ssa.go:174:3: p declared but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/wasm/ssa.go:180:3: p declared but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/wasm/ssa.go:213:3: p declared but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/wasm/ssa.go:222:3: p declared but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/wasm/ssa.go:269:3: p declared but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/wasm/ssa.go:307:4: p declared but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/wasm/ssa.go:321:4: p declared but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/wasm/ssa.go:333:4: p declared but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/wasm/ssa.go:410:2: p declared but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/wasm/ssa.go:415:2: p declared but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/wasm/ssa.go:420:2: p declared but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/wasm/ssa.go:425:2: p declared but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/wasm/ssa.go:430:2: p declared but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/wasm/ssa.go:435:2: p declared but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/x86/387.go:8:2: could not import cmd/compile/internal/gc (can't find import: "cmd/compile/internal/gc")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/x86/387.go:9:2: could not import cmd/compile/internal/ssa (can't find import: "cmd/compile/internal/ssa")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/x86/387.go:10:2: could not import cmd/compile/internal/types (can't find import: "cmd/compile/internal/types")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/x86/387.go:11:2: could not import cmd/internal/obj (can't find import: "cmd/internal/obj")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/x86/387.go:12:2: could not import cmd/internal/obj/x86 (can't find import: "cmd/internal/obj/x86")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/x86/galign.go:10:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/compile/internal/x86/ssa.go:12:2: could not import cmd/compile/internal/logopt (can't find import: "cmd/compile/internal/logopt")
+    stdlib_test.go:233: /usr/local/go/src/cmd/cover/cover.go:20:2: could not import cmd/internal/edit (can't find import: "cmd/internal/edit")
+    stdlib_test.go:233: /usr/local/go/src/cmd/cover/cover.go:21:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/cover/html.go:10:2: could not import cmd/internal/browser (can't find import: "cmd/internal/browser")
+    stdlib_test.go:233: /usr/local/go/src/cmd/doc/dirs.go:18:2: could not import golang.org/x/mod/semver (can't find import: "cmd/vendor/golang.org/x/mod/semver")
+    stdlib_test.go:233: /usr/local/go/src/cmd/fix/main.go:22:2: could not import cmd/internal/diff (can't find import: "cmd/internal/diff")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/main.go:18:2: could not import cmd/go/internal/base (can't find import: "cmd/go/internal/base")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/main.go:19:2: could not import cmd/go/internal/bug (can't find import: "cmd/go/internal/bug")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/main.go:20:2: could not import cmd/go/internal/cfg (can't find import: "cmd/go/internal/cfg")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/main.go:21:2: could not import cmd/go/internal/clean (can't find import: "cmd/go/internal/clean")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/main.go:22:2: could not import cmd/go/internal/doc (can't find import: "cmd/go/internal/doc")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/main.go:23:2: could not import cmd/go/internal/envcmd (can't find import: "cmd/go/internal/envcmd")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/main.go:24:2: could not import cmd/go/internal/fix (can't find import: "cmd/go/internal/fix")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/main.go:25:2: could not import cmd/go/internal/fmtcmd (can't find import: "cmd/go/internal/fmtcmd")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/main.go:26:2: could not import cmd/go/internal/generate (can't find import: "cmd/go/internal/generate")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/main.go:27:2: could not import cmd/go/internal/get (can't find import: "cmd/go/internal/get")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/main.go:28:2: could not import cmd/go/internal/help (can't find import: "cmd/go/internal/help")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/main.go:29:2: could not import cmd/go/internal/list (can't find import: "cmd/go/internal/list")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/main.go:30:2: could not import cmd/go/internal/modcmd (can't find import: "cmd/go/internal/modcmd")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/main.go:31:2: could not import cmd/go/internal/modfetch (can't find import: "cmd/go/internal/modfetch")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/main.go:32:2: could not import cmd/go/internal/modget (can't find import: "cmd/go/internal/modget")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/main.go:33:2: could not import cmd/go/internal/modload (can't find import: "cmd/go/internal/modload")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/main.go:34:2: could not import cmd/go/internal/run (can't find import: "cmd/go/internal/run")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/main.go:35:2: could not import cmd/go/internal/test (can't find import: "cmd/go/internal/test")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/main.go:36:2: could not import cmd/go/internal/tool (can't find import: "cmd/go/internal/tool")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/main.go:37:2: could not import cmd/go/internal/version (can't find import: "cmd/go/internal/version")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/main.go:38:2: could not import cmd/go/internal/vet (can't find import: "cmd/go/internal/vet")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/main.go:39:2: could not import cmd/go/internal/work (can't find import: "cmd/go/internal/work")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/base/base.go:18:2: could not import cmd/go/internal/cfg (can't find import: "cmd/go/internal/cfg")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/base/base.go:19:2: could not import cmd/go/internal/str (can't find import: "cmd/go/internal/str")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/bug/bug.go:21:2: could not import cmd/go/internal/base (can't find import: "cmd/go/internal/base")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/bug/bug.go:22:2: could not import cmd/go/internal/cfg (can't find import: "cmd/go/internal/cfg")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/bug/bug.go:23:2: could not import cmd/go/internal/web (can't find import: "cmd/go/internal/web")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/cache/cache.go:22:2: could not import cmd/go/internal/renameio (can't find import: "cmd/go/internal/renameio")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/cache/default.go:14:2: could not import cmd/go/internal/base (can't find import: "cmd/go/internal/base")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/cache/default.go:15:2: could not import cmd/go/internal/cfg (can't find import: "cmd/go/internal/cfg")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/cfg/cfg.go:21:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/clean/clean.go:17:2: could not import cmd/go/internal/base (can't find import: "cmd/go/internal/base")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/clean/clean.go:18:2: could not import cmd/go/internal/cache (can't find import: "cmd/go/internal/cache")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/clean/clean.go:19:2: could not import cmd/go/internal/cfg (can't find import: "cmd/go/internal/cfg")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/clean/clean.go:20:2: could not import cmd/go/internal/load (can't find import: "cmd/go/internal/load")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/clean/clean.go:21:2: could not import cmd/go/internal/lockedfile (can't find import: "cmd/go/internal/lockedfile")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/clean/clean.go:22:2: could not import cmd/go/internal/modfetch (can't find import: "cmd/go/internal/modfetch")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/clean/clean.go:23:2: could not import cmd/go/internal/modload (can't find import: "cmd/go/internal/modload")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/clean/clean.go:24:2: could not import cmd/go/internal/work (can't find import: "cmd/go/internal/work")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/doc/doc.go:9:2: could not import cmd/go/internal/base (can't find import: "cmd/go/internal/base")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/doc/doc.go:10:2: could not import cmd/go/internal/cfg (can't find import: "cmd/go/internal/cfg")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/envcmd/env.go:20:2: could not import cmd/go/internal/base (can't find import: "cmd/go/internal/base")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/envcmd/env.go:21:2: could not import cmd/go/internal/cache (can't find import: "cmd/go/internal/cache")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/envcmd/env.go:22:2: could not import cmd/go/internal/cfg (can't find import: "cmd/go/internal/cfg")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/envcmd/env.go:23:2: could not import cmd/go/internal/load (can't find import: "cmd/go/internal/load")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/envcmd/env.go:24:2: could not import cmd/go/internal/modload (can't find import: "cmd/go/internal/modload")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/envcmd/env.go:25:2: could not import cmd/go/internal/work (can't find import: "cmd/go/internal/work")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/fix/fix.go:9:2: could not import cmd/go/internal/base (can't find import: "cmd/go/internal/base")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/fix/fix.go:10:2: could not import cmd/go/internal/cfg (can't find import: "cmd/go/internal/cfg")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/fix/fix.go:11:2: could not import cmd/go/internal/load (can't find import: "cmd/go/internal/load")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/fix/fix.go:12:2: could not import cmd/go/internal/modload (can't find import: "cmd/go/internal/modload")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/fix/fix.go:13:2: could not import cmd/go/internal/str (can't find import: "cmd/go/internal/str")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/fmtcmd/fmt.go:16:2: could not import cmd/go/internal/base (can't find import: "cmd/go/internal/base")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/fmtcmd/fmt.go:17:2: could not import cmd/go/internal/cfg (can't find import: "cmd/go/internal/cfg")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/fmtcmd/fmt.go:18:2: could not import cmd/go/internal/load (can't find import: "cmd/go/internal/load")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/fmtcmd/fmt.go:19:2: could not import cmd/go/internal/modload (can't find import: "cmd/go/internal/modload")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/fmtcmd/fmt.go:20:2: could not import cmd/go/internal/str (can't find import: "cmd/go/internal/str")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/generate/generate.go:24:2: could not import cmd/go/internal/base (can't find import: "cmd/go/internal/base")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/generate/generate.go:25:2: could not import cmd/go/internal/cfg (can't find import: "cmd/go/internal/cfg")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/generate/generate.go:26:2: could not import cmd/go/internal/load (can't find import: "cmd/go/internal/load")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/generate/generate.go:27:2: could not import cmd/go/internal/modload (can't find import: "cmd/go/internal/modload")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/generate/generate.go:28:2: could not import cmd/go/internal/str (can't find import: "cmd/go/internal/str")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/generate/generate.go:29:2: could not import cmd/go/internal/work (can't find import: "cmd/go/internal/work")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/get/get.go:15:2: could not import cmd/go/internal/base (can't find import: "cmd/go/internal/base")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/get/get.go:16:2: could not import cmd/go/internal/cfg (can't find import: "cmd/go/internal/cfg")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/get/get.go:17:2: could not import cmd/go/internal/load (can't find import: "cmd/go/internal/load")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/get/get.go:18:2: could not import cmd/go/internal/search (can't find import: "cmd/go/internal/search")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/get/get.go:19:2: could not import cmd/go/internal/str (can't find import: "cmd/go/internal/str")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/get/get.go:20:2: could not import cmd/go/internal/web (can't find import: "cmd/go/internal/web")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/get/get.go:21:2: could not import cmd/go/internal/work (can't find import: "cmd/go/internal/work")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/help/help.go:19:2: could not import cmd/go/internal/base (can't find import: "cmd/go/internal/base")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/help/help.go:20:2: could not import cmd/go/internal/modload (can't find import: "cmd/go/internal/modload")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/imports/tags.go:7:8: could not import cmd/go/internal/cfg (can't find import: "cmd/go/internal/cfg")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/list/list.go:18:2: could not import cmd/go/internal/base (can't find import: "cmd/go/internal/base")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/list/list.go:19:2: could not import cmd/go/internal/cache (can't find import: "cmd/go/internal/cache")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/list/list.go:20:2: could not import cmd/go/internal/cfg (can't find import: "cmd/go/internal/cfg")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/list/list.go:21:2: could not import cmd/go/internal/load (can't find import: "cmd/go/internal/load")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/list/list.go:22:2: could not import cmd/go/internal/modload (can't find import: "cmd/go/internal/modload")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/list/list.go:23:2: could not import cmd/go/internal/str (can't find import: "cmd/go/internal/str")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/list/list.go:24:2: could not import cmd/go/internal/work (can't find import: "cmd/go/internal/work")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/list/list.go:601:8: d declared but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/load/flag.go:8:2: could not import cmd/go/internal/base (can't find import: "cmd/go/internal/base")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/load/flag.go:9:2: could not import cmd/go/internal/str (can't find import: "cmd/go/internal/str")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/load/pkg.go:28:2: could not import cmd/go/internal/cfg (can't find import: "cmd/go/internal/cfg")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/load/pkg.go:29:2: could not import cmd/go/internal/modinfo (can't find import: "cmd/go/internal/modinfo")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/load/pkg.go:30:2: could not import cmd/go/internal/par (can't find import: "cmd/go/internal/par")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/load/pkg.go:31:2: could not import cmd/go/internal/search (can't find import: "cmd/go/internal/search")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/lockedfile/lockedfile_filelock.go:12:2: could not import cmd/go/internal/lockedfile/internal/filelock (can't find import: "cmd/go/internal/lockedfile/internal/filelock")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modcmd/download.go:11:2: could not import cmd/go/internal/base (can't find import: "cmd/go/internal/base")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modcmd/download.go:12:2: could not import cmd/go/internal/cfg (can't find import: "cmd/go/internal/cfg")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modcmd/download.go:13:2: could not import cmd/go/internal/modfetch (can't find import: "cmd/go/internal/modfetch")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modcmd/download.go:14:2: could not import cmd/go/internal/modload (can't find import: "cmd/go/internal/modload")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modcmd/download.go:15:2: could not import cmd/go/internal/par (can't find import: "cmd/go/internal/par")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modcmd/download.go:16:2: could not import cmd/go/internal/work (can't find import: "cmd/go/internal/work")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modcmd/download.go:18:2: could not import golang.org/x/mod/module (can't find import: "cmd/vendor/golang.org/x/mod/module")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modcmd/edit.go:18:2: could not import cmd/go/internal/lockedfile (can't find import: "cmd/go/internal/lockedfile")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modcmd/edit.go:23:2: could not import golang.org/x/mod/modfile (can't find import: "cmd/vendor/golang.org/x/mod/modfile")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modcmd/vendor.go:19:2: could not import cmd/go/internal/imports (can't find import: "cmd/go/internal/imports")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modcmd/vendor.go:24:2: could not import golang.org/x/mod/semver (can't find import: "cmd/vendor/golang.org/x/mod/semver")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modcmd/verify.go:22:2: could not import golang.org/x/mod/sumdb/dirhash (can't find import: "cmd/vendor/golang.org/x/mod/sumdb/dirhash")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modconv/convert.go:14:2: could not import cmd/go/internal/base (can't find import: "cmd/go/internal/base")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modconv/convert.go:15:2: could not import cmd/go/internal/modfetch (can't find import: "cmd/go/internal/modfetch")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modconv/convert.go:16:2: could not import cmd/go/internal/par (can't find import: "cmd/go/internal/par")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modconv/convert.go:18:2: could not import golang.org/x/mod/modfile (can't find import: "cmd/vendor/golang.org/x/mod/modfile")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modconv/convert.go:19:2: could not import golang.org/x/mod/module (can't find import: "cmd/vendor/golang.org/x/mod/module")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modconv/convert.go:20:2: could not import golang.org/x/mod/semver (can't find import: "cmd/vendor/golang.org/x/mod/semver")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modconv/convert_test.go:19:2: could not import cmd/go/internal/cfg (can't find import: "cmd/go/internal/cfg")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modconv/dep.go:91:4: old declared but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modconv/dep.go:92:4: new declared but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modconv/godeps.go:26:9: d declared but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modconv/vmanifest.go:25:9: d declared but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modconv/vjson.go:25:9: d declared but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modconv/glide.go:11:2: "golang.org/x/mod/module" imported but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modconv/glock.go:11:2: "golang.org/x/mod/module" imported but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modconv/godeps.go:11:2: "golang.org/x/mod/module" imported but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modconv/tsv.go:11:2: "golang.org/x/mod/module" imported but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modconv/vconf.go:11:2: "golang.org/x/mod/module" imported but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modconv/vjson.go:11:2: "golang.org/x/mod/module" imported but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modconv/vmanifest.go:11:2: "golang.org/x/mod/module" imported but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modconv/vyml.go:11:2: "golang.org/x/mod/module" imported but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modfetch/cache.go:18:2: could not import cmd/go/internal/base (can't find import: "cmd/go/internal/base")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modfetch/cache.go:19:2: could not import cmd/go/internal/cfg (can't find import: "cmd/go/internal/cfg")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modfetch/cache.go:20:2: could not import cmd/go/internal/lockedfile (can't find import: "cmd/go/internal/lockedfile")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modfetch/cache.go:21:2: could not import cmd/go/internal/modfetch/codehost (can't find import: "cmd/go/internal/modfetch/codehost")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modfetch/cache.go:22:2: could not import cmd/go/internal/par (can't find import: "cmd/go/internal/par")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modfetch/cache.go:23:2: could not import cmd/go/internal/renameio (can't find import: "cmd/go/internal/renameio")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modfetch/cache.go:25:2: could not import golang.org/x/mod/module (can't find import: "cmd/vendor/golang.org/x/mod/module")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modfetch/cache.go:26:2: could not import golang.org/x/mod/semver (can't find import: "cmd/vendor/golang.org/x/mod/semver")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modfetch/coderepo.go:22:2: could not import golang.org/x/mod/modfile (can't find import: "cmd/vendor/golang.org/x/mod/modfile")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modfetch/coderepo.go:25:9: could not import golang.org/x/mod/zip (can't find import: "cmd/vendor/golang.org/x/mod/zip")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modfetch/fetch.go:25:2: could not import cmd/go/internal/robustio (can't find import: "cmd/go/internal/robustio")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modfetch/fetch.go:28:2: could not import golang.org/x/mod/sumdb/dirhash (can't find import: "cmd/vendor/golang.org/x/mod/sumdb/dirhash")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modfetch/insecure.go:9:2: could not import cmd/go/internal/get (can't find import: "cmd/go/internal/get")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modfetch/insecure.go:10:2: could not import cmd/go/internal/str (can't find import: "cmd/go/internal/str")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modfetch/proxy.go:25:2: could not import cmd/go/internal/web (can't find import: "cmd/go/internal/web")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modfetch/sumdb.go:31:2: could not import golang.org/x/mod/sumdb (can't find import: "cmd/vendor/golang.org/x/mod/sumdb")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modfetch/sumdb.go:32:2: could not import golang.org/x/mod/sumdb/note (can't find import: "cmd/vendor/golang.org/x/mod/sumdb/note")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modfetch/codehost/codehost.go:22:2: could not import cmd/go/internal/cfg (can't find import: "cmd/go/internal/cfg")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modfetch/codehost/codehost.go:23:2: could not import cmd/go/internal/lockedfile (can't find import: "cmd/go/internal/lockedfile")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modfetch/codehost/codehost.go:24:2: could not import cmd/go/internal/str (can't find import: "cmd/go/internal/str")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modfetch/codehost/git.go:24:2: could not import cmd/go/internal/par (can't find import: "cmd/go/internal/par")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modfetch/codehost/git.go:25:2: could not import cmd/go/internal/web (can't find import: "cmd/go/internal/web")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modfetch/codehost/git.go:27:2: could not import golang.org/x/mod/semver (can't find import: "cmd/vendor/golang.org/x/mod/semver")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modget/get.go:17:2: could not import cmd/go/internal/base (can't find import: "cmd/go/internal/base")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modget/get.go:18:2: could not import cmd/go/internal/get (can't find import: "cmd/go/internal/get")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modget/get.go:19:2: could not import cmd/go/internal/imports (can't find import: "cmd/go/internal/imports")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modget/get.go:20:2: could not import cmd/go/internal/load (can't find import: "cmd/go/internal/load")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modget/get.go:21:2: could not import cmd/go/internal/modload (can't find import: "cmd/go/internal/modload")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modget/get.go:22:2: could not import cmd/go/internal/mvs (can't find import: "cmd/go/internal/mvs")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modget/get.go:23:2: could not import cmd/go/internal/par (can't find import: "cmd/go/internal/par")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modget/get.go:24:2: could not import cmd/go/internal/search (can't find import: "cmd/go/internal/search")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modget/get.go:25:2: could not import cmd/go/internal/work (can't find import: "cmd/go/internal/work")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modget/get.go:27:2: could not import golang.org/x/mod/module (can't find import: "cmd/vendor/golang.org/x/mod/module")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modget/get.go:28:2: could not import golang.org/x/mod/semver (can't find import: "cmd/vendor/golang.org/x/mod/semver")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modload/build.go:17:2: could not import cmd/go/internal/base (can't find import: "cmd/go/internal/base")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modload/build.go:18:2: could not import cmd/go/internal/cfg (can't find import: "cmd/go/internal/cfg")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modload/build.go:19:2: could not import cmd/go/internal/modfetch (can't find import: "cmd/go/internal/modfetch")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modload/build.go:20:2: could not import cmd/go/internal/modinfo (can't find import: "cmd/go/internal/modinfo")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modload/build.go:21:2: could not import cmd/go/internal/search (can't find import: "cmd/go/internal/search")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modload/build.go:23:2: could not import golang.org/x/mod/module (can't find import: "cmd/vendor/golang.org/x/mod/module")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modload/build.go:24:2: could not import golang.org/x/mod/semver (can't find import: "cmd/vendor/golang.org/x/mod/semver")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modload/import.go:19:2: could not import cmd/go/internal/load (can't find import: "cmd/go/internal/load")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modload/import.go:21:2: could not import cmd/go/internal/par (can't find import: "cmd/go/internal/par")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modload/init.go:23:2: could not import cmd/go/internal/cache (can't find import: "cmd/go/internal/cache")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modload/init.go:26:2: could not import cmd/go/internal/lockedfile (can't find import: "cmd/go/internal/lockedfile")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modload/init.go:27:2: could not import cmd/go/internal/modconv (can't find import: "cmd/go/internal/modconv")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modload/init.go:29:2: could not import cmd/go/internal/mvs (can't find import: "cmd/go/internal/mvs")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modload/init.go:32:2: could not import golang.org/x/mod/modfile (can't find import: "cmd/vendor/golang.org/x/mod/modfile")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modload/load.go:11:2: could not import cmd/go/internal/imports (can't find import: "cmd/go/internal/imports")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modload/load.go:16:2: could not import cmd/go/internal/str (can't find import: "cmd/go/internal/str")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/modload/load.go:80:6: pkg declared but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/mvs/mvs.go:16:2: could not import cmd/go/internal/par (can't find import: "cmd/go/internal/par")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/mvs/mvs.go:18:2: could not import golang.org/x/mod/module (can't find import: "cmd/vendor/golang.org/x/mod/module")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/renameio/renameio.go:16:2: could not import cmd/go/internal/robustio (can't find import: "cmd/go/internal/robustio")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/run/run.go:14:2: could not import cmd/go/internal/base (can't find import: "cmd/go/internal/base")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/run/run.go:15:2: could not import cmd/go/internal/cfg (can't find import: "cmd/go/internal/cfg")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/run/run.go:16:2: could not import cmd/go/internal/load (can't find import: "cmd/go/internal/load")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/run/run.go:17:2: could not import cmd/go/internal/str (can't find import: "cmd/go/internal/str")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/run/run.go:18:2: could not import cmd/go/internal/work (can't find import: "cmd/go/internal/work")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/search/search.go:8:2: could not import cmd/go/internal/base (can't find import: "cmd/go/internal/base")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/search/search.go:9:2: could not import cmd/go/internal/cfg (can't find import: "cmd/go/internal/cfg")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/test/cover.go:8:2: could not import cmd/go/internal/base (can't find import: "cmd/go/internal/base")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/test/test.go:27:2: could not import cmd/go/internal/cache (can't find import: "cmd/go/internal/cache")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/test/test.go:28:2: could not import cmd/go/internal/cfg (can't find import: "cmd/go/internal/cfg")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/test/test.go:29:2: could not import cmd/go/internal/load (can't find import: "cmd/go/internal/load")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/test/test.go:30:2: could not import cmd/go/internal/lockedfile (can't find import: "cmd/go/internal/lockedfile")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/test/test.go:31:2: could not import cmd/go/internal/modload (can't find import: "cmd/go/internal/modload")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/test/test.go:32:2: could not import cmd/go/internal/str (can't find import: "cmd/go/internal/str")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/test/test.go:33:2: could not import cmd/go/internal/work (can't find import: "cmd/go/internal/work")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/test/test.go:34:2: could not import cmd/internal/test2json (can't find import: "cmd/internal/test2json")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/test/testflag.go:18:2: could not import cmd/go/internal/cmdflag (can't find import: "cmd/go/internal/cmdflag")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/test/test.go:990:2: vet declared but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/tool/tool.go:15:2: could not import cmd/go/internal/base (can't find import: "cmd/go/internal/base")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/tool/tool.go:16:2: could not import cmd/go/internal/cfg (can't find import: "cmd/go/internal/cfg")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/version/version.go:17:2: could not import cmd/go/internal/base (can't find import: "cmd/go/internal/base")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/vet/vet.go:9:2: could not import cmd/go/internal/base (can't find import: "cmd/go/internal/base")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/vet/vet.go:10:2: could not import cmd/go/internal/load (can't find import: "cmd/go/internal/load")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/vet/vet.go:11:2: could not import cmd/go/internal/modload (can't find import: "cmd/go/internal/modload")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/vet/vet.go:12:2: could not import cmd/go/internal/work (can't find import: "cmd/go/internal/work")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/vet/vetflag.go:20:2: could not import cmd/go/internal/cmdflag (can't find import: "cmd/go/internal/cmdflag")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/web/http.go:25:2: could not import cmd/go/internal/auth (can't find import: "cmd/go/internal/auth")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/web/http.go:26:2: could not import cmd/go/internal/cfg (can't find import: "cmd/go/internal/cfg")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/web/http.go:27:2: could not import cmd/internal/browser (can't find import: "cmd/internal/browser")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/work/action.go:24:2: could not import cmd/go/internal/base (can't find import: "cmd/go/internal/base")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/work/action.go:25:2: could not import cmd/go/internal/cache (can't find import: "cmd/go/internal/cache")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/work/action.go:26:2: could not import cmd/go/internal/cfg (can't find import: "cmd/go/internal/cfg")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/work/action.go:27:2: could not import cmd/go/internal/load (can't find import: "cmd/go/internal/load")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/work/action.go:28:2: could not import cmd/internal/buildid (can't find import: "cmd/internal/buildid")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/work/build.go:20:2: could not import cmd/go/internal/search (can't find import: "cmd/go/internal/search")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/work/buildid.go:18:2: could not import cmd/go/internal/str (can't find import: "cmd/go/internal/str")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/work/gc.go:23:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/work/gc.go:24:2: could not import cmd/internal/sys (can't find import: "cmd/internal/sys")
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/work/exec.go:523:3: outGo declared but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/work/exec.go:523:10: outC declared but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/work/exec.go:523:16: outCXX declared but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/work/exec.go:602:3: outGo declared but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/work/gccgo.go:99:9: f declared but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/go/internal/work/init.go:49:10: expt declared but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/gofmt/gofmt.go:24:2: could not import cmd/internal/diff (can't find import: "cmd/internal/diff")
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/dwarf/dwarf.go:12:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/goobj/read.go:14:2: could not import cmd/internal/goobj2 (can't find import: "cmd/internal/goobj2")
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/goobj/read.go:15:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/goobj2/objfile.go:11:2: could not import cmd/internal/bio (can't find import: "cmd/internal/bio")
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/goobj2/objfile_test.go:11:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/data.go:35:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/dwarf.go:10:2: could not import cmd/internal/dwarf (can't find import: "cmd/internal/dwarf")
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/dwarf.go:11:2: could not import cmd/internal/src (can't find import: "cmd/internal/src")
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/line.go:8:2: could not import cmd/internal/goobj2 (can't find import: "cmd/internal/goobj2")
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/link.go:39:2: could not import cmd/internal/sys (can't find import: "cmd/internal/sys")
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/objfile.go:11:2: could not import cmd/internal/bio (can't find import: "cmd/internal/bio")
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/data.go:89:12: ctxt.Arch.ByteOrder undefined (type *LinkArch has no field or method ByteOrder)
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/data.go:95:12: ctxt.Arch.ByteOrder undefined (type *LinkArch has no field or method ByteOrder)
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/data.go:107:13: ctxt.Arch.ByteOrder undefined (type *LinkArch has no field or method ByteOrder)
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/data.go:109:13: ctxt.Arch.ByteOrder undefined (type *LinkArch has no field or method ByteOrder)
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/data.go:111:13: ctxt.Arch.ByteOrder undefined (type *LinkArch has no field or method ByteOrder)
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/data.go:117:22: ctxt.Arch.PtrSize undefined (type *LinkArch has no field or method PtrSize)
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/data.go:143:35: ctxt.Arch.PtrSize undefined (type *LinkArch has no field or method PtrSize)
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/link.go:722:19: ctxt.Arch.Family undefined (type *LinkArch has no field or method Family)
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/link.go:728:30: ctxt.Arch.PtrSize undefined (type *LinkArch has no field or method PtrSize)
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/link.go:730:26: ctxt.Arch.PtrSize undefined (type *LinkArch has no field or method PtrSize)
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/objfile.go:306:16: ctxt.Arch.InFamily undefined (type *LinkArch has no field or method InFamily)
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/objfile.go:457:16: c.Arch.PtrSize undefined (type *LinkArch has no field or method PtrSize)
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/objfile2.go:52:35: w.Offset undefined (type writer has no field or method Offset)
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/objfile2.go:58:34: w.Offset undefined (type writer has no field or method Offset)
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/objfile2.go:60:5: w.StringRef undefined (type writer has no field or method StringRef)
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/objfile2.go:64:37: w.Offset undefined (type writer has no field or method Offset)
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/objfile2.go:66:5: w.StringRef undefined (type writer has no field or method StringRef)
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/objfile2.go:70:34: w.Offset undefined (type writer has no field or method Offset)
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/objfile2.go:76:37: w.Offset undefined (type writer has no field or method Offset)
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/objfile2.go:82:37: w.Offset undefined (type writer has no field or method Offset)
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/objfile2.go:88:36: w.Offset undefined (type writer has no field or method Offset)
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/objfile2.go:93:6: w.Uint32 undefined (type writer has no field or method Uint32)
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/objfile2.go:97:4: w.Uint32 undefined (type writer has no field or method Uint32)
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/objfile2.go:100:34: w.Offset undefined (type writer has no field or method Offset)
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/objfile2.go:104:6: w.Uint32 undefined (type writer has no field or method Uint32)
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/objfile2.go:108:4: w.Uint32 undefined (type writer has no field or method Uint32)
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/objfile2.go:111:35: w.Offset undefined (type writer has no field or method Offset)
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/objfile2.go:115:6: w.Uint32 undefined (type writer has no field or method Uint32)
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/objfile2.go:119:4: w.Uint32 undefined (type writer has no field or method Uint32)
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/objfile2.go:122:33: w.Offset undefined (type writer has no field or method Offset)
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/objfile2.go:132:31: w.Offset undefined (type writer has no field or method Offset)
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/objfile2.go:140:32: w.Offset undefined (type writer has no field or method Offset)
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/objfile2.go:143:6: w.Bytes undefined (type writer has no field or method Bytes)
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/objfile2.go:148:34: w.Offset undefined (type writer has no field or method Offset)
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/objfile2.go:152:6: w.Bytes undefined (type writer has no field or method Bytes)
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/objfile2.go:153:6: w.Bytes undefined (type writer has no field or method Bytes)
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/objfile2.go:154:6: w.Bytes undefined (type writer has no field or method Bytes)
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/objfile2.go:155:6: w.Bytes undefined (type writer has no field or method Bytes)
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/objfile2.go:157:7: w.Bytes undefined (type writer has no field or method Bytes)
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/objfile2.go:165:35: w.Offset undefined (type writer has no field or method Offset)
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/objfile2.go:168:31: w.Offset undefined (type writer has no field or method Offset)
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/objfile2.go:171:25: w.Offset undefined (type writer has no field or method Offset)
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/objfile2.go:194:4: w.AddString undefined (type *writer has no field or method AddString)
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/objfile2.go:196:5: w.AddString undefined (type *writer has no field or method AddString)
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/objfile2.go:199:5: w.AddString undefined (type *writer has no field or method AddString)
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/objfile2.go:208:5: w.AddString undefined (type *writer has no field or method AddString)
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/objfile2.go:216:6: w.AddString undefined (type *writer has no field or method AddString)
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/objfile2.go:220:6: w.AddString undefined (type *writer has no field or method AddString)
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/objfile2.go:224:5: w.AddString undefined (type *writer has no field or method AddString)
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/objfile2.go:417:7: i declared but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/objfile2.go:422:7: i declared but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/pcln.go:88:45: ctxt.Arch.MinLC undefined (type *LinkArch has no field or method MinLC)
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/pcln.go:106:44: ctxt.Arch.MinLC undefined (type *LinkArch has no field or method MinLC)
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/sym.go:57:76: arch.Name undefined (type *LinkArch has no field or method Name)
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/arm/a.out.go:33:8: could not import cmd/internal/obj (can't find import: "cmd/internal/obj")
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/arm/asm5.go:35:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/arm/obj5.go:36:2: could not import cmd/internal/sys (can't find import: "cmd/internal/sys")
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/arm64/a.out.go:33:8: could not import cmd/internal/obj (can't find import: "cmd/internal/obj")
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/arm64/asm7.go:35:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/arm64/obj7.go:36:2: could not import cmd/internal/src (can't find import: "cmd/internal/src")
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/arm64/obj7.go:37:2: could not import cmd/internal/sys (can't find import: "cmd/internal/sys")
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/mips/a.out.go:33:2: could not import cmd/internal/obj (can't find import: "cmd/internal/obj")
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/mips/asm0.go:34:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/mips/asm0.go:35:2: could not import cmd/internal/sys (can't find import: "cmd/internal/sys")
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/ppc64/a.out.go:32:8: could not import cmd/internal/obj (can't find import: "cmd/internal/obj")
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/ppc64/asm9.go:34:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/ppc64/obj9.go:35:2: could not import cmd/internal/sys (can't find import: "cmd/internal/sys")
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/riscv/anames.go:5:8: could not import cmd/internal/obj (can't find import: "cmd/internal/obj")
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/riscv/obj.go:25:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/riscv/obj.go:26:2: could not import cmd/internal/sys (can't find import: "cmd/internal/sys")
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/s390x/a.out.go:32:8: could not import cmd/internal/obj (can't find import: "cmd/internal/obj")
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/s390x/asmz.go:34:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/s390x/objz.go:35:2: could not import cmd/internal/sys (can't find import: "cmd/internal/sys")
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/wasm/a.out.go:7:8: could not import cmd/internal/obj (can't find import: "cmd/internal/obj")
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/wasm/wasmobj.go:10:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/wasm/wasmobj.go:11:2: could not import cmd/internal/sys (can't find import: "cmd/internal/sys")
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/wasm/wasmobj.go:718:11: b declared but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/wasm/wasmobj.go:724:11: b declared but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/x86/a.out.go:33:8: could not import cmd/internal/obj (can't find import: "cmd/internal/obj")
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/x86/asm6.go:35:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/x86/asm6.go:36:2: could not import cmd/internal/sys (can't find import: "cmd/internal/sys")
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/obj/x86/obj6.go:36:2: could not import cmd/internal/src (can't find import: "cmd/internal/src")
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/objfile/disasm.go:10:2: could not import cmd/internal/src (can't find import: "cmd/internal/src")
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/objfile/disasm.go:24:2: could not import golang.org/x/arch/arm/armasm (can't find import: "cmd/vendor/golang.org/x/arch/arm/armasm")
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/objfile/disasm.go:25:2: could not import golang.org/x/arch/arm64/arm64asm (can't find import: "cmd/vendor/golang.org/x/arch/arm64/arm64asm")
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/objfile/disasm.go:26:2: could not import golang.org/x/arch/ppc64/ppc64asm (can't find import: "cmd/vendor/golang.org/x/arch/ppc64/ppc64asm")
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/objfile/disasm.go:27:2: could not import golang.org/x/arch/x86/x86asm (can't find import: "cmd/vendor/golang.org/x/arch/x86/x86asm")
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/objfile/goobj.go:10:2: could not import cmd/internal/goobj (can't find import: "cmd/internal/goobj")
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/objfile/goobj.go:11:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/internal/objfile/goobj.go:12:2: could not import cmd/internal/sys (can't find import: "cmd/internal/sys")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/main.go:8:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/main.go:9:2: could not import cmd/internal/sys (can't find import: "cmd/internal/sys")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/main.go:10:2: could not import cmd/link/internal/amd64 (can't find import: "cmd/link/internal/amd64")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/main.go:11:2: could not import cmd/link/internal/arm (can't find import: "cmd/link/internal/arm")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/main.go:12:2: could not import cmd/link/internal/arm64 (can't find import: "cmd/link/internal/arm64")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/main.go:13:2: could not import cmd/link/internal/ld (can't find import: "cmd/link/internal/ld")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/main.go:14:2: could not import cmd/link/internal/mips (can't find import: "cmd/link/internal/mips")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/main.go:15:2: could not import cmd/link/internal/mips64 (can't find import: "cmd/link/internal/mips64")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/main.go:16:2: could not import cmd/link/internal/ppc64 (can't find import: "cmd/link/internal/ppc64")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/main.go:17:2: could not import cmd/link/internal/riscv64 (can't find import: "cmd/link/internal/riscv64")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/main.go:18:2: could not import cmd/link/internal/s390x (can't find import: "cmd/link/internal/s390x")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/main.go:19:2: could not import cmd/link/internal/wasm (can't find import: "cmd/link/internal/wasm")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/main.go:20:2: could not import cmd/link/internal/x86 (can't find import: "cmd/link/internal/x86")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/dwarf_test.go:9:11: could not import cmd/internal/dwarf (can't find import: "cmd/internal/dwarf")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/dwarf_test.go:10:2: could not import cmd/internal/objfile (can't find import: "cmd/internal/objfile")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/amd64/asm.go:34:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/amd64/asm.go:35:2: could not import cmd/internal/sys (can't find import: "cmd/internal/sys")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/amd64/asm.go:36:2: could not import cmd/link/internal/ld (can't find import: "cmd/link/internal/ld")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/amd64/asm.go:37:2: could not import cmd/link/internal/loader (can't find import: "cmd/link/internal/loader")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/amd64/asm.go:38:2: could not import cmd/link/internal/sym (can't find import: "cmd/link/internal/sym")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/arm/asm.go:34:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/arm/asm.go:35:2: could not import cmd/internal/sys (can't find import: "cmd/internal/sys")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/arm/asm.go:36:2: could not import cmd/link/internal/ld (can't find import: "cmd/link/internal/ld")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/arm/asm.go:37:2: could not import cmd/link/internal/loader (can't find import: "cmd/link/internal/loader")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/arm/asm.go:38:2: could not import cmd/link/internal/sym (can't find import: "cmd/link/internal/sym")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/arm64/asm.go:34:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/arm64/asm.go:35:2: could not import cmd/internal/sys (can't find import: "cmd/internal/sys")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/arm64/asm.go:36:2: could not import cmd/link/internal/ld (can't find import: "cmd/link/internal/ld")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/arm64/asm.go:37:2: could not import cmd/link/internal/loader (can't find import: "cmd/link/internal/loader")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/arm64/asm.go:38:2: could not import cmd/link/internal/sym (can't find import: "cmd/link/internal/sym")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/ar.go:34:2: could not import cmd/internal/bio (can't find import: "cmd/internal/bio")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/ar.go:35:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/ar.go:36:2: could not import cmd/link/internal/sym (can't find import: "cmd/link/internal/sym")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/config.go:9:2: could not import cmd/internal/sys (can't find import: "cmd/internal/sys")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/data.go:36:2: could not import cmd/internal/gcprog (can't find import: "cmd/internal/gcprog")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/data.go:39:2: could not import cmd/link/internal/loader (can't find import: "cmd/link/internal/loader")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/deadcode.go:9:2: could not import cmd/internal/goobj2 (can't find import: "cmd/internal/goobj2")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/dwarf.go:17:2: could not import cmd/internal/dwarf (can't find import: "cmd/internal/dwarf")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/dwarf.go:18:2: could not import cmd/internal/obj (can't find import: "cmd/internal/obj")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/dwarf.go:20:2: could not import cmd/internal/src (can't find import: "cmd/internal/src")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/lib.go:40:2: could not import cmd/link/internal/loadelf (can't find import: "cmd/link/internal/loadelf")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/lib.go:42:2: could not import cmd/link/internal/loadmacho (can't find import: "cmd/link/internal/loadmacho")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/lib.go:43:2: could not import cmd/link/internal/loadpe (can't find import: "cmd/link/internal/loadpe")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/lib.go:44:2: could not import cmd/link/internal/loadxcoff (can't find import: "cmd/link/internal/loadxcoff")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/main.go:38:2: could not import cmd/link/internal/benchmark (can't find import: "cmd/link/internal/benchmark")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/dwarf_test.go:9:13: could not import cmd/internal/objfile (can't find import: "cmd/internal/objfile")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/data.go:179:11: st.err.Errorf undefined (type *ErrorReporter has no field or method Errorf)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/data.go:217:12: st.err.Errorf undefined (type *ErrorReporter has no field or method Errorf)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/data.go:221:11: st.err.Errorf undefined (type *ErrorReporter has no field or method Errorf)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/data.go:248:12: st.err.Errorf undefined (type *ErrorReporter has no field or method Errorf)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/data.go:276:12: st.err.Errorf undefined (type *ErrorReporter has no field or method Errorf)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/data.go:344:13: st.err.Errorf undefined (type *ErrorReporter has no field or method Errorf)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/data.go:362:13: st.err.Errorf undefined (type *ErrorReporter has no field or method Errorf)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/data.go:392:12: st.err.Errorf undefined (type *ErrorReporter has no field or method Errorf)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/data.go:397:12: st.err.Errorf undefined (type *ErrorReporter has no field or method Errorf)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/data.go:476:13: st.err.Errorf undefined (type *ErrorReporter has no field or method Errorf)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/data.go:506:13: st.err.Errorf undefined (type *ErrorReporter has no field or method Errorf)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/data.go:523:12: st.err.Errorf undefined (type *ErrorReporter has no field or method Errorf)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/data.go:526:12: st.err.Errorf undefined (type *ErrorReporter has no field or method Errorf)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/data.go:556:11: st.err.Errorf undefined (type *ErrorReporter has no field or method Errorf)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/data.go:561:12: st.err.Errorf undefined (type *ErrorReporter has no field or method Errorf)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/data.go:567:13: st.err.Errorf undefined (type *ErrorReporter has no field or method Errorf)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/data.go:571:13: st.err.Errorf undefined (type *ErrorReporter has no field or method Errorf)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/errors.go:66:13: reporter.Errorf undefined (type *ErrorReporter has no field or method Errorf)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/errors.go:68:13: reporter.Errorf undefined (type *ErrorReporter has no field or method Errorf)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/errors.go:70:13: reporter.Errorf undefined (type *ErrorReporter has no field or method Errorf)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/pcln.go:111:3: n declared but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/dwarf_test.go:49:10: f.Close undefined (type *builtFile has no field or method Close)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/dwarf_test.go:51:18: f.DWARF undefined (type *builtFile has no field or method DWARF)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/dwarf_test.go:182:10: f.Close undefined (type *builtFile has no field or method Close)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/dwarf_test.go:184:14: f.DWARF undefined (type *builtFile has no field or method DWARF)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/dwarf_test.go:260:10: f.Close undefined (type *builtFile has no field or method Close)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/dwarf_test.go:261:14: f.DWARF undefined (type *builtFile has no field or method DWARF)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/dwarf_test.go:309:10: f.Close undefined (type *builtFile has no field or method Close)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/dwarf_test.go:311:14: f.DWARF undefined (type *builtFile has no field or method DWARF)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/dwarf_test.go:358:14: f.DWARF undefined (type *builtFile has no field or method DWARF)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/dwarf_test.go:665:14: f.DWARF undefined (type *builtFile has no field or method DWARF)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/dwarf_test.go:796:14: f.DWARF undefined (type *builtFile has no field or method DWARF)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/dwarf_test.go:987:20: f.Symbols undefined (type *builtFile has no field or method Symbols)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/dwarf_test.go:1002:14: f.DWARF undefined (type *builtFile has no field or method DWARF)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/dwarf_test.go:1067:10: f.Close undefined (type *builtFile has no field or method Close)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/dwarf_test.go:1069:17: f.DWARF undefined (type *builtFile has no field or method DWARF)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/dwarf_test.go:1178:10: f.Close undefined (type *builtFile has no field or method Close)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/dwarf_test.go:1180:14: f.DWARF undefined (type *builtFile has no field or method DWARF)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/dwarf_test.go:1206:17: f.Symbols undefined (type *builtFile has no field or method Symbols)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/dwarf_test.go:1239:10: f.Close undefined (type *builtFile has no field or method Close)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/dwarf_test.go:1241:14: f.DWARF undefined (type *builtFile has no field or method DWARF)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/dwarf_test.go:1305:4: f.Close undefined (type *builtFile has no field or method Close)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/dwarf_test.go:1408:15: f.DWARF undefined (type *builtFile has no field or method DWARF)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/dwarf_test.go:1451:4: f.Close undefined (type *builtFile has no field or method Close)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/dwarf_test.go:1514:17: f.Symbols undefined (type *builtFile has no field or method Symbols)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/dwarf_test.go:1534:15: f.DWARF undefined (type *builtFile has no field or method DWARF)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/dwarf_test.go:1591:4: f.Close undefined (type *builtFile has no field or method Close)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/issue33808_test.go:40:4: f.Close undefined (type *builtFile has no field or method Close)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ld/issue33808_test.go:42:17: f.Symbols undefined (type *builtFile has no field or method Symbols)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loadelf/ldelf.go:10:2: could not import cmd/internal/bio (can't find import: "cmd/internal/bio")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loadelf/ldelf.go:11:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loadelf/ldelf.go:12:2: could not import cmd/internal/sys (can't find import: "cmd/internal/sys")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loadelf/ldelf.go:13:2: could not import cmd/link/internal/loader (can't find import: "cmd/link/internal/loader")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loadelf/ldelf.go:14:2: could not import cmd/link/internal/sym (can't find import: "cmd/link/internal/sym")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:9:2: could not import cmd/internal/bio (can't find import: "cmd/internal/bio")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:10:2: could not import cmd/internal/goobj2 (can't find import: "cmd/internal/goobj2")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:11:2: could not import cmd/internal/obj (can't find import: "cmd/internal/obj")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:12:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:13:2: could not import cmd/internal/sys (can't find import: "cmd/internal/sys")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:14:2: could not import cmd/link/internal/sym (can't find import: "cmd/link/internal/sym")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:440:17: oldr.Sym undefined (type *oReader has no field or method Sym)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:444:17: r.DataSize undefined (type *oReader has no field or method DataSize)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:448:32: oldr.DataSize undefined (type *oReader has no field or method DataSize)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:603:12: r.Pkg undefined (type *oReader has no field or method Pkg)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:625:9: r.Data undefined (type *oReader has no field or method Data)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:627:15: rdup.Data undefined (type *oReader has no field or method Data)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:674:11: r.Sym undefined (type *oReader has no field or method Sym)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:684:27: r.Sym undefined (type *oReader has no field or method Sym)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:694:24: r.Sym undefined (type *oReader has no field or method Sym)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:707:50: r.Sym undefined (type *oReader has no field or method Sym)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:719:11: r.Sym undefined (type *oReader has no field or method Sym)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:729:17: r.Sym undefined (type *oReader has no field or method Sym)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:839:12: r.Sym undefined (type *oReader has no field or method Sym)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:864:13: r.Flags undefined (type *oReader has no field or method Flags, but does have flags)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:989:31: l.objs[pp.objidx].r.ReadOnly undefined (type *oReader has no field or method ReadOnly)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:994:11: r.ReadOnly undefined (type *oReader has no field or method ReadOnly)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:1110:11: r.Data undefined (type *oReader has no field or method Data)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:1428:12: r.Auxs undefined (type *oReader has no field or method Auxs)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:1511:11: r.NAux undefined (type *oReader has no field or method NAux)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:1520:12: r.NAux undefined (type *oReader has no field or method NAux)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:1523:16: r.Aux undefined (type *oReader has no field or method Aux)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:1543:12: r.Auxs undefined (type *oReader has no field or method Auxs)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:1712:10: r.Relocs undefined (type *oReader has no field or method Relocs)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:1769:14: fi.r.BytesAt undefined (type *oReader has no field or method BytesAt)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:1769:27: fi.r.PcdataBase undefined (type *oReader has no field or method PcdataBase)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:1774:14: fi.r.BytesAt undefined (type *oReader has no field or method BytesAt)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:1774:27: fi.r.PcdataBase undefined (type *oReader has no field or method PcdataBase)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:1779:14: fi.r.BytesAt undefined (type *oReader has no field or method BytesAt)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:1779:27: fi.r.PcdataBase undefined (type *oReader has no field or method PcdataBase)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:1793:14: fi.r.BytesAt undefined (type *oReader has no field or method BytesAt)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:1793:27: fi.r.PcdataBase undefined (type *oReader has no field or method PcdataBase)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:1808:14: fi.r.BytesAt undefined (type *oReader has no field or method BytesAt)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:1808:27: fi.r.PcdataBase undefined (type *oReader has no field or method PcdataBase)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:1900:12: r.Auxs undefined (type *oReader has no field or method Auxs)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:1905:11: r.Data undefined (type *oReader has no field or method Data)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:1955:12: r.NSym undefined (type *oReader has no field or method NSym)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:1956:18: r.NNonpkgdef undefined (type *oReader has no field or method NNonpkgdef)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:1971:13: r.Sym undefined (type *oReader has no field or method Sym)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:2018:12: r.NSym undefined (type *oReader has no field or method NSym)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:2018:23: r.NNonpkgdef undefined (type *oReader has no field or method NNonpkgdef)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:2019:19: r.NNonpkgref undefined (type *oReader has no field or method NNonpkgref)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:2020:13: r.Sym undefined (type *oReader has no field or method Sym)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:2498:19: r.NSym undefined (type *oReader has no field or method NSym)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:2498:28: r.NNonpkgdef undefined (type *oReader has no field or method NNonpkgdef)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:2503:13: r.Sym undefined (type *oReader has no field or method Sym)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:2527:12: r.NReloc undefined (type *oReader has no field or method NReloc)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:2552:12: r.Sym undefined (type *oReader has no field or method Sym)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:2567:13: r.NSym undefined (type *oReader has no field or method NSym)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:2567:24: r.NNonpkgdef undefined (type *oReader has no field or method NNonpkgdef)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:2577:25: rel.Off undefined (type Reloc2 has no field or method Off)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:2577:36: rel.Siz undefined (type Reloc2 has no field or method Siz)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:2577:50: rel.Add undefined (type Reloc2 has no field or method Add)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:2582:15: r.Data undefined (type *oReader has no field or method Data)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:2587:12: r.Auxs undefined (type *oReader has no field or method Auxs)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:2737:19: r.NSym undefined (type *oReader has no field or method NSym)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:2737:28: r.NNonpkgdef undefined (type *oReader has no field or method NNonpkgdef)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:2754:13: r.Sym undefined (type *oReader has no field or method Sym)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:2773:13: r.Auxs undefined (type *oReader has no field or method Auxs)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:2802:11: r.Siz undefined (type Reloc2 has no field or method Siz)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:2824:12: r.Off undefined (type Reloc2 has no field or method Off)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:2827:12: r.Add undefined (type Reloc2 has no field or method Add)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:2861:14: sr.Off undefined (type Reloc2 has no field or method Off)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:2862:14: sr.Siz undefined (type Reloc2 has no field or method Siz)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:2865:14: sr.Add undefined (type Reloc2 has no field or method Add)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:2967:20: r.NSym undefined (type *oReader has no field or method NSym)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:2967:29: r.NNonpkgdef undefined (type *oReader has no field or method NNonpkgdef)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader.go:2972:14: r.Sym undefined (type *oReader has no field or method Sym)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader_test.go:227:7: r1.Off undefined (type Reloc2 has no field or method Off)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader_test.go:228:7: r1.Add undefined (type Reloc2 has no field or method Add)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loader/loader_test.go:229:7: r1.Siz undefined (type Reloc2 has no field or method Siz)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loadmacho/ldmacho.go:10:2: could not import cmd/internal/bio (can't find import: "cmd/internal/bio")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loadmacho/ldmacho.go:11:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loadmacho/ldmacho.go:12:2: could not import cmd/internal/sys (can't find import: "cmd/internal/sys")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loadmacho/ldmacho.go:13:2: could not import cmd/link/internal/loader (can't find import: "cmd/link/internal/loader")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loadmacho/ldmacho.go:14:2: could not import cmd/link/internal/sym (can't find import: "cmd/link/internal/sym")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loadpe/ldpe.go:9:2: could not import cmd/internal/bio (can't find import: "cmd/internal/bio")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loadpe/ldpe.go:10:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loadpe/ldpe.go:11:2: could not import cmd/internal/sys (can't find import: "cmd/internal/sys")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loadpe/ldpe.go:12:2: could not import cmd/link/internal/loader (can't find import: "cmd/link/internal/loader")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loadpe/ldpe.go:13:2: could not import cmd/link/internal/sym (can't find import: "cmd/link/internal/sym")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loadpe/ldpe.go:140:14: f.Read undefined (type *peBiobuf has no field or method Read)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loadxcoff/ldxcoff.go:9:2: could not import cmd/internal/bio (can't find import: "cmd/internal/bio")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loadxcoff/ldxcoff.go:10:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loadxcoff/ldxcoff.go:11:2: could not import cmd/internal/sys (can't find import: "cmd/internal/sys")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loadxcoff/ldxcoff.go:12:2: could not import cmd/link/internal/loader (can't find import: "cmd/link/internal/loader")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loadxcoff/ldxcoff.go:13:2: could not import cmd/link/internal/sym (can't find import: "cmd/link/internal/sym")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/loadxcoff/ldxcoff.go:35:14: f.Read undefined (type *xcoffBiobuf has no field or method Read)
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/mips/asm.go:34:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/mips/asm.go:35:2: could not import cmd/internal/sys (can't find import: "cmd/internal/sys")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/mips/asm.go:36:2: could not import cmd/link/internal/ld (can't find import: "cmd/link/internal/ld")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/mips/asm.go:37:2: could not import cmd/link/internal/loader (can't find import: "cmd/link/internal/loader")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/mips/asm.go:38:2: could not import cmd/link/internal/sym (can't find import: "cmd/link/internal/sym")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/mips64/asm.go:34:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/mips64/asm.go:35:2: could not import cmd/internal/sys (can't find import: "cmd/internal/sys")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/mips64/asm.go:36:2: could not import cmd/link/internal/ld (can't find import: "cmd/link/internal/ld")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/mips64/asm.go:37:2: could not import cmd/link/internal/loader (can't find import: "cmd/link/internal/loader")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/mips64/asm.go:38:2: could not import cmd/link/internal/sym (can't find import: "cmd/link/internal/sym")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ppc64/asm.go:34:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ppc64/asm.go:35:2: could not import cmd/internal/sys (can't find import: "cmd/internal/sys")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ppc64/asm.go:36:2: could not import cmd/link/internal/ld (can't find import: "cmd/link/internal/ld")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ppc64/asm.go:37:2: could not import cmd/link/internal/loader (can't find import: "cmd/link/internal/loader")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/ppc64/asm.go:38:2: could not import cmd/link/internal/sym (can't find import: "cmd/link/internal/sym")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/riscv64/asm.go:8:2: could not import cmd/internal/obj/riscv (can't find import: "cmd/internal/obj/riscv")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/riscv64/asm.go:9:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/riscv64/asm.go:10:2: could not import cmd/internal/sys (can't find import: "cmd/internal/sys")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/riscv64/asm.go:11:2: could not import cmd/link/internal/ld (can't find import: "cmd/link/internal/ld")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/riscv64/asm.go:12:2: could not import cmd/link/internal/loader (can't find import: "cmd/link/internal/loader")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/riscv64/asm.go:13:2: could not import cmd/link/internal/sym (can't find import: "cmd/link/internal/sym")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/s390x/asm.go:34:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/s390x/asm.go:35:2: could not import cmd/internal/sys (can't find import: "cmd/internal/sys")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/s390x/asm.go:36:2: could not import cmd/link/internal/ld (can't find import: "cmd/link/internal/ld")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/s390x/asm.go:37:2: could not import cmd/link/internal/loader (can't find import: "cmd/link/internal/loader")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/s390x/asm.go:38:2: could not import cmd/link/internal/sym (can't find import: "cmd/link/internal/sym")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/sym/compilation_unit.go:7:8: could not import cmd/internal/dwarf (can't find import: "cmd/internal/dwarf")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/sym/library.go:7:8: could not import cmd/internal/goobj2 (can't find import: "cmd/internal/goobj2")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/sym/reloc.go:8:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/sym/reloc.go:9:2: could not import cmd/internal/sys (can't find import: "cmd/internal/sys")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/sym/symbol.go:8:2: could not import cmd/internal/obj (can't find import: "cmd/internal/obj")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/wasm/asm.go:9:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/wasm/asm.go:10:2: could not import cmd/link/internal/ld (can't find import: "cmd/link/internal/ld")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/wasm/asm.go:11:2: could not import cmd/link/internal/loader (can't find import: "cmd/link/internal/loader")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/wasm/asm.go:12:2: could not import cmd/link/internal/sym (can't find import: "cmd/link/internal/sym")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/wasm/obj.go:8:2: could not import cmd/internal/sys (can't find import: "cmd/internal/sys")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/x86/asm.go:34:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/x86/asm.go:35:2: could not import cmd/internal/sys (can't find import: "cmd/internal/sys")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/x86/asm.go:36:2: could not import cmd/link/internal/ld (can't find import: "cmd/link/internal/ld")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/x86/asm.go:37:2: could not import cmd/link/internal/loader (can't find import: "cmd/link/internal/loader")
+    stdlib_test.go:233: /usr/local/go/src/cmd/link/internal/x86/asm.go:38:2: could not import cmd/link/internal/sym (can't find import: "cmd/link/internal/sym")
+    stdlib_test.go:233: /usr/local/go/src/cmd/nm/nm.go:15:2: could not import cmd/internal/objfile (can't find import: "cmd/internal/objfile")
+    stdlib_test.go:233: /usr/local/go/src/cmd/objdump/main.go:43:2: could not import cmd/internal/objfile (can't find import: "cmd/internal/objfile")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/main.go:10:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/main.go:11:2: could not import cmd/internal/sys (can't find import: "cmd/internal/sys")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/main.go:12:2: could not import cmd/oldlink/internal/amd64 (can't find import: "cmd/oldlink/internal/amd64")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/main.go:13:2: could not import cmd/oldlink/internal/arm (can't find import: "cmd/oldlink/internal/arm")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/main.go:14:2: could not import cmd/oldlink/internal/arm64 (can't find import: "cmd/oldlink/internal/arm64")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/main.go:15:2: could not import cmd/oldlink/internal/ld (can't find import: "cmd/oldlink/internal/ld")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/main.go:16:2: could not import cmd/oldlink/internal/mips (can't find import: "cmd/oldlink/internal/mips")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/main.go:17:2: could not import cmd/oldlink/internal/mips64 (can't find import: "cmd/oldlink/internal/mips64")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/main.go:18:2: could not import cmd/oldlink/internal/ppc64 (can't find import: "cmd/oldlink/internal/ppc64")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/main.go:19:2: could not import cmd/oldlink/internal/riscv64 (can't find import: "cmd/oldlink/internal/riscv64")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/main.go:20:2: could not import cmd/oldlink/internal/s390x (can't find import: "cmd/oldlink/internal/s390x")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/main.go:21:2: could not import cmd/oldlink/internal/wasm (can't find import: "cmd/oldlink/internal/wasm")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/main.go:22:2: could not import cmd/oldlink/internal/x86 (can't find import: "cmd/oldlink/internal/x86")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/amd64/asm.go:34:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/amd64/asm.go:35:2: could not import cmd/internal/sys (can't find import: "cmd/internal/sys")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/amd64/asm.go:36:2: could not import cmd/oldlink/internal/ld (can't find import: "cmd/oldlink/internal/ld")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/amd64/asm.go:37:2: could not import cmd/oldlink/internal/sym (can't find import: "cmd/oldlink/internal/sym")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/arm/asm.go:34:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/arm/asm.go:35:2: could not import cmd/internal/sys (can't find import: "cmd/internal/sys")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/arm/asm.go:36:2: could not import cmd/oldlink/internal/ld (can't find import: "cmd/oldlink/internal/ld")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/arm/asm.go:37:2: could not import cmd/oldlink/internal/sym (can't find import: "cmd/oldlink/internal/sym")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/arm64/asm.go:34:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/arm64/asm.go:35:2: could not import cmd/internal/sys (can't find import: "cmd/internal/sys")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/arm64/asm.go:36:2: could not import cmd/oldlink/internal/ld (can't find import: "cmd/oldlink/internal/ld")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/arm64/asm.go:37:2: could not import cmd/oldlink/internal/sym (can't find import: "cmd/oldlink/internal/sym")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/ld/ar.go:34:2: could not import cmd/internal/bio (can't find import: "cmd/internal/bio")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/ld/ar.go:35:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/ld/ar.go:36:2: could not import cmd/oldlink/internal/sym (can't find import: "cmd/oldlink/internal/sym")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/ld/config.go:9:2: could not import cmd/internal/sys (can't find import: "cmd/internal/sys")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/ld/data.go:37:2: could not import cmd/internal/gcprog (can't find import: "cmd/internal/gcprog")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/ld/deadcode2.go:9:2: could not import cmd/internal/dwarf (can't find import: "cmd/internal/dwarf")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/ld/deadcode2.go:12:2: could not import cmd/oldlink/internal/loader (can't find import: "cmd/oldlink/internal/loader")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/ld/dwarf.go:18:2: could not import cmd/internal/obj (can't find import: "cmd/internal/obj")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/ld/dwarf.go:20:2: could not import cmd/internal/src (can't find import: "cmd/internal/src")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/ld/lib.go:40:2: could not import cmd/oldlink/internal/loadelf (can't find import: "cmd/oldlink/internal/loadelf")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/ld/lib.go:42:2: could not import cmd/oldlink/internal/loadmacho (can't find import: "cmd/oldlink/internal/loadmacho")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/ld/lib.go:43:2: could not import cmd/oldlink/internal/loadpe (can't find import: "cmd/oldlink/internal/loadpe")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/ld/lib.go:44:2: could not import cmd/oldlink/internal/loadxcoff (can't find import: "cmd/oldlink/internal/loadxcoff")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/ld/lib.go:45:2: could not import cmd/oldlink/internal/objfile (can't find import: "cmd/oldlink/internal/objfile")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/ld/pcln.go:67:3: n declared but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/loadelf/ldelf.go:10:2: could not import cmd/internal/bio (can't find import: "cmd/internal/bio")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/loadelf/ldelf.go:11:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/loadelf/ldelf.go:12:2: could not import cmd/internal/sys (can't find import: "cmd/internal/sys")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/loadelf/ldelf.go:13:2: could not import cmd/oldlink/internal/loader (can't find import: "cmd/oldlink/internal/loader")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/loadelf/ldelf.go:14:2: could not import cmd/oldlink/internal/sym (can't find import: "cmd/oldlink/internal/sym")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/loader/loader.go:9:2: could not import cmd/internal/bio (can't find import: "cmd/internal/bio")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/loader/loader.go:10:2: could not import cmd/internal/dwarf (can't find import: "cmd/internal/dwarf")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/loader/loader.go:11:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/loader/loader.go:12:2: could not import cmd/internal/sys (can't find import: "cmd/internal/sys")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/loader/loader.go:13:2: could not import cmd/oldlink/internal/sym (can't find import: "cmd/oldlink/internal/sym")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/loadmacho/ldmacho.go:10:2: could not import cmd/internal/bio (can't find import: "cmd/internal/bio")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/loadmacho/ldmacho.go:11:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/loadmacho/ldmacho.go:12:2: could not import cmd/internal/sys (can't find import: "cmd/internal/sys")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/loadmacho/ldmacho.go:13:2: could not import cmd/oldlink/internal/loader (can't find import: "cmd/oldlink/internal/loader")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/loadmacho/ldmacho.go:14:2: could not import cmd/oldlink/internal/sym (can't find import: "cmd/oldlink/internal/sym")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/loadpe/ldpe.go:9:2: could not import cmd/internal/bio (can't find import: "cmd/internal/bio")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/loadpe/ldpe.go:10:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/loadpe/ldpe.go:11:2: could not import cmd/internal/sys (can't find import: "cmd/internal/sys")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/loadpe/ldpe.go:12:2: could not import cmd/oldlink/internal/loader (can't find import: "cmd/oldlink/internal/loader")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/loadpe/ldpe.go:13:2: could not import cmd/oldlink/internal/sym (can't find import: "cmd/oldlink/internal/sym")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/loadpe/ldpe.go:141:14: f.Read undefined (type *peBiobuf has no field or method Read)
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/loadxcoff/ldxcoff.go:9:2: could not import cmd/internal/bio (can't find import: "cmd/internal/bio")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/loadxcoff/ldxcoff.go:10:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/loadxcoff/ldxcoff.go:11:2: could not import cmd/internal/sys (can't find import: "cmd/internal/sys")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/loadxcoff/ldxcoff.go:12:2: could not import cmd/oldlink/internal/loader (can't find import: "cmd/oldlink/internal/loader")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/loadxcoff/ldxcoff.go:13:2: could not import cmd/oldlink/internal/sym (can't find import: "cmd/oldlink/internal/sym")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/loadxcoff/ldxcoff.go:35:14: f.Read undefined (type *xcoffBiobuf has no field or method Read)
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/mips/asm.go:34:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/mips/asm.go:35:2: could not import cmd/internal/sys (can't find import: "cmd/internal/sys")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/mips/asm.go:36:2: could not import cmd/oldlink/internal/ld (can't find import: "cmd/oldlink/internal/ld")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/mips/asm.go:37:2: could not import cmd/oldlink/internal/sym (can't find import: "cmd/oldlink/internal/sym")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/mips64/asm.go:34:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/mips64/asm.go:35:2: could not import cmd/internal/sys (can't find import: "cmd/internal/sys")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/mips64/asm.go:36:2: could not import cmd/oldlink/internal/ld (can't find import: "cmd/oldlink/internal/ld")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/mips64/asm.go:37:2: could not import cmd/oldlink/internal/sym (can't find import: "cmd/oldlink/internal/sym")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/objfile/objfile.go:14:2: could not import cmd/internal/bio (can't find import: "cmd/internal/bio")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/objfile/objfile.go:15:2: could not import cmd/internal/dwarf (can't find import: "cmd/internal/dwarf")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/objfile/objfile.go:16:2: could not import cmd/internal/goobj2 (can't find import: "cmd/internal/goobj2")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/objfile/objfile.go:17:2: could not import cmd/internal/obj (can't find import: "cmd/internal/obj")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/objfile/objfile.go:18:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/objfile/objfile.go:19:2: could not import cmd/internal/sys (can't find import: "cmd/internal/sys")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/objfile/objfile.go:20:2: could not import cmd/oldlink/internal/sym (can't find import: "cmd/oldlink/internal/sym")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/ppc64/asm.go:34:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/ppc64/asm.go:35:2: could not import cmd/internal/sys (can't find import: "cmd/internal/sys")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/ppc64/asm.go:36:2: could not import cmd/oldlink/internal/ld (can't find import: "cmd/oldlink/internal/ld")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/ppc64/asm.go:37:2: could not import cmd/oldlink/internal/sym (can't find import: "cmd/oldlink/internal/sym")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/riscv64/asm.go:8:2: could not import cmd/internal/obj/riscv (can't find import: "cmd/internal/obj/riscv")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/riscv64/asm.go:9:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/riscv64/asm.go:10:2: could not import cmd/internal/sys (can't find import: "cmd/internal/sys")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/riscv64/asm.go:11:2: could not import cmd/oldlink/internal/ld (can't find import: "cmd/oldlink/internal/ld")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/riscv64/asm.go:12:2: could not import cmd/oldlink/internal/sym (can't find import: "cmd/oldlink/internal/sym")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/s390x/asm.go:34:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/s390x/asm.go:35:2: could not import cmd/internal/sys (can't find import: "cmd/internal/sys")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/s390x/asm.go:36:2: could not import cmd/oldlink/internal/ld (can't find import: "cmd/oldlink/internal/ld")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/s390x/asm.go:37:2: could not import cmd/oldlink/internal/sym (can't find import: "cmd/oldlink/internal/sym")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/sym/compilation_unit.go:7:8: could not import cmd/internal/dwarf (can't find import: "cmd/internal/dwarf")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/sym/reloc.go:8:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/sym/reloc.go:9:2: could not import cmd/internal/sys (can't find import: "cmd/internal/sys")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/sym/symbol.go:8:2: could not import cmd/internal/obj (can't find import: "cmd/internal/obj")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/wasm/asm.go:9:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/wasm/asm.go:10:2: could not import cmd/oldlink/internal/ld (can't find import: "cmd/oldlink/internal/ld")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/wasm/asm.go:11:2: could not import cmd/oldlink/internal/sym (can't find import: "cmd/oldlink/internal/sym")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/wasm/obj.go:8:2: could not import cmd/internal/sys (can't find import: "cmd/internal/sys")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/x86/asm.go:34:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/x86/asm.go:35:2: could not import cmd/internal/sys (can't find import: "cmd/internal/sys")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/x86/asm.go:36:2: could not import cmd/oldlink/internal/ld (can't find import: "cmd/oldlink/internal/ld")
+    stdlib_test.go:233: /usr/local/go/src/cmd/oldlink/internal/x86/asm.go:37:2: could not import cmd/oldlink/internal/sym (can't find import: "cmd/oldlink/internal/sym")
+    stdlib_test.go:233: /usr/local/go/src/cmd/pprof/pprof.go:26:2: could not import cmd/internal/objfile (can't find import: "cmd/internal/objfile")
+    stdlib_test.go:233: /usr/local/go/src/cmd/pprof/pprof.go:28:2: could not import github.com/google/pprof/driver (can't find import: "cmd/vendor/github.com/google/pprof/driver")
+    stdlib_test.go:233: /usr/local/go/src/cmd/pprof/pprof.go:29:2: could not import github.com/google/pprof/profile (can't find import: "cmd/vendor/github.com/google/pprof/profile")
+    stdlib_test.go:233: /usr/local/go/src/cmd/pprof/readlineui.go:21:2: could not import golang.org/x/crypto/ssh/terminal (can't find import: "cmd/vendor/golang.org/x/crypto/ssh/terminal")
+    stdlib_test.go:233: /usr/local/go/src/cmd/test2json/main.go:89:2: could not import cmd/internal/test2json (can't find import: "cmd/internal/test2json")
+    stdlib_test.go:233: /usr/local/go/src/cmd/trace/main.go:9:2: could not import cmd/internal/browser (can't find import: "cmd/internal/browser")
+    stdlib_test.go:233: /usr/local/go/src/cmd/trace/pprof.go:24:2: could not import github.com/google/pprof/profile (can't find import: "cmd/vendor/github.com/google/pprof/profile")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/github.com/google/pprof/driver/driver.go:24:17: could not import github.com/google/pprof/internal/driver (can't find import: "cmd/vendor/github.com/google/pprof/internal/driver")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/github.com/google/pprof/driver/driver.go:25:2: could not import github.com/google/pprof/internal/plugin (can't find import: "cmd/vendor/github.com/google/pprof/internal/plugin")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/github.com/google/pprof/driver/driver.go:26:2: could not import github.com/google/pprof/profile (can't find import: "cmd/vendor/github.com/google/pprof/profile")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/github.com/google/pprof/internal/binutils/addr2liner.go:26:2: could not import github.com/google/pprof/internal/plugin (can't find import: "cmd/vendor/github.com/google/pprof/internal/plugin")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/github.com/google/pprof/internal/binutils/binutils.go:32:2: could not import github.com/google/pprof/internal/elfexec (can't find import: "cmd/vendor/github.com/google/pprof/internal/elfexec")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/github.com/google/pprof/internal/binutils/disasm.go:24:2: could not import github.com/ianlancetaylor/demangle (can't find import: "cmd/vendor/github.com/ianlancetaylor/demangle")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/github.com/google/pprof/internal/driver/cli.go:23:2: could not import github.com/google/pprof/internal/binutils (can't find import: "cmd/vendor/github.com/google/pprof/internal/binutils")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/github.com/google/pprof/internal/driver/cli.go:24:2: could not import github.com/google/pprof/internal/plugin (can't find import: "cmd/vendor/github.com/google/pprof/internal/plugin")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/github.com/google/pprof/internal/driver/commands.go:30:2: could not import github.com/google/pprof/internal/report (can't find import: "cmd/vendor/github.com/google/pprof/internal/report")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/github.com/google/pprof/internal/driver/driver.go:30:2: could not import github.com/google/pprof/profile (can't find import: "cmd/vendor/github.com/google/pprof/profile")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/github.com/google/pprof/internal/driver/driver_focus.go:23:2: could not import github.com/google/pprof/internal/measurement (can't find import: "cmd/vendor/github.com/google/pprof/internal/measurement")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/github.com/google/pprof/internal/driver/flamegraph.go:23:2: could not import github.com/google/pprof/internal/graph (can't find import: "cmd/vendor/github.com/google/pprof/internal/graph")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/github.com/google/pprof/internal/driver/options.go:26:2: could not import github.com/google/pprof/internal/symbolizer (can't find import: "cmd/vendor/github.com/google/pprof/internal/symbolizer")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/github.com/google/pprof/internal/driver/options.go:27:2: could not import github.com/google/pprof/internal/transport (can't find import: "cmd/vendor/github.com/google/pprof/internal/transport")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/github.com/google/pprof/internal/driver/svg.go:21:2: could not import github.com/google/pprof/third_party/svgpan (can't find import: "cmd/vendor/github.com/google/pprof/third_party/svgpan")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/github.com/google/pprof/internal/driver/webhtml.go:20:2: could not import github.com/google/pprof/third_party/d3 (can't find import: "cmd/vendor/github.com/google/pprof/third_party/d3")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/github.com/google/pprof/internal/driver/webhtml.go:21:2: could not import github.com/google/pprof/third_party/d3flamegraph (can't find import: "cmd/vendor/github.com/google/pprof/third_party/d3flamegraph")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/github.com/google/pprof/internal/driver/fetch.go:353:3: src declared but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/github.com/google/pprof/internal/driver/cli.go:23:2: "github.com/google/pprof/internal/binutils" imported but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/github.com/google/pprof/internal/graph/dotgraph.go:24:2: could not import github.com/google/pprof/internal/measurement (can't find import: "cmd/vendor/github.com/google/pprof/internal/measurement")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/github.com/google/pprof/internal/graph/graph.go:27:2: could not import github.com/google/pprof/profile (can't find import: "cmd/vendor/github.com/google/pprof/profile")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/github.com/google/pprof/internal/measurement/measurement.go:24:2: could not import github.com/google/pprof/profile (can't find import: "cmd/vendor/github.com/google/pprof/profile")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/github.com/google/pprof/internal/plugin/plugin.go:24:2: could not import github.com/google/pprof/profile (can't find import: "cmd/vendor/github.com/google/pprof/profile")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/github.com/google/pprof/internal/report/report.go:30:2: could not import github.com/google/pprof/internal/graph (can't find import: "cmd/vendor/github.com/google/pprof/internal/graph")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/github.com/google/pprof/internal/report/report.go:31:2: could not import github.com/google/pprof/internal/measurement (can't find import: "cmd/vendor/github.com/google/pprof/internal/measurement")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/github.com/google/pprof/internal/report/report.go:32:2: could not import github.com/google/pprof/internal/plugin (can't find import: "cmd/vendor/github.com/google/pprof/internal/plugin")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/github.com/google/pprof/internal/report/report.go:33:2: could not import github.com/google/pprof/profile (can't find import: "cmd/vendor/github.com/google/pprof/profile")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/github.com/google/pprof/internal/report/report.go:347:3: s declared but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/github.com/google/pprof/internal/report/report.go:895:42: s.PrintableName undefined (type stk has no field or method PrintableName)
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/github.com/google/pprof/internal/report/source.go:465:3: line declared but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/github.com/google/pprof/internal/report/source.go:469:3: flat declared but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/github.com/google/pprof/internal/report/source.go:469:9: cum declared but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/github.com/google/pprof/internal/report/source.go:501:3: flat declared but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/github.com/google/pprof/internal/report/source.go:502:3: cum declared but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/github.com/google/pprof/internal/symbolizer/symbolizer.go:28:2: could not import github.com/google/pprof/internal/binutils (can't find import: "cmd/vendor/github.com/google/pprof/internal/binutils")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/github.com/google/pprof/internal/symbolizer/symbolizer.go:29:2: could not import github.com/google/pprof/internal/plugin (can't find import: "cmd/vendor/github.com/google/pprof/internal/plugin")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/github.com/google/pprof/internal/symbolizer/symbolizer.go:30:2: could not import github.com/google/pprof/internal/symbolz (can't find import: "cmd/vendor/github.com/google/pprof/internal/symbolz")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/github.com/google/pprof/internal/symbolizer/symbolizer.go:31:2: could not import github.com/google/pprof/profile (can't find import: "cmd/vendor/github.com/google/pprof/profile")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/github.com/google/pprof/internal/symbolizer/symbolizer.go:32:2: could not import github.com/ianlancetaylor/demangle (can't find import: "cmd/vendor/github.com/ianlancetaylor/demangle")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/github.com/google/pprof/internal/symbolizer/symbolizer.go:28:2: "github.com/google/pprof/internal/binutils" imported but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/github.com/google/pprof/internal/symbolz/symbolz.go:29:2: could not import github.com/google/pprof/internal/plugin (can't find import: "cmd/vendor/github.com/google/pprof/internal/plugin")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/github.com/google/pprof/internal/symbolz/symbolz.go:30:2: could not import github.com/google/pprof/profile (can't find import: "cmd/vendor/github.com/google/pprof/profile")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/github.com/google/pprof/internal/symbolz/symbolz.go:152:4: addr declared but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/github.com/google/pprof/internal/transport/transport.go:27:2: could not import github.com/google/pprof/internal/plugin (can't find import: "cmd/vendor/github.com/google/pprof/internal/plugin")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/crypto/ssh/terminal/util.go:20:2: could not import golang.org/x/sys/unix (can't find import: "cmd/vendor/golang.org/x/sys/unix")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/mod/modfile/rule.go:31:2: could not import golang.org/x/mod/internal/lazyregexp (can't find import: "cmd/vendor/golang.org/x/mod/internal/lazyregexp")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/mod/modfile/rule.go:32:2: could not import golang.org/x/mod/module (can't find import: "cmd/vendor/golang.org/x/mod/module")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/mod/module/module.go:105:2: could not import golang.org/x/mod/semver (can't find import: "cmd/vendor/golang.org/x/mod/semver")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/mod/module/module.go:106:9: could not import golang.org/x/xerrors (can't find import: "cmd/vendor/golang.org/x/xerrors")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/mod/sumdb/client.go:16:2: could not import golang.org/x/mod/module (can't find import: "cmd/vendor/golang.org/x/mod/module")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/mod/sumdb/client.go:17:2: could not import golang.org/x/mod/sumdb/note (can't find import: "cmd/vendor/golang.org/x/mod/sumdb/note")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/mod/sumdb/client.go:18:2: could not import golang.org/x/mod/sumdb/tlog (can't find import: "cmd/vendor/golang.org/x/mod/sumdb/tlog")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/mod/sumdb/server.go:14:2: could not import golang.org/x/mod/internal/lazyregexp (can't find import: "cmd/vendor/golang.org/x/mod/internal/lazyregexp")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/mod/sumdb/note/note.go:194:2: could not import golang.org/x/crypto/ed25519 (can't find import: "cmd/vendor/golang.org/x/crypto/ed25519")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/mod/zip/zip.go:61:2: could not import golang.org/x/mod/module (can't find import: "cmd/vendor/golang.org/x/mod/module")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/sys/unix/syscall_unix.go:16:2: could not import golang.org/x/sys/internal/unsafeheader (can't find import: "cmd/vendor/golang.org/x/sys/internal/unsafeheader")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/analysis.go:11:2: could not import golang.org/x/tools/internal/analysisinternal (can't find import: "cmd/vendor/golang.org/x/tools/internal/analysisinternal")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/internal/analysisflags/flags.go:23:2: could not import golang.org/x/tools/go/analysis (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/internal/facts/facts.go:50:2: could not import golang.org/x/tools/go/analysis (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/internal/facts/facts.go:51:2: could not import golang.org/x/tools/go/types/objectpath (can't find import: "cmd/vendor/golang.org/x/tools/go/types/objectpath")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/asmdecl/asmdecl.go:21:2: could not import golang.org/x/tools/go/analysis (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/asmdecl/asmdecl.go:22:2: could not import golang.org/x/tools/go/analysis/passes/internal/analysisutil (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis/passes/internal/analysisutil")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/assign/assign.go:17:2: could not import golang.org/x/tools/go/analysis (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/assign/assign.go:18:2: could not import golang.org/x/tools/go/analysis/passes/inspect (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis/passes/inspect")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/assign/assign.go:19:2: could not import golang.org/x/tools/go/analysis/passes/internal/analysisutil (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis/passes/internal/analysisutil")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/assign/assign.go:20:2: could not import golang.org/x/tools/go/ast/inspector (can't find import: "cmd/vendor/golang.org/x/tools/go/ast/inspector")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/assign/assign.go:20:2: "golang.org/x/tools/go/ast/inspector" imported but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/atomic/atomic.go:14:2: could not import golang.org/x/tools/go/analysis (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/atomic/atomic.go:15:2: could not import golang.org/x/tools/go/analysis/passes/inspect (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis/passes/inspect")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/atomic/atomic.go:16:2: could not import golang.org/x/tools/go/analysis/passes/internal/analysisutil (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis/passes/internal/analysisutil")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/atomic/atomic.go:17:2: could not import golang.org/x/tools/go/ast/inspector (can't find import: "cmd/vendor/golang.org/x/tools/go/ast/inspector")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/atomic/atomic.go:17:2: "golang.org/x/tools/go/ast/inspector" imported but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/atomic/atomic.go:12:2: "go/types" imported but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/bools/bools.go:14:2: could not import golang.org/x/tools/go/analysis (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/bools/bools.go:15:2: could not import golang.org/x/tools/go/analysis/passes/inspect (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis/passes/inspect")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/bools/bools.go:16:2: could not import golang.org/x/tools/go/analysis/passes/internal/analysisutil (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis/passes/internal/analysisutil")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/bools/bools.go:17:2: could not import golang.org/x/tools/go/ast/inspector (can't find import: "cmd/vendor/golang.org/x/tools/go/ast/inspector")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/bools/bools.go:17:2: "golang.org/x/tools/go/ast/inspector" imported but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/buildtag/buildtag.go:15:2: could not import golang.org/x/tools/go/analysis (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/buildtag/buildtag.go:16:2: could not import golang.org/x/tools/go/analysis/passes/internal/analysisutil (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis/passes/internal/analysisutil")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/cgocall/cgocall.go:20:2: could not import golang.org/x/tools/go/analysis (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/cgocall/cgocall.go:21:2: could not import golang.org/x/tools/go/analysis/passes/internal/analysisutil (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis/passes/internal/analysisutil")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/composite/composite.go:14:2: could not import golang.org/x/tools/go/analysis (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/composite/composite.go:15:2: could not import golang.org/x/tools/go/analysis/passes/inspect (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis/passes/inspect")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/composite/composite.go:16:2: could not import golang.org/x/tools/go/ast/inspector (can't find import: "cmd/vendor/golang.org/x/tools/go/ast/inspector")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/composite/composite.go:16:2: "golang.org/x/tools/go/ast/inspector" imported but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/copylock/copylock.go:16:2: could not import golang.org/x/tools/go/analysis (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/copylock/copylock.go:17:2: could not import golang.org/x/tools/go/analysis/passes/inspect (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis/passes/inspect")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/copylock/copylock.go:18:2: could not import golang.org/x/tools/go/analysis/passes/internal/analysisutil (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis/passes/internal/analysisutil")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/copylock/copylock.go:19:2: could not import golang.org/x/tools/go/ast/inspector (can't find import: "cmd/vendor/golang.org/x/tools/go/ast/inspector")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/copylock/copylock.go:19:2: "golang.org/x/tools/go/ast/inspector" imported but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/ctrlflow/ctrlflow.go:17:2: could not import golang.org/x/tools/go/analysis (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/ctrlflow/ctrlflow.go:18:2: could not import golang.org/x/tools/go/analysis/passes/inspect (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis/passes/inspect")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/ctrlflow/ctrlflow.go:19:2: could not import golang.org/x/tools/go/ast/inspector (can't find import: "cmd/vendor/golang.org/x/tools/go/ast/inspector")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/ctrlflow/ctrlflow.go:20:2: could not import golang.org/x/tools/go/cfg (can't find import: "cmd/vendor/golang.org/x/tools/go/cfg")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/ctrlflow/ctrlflow.go:21:2: could not import golang.org/x/tools/go/types/typeutil (can't find import: "cmd/vendor/golang.org/x/tools/go/types/typeutil")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/ctrlflow/ctrlflow.go:19:2: "golang.org/x/tools/go/ast/inspector" imported but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/errorsas/errorsas.go:13:2: could not import golang.org/x/tools/go/analysis (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/errorsas/errorsas.go:14:2: could not import golang.org/x/tools/go/analysis/passes/inspect (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis/passes/inspect")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/errorsas/errorsas.go:15:2: could not import golang.org/x/tools/go/ast/inspector (can't find import: "cmd/vendor/golang.org/x/tools/go/ast/inspector")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/errorsas/errorsas.go:16:2: could not import golang.org/x/tools/go/types/typeutil (can't find import: "cmd/vendor/golang.org/x/tools/go/types/typeutil")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/errorsas/errorsas.go:15:2: "golang.org/x/tools/go/ast/inspector" imported but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/httpresponse/httpresponse.go:13:2: could not import golang.org/x/tools/go/analysis (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/httpresponse/httpresponse.go:14:2: could not import golang.org/x/tools/go/analysis/passes/inspect (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis/passes/inspect")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/httpresponse/httpresponse.go:15:2: could not import golang.org/x/tools/go/analysis/passes/internal/analysisutil (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis/passes/internal/analysisutil")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/httpresponse/httpresponse.go:16:2: could not import golang.org/x/tools/go/ast/inspector (can't find import: "cmd/vendor/golang.org/x/tools/go/ast/inspector")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/httpresponse/httpresponse.go:16:2: "golang.org/x/tools/go/ast/inspector" imported but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/ifaceassert/ifaceassert.go:13:2: could not import golang.org/x/tools/go/analysis (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/ifaceassert/ifaceassert.go:14:2: could not import golang.org/x/tools/go/analysis/passes/inspect (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis/passes/inspect")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/ifaceassert/ifaceassert.go:15:2: could not import golang.org/x/tools/go/ast/inspector (can't find import: "cmd/vendor/golang.org/x/tools/go/ast/inspector")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/ifaceassert/ifaceassert.go:15:2: "golang.org/x/tools/go/ast/inspector" imported but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/inspect/inspect.go:35:2: could not import golang.org/x/tools/go/analysis (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/inspect/inspect.go:36:2: could not import golang.org/x/tools/go/ast/inspector (can't find import: "cmd/vendor/golang.org/x/tools/go/ast/inspector")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/loopclosure/loopclosure.go:12:2: could not import golang.org/x/tools/go/analysis (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/loopclosure/loopclosure.go:13:2: could not import golang.org/x/tools/go/analysis/passes/inspect (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis/passes/inspect")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/loopclosure/loopclosure.go:14:2: could not import golang.org/x/tools/go/ast/inspector (can't find import: "cmd/vendor/golang.org/x/tools/go/ast/inspector")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/loopclosure/loopclosure.go:14:2: "golang.org/x/tools/go/ast/inspector" imported but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/lostcancel/lostcancel.go:14:2: could not import golang.org/x/tools/go/analysis (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/lostcancel/lostcancel.go:15:2: could not import golang.org/x/tools/go/analysis/passes/ctrlflow (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis/passes/ctrlflow")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/lostcancel/lostcancel.go:16:2: could not import golang.org/x/tools/go/analysis/passes/inspect (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis/passes/inspect")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/lostcancel/lostcancel.go:17:2: could not import golang.org/x/tools/go/ast/inspector (can't find import: "cmd/vendor/golang.org/x/tools/go/ast/inspector")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/lostcancel/lostcancel.go:18:2: could not import golang.org/x/tools/go/cfg (can't find import: "cmd/vendor/golang.org/x/tools/go/cfg")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/lostcancel/lostcancel.go:17:2: "golang.org/x/tools/go/ast/inspector" imported but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/nilfunc/nilfunc.go:14:2: could not import golang.org/x/tools/go/analysis (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/nilfunc/nilfunc.go:15:2: could not import golang.org/x/tools/go/analysis/passes/inspect (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis/passes/inspect")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/nilfunc/nilfunc.go:16:2: could not import golang.org/x/tools/go/ast/inspector (can't find import: "cmd/vendor/golang.org/x/tools/go/ast/inspector")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/nilfunc/nilfunc.go:16:2: "golang.org/x/tools/go/ast/inspector" imported but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/printf/printf.go:23:2: could not import golang.org/x/tools/go/analysis (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/printf/printf.go:24:2: could not import golang.org/x/tools/go/analysis/passes/inspect (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis/passes/inspect")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/printf/printf.go:25:2: could not import golang.org/x/tools/go/analysis/passes/internal/analysisutil (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis/passes/internal/analysisutil")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/printf/printf.go:26:2: could not import golang.org/x/tools/go/ast/inspector (can't find import: "cmd/vendor/golang.org/x/tools/go/ast/inspector")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/printf/printf.go:27:2: could not import golang.org/x/tools/go/types/typeutil (can't find import: "cmd/vendor/golang.org/x/tools/go/types/typeutil")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/printf/printf.go:26:2: "golang.org/x/tools/go/ast/inspector" imported but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/shift/shift.go:18:2: could not import golang.org/x/tools/go/analysis (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/shift/shift.go:19:2: could not import golang.org/x/tools/go/analysis/passes/inspect (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis/passes/inspect")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/shift/shift.go:20:2: could not import golang.org/x/tools/go/analysis/passes/internal/analysisutil (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis/passes/internal/analysisutil")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/shift/shift.go:21:2: could not import golang.org/x/tools/go/ast/inspector (can't find import: "cmd/vendor/golang.org/x/tools/go/ast/inspector")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/shift/shift.go:21:2: "golang.org/x/tools/go/ast/inspector" imported but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/stdmethods/stdmethods.go:14:2: could not import golang.org/x/tools/go/analysis (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/stdmethods/stdmethods.go:15:2: could not import golang.org/x/tools/go/analysis/passes/inspect (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis/passes/inspect")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/stdmethods/stdmethods.go:16:2: could not import golang.org/x/tools/go/ast/inspector (can't find import: "cmd/vendor/golang.org/x/tools/go/ast/inspector")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/stdmethods/stdmethods.go:16:2: "golang.org/x/tools/go/ast/inspector" imported but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/stringintconv/string.go:14:2: could not import golang.org/x/tools/go/analysis (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/stringintconv/string.go:15:2: could not import golang.org/x/tools/go/analysis/passes/inspect (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis/passes/inspect")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/stringintconv/string.go:16:2: could not import golang.org/x/tools/go/ast/inspector (can't find import: "cmd/vendor/golang.org/x/tools/go/ast/inspector")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/stringintconv/string.go:16:2: "golang.org/x/tools/go/ast/inspector" imported but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/structtag/structtag.go:19:2: could not import golang.org/x/tools/go/analysis (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/structtag/structtag.go:20:2: could not import golang.org/x/tools/go/analysis/passes/inspect (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis/passes/inspect")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/structtag/structtag.go:21:2: could not import golang.org/x/tools/go/ast/inspector (can't find import: "cmd/vendor/golang.org/x/tools/go/ast/inspector")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/structtag/structtag.go:21:2: "golang.org/x/tools/go/ast/inspector" imported but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/tests/tests.go:16:2: could not import golang.org/x/tools/go/analysis (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/unmarshal/unmarshal.go:13:2: could not import golang.org/x/tools/go/analysis (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/unmarshal/unmarshal.go:14:2: could not import golang.org/x/tools/go/analysis/passes/inspect (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis/passes/inspect")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/unmarshal/unmarshal.go:15:2: could not import golang.org/x/tools/go/ast/inspector (can't find import: "cmd/vendor/golang.org/x/tools/go/ast/inspector")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/unmarshal/unmarshal.go:16:2: could not import golang.org/x/tools/go/types/typeutil (can't find import: "cmd/vendor/golang.org/x/tools/go/types/typeutil")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/unmarshal/unmarshal.go:15:2: "golang.org/x/tools/go/ast/inspector" imported but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/unmarshal/unmarshal.go:11:2: "go/types" imported but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/unreachable/unreachable.go:15:2: could not import golang.org/x/tools/go/analysis (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/unreachable/unreachable.go:16:2: could not import golang.org/x/tools/go/analysis/passes/inspect (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis/passes/inspect")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/unreachable/unreachable.go:17:2: could not import golang.org/x/tools/go/ast/inspector (can't find import: "cmd/vendor/golang.org/x/tools/go/ast/inspector")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/unreachable/unreachable.go:17:2: "golang.org/x/tools/go/ast/inspector" imported but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/unsafeptr/unsafeptr.go:14:2: could not import golang.org/x/tools/go/analysis (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/unsafeptr/unsafeptr.go:15:2: could not import golang.org/x/tools/go/analysis/passes/inspect (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis/passes/inspect")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/unsafeptr/unsafeptr.go:16:2: could not import golang.org/x/tools/go/ast/inspector (can't find import: "cmd/vendor/golang.org/x/tools/go/ast/inspector")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/unsafeptr/unsafeptr.go:16:2: "golang.org/x/tools/go/ast/inspector" imported but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/unusedresult/unusedresult.go:16:2: could not import golang.org/x/tools/go/analysis (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/unusedresult/unusedresult.go:17:2: could not import golang.org/x/tools/go/analysis/passes/inspect (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis/passes/inspect")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/unusedresult/unusedresult.go:18:2: could not import golang.org/x/tools/go/analysis/passes/internal/analysisutil (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis/passes/internal/analysisutil")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/unusedresult/unusedresult.go:19:2: could not import golang.org/x/tools/go/ast/inspector (can't find import: "cmd/vendor/golang.org/x/tools/go/ast/inspector")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/passes/unusedresult/unusedresult.go:19:2: "golang.org/x/tools/go/ast/inspector" imported but not used
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/unitchecker/unitchecker.go:51:2: could not import golang.org/x/tools/go/analysis (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/unitchecker/unitchecker.go:52:2: could not import golang.org/x/tools/go/analysis/internal/analysisflags (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis/internal/analysisflags")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/analysis/unitchecker/unitchecker.go:53:2: could not import golang.org/x/tools/go/analysis/internal/facts (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis/internal/facts")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/go/types/typeutil/callee.go:11:2: could not import golang.org/x/tools/go/ast/astutil (can't find import: "cmd/vendor/golang.org/x/tools/go/ast/astutil")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/tools/internal/analysisinternal/analysis.go:16:2: could not import golang.org/x/tools/go/ast/astutil (can't find import: "cmd/vendor/golang.org/x/tools/go/ast/astutil")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vendor/golang.org/x/xerrors/fmt.go:13:2: could not import golang.org/x/xerrors/internal (can't find import: "cmd/vendor/golang.org/x/xerrors/internal")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vet/main.go:4:2: could not import cmd/internal/objabi (can't find import: "cmd/internal/objabi")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vet/main.go:6:2: could not import golang.org/x/tools/go/analysis/unitchecker (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis/unitchecker")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vet/main.go:8:2: could not import golang.org/x/tools/go/analysis/passes/asmdecl (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis/passes/asmdecl")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vet/main.go:9:2: could not import golang.org/x/tools/go/analysis/passes/assign (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis/passes/assign")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vet/main.go:10:2: could not import golang.org/x/tools/go/analysis/passes/atomic (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis/passes/atomic")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vet/main.go:11:2: could not import golang.org/x/tools/go/analysis/passes/bools (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis/passes/bools")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vet/main.go:12:2: could not import golang.org/x/tools/go/analysis/passes/buildtag (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis/passes/buildtag")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vet/main.go:13:2: could not import golang.org/x/tools/go/analysis/passes/cgocall (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis/passes/cgocall")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vet/main.go:14:2: could not import golang.org/x/tools/go/analysis/passes/composite (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis/passes/composite")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vet/main.go:15:2: could not import golang.org/x/tools/go/analysis/passes/copylock (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis/passes/copylock")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vet/main.go:16:2: could not import golang.org/x/tools/go/analysis/passes/errorsas (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis/passes/errorsas")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vet/main.go:17:2: could not import golang.org/x/tools/go/analysis/passes/httpresponse (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis/passes/httpresponse")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vet/main.go:18:2: could not import golang.org/x/tools/go/analysis/passes/ifaceassert (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis/passes/ifaceassert")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vet/main.go:19:2: could not import golang.org/x/tools/go/analysis/passes/loopclosure (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis/passes/loopclosure")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vet/main.go:20:2: could not import golang.org/x/tools/go/analysis/passes/lostcancel (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis/passes/lostcancel")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vet/main.go:21:2: could not import golang.org/x/tools/go/analysis/passes/nilfunc (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis/passes/nilfunc")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vet/main.go:22:2: could not import golang.org/x/tools/go/analysis/passes/printf (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis/passes/printf")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vet/main.go:23:2: could not import golang.org/x/tools/go/analysis/passes/shift (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis/passes/shift")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vet/main.go:24:2: could not import golang.org/x/tools/go/analysis/passes/stdmethods (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis/passes/stdmethods")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vet/main.go:25:2: could not import golang.org/x/tools/go/analysis/passes/stringintconv (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis/passes/stringintconv")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vet/main.go:26:2: could not import golang.org/x/tools/go/analysis/passes/structtag (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis/passes/structtag")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vet/main.go:27:2: could not import golang.org/x/tools/go/analysis/passes/tests (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis/passes/tests")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vet/main.go:28:2: could not import golang.org/x/tools/go/analysis/passes/unmarshal (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis/passes/unmarshal")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vet/main.go:29:2: could not import golang.org/x/tools/go/analysis/passes/unreachable (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis/passes/unreachable")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vet/main.go:30:2: could not import golang.org/x/tools/go/analysis/passes/unsafeptr (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis/passes/unsafeptr")
+    stdlib_test.go:233: /usr/local/go/src/cmd/vet/main.go:31:2: could not import golang.org/x/tools/go/analysis/passes/unusedresult (can't find import: "cmd/vendor/golang.org/x/tools/go/analysis/passes/unusedresult")
+FAIL
+FAIL	go/types	13.164s
+ok  	hash	0.019s
+ok  	hash/adler32	0.007s
+ok  	hash/crc32	0.005s
+ok  	hash/crc64	0.008s
+ok  	hash/fnv	0.005s
+ok  	hash/maphash	149.026s
+ok  	html	0.007s
+ok  	html/template	0.664s
+ok  	image	0.164s
+ok  	image/color	0.016s
+?   	image/color/palette	[no test files]
+ok  	image/draw	0.039s
+ok  	image/gif	0.288s
+?   	image/internal/imageutil	[no test files]
+ok  	image/jpeg	0.142s
+ok  	image/png	4.030s
+ok  	index/suffixarray	47.323s
+?   	internal/bytealg	[no test files]
+?   	internal/cfg	[no test files]
+ok  	internal/cpu	0.035s
+ok  	internal/fmtsort	0.004s
+?   	internal/goroot	[no test files]
+?   	internal/goversion	[no test files]
+?   	internal/lazyregexp	[no test files]
+?   	internal/lazytemplate	[no test files]
+?   	internal/nettrace	[no test files]
+?   	internal/obscuretestdata	[no test files]
+?   	internal/oserror	[no test files]
+ok  	internal/poll	0.555s
+ok  	internal/profile	0.008s
+?   	internal/race	[no test files]
+ok  	internal/reflectlite	0.051s
+ok  	internal/singleflight	0.018s
+?   	internal/syscall/execenv	[no test files]
+?   	internal/syscall/unix	[no test files]
+?   	internal/testenv	[no test files]
+?   	internal/testlog	[no test files]
+ok  	internal/trace	0.972s
+ok  	internal/unsafeheader	0.003s
+ok  	internal/xcoff	0.015s
+ok  	io	0.035s
+ok  	io/ioutil	0.010s
+ok  	log	0.025s
+ok  	log/syslog	1.237s
+ok  	math	0.017s
+ok  	math/big	3.279s
+ok  	math/bits	0.006s
+ok  	math/cmplx	0.006s
+ok  	math/rand	3.909s
+ok  	mime	0.009s
+ok  	mime/multipart	0.324s
+ok  	mime/quotedprintable	0.098s
+--- FAIL: TestInterfaceArrivalAndDeparture (0.00s)
+    interface_unix_test.go:124: args=[ip link add gotest1002 type dummy] out="RTNETLINK answers: Operation not permitted\n" err=exit status 2
+--- FAIL: TestInterfaceArrivalAndDepartureZoneCache (0.00s)
+    interface_unix_test.go:196: args=[ip link add gotest0 type dummy] out="RTNETLINK answers: Operation not permitted\n" err=exit status 2
+FAIL
+FAIL	net	46.638s
+ok  	net/http	82.024s
+ok  	net/http/cgi	0.276s
+ok  	net/http/cookiejar	0.010s
+ok  	net/http/fcgi	0.096s
+ok  	net/http/httptest	0.040s
+ok  	net/http/httptrace	0.005s
+ok  	net/http/httputil	0.060s
+ok  	net/http/internal	0.004s
+ok  	net/http/pprof	4.071s
+ok  	net/internal/socktest	0.005s
+ok  	net/mail	0.009s
+ok  	net/rpc	0.035s
+ok  	net/rpc/jsonrpc	0.013s
+ok  	net/smtp	0.015s
+ok  	net/textproto	0.009s
+ok  	net/url	0.013s
+ok  	os	19.221s
+ok  	os/exec	1.220s
+ok  	os/signal	8.529s
+?   	os/signal/internal/pty	[no test files]
+ok  	os/user	0.006s
+ok  	path	0.008s
+ok  	path/filepath	0.037s
+ok  	plugin	0.003s
+ok  	reflect	3.098s
+ok  	regexp	15.408s
+ok  	regexp/syntax	0.227s
+ok  	runtime	454.628s
+?   	runtime/cgo	[no test files]
+ok  	runtime/debug	0.049s
+ok  	runtime/internal/atomic	0.377s
+ok  	runtime/internal/math	0.018s
+ok  	runtime/internal/sys	0.020s
+ok  	runtime/pprof	77.572s
+ok  	runtime/race	0.031s
+ok  	runtime/trace	12.558s
+ok  	sort	0.750s
+ok  	strconv	1.690s
+ok  	strings	1.071s
+ok  	sync	3.734s
+ok  	sync/atomic	1.374s
+ok  	syscall	0.323s
+ok  	testing	1.179s
+?   	testing/internal/testdeps	[no test files]
+ok  	testing/iotest	0.013s
+ok  	testing/quick	0.067s
+ok  	text/scanner	0.028s
+ok  	text/tabwriter	0.022s
+ok  	text/template	0.650s
+ok  	text/template/parse	0.019s
+ok  	time	6.761s
+?   	time/tzdata	[no test files]
+ok  	unicode	0.005s
+ok  	unicode/utf16	0.016s
+ok  	unicode/utf8	0.007s
+?   	unsafe	[no test files]
+?   	vendor/golang.org/x/crypto/chacha20	[no test files]
+?   	vendor/golang.org/x/crypto/chacha20poly1305	[no test files]
+?   	vendor/golang.org/x/crypto/cryptobyte	[no test files]
+?   	vendor/golang.org/x/crypto/cryptobyte/asn1	[no test files]
+?   	vendor/golang.org/x/crypto/curve25519	[no test files]
+?   	vendor/golang.org/x/crypto/hkdf	[no test files]
+?   	vendor/golang.org/x/crypto/internal/subtle	[no test files]
+?   	vendor/golang.org/x/crypto/poly1305	[no test files]
+?   	vendor/golang.org/x/net/dns/dnsmessage	[no test files]
+?   	vendor/golang.org/x/net/http/httpguts	[no test files]
+?   	vendor/golang.org/x/net/http/httpproxy	[no test files]
+?   	vendor/golang.org/x/net/http2/hpack	[no test files]
+?   	vendor/golang.org/x/net/idna	[no test files]
+?   	vendor/golang.org/x/net/nettest	[no test files]
+?   	vendor/golang.org/x/sys/cpu	[no test files]
+?   	vendor/golang.org/x/text/secure/bidirule	[no test files]
+?   	vendor/golang.org/x/text/transform	[no test files]
+?   	vendor/golang.org/x/text/unicode/bidi	[no test files]
+?   	vendor/golang.org/x/text/unicode/norm	[no test files]
+FAIL
+The command '/bin/sh -c go test std' returned a non-zero code: 1
+make: *** [all] Error 1

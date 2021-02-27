@@ -1,0 +1,79 @@
+docker build -t gateway .
+Sending build context to Docker daemon  33.28kB
+Step 1/12 : FROM golang:1.15.5 as build
+ ---> 6d8772fbd285
+Step 2/12 : WORKDIR /go/src/app3
+ ---> Using cache
+ ---> c2a3d5b403fb
+Step 3/12 : WORKDIR /go/src/app
+ ---> Using cache
+ ---> 5028abea8217
+Step 4/12 : COPY go.mod go.sum ./
+ ---> Using cache
+ ---> 89369ff51bc9
+Step 5/12 : COPY . .
+ ---> 08cb69e9c7c8
+Step 6/12 : RUN go build -v -o /go/bin/ ./...
+ ---> Running in c8ba727e3041
+[91mgo: downloading github.com/stretchr/testify v1.6.1
+[0m[91mgo: downloading github.com/sirupsen/logrus v1.7.0
+[0m[91mgo: downloading github.com/nsqio/go-nsq v1.0.8
+[0m[91mgo: downloading github.com/pkg/errors v0.9.1
+[0m[91mgo: downloading github.com/gorilla/mux v1.8.0
+[0m[91mgo: downloading gopkg.in/yaml.v2 v2.3.0
+[0m[91mgo: downloading github.com/davecgh/go-spew v1.1.1
+[0m[91mgo: downloading github.com/stretchr/objx v0.1.0
+[0m[91mgo: downloading gopkg.in/yaml.v3 v3.0.0-20200313102051-9f266ea9e77c
+[0m[91mgo: downloading github.com/pmezard/go-difflib v1.0.0
+[0m[91mgo: downloading github.com/golang/snappy v0.0.1
+[0m[91mgo: downloading golang.org/x/sys v0.0.0-20191026070338-33540a1f6037
+[0m[91mgithub.com/pkg/errors
+[0m[91mgithub.com/gorilla/mux
+[0m[91mgolang.org/x/sys/unix
+[0m[91mgopkg.in/yaml.v2
+[0m[91mgithub.com/sirupsen/logrus
+[0m[91mgithub.com/golang/snappy
+[0m[91mgithub.com/nsqio/go-nsq
+[0m[91mgithub.com/georgysavva/driver-app/gateway/pkg/gateway
+[0m[91mgithub.com/georgysavva/driver-app/gateway/pkg/config
+[0m[91mgithub.com/georgysavva/driver-app/gateway/pkg/httpmiddleware
+[0m[91mgithub.com/georgysavva/driver-app/gateway/cmd/gateway-server
+[0mRemoving intermediate container c8ba727e3041
+ ---> 7247171e158e
+Step 7/12 : RUN go test -v ./...
+ ---> Running in a4cbf1dad3c1
+[91mgo: downloading github.com/kelseyhightower/envconfig v1.4.0
+[0m?   	github.com/georgysavva/driver-app/gateway/cmd/gateway-server	[no test files]
+?   	github.com/georgysavva/driver-app/gateway/pkg/config	[no test files]
+=== RUN   TestNSQProxy
+=== PAUSE TestNSQProxy
+=== RUN   TestHTTPProxy
+=== PAUSE TestHTTPProxy
+=== CONT  TestNSQProxy
+=== CONT  TestHTTPProxy
+=== CONT  TestNSQProxy
+    gateway_test.go:51: PASS:	Publish(string,mock.AnythingOfTypeArgument)
+--- PASS: TestNSQProxy (0.00s)
+--- PASS: TestHTTPProxy (0.00s)
+PASS
+ok  	github.com/georgysavva/driver-app/gateway/pkg/gateway	0.008s
+?   	github.com/georgysavva/driver-app/gateway/pkg/gateway/mocks	[no test files]
+?   	github.com/georgysavva/driver-app/gateway/pkg/httpmiddleware	[no test files]
+Removing intermediate container a4cbf1dad3c1
+ ---> f985dc033094
+Step 8/12 : FROM alpine:3.12 as final
+ ---> d6e46aa2470d
+Step 9/12 : RUN apk --no-cache add ca-certificates
+ ---> Using cache
+ ---> 82aa291b1855
+Step 10/12 : WORKDIR /root/
+ ---> Using cache
+ ---> 94c61544cb53
+Step 11/12 : COPY --from=build /go/bin/gateway-server /go/src/app/config.yaml ./
+ ---> Using cache
+ ---> 41e334c9c333
+Step 12/12 : ENTRYPOINT ["./gateway-server"]
+ ---> Using cache
+ ---> e008d6aa94c1
+Successfully built e008d6aa94c1
+Successfully tagged gateway:latest

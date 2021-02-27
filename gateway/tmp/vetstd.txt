@@ -1,0 +1,2372 @@
+docker build -t gateway .
+Sending build context to Docker daemon  10.34MB
+Step 1/12 : FROM golang:1.15.5 as build
+ ---> 6d8772fbd285
+Step 2/12 : WORKDIR /go/src/app
+ ---> Using cache
+ ---> a10171c8026f
+Step 3/12 : COPY go.mod go.sum ./
+ ---> Using cache
+ ---> ab1819db1171
+Step 4/12 : RUN go mod download
+ ---> Using cache
+ ---> a08c4d8d9357
+Step 5/12 : COPY . .
+ ---> c52cd21f7a54
+Step 6/12 : RUN go vet std
+ ---> Running in 24c5d5030976
+Removing intermediate container 24c5d5030976
+ ---> b120e43a9cf4
+Step 7/12 : RUN go test -x -v ./...
+ ---> Running in 9193d4eb9589
+[91mWORK=/tmp/go-build116565456
+[0m[91mmkdir -p $WORK/b123/
+[0m[91mmkdir -p $WORK/b005/
+[0m[91mmkdir -p $WORK/b009/
+[0m[91mmkdir -p $WORK/b010/
+[0m[91mmkdir -p $WORK/b012/
+[0m[91mmkdir -p $WORK/b011/
+[0m[91mmkdir -p $WORK/b008/
+[0m[91mmkdir -p $WORK/b014/
+[0m[91mmkdir -p $WORK/b015/
+[0m[91mmkdir -p $WORK/b023/
+[0m[91mmkdir -p $WORK/b022/
+[0m[91mmkdir -p $WORK/b025/
+[0m[91mmkdir -p $WORK/b026/
+[0m[91mmkdir -p $WORK/b033/
+[0m[91mmkdir -p $WORK/b038/
+[0m[91mmkdir -p $WORK/b042/
+[0m[91mmkdir -p $WORK/b050/
+[0m[91mmkdir -p $WORK/b054/
+[0m[91mmkdir -p $WORK/b055/
+[0m[91mmkdir -p $WORK/b067/
+[0m[91mmkdir -p $WORK/b085/
+[0m[91mmkdir -p $WORK/b007/
+[0m[91mmkdir -p $WORK/b004/
+[0m[91mmkdir -p $WORK/b003/
+[0m[91mmkdir -p $WORK/b087/
+[0m[91mcp /root/.cache/go-build/07/071283d23ffd9eabfe3ce2a77213fdede77a69bca99ce3f55bad15bd0e82dc52-d $WORK/b087/_cgo_gotypes.go
+[0m[91mcp /root/.cache/go-build/08/08fb8182a966b51d8b252441374eda776150cde6ced23412a34215be5c7142c7-d $WORK/b087/cgo.cgo1.go
+[0m[91mmkdir -p $WORK/b013/
+[0m[91mcp /root/.cache/go-build/76/76f1899e09819a3081041b61796370d2eb1f89ce1c6222fa0372a43cbfdb94a4-d $WORK/b087/_cgo_import.go
+[0m[91mmkdir -p $WORK/b018/
+[0m[91mmkdir -p $WORK/b024/
+[0m[91mmkdir -p $WORK/b021/
+[0m[91mmkdir -p $WORK/b017/
+[0m[91mmkdir -p $WORK/b027/
+[0m[91mmkdir -p $WORK/b020/
+[0m[91mmkdir -p $WORK/b016/
+[0m[91mmkdir -p $WORK/b002/
+[0m[91mmkdir -p $WORK/b028/
+[0m[91mmkdir -p $WORK/b032/
+[0m[91mmkdir -p $WORK/b031/
+[0m[91mmkdir -p $WORK/b037/
+[0m[91mmkdir -p $WORK/b030/
+[0m[91mmkdir -p $WORK/b040/
+[0m[91mmkdir -p $WORK/b039/
+[0m[91mmkdir -p $WORK/b041/
+[0m[91mmkdir -p $WORK/b045/
+[0m[91mmkdir -p $WORK/b029/
+[0m[91mmkdir -p $WORK/b019/
+[0m[91mmkdir -p $WORK/b049/
+[0m[91mmkdir -p $WORK/b036/
+[0m[91mmkdir -p $WORK/b047/
+[0m[91mmkdir -p $WORK/b048/
+[0m[91mmkdir -p $WORK/b046/
+[0m[91mmkdir -p $WORK/b053/
+[0m[91mmkdir -p $WORK/b057/
+[0m[91mmkdir -p $WORK/b052/
+[0m[91mmkdir -p $WORK/b059/
+[0m[91mmkdir -p $WORK/b060/
+[0m[91mmkdir -p $WORK/b063/
+[0m[91mmkdir -p $WORK/b056/
+[0m[91mmkdir -p $WORK/b064/
+[0m[91mmkdir -p $WORK/b051/
+[0m[91mmkdir -p $WORK/b069/
+[0m[91mmkdir -p $WORK/b066/
+[0m[91mmkdir -p $WORK/b062/
+[0m[91mmkdir -p $WORK/b068/
+[0m[91mmkdir -p $WORK/b065/
+[0m[91mmkdir -p $WORK/b070/
+[0m[91mmkdir -p $WORK/b061/
+[0m[91mmkdir -p $WORK/b071/
+[0m[91mmkdir -p $WORK/b072/
+[0m[91mmkdir -p $WORK/b073/
+[0m[91mmkdir -p $WORK/b074/
+[0m[91mmkdir -p $WORK/b075/
+[0m[91mmkdir -p $WORK/b077/
+[0m[91mmkdir -p $WORK/b079/
+[0m[91mmkdir -p $WORK/b080/
+[0m[91mmkdir -p $WORK/b078/
+[0m[91mmkdir -p $WORK/b082/
+[0m[91mmkdir -p $WORK/b081/
+[0m[91mmkdir -p $WORK/b084/
+[0m[91mmkdir -p $WORK/b086/
+[0m[91mmkdir -p $WORK/b088/
+[0m[91mmkdir -p $WORK/b091/
+[0m[91mmkdir -p $WORK/b090/
+[0m[91mmkdir -p $WORK/b092/
+[0m[91mmkdir -p $WORK/b093/
+[0m[91mmkdir -p $WORK/b089/
+[0m[91mmkdir -p $WORK/b094/
+[0m[91mmkdir -p $WORK/b095/
+[0m[91mmkdir -p $WORK/b099/
+[0m[91mmkdir -p $WORK/b083/
+[0m[91mcp /root/.cache/go-build/b5/b5a0f2377b9bae3d601770643d915f92e8d31c25e1a9748c6ec671b6e76bc766-d $WORK/b083/_cgo_gotypes.go
+[0m[91mmkdir -p $WORK/b101/
+[0m[91mcp /root/.cache/go-build/f1/f1fd6e9aaba257cb5e5ffc6a1eb1d97f248fdf5c509044a4c9e0bf9de7521417-d $WORK/b083/cgo_linux.cgo1.go
+[0m[91mmkdir -p $WORK/b100/
+[0m[91mcp /root/.cache/go-build/36/36657c84876a6a79cfa47ac864eac216da85bf9f88124abb0169b7df8199bc9d-d $WORK/b083/cgo_resnew.cgo1.go
+[0m[91mmkdir -p $WORK/b098/
+[0m[91mcp /root/.cache/go-build/fa/fa9842118b37da99adb5e4d46edf976c70db7f6a9f126781f78d2028f7189375-d $WORK/b083/cgo_socknew.cgo1.go
+[0m[91mcp /root/.cache/go-build/13/13f4ac0641c3e313a58fb3d5c27a19681cba02132463f6820031e0eb755b9d72-d $WORK/b083/cgo_unix.cgo1.go
+[0m[91mcp /root/.cache/go-build/09/091408e3a6abed66588929d0978a8592c628c14dbfa877365889a06da5910874-d $WORK/b083/_cgo_import.go
+[0m[91mmkdir -p $WORK/b102/
+[0m[91mmkdir -p $WORK/b076/
+[0m[91mmkdir -p $WORK/b097/
+[0m[91mmkdir -p $WORK/b058/
+[0m[91mmkdir -p $WORK/b103/
+[0m[91mmkdir -p $WORK/b104/
+[0m[91mmkdir -p $WORK/b096/
+[0m[91mmkdir -p $WORK/b105/
+[0m[91mmkdir -p $WORK/b106/
+[0m[91mmkdir -p $WORK/b109/
+[0m[91mmkdir -p $WORK/b108/
+[0m[91mmkdir -p $WORK/b107/
+[0m[91mmkdir -p $WORK/b111/
+[0m[91mmkdir -p $WORK/b113/
+[0m[91mmkdir -p $WORK/b112/
+[0m[91mmkdir -p $WORK/b114/
+[0m[91mcat >$WORK/b114/importcfg << 'EOF' # internal
+# import config
+packagefile errors=/usr/local/go/pkg/linux_amd64/errors.a
+packagefile fmt=/usr/local/go/pkg/linux_amd64/fmt.a
+packagefile io=/usr/local/go/pkg/linux_amd64/io.a
+packagefile path=/usr/local/go/pkg/linux_amd64/path.a
+packagefile runtime=/usr/local/go/pkg/linux_amd64/runtime.a
+packagefile strconv=/usr/local/go/pkg/linux_amd64/strconv.a
+packagefile strings=/usr/local/go/pkg/linux_amd64/strings.a
+EOF
+[0m[91mcd /go/pkg/mod/github.com/pkg/errors@v0.9.1
+/usr/local/go/pkg/tool/linux_amd64/compile -o $WORK/b114/_pkg_.a -trimpath "$WORK/b114=>" -p github.com/pkg/errors -complete -buildid 3z9LIRdP4YSwHXlVHuDv/3z9LIRdP4YSwHXlVHuDv -goversion go1.15.5 -D "" -importcfg $WORK/b114/importcfg -pack -c=2 ./errors.go ./go113.go ./stack.go
+[0m[91mmkdir -p $WORK/b110/
+[0m[91mmkdir -p $WORK/b044/
+[0m[91mmkdir -p $WORK/b043/
+[0m[91mcat >$WORK/b043/importcfg << 'EOF' # internal
+# import config
+packagefile bytes=/usr/local/go/pkg/linux_amd64/bytes.a
+packagefile context=/usr/local/go/pkg/linux_amd64/context.a
+packagefile errors=/usr/local/go/pkg/linux_amd64/errors.a
+packagefile fmt=/usr/local/go/pkg/linux_amd64/fmt.a
+packagefile net/http=/usr/local/go/pkg/linux_amd64/net/http.a
+packagefile net/url=/usr/local/go/pkg/linux_amd64/net/url.a
+packagefile path=/usr/local/go/pkg/linux_amd64/path.a
+packagefile regexp=/usr/local/go/pkg/linux_amd64/regexp.a
+packagefile strconv=/usr/local/go/pkg/linux_amd64/strconv.a
+packagefile strings=/usr/local/go/pkg/linux_amd64/strings.a
+EOF
+[0m[91mcd /go/pkg/mod/github.com/gorilla/mux@v1.8.0
+/usr/local/go/pkg/tool/linux_amd64/compile -o $WORK/b043/_pkg_.a -trimpath "$WORK/b043=>" -p github.com/gorilla/mux -lang=go1.12 -complete -buildid T9NVGypZhfnRDpt3gllQ/T9NVGypZhfnRDpt3gllQ -goversion go1.15.5 -D "" -importcfg $WORK/b043/importcfg -pack -c=2 ./doc.go ./middleware.go ./mux.go ./regexp.go ./route.go ./test_helpers.go
+[0m[91m/usr/local/go/pkg/tool/linux_amd64/buildid -w $WORK/b114/_pkg_.a # internal
+[0m[91mcp $WORK/b114/_pkg_.a /root/.cache/go-build/21/2187427e8e9ca45f0aa33c2fda89ca9d4a0f050831b2bdabd7afe6e33440e951-d # internal
+[0m[91mmkdir -p $WORK/b116/
+[0m[91mcat >$WORK/b116/go_asm.h << 'EOF' # internal
+EOF
+[0m[91mcd /go/pkg/mod/golang.org/x/sys@v0.0.0-20191026070338-33540a1f6037/unix
+/usr/local/go/pkg/tool/linux_amd64/asm -p golang.org/x/sys/unix -trimpath "$WORK/b116=>" -I $WORK/b116/ -I /usr/local/go/pkg/include -D GOOS_linux -D GOARCH_amd64 -gensymabis -o $WORK/b116/symabis ./asm_linux_amd64.s
+[0m[91mcat >$WORK/b116/importcfg << 'EOF' # internal
+# import config
+packagefile bytes=/usr/local/go/pkg/linux_amd64/bytes.a
+packagefile encoding/binary=/usr/local/go/pkg/linux_amd64/encoding/binary.a
+packagefile math/bits=/usr/local/go/pkg/linux_amd64/math/bits.a
+packagefile runtime=/usr/local/go/pkg/linux_amd64/runtime.a
+packagefile sort=/usr/local/go/pkg/linux_amd64/sort.a
+packagefile strings=/usr/local/go/pkg/linux_amd64/strings.a
+packagefile sync=/usr/local/go/pkg/linux_amd64/sync.a
+packagefile syscall=/usr/local/go/pkg/linux_amd64/syscall.a
+packagefile time=/usr/local/go/pkg/linux_amd64/time.a
+EOF
+[0m[91m/usr/local/go/pkg/tool/linux_amd64/compile -o $WORK/b116/_pkg_.a -trimpath "$WORK/b116=>" -p golang.org/x/sys/unix -lang=go1.12 -buildid p40E0qMvrfylQ_xcb-xH/p40E0qMvrfylQ_xcb-xH -goversion go1.15.5 -symabis $WORK/b116/symabis -D "" -importcfg $WORK/b116/importcfg -pack -asmhdr $WORK/b116/go_asm.h -c=2 ./affinity_linux.go ./aliases.go ./bluetooth_linux.go ./constants.go ./dev_linux.go ./dirent.go ./endian_little.go ./env_unix.go ./fcntl.go ./ioctl.go ./pagesize_unix.go ./race0.go ./readdirent_getdents.go ./sockcmsg_linux.go ./sockcmsg_unix.go ./sockcmsg_unix_other.go ./str.go ./syscall.go ./syscall_linux.go ./syscall_linux_amd64.go ./syscall_linux_amd64_gc.go ./syscall_linux_gc.go ./syscall_unix.go ./syscall_unix_gc.go ./timestruct.go ./zerrors_linux_amd64.go ./zptrace386_linux.go ./zsyscall_linux_amd64.go ./zsysnum_linux_amd64.go ./ztypes_linux_amd64.go
+[0m[91m/usr/local/go/pkg/tool/linux_amd64/buildid -w $WORK/b043/_pkg_.a # internal
+[0m[91mcp $WORK/b043/_pkg_.a /root/.cache/go-build/dc/dcfc61ee97d79d19edfbaca3ae9b2f969714ac24fd448bdd773f5ccef6705c25-d # internal
+[0m[91mmkdir -p $WORK/b117/
+[0m[91mmkdir -p $WORK/b118/
+[0m[91mcat >$WORK/b118/importcfg << 'EOF' # internal
+# import config
+packagefile bytes=/usr/local/go/pkg/linux_amd64/bytes.a
+packagefile encoding=/usr/local/go/pkg/linux_amd64/encoding.a
+packagefile encoding/base64=/usr/local/go/pkg/linux_amd64/encoding/base64.a
+packagefile errors=/usr/local/go/pkg/linux_amd64/errors.a
+packagefile fmt=/usr/local/go/pkg/linux_amd64/fmt.a
+packagefile io=/usr/local/go/pkg/linux_amd64/io.a
+packagefile math=/usr/local/go/pkg/linux_amd64/math.a
+packagefile reflect=/usr/local/go/pkg/linux_amd64/reflect.a
+packagefile regexp=/usr/local/go/pkg/linux_amd64/regexp.a
+packagefile sort=/usr/local/go/pkg/linux_amd64/sort.a
+packagefile strconv=/usr/local/go/pkg/linux_amd64/strconv.a
+packagefile strings=/usr/local/go/pkg/linux_amd64/strings.a
+packagefile sync=/usr/local/go/pkg/linux_amd64/sync.a
+packagefile time=/usr/local/go/pkg/linux_amd64/time.a
+packagefile unicode=/usr/local/go/pkg/linux_amd64/unicode.a
+packagefile unicode/utf8=/usr/local/go/pkg/linux_amd64/unicode/utf8.a
+EOF
+[0m[91mcd /go/pkg/mod/gopkg.in/yaml.v2@v2.3.0
+/usr/local/go/pkg/tool/linux_amd64/compile -o $WORK/b118/_pkg_.a -trimpath "$WORK/b118=>" -p gopkg.in/yaml.v2 -complete -buildid I6TnpWiohDKoA4gbBOxM/I6TnpWiohDKoA4gbBOxM -goversion go1.15.5 -D "" -importcfg $WORK/b118/importcfg -pack -c=2 ./apic.go ./decode.go ./emitterc.go ./encode.go ./parserc.go ./readerc.go ./resolve.go ./scannerc.go ./sorter.go ./writerc.go ./yaml.go ./yamlh.go ./yamlprivateh.go
+[0m[91mcd /go/pkg/mod/golang.org/x/sys@v0.0.0-20191026070338-33540a1f6037/unix
+/usr/local/go/pkg/tool/linux_amd64/asm -p golang.org/x/sys/unix -trimpath "$WORK/b116=>" -I $WORK/b116/ -I /usr/local/go/pkg/include -D GOOS_linux -D GOARCH_amd64 -o $WORK/b116/asm_linux_amd64.o ./asm_linux_amd64.s
+[0m[91m/usr/local/go/pkg/tool/linux_amd64/pack r $WORK/b116/_pkg_.a $WORK/b116/asm_linux_amd64.o # internal
+[0m[91m/usr/local/go/pkg/tool/linux_amd64/buildid -w $WORK/b116/_pkg_.a # internal
+[0m[91mcp $WORK/b116/_pkg_.a /root/.cache/go-build/4e/4eeb3d1fb353280911ef0ab36fa3fac1948184098f0d68a99393c251abbae959-d # internal
+[0m[91mmkdir -p $WORK/b115/
+[0m[91mcat >$WORK/b115/importcfg << 'EOF' # internal
+# import config
+packagefile bufio=/usr/local/go/pkg/linux_amd64/bufio.a
+packagefile bytes=/usr/local/go/pkg/linux_amd64/bytes.a
+packagefile context=/usr/local/go/pkg/linux_amd64/context.a
+packagefile encoding/json=/usr/local/go/pkg/linux_amd64/encoding/json.a
+packagefile fmt=/usr/local/go/pkg/linux_amd64/fmt.a
+packagefile golang.org/x/sys/unix=$WORK/b116/_pkg_.a
+packagefile io=/usr/local/go/pkg/linux_amd64/io.a
+packagefile log=/usr/local/go/pkg/linux_amd64/log.a
+packagefile os=/usr/local/go/pkg/linux_amd64/os.a
+packagefile reflect=/usr/local/go/pkg/linux_amd64/reflect.a
+packagefile runtime=/usr/local/go/pkg/linux_amd64/runtime.a
+packagefile sort=/usr/local/go/pkg/linux_amd64/sort.a
+packagefile strconv=/usr/local/go/pkg/linux_amd64/strconv.a
+packagefile strings=/usr/local/go/pkg/linux_amd64/strings.a
+packagefile sync=/usr/local/go/pkg/linux_amd64/sync.a
+packagefile sync/atomic=/usr/local/go/pkg/linux_amd64/sync/atomic.a
+packagefile time=/usr/local/go/pkg/linux_amd64/time.a
+packagefile unicode/utf8=/usr/local/go/pkg/linux_amd64/unicode/utf8.a
+EOF
+[0m[91mcd /go/pkg/mod/github.com/sirupsen/logrus@v1.7.0
+/usr/local/go/pkg/tool/linux_amd64/compile -o $WORK/b115/_pkg_.a -trimpath "$WORK/b115=>" -p github.com/sirupsen/logrus -lang=go1.13 -complete -buildid 8aUkUhu0feVcmbgYgOYI/8aUkUhu0feVcmbgYgOYI -goversion go1.15.5 -D "" -importcfg $WORK/b115/importcfg -pack -c=2 ./alt_exit.go ./buffer_pool.go ./doc.go ./entry.go ./exported.go ./formatter.go ./hooks.go ./json_formatter.go ./logger.go ./logrus.go ./terminal_check_notappengine.go ./terminal_check_unix.go ./text_formatter.go ./writer.go
+[0m[91m/usr/local/go/pkg/tool/linux_amd64/buildid -w $WORK/b118/_pkg_.a # internal
+[0m[91mcp $WORK/b118/_pkg_.a /root/.cache/go-build/cb/cb663b03fe7e867f927e977a1c68ed2c2643f25f9e789bc72fd777c035b19a53-d # internal
+[0m[91mmkdir -p $WORK/b121/
+[0m[91mcat >$WORK/b121/go_asm.h << 'EOF' # internal
+EOF
+[0m[91mcd /go/pkg/mod/github.com/golang/snappy@v0.0.1
+/usr/local/go/pkg/tool/linux_amd64/asm -p github.com/golang/snappy -trimpath "$WORK/b121=>" -I $WORK/b121/ -I /usr/local/go/pkg/include -D GOOS_linux -D GOARCH_amd64 -gensymabis -o $WORK/b121/symabis ./decode_amd64.s ./encode_amd64.s
+[0m[91mcat >$WORK/b121/importcfg << 'EOF' # internal
+# import config
+packagefile encoding/binary=/usr/local/go/pkg/linux_amd64/encoding/binary.a
+packagefile errors=/usr/local/go/pkg/linux_amd64/errors.a
+packagefile hash/crc32=/usr/local/go/pkg/linux_amd64/hash/crc32.a
+packagefile io=/usr/local/go/pkg/linux_amd64/io.a
+EOF
+[0m[91m/usr/local/go/pkg/tool/linux_amd64/compile -o $WORK/b121/_pkg_.a -trimpath "$WORK/b121=>" -p github.com/golang/snappy -buildid OoAOLZB6bRskpTBBTdOi/OoAOLZB6bRskpTBBTdOi -goversion go1.15.5 -symabis $WORK/b121/symabis -D "" -importcfg $WORK/b121/importcfg -pack -asmhdr $WORK/b121/go_asm.h -c=2 ./decode.go ./decode_amd64.go ./encode.go ./encode_amd64.go ./snappy.go
+[0m[91m/usr/local/go/pkg/tool/linux_amd64/asm -p github.com/golang/snappy -trimpath "$WORK/b121=>" -I $WORK/b121/ -I /usr/local/go/pkg/include -D GOOS_linux -D GOARCH_amd64 -o $WORK/b121/decode_amd64.o ./decode_amd64.s
+[0m[91m/usr/local/go/pkg/tool/linux_amd64/asm -p github.com/golang/snappy -trimpath "$WORK/b121=>" -I $WORK/b121/ -I /usr/local/go/pkg/include -D GOOS_linux -D GOARCH_amd64 -o $WORK/b121/encode_amd64.o ./encode_amd64.s
+[0m[91m/usr/local/go/pkg/tool/linux_amd64/pack r $WORK/b121/_pkg_.a $WORK/b121/decode_amd64.o $WORK/b121/encode_amd64.o # internal
+[0m[91m/usr/local/go/pkg/tool/linux_amd64/buildid -w $WORK/b121/_pkg_.a # internal
+[0m[91mcp $WORK/b121/_pkg_.a /root/.cache/go-build/34/342a3efe42affed3f0a2bbf59d38a154aa9bd37625a193d04d9d27e2a8905aad-d # internal
+[0m[91mmkdir -p $WORK/b120/
+[0m[91mcat >$WORK/b120/importcfg << 'EOF' # internal
+# import config
+packagefile bufio=/usr/local/go/pkg/linux_amd64/bufio.a
+packagefile bytes=/usr/local/go/pkg/linux_amd64/bytes.a
+packagefile compress/flate=/usr/local/go/pkg/linux_amd64/compress/flate.a
+packagefile crypto/tls=/usr/local/go/pkg/linux_amd64/crypto/tls.a
+packagefile crypto/x509=/usr/local/go/pkg/linux_amd64/crypto/x509.a
+packagefile encoding/binary=/usr/local/go/pkg/linux_amd64/encoding/binary.a
+packagefile encoding/json=/usr/local/go/pkg/linux_amd64/encoding/json.a
+packagefile errors=/usr/local/go/pkg/linux_amd64/errors.a
+packagefile fmt=/usr/local/go/pkg/linux_amd64/fmt.a
+packagefile github.com/golang/snappy=$WORK/b121/_pkg_.a
+packagefile io=/usr/local/go/pkg/linux_amd64/io.a
+packagefile io/ioutil=/usr/local/go/pkg/linux_amd64/io/ioutil.a
+packagefile log=/usr/local/go/pkg/linux_amd64/log.a
+packagefile math=/usr/local/go/pkg/linux_amd64/math.a
+packagefile math/rand=/usr/local/go/pkg/linux_amd64/math/rand.a
+packagefile net=/usr/local/go/pkg/linux_amd64/net.a
+packagefile net/http=/usr/local/go/pkg/linux_amd64/net/http.a
+packagefile net/url=/usr/local/go/pkg/linux_amd64/net/url.a
+packagefile os=/usr/local/go/pkg/linux_amd64/os.a
+packagefile reflect=/usr/local/go/pkg/linux_amd64/reflect.a
+packagefile regexp=/usr/local/go/pkg/linux_amd64/regexp.a
+packagefile strconv=/usr/local/go/pkg/linux_amd64/strconv.a
+packagefile strings=/usr/local/go/pkg/linux_amd64/strings.a
+packagefile sync=/usr/local/go/pkg/linux_amd64/sync.a
+packagefile sync/atomic=/usr/local/go/pkg/linux_amd64/sync/atomic.a
+packagefile time=/usr/local/go/pkg/linux_amd64/time.a
+EOF
+[0m[91mcd /go/pkg/mod/github.com/nsqio/go-nsq@v1.0.8
+/usr/local/go/pkg/tool/linux_amd64/compile -o $WORK/b120/_pkg_.a -trimpath "$WORK/b120=>" -p github.com/nsqio/go-nsq -lang=go1.11 -complete -buildid GwmlGMwQCAKRb6_9D60d/GwmlGMwQCAKRb6_9D60d -goversion go1.15.5 -D "" -importcfg $WORK/b120/importcfg -pack -c=2 ./api_request.go ./command.go ./config.go ./config_flag.go ./conn.go ./consumer.go ./delegates.go ./doc.go ./errors.go ./message.go ./producer.go ./protocol.go ./states.go ./version.go
+[0m[91m/usr/local/go/pkg/tool/linux_amd64/buildid -w $WORK/b115/_pkg_.a # internal
+[0m[91mcp $WORK/b115/_pkg_.a /root/.cache/go-build/e8/e8612609fc6fa1b24caefdcf7c63413b7fb130e7a35810a6423b264e623d003a-d # internal
+[0m[91mmkdir -p $WORK/b035/
+[0m[91mcat >$WORK/b035/importcfg << 'EOF' # internal
+# import config
+packagefile encoding/json=/usr/local/go/pkg/linux_amd64/encoding/json.a
+packagefile fmt=/usr/local/go/pkg/linux_amd64/fmt.a
+packagefile github.com/gorilla/mux=$WORK/b043/_pkg_.a
+packagefile github.com/pkg/errors=$WORK/b114/_pkg_.a
+packagefile github.com/sirupsen/logrus=$WORK/b115/_pkg_.a
+packagefile io=/usr/local/go/pkg/linux_amd64/io.a
+packagefile net/http=/usr/local/go/pkg/linux_amd64/net/http.a
+packagefile net/http/httputil=/usr/local/go/pkg/linux_amd64/net/http/httputil.a
+packagefile net/url=/usr/local/go/pkg/linux_amd64/net/url.a
+EOF
+[0m[91mcd /go/src/app/pkg/gateway
+/usr/local/go/pkg/tool/linux_amd64/compile -o $WORK/b035/_pkg_.a -trimpath "$WORK/b035=>" -p github.com/georgysavva/driver-app/gateway/pkg/gateway -lang=go1.14 -complete -buildid dfauf-3URCauZq1sPDqI/dfauf-3URCauZq1sPDqI -goversion go1.15.5 -D "" -importcfg $WORK/b035/importcfg -pack -c=2 ./gateway.go ./nsq_proxy.go ./util.go
+[0m[91m/usr/local/go/pkg/tool/linux_amd64/buildid -w $WORK/b035/_pkg_.a # internal
+[0m[91mcp $WORK/b035/_pkg_.a /root/.cache/go-build/cc/cc9d65442e7bd8122274540035c440dbde190d78f1296a9d1607dbe67bd55e23-d # internal
+[0m[91mmkdir -p $WORK/b034/
+[0m[91mcat >$WORK/b034/importcfg << 'EOF' # internal
+# import config
+packagefile github.com/georgysavva/driver-app/gateway/pkg/gateway=$WORK/b035/_pkg_.a
+packagefile github.com/pkg/errors=$WORK/b114/_pkg_.a
+packagefile gopkg.in/yaml.v2=$WORK/b118/_pkg_.a
+packagefile io/ioutil=/usr/local/go/pkg/linux_amd64/io/ioutil.a
+packagefile path/filepath=/usr/local/go/pkg/linux_amd64/path/filepath.a
+packagefile time=/usr/local/go/pkg/linux_amd64/time.a
+EOF
+[0m[91mcd /go/src/app/pkg/config
+/usr/local/go/pkg/tool/linux_amd64/compile -o $WORK/b034/_pkg_.a -trimpath "$WORK/b034=>" -p github.com/georgysavva/driver-app/gateway/pkg/config -lang=go1.14 -complete -buildid sHqsIVk1hkMc0l0mlHnX/sHqsIVk1hkMc0l0mlHnX -goversion go1.15.5 -D "" -importcfg $WORK/b034/importcfg -pack -c=2 ./config.go
+[0m[91m/usr/local/go/pkg/tool/linux_amd64/buildid -w $WORK/b034/_pkg_.a # internal
+[0m[91mcp $WORK/b034/_pkg_.a /root/.cache/go-build/ec/ec28fef771505809f89c0a72acb69bd54a90833de17287fa5b76388f655aec52-d # internal
+[0m[91mmkdir -p $WORK/b119/
+[0m[91mcat >$WORK/b119/importcfg << 'EOF' # internal
+# import config
+packagefile github.com/sirupsen/logrus=$WORK/b115/_pkg_.a
+packagefile net/http=/usr/local/go/pkg/linux_amd64/net/http.a
+EOF
+[0m[91mcd /go/src/app/pkg/httpmiddleware
+/usr/local/go/pkg/tool/linux_amd64/compile -o $WORK/b119/_pkg_.a -trimpath "$WORK/b119=>" -p github.com/georgysavva/driver-app/gateway/pkg/httpmiddleware -lang=go1.14 -complete -buildid X_ZRDcvSojD34pbMfhGz/X_ZRDcvSojD34pbMfhGz -goversion go1.15.5 -D "" -importcfg $WORK/b119/importcfg -pack -c=2 ./httpmiddleware.go
+[0m[91m/usr/local/go/pkg/tool/linux_amd64/buildid -w $WORK/b119/_pkg_.a # internal
+[0m[91mcp $WORK/b119/_pkg_.a /root/.cache/go-build/72/72534ec67b9e68a0fd4db6990624bd7b7056aabda5da61ed389699d1daf510de-d # internal
+[0m[91mmkdir -p $WORK/b122/
+[0m[91mcat >$WORK/b043/vet.cfg << 'EOF' # internal
+{
+	"ID": "github.com/gorilla/mux",
+	"Compiler": "gc",
+	"Dir": "/go/pkg/mod/github.com/gorilla/mux@v1.8.0",
+	"ImportPath": "github.com/gorilla/mux",
+	"GoFiles": [
+		"/go/pkg/mod/github.com/gorilla/mux@v1.8.0/doc.go",
+		"/go/pkg/mod/github.com/gorilla/mux@v1.8.0/middleware.go",
+		"/go/pkg/mod/github.com/gorilla/mux@v1.8.0/mux.go",
+		"/go/pkg/mod/github.com/gorilla/mux@v1.8.0/regexp.go",
+		"/go/pkg/mod/github.com/gorilla/mux@v1.8.0/route.go",
+		"/go/pkg/mod/github.com/gorilla/mux@v1.8.0/test_helpers.go"
+	],
+	"NonGoFiles": [],
+	"ImportMap": {
+		"bytes": "bytes",
+		"context": "context",
+		"errors": "errors",
+		"fmt": "fmt",
+		"net/http": "net/http",
+		"net/url": "net/url",
+		"path": "path",
+		"regexp": "regexp",
+		"strconv": "strconv",
+		"strings": "strings"
+	},
+	"PackageFile": {
+		"bytes": "/usr/local/go/pkg/linux_amd64/bytes.a",
+		"context": "/usr/local/go/pkg/linux_amd64/context.a",
+		"errors": "/usr/local/go/pkg/linux_amd64/errors.a",
+		"fmt": "/usr/local/go/pkg/linux_amd64/fmt.a",
+		"net/http": "/usr/local/go/pkg/linux_amd64/net/http.a",
+		"net/url": "/usr/local/go/pkg/linux_amd64/net/url.a",
+		"path": "/usr/local/go/pkg/linux_amd64/path.a",
+		"regexp": "/usr/local/go/pkg/linux_amd64/regexp.a",
+		"strconv": "/usr/local/go/pkg/linux_amd64/strconv.a",
+		"strings": "/usr/local/go/pkg/linux_amd64/strings.a"
+	},
+	"Standard": {
+		"bytes": true,
+		"context": true,
+		"errors": true,
+		"fmt": true,
+		"net/http": true,
+		"net/url": true,
+		"path": true,
+		"regexp": true,
+		"strconv": true,
+		"strings": true
+	},
+	"PackageVetx": {
+		"bytes": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"context": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"errors": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"fmt": "/root/.cache/go-build/6f/6f1a3e1f52c31e8342fdd695153c6d7a005caa69858e5628fb700df89b134021-d",
+		"net/http": "/root/.cache/go-build/5a/5a11dca4085a25e4428ea4aae826ee8a35049b8c435c4df2390e990446319569-d",
+		"net/url": "/root/.cache/go-build/88/8882d04b5e2b8dcb1bfaa0783318fc713e15a1ec4e5214a11c600230b413898e-d",
+		"path": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"regexp": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"strconv": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"strings": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d"
+	},
+	"VetxOnly": true,
+	"VetxOutput": "$WORK/b043/vet.out",
+	"SucceedOnTypecheckFailure": false
+}
+EOF
+[0m[91mcd /go/pkg/mod/github.com/gorilla/mux@v1.8.0
+TERM='dumb' /usr/local/go/pkg/tool/linux_amd64/vet -atomic -bool -buildtags -errorsas -ifaceassert -nilfunc -printf -stringintconv $WORK/b043/vet.cfg
+[0m[91mcat >$WORK/b114/vet.cfg << 'EOF' # internal
+{
+	"ID": "github.com/pkg/errors",
+	"Compiler": "gc",
+	"Dir": "/go/pkg/mod/github.com/pkg/errors@v0.9.1",
+	"ImportPath": "github.com/pkg/errors",
+	"GoFiles": [
+		"/go/pkg/mod/github.com/pkg/errors@v0.9.1/errors.go",
+		"/go/pkg/mod/github.com/pkg/errors@v0.9.1/go113.go",
+		"/go/pkg/mod/github.com/pkg/errors@v0.9.1/stack.go"
+	],
+	"NonGoFiles": [],
+	"ImportMap": {
+		"errors": "errors",
+		"fmt": "fmt",
+		"io": "io",
+		"path": "path",
+		"runtime": "runtime",
+		"strconv": "strconv",
+		"strings": "strings"
+	},
+	"PackageFile": {
+		"errors": "/usr/local/go/pkg/linux_amd64/errors.a",
+		"fmt": "/usr/local/go/pkg/linux_amd64/fmt.a",
+		"io": "/usr/local/go/pkg/linux_amd64/io.a",
+		"path": "/usr/local/go/pkg/linux_amd64/path.a",
+		"runtime": "/usr/local/go/pkg/linux_amd64/runtime.a",
+		"strconv": "/usr/local/go/pkg/linux_amd64/strconv.a",
+		"strings": "/usr/local/go/pkg/linux_amd64/strings.a"
+	},
+	"Standard": {
+		"errors": true,
+		"fmt": true,
+		"io": true,
+		"path": true,
+		"runtime": true,
+		"strconv": true,
+		"strings": true
+	},
+	"PackageVetx": {
+		"errors": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"fmt": "/root/.cache/go-build/6f/6f1a3e1f52c31e8342fdd695153c6d7a005caa69858e5628fb700df89b134021-d",
+		"io": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"path": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"runtime": "/root/.cache/go-build/2d/2d26f8ed83dc6de73bc9496e28d0e378ec6945d8641b2016bae22f9c0ddb929b-d",
+		"strconv": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"strings": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d"
+	},
+	"VetxOnly": true,
+	"VetxOutput": "$WORK/b114/vet.out",
+	"SucceedOnTypecheckFailure": false
+}
+EOF
+cd /go/pkg/mod/github.com/pkg/errors@v0.9.1
+TERM='dumb' /usr/local/go/pkg/tool/linux_amd64/vet -atomic -bool -buildtags -errorsas -ifaceassert -nilfunc -printf -stringintconv $WORK/b114/vet.cfg
+[0m[91mcat >$WORK/b116/vet.cfg << 'EOF' # internal
+{
+	"ID": "golang.org/x/sys/unix",
+	"Compiler": "gc",
+	"Dir": "/go/pkg/mod/golang.org/x/sys@v0.0.0-20191026070338-33540a1f6037/unix",
+	"ImportPath": "golang.org/x/sys/unix",
+	"GoFiles": [
+		"/go/pkg/mod/golang.org/x/sys@v0.0.0-20191026070338-33540a1f6037/unix/affinity_linux.go",
+		"/go/pkg/mod/golang.org/x/sys@v0.0.0-20191026070338-33540a1f6037/unix/aliases.go",
+		"/go/pkg/mod/golang.org/x/sys@v0.0.0-20191026070338-33540a1f6037/unix/bluetooth_linux.go",
+		"/go/pkg/mod/golang.org/x/sys@v0.0.0-20191026070338-33540a1f6037/unix/constants.go",
+		"/go/pkg/mod/golang.org/x/sys@v0.0.0-20191026070338-33540a1f6037/unix/dev_linux.go",
+		"/go/pkg/mod/golang.org/x/sys@v0.0.0-20191026070338-33540a1f6037/unix/dirent.go",
+		"/go/pkg/mod/golang.org/x/sys@v0.0.0-20191026070338-33540a1f6037/unix/endian_little.go",
+		"/go/pkg/mod/golang.org/x/sys@v0.0.0-20191026070338-33540a1f6037/unix/env_unix.go",
+		"/go/pkg/mod/golang.org/x/sys@v0.0.0-20191026070338-33540a1f6037/unix/fcntl.go",
+		"/go/pkg/mod/golang.org/x/sys@v0.0.0-20191026070338-33540a1f6037/unix/ioctl.go",
+		"/go/pkg/mod/golang.org/x/sys@v0.0.0-20191026070338-33540a1f6037/unix/pagesize_unix.go",
+		"/go/pkg/mod/golang.org/x/sys@v0.0.0-20191026070338-33540a1f6037/unix/race0.go",
+		"/go/pkg/mod/golang.org/x/sys@v0.0.0-20191026070338-33540a1f6037/unix/readdirent_getdents.go",
+		"/go/pkg/mod/golang.org/x/sys@v0.0.0-20191026070338-33540a1f6037/unix/sockcmsg_linux.go",
+		"/go/pkg/mod/golang.org/x/sys@v0.0.0-20191026070338-33540a1f6037/unix/sockcmsg_unix.go",
+		"/go/pkg/mod/golang.org/x/sys@v0.0.0-20191026070338-33540a1f6037/unix/sockcmsg_unix_other.go",
+		"/go/pkg/mod/golang.org/x/sys@v0.0.0-20191026070338-33540a1f6037/unix/str.go",
+		"/go/pkg/mod/golang.org/x/sys@v0.0.0-20191026070338-33540a1f6037/unix/syscall.go",
+		"/go/pkg/mod/golang.org/x/sys@v0.0.0-20191026070338-33540a1f6037/unix/syscall_linux.go",
+		"/go/pkg/mod/golang.org/x/sys@v0.0.0-20191026070338-33540a1f6037/unix/syscall_linux_amd64.go",
+		"/go/pkg/mod/golang.org/x/sys@v0.0.0-20191026070338-33540a1f6037/unix/syscall_linux_amd64_gc.go",
+		"/go/pkg/mod/golang.org/x/sys@v0.0.0-20191026070338-33540a1f6037/unix/syscall_linux_gc.go",
+		"/go/pkg/mod/golang.org/x/sys@v0.0.0-20191026070338-33540a1f6037/unix/syscall_unix.go",
+		"/go/pkg/mod/golang.org/x/sys@v0.0.0-20191026070338-33540a1f6037/unix/syscall_unix_gc.go",
+		"/go/pkg/mod/golang.org/x/sys@v0.0.0-20191026070338-33540a1f6037/unix/timestruct.go",
+		"/go/pkg/mod/golang.org/x/sys@v0.0.0-20191026070338-33540a1f6037/unix/zerrors_linux_amd64.go",
+		"/go/pkg/mod/golang.org/x/sys@v0.0.0-20191026070338-33540a1f6037/unix/zptrace386_linux.go",
+		"/go/pkg/mod/golang.org/x/sys@v0.0.0-20191026070338-33540a1f6037/unix/zsyscall_linux_amd64.go",
+		"/go/pkg/mod/golang.org/x/sys@v0.0.0-20191026070338-33540a1f6037/unix/zsysnum_linux_amd64.go",
+		"/go/pkg/mod/golang.org/x/sys@v0.0.0-20191026070338-33540a1f6037/unix/ztypes_linux_amd64.go"
+	],
+	"NonGoFiles": [
+		"/go/pkg/mod/golang.org/x/sys@v0.0.0-20191026070338-33540a1f6037/unix/asm_linux_amd64.s"
+	],
+	"ImportMap": {
+		"bytes": "bytes",
+		"encoding/binary": "encoding/binary",
+		"math/bits": "math/bits",
+		"runtime": "runtime",
+		"sort": "sort",
+		"strings": "strings",
+		"sync": "sync",
+		"syscall": "syscall",
+		"time": "time",
+		"unsafe": "unsafe"
+	},
+	"PackageFile": {
+		"bytes": "/usr/local/go/pkg/linux_amd64/bytes.a",
+		"encoding/binary": "/usr/local/go/pkg/linux_amd64/encoding/binary.a",
+		"math/bits": "/usr/local/go/pkg/linux_amd64/math/bits.a",
+		"runtime": "/usr/local/go/pkg/linux_amd64/runtime.a",
+		"sort": "/usr/local/go/pkg/linux_amd64/sort.a",
+		"strings": "/usr/local/go/pkg/linux_amd64/strings.a",
+		"sync": "/usr/local/go/pkg/linux_amd64/sync.a",
+		"syscall": "/usr/local/go/pkg/linux_amd64/syscall.a",
+		"time": "/usr/local/go/pkg/linux_amd64/time.a"
+	},
+	"Standard": {
+		"bytes": true,
+		"encoding/binary": true,
+		"math/bits": true,
+		"runtime": true,
+		"sort": true,
+		"strings": true,
+		"sync": true,
+		"syscall": true,
+		"time": true,
+		"unsafe": true
+	},
+	"PackageVetx": {
+		"bytes": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"encoding/binary": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"math/bits": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"runtime": "/root/.cache/go-build/2d/2d26f8ed83dc6de73bc9496e28d0e378ec6945d8641b2016bae22f9c0ddb929b-d",
+		"sort": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"strings": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"sync": "/root/.cache/go-build/2d/2d26f8ed83dc6de73bc9496e28d0e378ec6945d8641b2016bae22f9c0ddb929b-d",
+		"syscall": "/root/.cache/go-build/77/7703a56ffad7e2d1533a584fb504cc800de76c80580922a8bc5d78959e8316c1-d",
+		"time": "/root/.cache/go-build/77/7703a56ffad7e2d1533a584fb504cc800de76c80580922a8bc5d78959e8316c1-d"
+	},
+	"VetxOnly": true,
+	"VetxOutput": "$WORK/b116/vet.out",
+	"SucceedOnTypecheckFailure": false
+}
+EOF
+cd /go/pkg/mod/golang.org/x/sys@v0.0.0-20191026070338-33540a1f6037/unix
+TERM='dumb' /usr/local/go/pkg/tool/linux_amd64/vet -atomic -bool -buildtags -errorsas -ifaceassert -nilfunc -printf -stringintconv $WORK/b116/vet.cfg
+[0m[91m/usr/local/go/pkg/tool/linux_amd64/buildid -w $WORK/b120/_pkg_.a # internal
+[0m[91mcp $WORK/b120/_pkg_.a /root/.cache/go-build/44/4496f545125e8fa621db319326c4a2c640f22986015c768b5d99223af49add85-d # internal
+[0m[91mmkdir -p $WORK/b001/
+[0m[91mcat >$WORK/b001/_gomod_.go << 'EOF' # internal
+package main
+import _ "unsafe"
+//go:linkname __debug_modinfo__ runtime.modinfo
+var __debug_modinfo__ = "0w\xaf\f\x92t\b\x02A\xe1\xc1\a\xe6\xd6\x18\xe6path\tgithub.com/georgysavva/driver-app/gateway/cmd/gateway-server\nmod\tgithub.com/georgysavva/driver-app/gateway\t(devel)\t\ndep\tgithub.com/golang/snappy\tv0.0.1\th1:Qgr9rKW7uDUkrbSmQeiDsGa8SjGyCOGtuasMWwvp2P4=\ndep\tgithub.com/gorilla/mux\tv1.8.0\th1:i40aqfkR1h2SlN9hojwV5ZA91wcXFOvkdNIeFDP5koI=\ndep\tgithub.com/nsqio/go-nsq\tv1.0.8\th1:3L2F8tNLlwXXlp2slDUrUWSBn2O3nMh8R1/KEDFTHPk=\ndep\tgithub.com/pkg/errors\tv0.9.1\th1:FEBLx1zS214owpjy7qsBeixbURkuhQAwrK5UwLGTwt4=\ndep\tgithub.com/sirupsen/logrus\tv1.7.0\th1:ShrD1U9pZB12TX0cVy0DtePoCH97K8EtX+mg7ZARUtM=\ndep\tgolang.org/x/sys\tv0.0.0-20191026070338-33540a1f6037\th1:YyJpGZS1sBuBCzLAR1VEpK193GlqGZbnPFnPV/5Rsb4=\ndep\tgopkg.in/yaml.v2\tv2.3.0\th1:clyUAQHOM3G0M3f5vQj7LuJrETvjVot3Z5el9nffUtU=\n\xf92C1\x86\x18 r\x00\x82B\x10A\x16\xd8\xf2"
+	EOF
+[0m[91mcat >$WORK/b001/importcfg << 'EOF' # internal
+# import config
+packagefile context=/usr/local/go/pkg/linux_amd64/context.a
+packagefile fmt=/usr/local/go/pkg/linux_amd64/fmt.a
+packagefile github.com/georgysavva/driver-app/gateway/pkg/config=$WORK/b034/_pkg_.a
+packagefile github.com/georgysavva/driver-app/gateway/pkg/gateway=$WORK/b035/_pkg_.a
+packagefile github.com/georgysavva/driver-app/gateway/pkg/httpmiddleware=$WORK/b119/_pkg_.a
+packagefile github.com/nsqio/go-nsq=$WORK/b120/_pkg_.a
+packagefile github.com/pkg/errors=$WORK/b114/_pkg_.a
+packagefile github.com/sirupsen/logrus=$WORK/b115/_pkg_.a
+packagefile net/http=/usr/local/go/pkg/linux_amd64/net/http.a
+packagefile os=/usr/local/go/pkg/linux_amd64/os.a
+packagefile os/signal=/usr/local/go/pkg/linux_amd64/os/signal.a
+packagefile syscall=/usr/local/go/pkg/linux_amd64/syscall.a
+packagefile runtime=/usr/local/go/pkg/linux_amd64/runtime.a
+EOF
+[0m[91mcd /go/src/app/cmd/gateway-server
+/usr/local/go/pkg/tool/linux_amd64/compile -o $WORK/b001/_pkg_.a -trimpath "$WORK/b001=>" -p main -lang=go1.14 -complete -buildid rL10kbbk0Tuml1mr71rz/rL10kbbk0Tuml1mr71rz -goversion go1.15.5 -D "" -importcfg $WORK/b001/importcfg -pack -c=2 ./main.go $WORK/b001/_gomod_.go
+[0m[91m/usr/local/go/pkg/tool/linux_amd64/buildid -w $WORK/b001/_pkg_.a # internal
+[0m[91mcp $WORK/b001/_pkg_.a /root/.cache/go-build/22/22fb99a855e4440bbe683dd7cd01394fdcab4af25fdf760e9b14bd0b2e8e440f-d # internal
+[0m[91mcat >$WORK/b117/vet.cfg << 'EOF' # internal
+{
+	"ID": "net/http/httputil",
+	"Compiler": "gc",
+	"Dir": "/usr/local/go/src/net/http/httputil",
+	"ImportPath": "net/http/httputil",
+	"GoFiles": [
+		"/usr/local/go/src/net/http/httputil/dump.go",
+		"/usr/local/go/src/net/http/httputil/httputil.go",
+		"/usr/local/go/src/net/http/httputil/persist.go",
+		"/usr/local/go/src/net/http/httputil/reverseproxy.go"
+	],
+	"NonGoFiles": [],
+	"ImportMap": {
+		"bufio": "bufio",
+		"bytes": "bytes",
+		"context": "context",
+		"errors": "errors",
+		"fmt": "fmt",
+		"golang.org/x/net/http/httpguts": "vendor/golang.org/x/net/http/httpguts",
+		"io": "io",
+		"io/ioutil": "io/ioutil",
+		"log": "log",
+		"net": "net",
+		"net/http": "net/http",
+		"net/http/internal": "net/http/internal",
+		"net/textproto": "net/textproto",
+		"net/url": "net/url",
+		"strings": "strings",
+		"sync": "sync",
+		"time": "time"
+	},
+	"PackageFile": {
+		"bufio": "/usr/local/go/pkg/linux_amd64/bufio.a",
+		"bytes": "/usr/local/go/pkg/linux_amd64/bytes.a",
+		"context": "/usr/local/go/pkg/linux_amd64/context.a",
+		"errors": "/usr/local/go/pkg/linux_amd64/errors.a",
+		"fmt": "/usr/local/go/pkg/linux_amd64/fmt.a",
+		"io": "/usr/local/go/pkg/linux_amd64/io.a",
+		"io/ioutil": "/usr/local/go/pkg/linux_amd64/io/ioutil.a",
+		"log": "/usr/local/go/pkg/linux_amd64/log.a",
+		"net": "/usr/local/go/pkg/linux_amd64/net.a",
+		"net/http": "/usr/local/go/pkg/linux_amd64/net/http.a",
+		"net/http/internal": "/usr/local/go/pkg/linux_amd64/net/http/internal.a",
+		"net/textproto": "/usr/local/go/pkg/linux_amd64/net/textproto.a",
+		"net/url": "/usr/local/go/pkg/linux_amd64/net/url.a",
+		"strings": "/usr/local/go/pkg/linux_amd64/strings.a",
+		"sync": "/usr/local/go/pkg/linux_amd64/sync.a",
+		"time": "/usr/local/go/pkg/linux_amd64/time.a",
+		"vendor/golang.org/x/net/http/httpguts": "/usr/local/go/pkg/linux_amd64/vendor/golang.org/x/net/http/httpguts.a"
+	},
+	"Standard": {
+		"bufio": true,
+		"bytes": true,
+		"context": true,
+		"errors": true,
+		"fmt": true,
+		"io": true,
+		"io/ioutil": true,
+		"log": true,
+		"net": true,
+		"net/http": true,
+		"net/http/internal": true,
+		"net/textproto": true,
+		"net/url": true,
+		"strings": true,
+		"sync": true,
+		"time": true,
+		"vendor/golang.org/x/net/http/httpguts": true
+	},
+	"PackageVetx": {
+		"bufio": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"bytes": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"context": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"errors": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"fmt": "/root/.cache/go-build/6f/6f1a3e1f52c31e8342fdd695153c6d7a005caa69858e5628fb700df89b134021-d",
+		"io": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"io/ioutil": "/root/.cache/go-build/5b/5b9172b5fe9e92464466e5c1459ae73de4a6c1cd1f7f4f795aa7a0e5ba8af6ac-d",
+		"log": "/root/.cache/go-build/76/76b9459e6e6ba3a56312401978135470861b5d3081d732284d55b15b625db629-d",
+		"net": "/root/.cache/go-build/37/376397066f40ef1fac96c02af9c4a0699a0e5aa019bc41dafa3d93954e7fe7c8-d",
+		"net/http": "/root/.cache/go-build/5a/5a11dca4085a25e4428ea4aae826ee8a35049b8c435c4df2390e990446319569-d",
+		"net/http/internal": "/root/.cache/go-build/88/8882d04b5e2b8dcb1bfaa0783318fc713e15a1ec4e5214a11c600230b413898e-d",
+		"net/textproto": "/root/.cache/go-build/8b/8bbd6dfd294d74fd62e4014e3f0b20164b5d6309cc722f413dfe31038d5fcff9-d",
+		"net/url": "/root/.cache/go-build/88/8882d04b5e2b8dcb1bfaa0783318fc713e15a1ec4e5214a11c600230b413898e-d",
+		"strings": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"sync": "/root/.cache/go-build/2d/2d26f8ed83dc6de73bc9496e28d0e378ec6945d8641b2016bae22f9c0ddb929b-d",
+		"time": "/root/.cache/go-build/77/7703a56ffad7e2d1533a584fb504cc800de76c80580922a8bc5d78959e8316c1-d",
+		"vendor/golang.org/x/net/http/httpguts": "/root/.cache/go-build/2c/2ccc5173c52001b11ff6c694bd39bc1e14e32fd19813ad5871c6c4b70869b048-d"
+	},
+	"VetxOnly": true,
+	"VetxOutput": "$WORK/b117/vet.out",
+	"SucceedOnTypecheckFailure": false
+}
+EOF
+[0m[91mcd /usr/local/go/src/net/http/httputil
+TERM='dumb' /usr/local/go/pkg/tool/linux_amd64/vet -unsafeptr=false $WORK/b117/vet.cfg
+[0m[91mcat >$WORK/b115/vet.cfg << 'EOF' # internal
+{
+	"ID": "github.com/sirupsen/logrus",
+	"Compiler": "gc",
+	"Dir": "/go/pkg/mod/github.com/sirupsen/logrus@v1.7.0",
+	"ImportPath": "github.com/sirupsen/logrus",
+	"GoFiles": [
+		"/go/pkg/mod/github.com/sirupsen/logrus@v1.7.0/alt_exit.go",
+		"/go/pkg/mod/github.com/sirupsen/logrus@v1.7.0/buffer_pool.go",
+		"/go/pkg/mod/github.com/sirupsen/logrus@v1.7.0/doc.go",
+		"/go/pkg/mod/github.com/sirupsen/logrus@v1.7.0/entry.go",
+		"/go/pkg/mod/github.com/sirupsen/logrus@v1.7.0/exported.go",
+		"/go/pkg/mod/github.com/sirupsen/logrus@v1.7.0/formatter.go",
+		"/go/pkg/mod/github.com/sirupsen/logrus@v1.7.0/hooks.go",
+		"/go/pkg/mod/github.com/sirupsen/logrus@v1.7.0/json_formatter.go",
+		"/go/pkg/mod/github.com/sirupsen/logrus@v1.7.0/logger.go",
+		"/go/pkg/mod/github.com/sirupsen/logrus@v1.7.0/logrus.go",
+		"/go/pkg/mod/github.com/sirupsen/logrus@v1.7.0/terminal_check_notappengine.go",
+		"/go/pkg/mod/github.com/sirupsen/logrus@v1.7.0/terminal_check_unix.go",
+		"/go/pkg/mod/github.com/sirupsen/logrus@v1.7.0/text_formatter.go",
+		"/go/pkg/mod/github.com/sirupsen/logrus@v1.7.0/writer.go"
+	],
+	"NonGoFiles": [],
+	"ImportMap": {
+		"bufio": "bufio",
+		"bytes": "bytes",
+		"context": "context",
+		"encoding/json": "encoding/json",
+		"fmt": "fmt",
+		"golang.org/x/sys/unix": "golang.org/x/sys/unix",
+		"io": "io",
+		"log": "log",
+		"os": "os",
+		"reflect": "reflect",
+		"runtime": "runtime",
+		"sort": "sort",
+		"strconv": "strconv",
+		"strings": "strings",
+		"sync": "sync",
+		"sync/atomic": "sync/atomic",
+		"time": "time",
+		"unicode/utf8": "unicode/utf8"
+	},
+	"PackageFile": {
+		"bufio": "/usr/local/go/pkg/linux_amd64/bufio.a",
+		"bytes": "/usr/local/go/pkg/linux_amd64/bytes.a",
+		"context": "/usr/local/go/pkg/linux_amd64/context.a",
+		"encoding/json": "/usr/local/go/pkg/linux_amd64/encoding/json.a",
+		"fmt": "/usr/local/go/pkg/linux_amd64/fmt.a",
+		"golang.org/x/sys/unix": "$WORK/b116/_pkg_.a",
+		"io": "/usr/local/go/pkg/linux_amd64/io.a",
+		"log": "/usr/local/go/pkg/linux_amd64/log.a",
+		"os": "/usr/local/go/pkg/linux_amd64/os.a",
+		"reflect": "/usr/local/go/pkg/linux_amd64/reflect.a",
+		"runtime": "/usr/local/go/pkg/linux_amd64/runtime.a",
+		"sort": "/usr/local/go/pkg/linux_amd64/sort.a",
+		"strconv": "/usr/local/go/pkg/linux_amd64/strconv.a",
+		"strings": "/usr/local/go/pkg/linux_amd64/strings.a",
+		"sync": "/usr/local/go/pkg/linux_amd64/sync.a",
+		"sync/atomic": "/usr/local/go/pkg/linux_amd64/sync/atomic.a",
+		"time": "/usr/local/go/pkg/linux_amd64/time.a",
+		"unicode/utf8": "/usr/local/go/pkg/linux_amd64/unicode/utf8.a"
+	},
+	"Standard": {
+		"bufio": true,
+		"bytes": true,
+		"context": true,
+		"encoding/json": true,
+		"fmt": true,
+		"io": true,
+		"log": true,
+		"os": true,
+		"reflect": true,
+		"runtime": true,
+		"sort": true,
+		"strconv": true,
+		"strings": true,
+		"sync": true,
+		"sync/atomic": true,
+		"time": true,
+		"unicode/utf8": true
+	},
+	"PackageVetx": {
+		"bufio": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"bytes": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"context": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"encoding/json": "/root/.cache/go-build/0b/0b7efcf181fb9d7059dbb9ec39d8a28bfdd0b4695a71cb038e85cb7bb2225fe1-d",
+		"fmt": "/root/.cache/go-build/6f/6f1a3e1f52c31e8342fdd695153c6d7a005caa69858e5628fb700df89b134021-d",
+		"golang.org/x/sys/unix": "$WORK/b116/vet.out",
+		"io": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"log": "/root/.cache/go-build/76/76b9459e6e6ba3a56312401978135470861b5d3081d732284d55b15b625db629-d",
+		"os": "/root/.cache/go-build/37/376397066f40ef1fac96c02af9c4a0699a0e5aa019bc41dafa3d93954e7fe7c8-d",
+		"reflect": "/root/.cache/go-build/2d/2d26f8ed83dc6de73bc9496e28d0e378ec6945d8641b2016bae22f9c0ddb929b-d",
+		"runtime": "/root/.cache/go-build/2d/2d26f8ed83dc6de73bc9496e28d0e378ec6945d8641b2016bae22f9c0ddb929b-d",
+		"sort": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"strconv": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"strings": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"sync": "/root/.cache/go-build/2d/2d26f8ed83dc6de73bc9496e28d0e378ec6945d8641b2016bae22f9c0ddb929b-d",
+		"sync/atomic": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"time": "/root/.cache/go-build/77/7703a56ffad7e2d1533a584fb504cc800de76c80580922a8bc5d78959e8316c1-d",
+		"unicode/utf8": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d"
+	},
+	"VetxOnly": true,
+	"VetxOutput": "$WORK/b115/vet.out",
+	"SucceedOnTypecheckFailure": false
+}
+EOF
+[0m[91mcd /go/pkg/mod/github.com/sirupsen/logrus@v1.7.0
+TERM='dumb' /usr/local/go/pkg/tool/linux_amd64/vet -atomic -bool -buildtags -errorsas -ifaceassert -nilfunc -printf -stringintconv $WORK/b115/vet.cfg
+[0m[91mcat >$WORK/b118/vet.cfg << 'EOF' # internal
+{
+	"ID": "gopkg.in/yaml.v2",
+	"Compiler": "gc",
+	"Dir": "/go/pkg/mod/gopkg.in/yaml.v2@v2.3.0",
+	"ImportPath": "gopkg.in/yaml.v2",
+	"GoFiles": [
+		"/go/pkg/mod/gopkg.in/yaml.v2@v2.3.0/apic.go",
+		"/go/pkg/mod/gopkg.in/yaml.v2@v2.3.0/decode.go",
+		"/go/pkg/mod/gopkg.in/yaml.v2@v2.3.0/emitterc.go",
+		"/go/pkg/mod/gopkg.in/yaml.v2@v2.3.0/encode.go",
+		"/go/pkg/mod/gopkg.in/yaml.v2@v2.3.0/parserc.go",
+		"/go/pkg/mod/gopkg.in/yaml.v2@v2.3.0/readerc.go",
+		"/go/pkg/mod/gopkg.in/yaml.v2@v2.3.0/resolve.go",
+		"/go/pkg/mod/gopkg.in/yaml.v2@v2.3.0/scannerc.go",
+		"/go/pkg/mod/gopkg.in/yaml.v2@v2.3.0/sorter.go",
+		"/go/pkg/mod/gopkg.in/yaml.v2@v2.3.0/writerc.go",
+		"/go/pkg/mod/gopkg.in/yaml.v2@v2.3.0/yaml.go",
+		"/go/pkg/mod/gopkg.in/yaml.v2@v2.3.0/yamlh.go",
+		"/go/pkg/mod/gopkg.in/yaml.v2@v2.3.0/yamlprivateh.go"
+	],
+	"NonGoFiles": [],
+	"ImportMap": {
+		"bytes": "bytes",
+		"encoding": "encoding",
+		"encoding/base64": "encoding/base64",
+		"errors": "errors",
+		"fmt": "fmt",
+		"io": "io",
+		"math": "math",
+		"reflect": "reflect",
+		"regexp": "regexp",
+		"sort": "sort",
+		"strconv": "strconv",
+		"strings": "strings",
+		"sync": "sync",
+		"time": "time",
+		"unicode": "unicode",
+		"unicode/utf8": "unicode/utf8"
+	},
+	"PackageFile": {
+		"bytes": "/usr/local/go/pkg/linux_amd64/bytes.a",
+		"encoding": "/usr/local/go/pkg/linux_amd64/encoding.a",
+		"encoding/base64": "/usr/local/go/pkg/linux_amd64/encoding/base64.a",
+		"errors": "/usr/local/go/pkg/linux_amd64/errors.a",
+		"fmt": "/usr/local/go/pkg/linux_amd64/fmt.a",
+		"io": "/usr/local/go/pkg/linux_amd64/io.a",
+		"math": "/usr/local/go/pkg/linux_amd64/math.a",
+		"reflect": "/usr/local/go/pkg/linux_amd64/reflect.a",
+		"regexp": "/usr/local/go/pkg/linux_amd64/regexp.a",
+		"sort": "/usr/local/go/pkg/linux_amd64/sort.a",
+		"strconv": "/usr/local/go/pkg/linux_amd64/strconv.a",
+		"strings": "/usr/local/go/pkg/linux_amd64/strings.a",
+		"sync": "/usr/local/go/pkg/linux_amd64/sync.a",
+		"time": "/usr/local/go/pkg/linux_amd64/time.a",
+		"unicode": "/usr/local/go/pkg/linux_amd64/unicode.a",
+		"unicode/utf8": "/usr/local/go/pkg/linux_amd64/unicode/utf8.a"
+	},
+	"Standard": {
+		"bytes": true,
+		"encoding": true,
+		"encoding/base64": true,
+		"errors": true,
+		"fmt": true,
+		"io": true,
+		"math": true,
+		"reflect": true,
+		"regexp": true,
+		"sort": true,
+		"strconv": true,
+		"strings": true,
+		"sync": true,
+		"time": true,
+		"unicode": true,
+		"unicode/utf8": true
+	},
+	"PackageVetx": {
+		"bytes": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"encoding": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"encoding/base64": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"errors": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"fmt": "/root/.cache/go-build/6f/6f1a3e1f52c31e8342fdd695153c6d7a005caa69858e5628fb700df89b134021-d",
+		"io": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"math": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"reflect": "/root/.cache/go-build/2d/2d26f8ed83dc6de73bc9496e28d0e378ec6945d8641b2016bae22f9c0ddb929b-d",
+		"regexp": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"sort": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"strconv": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"strings": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"sync": "/root/.cache/go-build/2d/2d26f8ed83dc6de73bc9496e28d0e378ec6945d8641b2016bae22f9c0ddb929b-d",
+		"time": "/root/.cache/go-build/77/7703a56ffad7e2d1533a584fb504cc800de76c80580922a8bc5d78959e8316c1-d",
+		"unicode": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"unicode/utf8": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d"
+	},
+	"VetxOnly": true,
+	"VetxOutput": "$WORK/b118/vet.out",
+	"SucceedOnTypecheckFailure": false
+}
+EOF
+[0m[91mcd /go/pkg/mod/gopkg.in/yaml.v2@v2.3.0
+TERM='dumb' /usr/local/go/pkg/tool/linux_amd64/vet -atomic -bool -buildtags -errorsas -ifaceassert -nilfunc -printf -stringintconv $WORK/b118/vet.cfg
+[0m[91mcat >$WORK/b035/vet.cfg << 'EOF' # internal
+{
+	"ID": "github.com/georgysavva/driver-app/gateway/pkg/gateway",
+	"Compiler": "gc",
+	"Dir": "/go/src/app/pkg/gateway",
+	"ImportPath": "github.com/georgysavva/driver-app/gateway/pkg/gateway",
+	"GoFiles": [
+		"/go/src/app/pkg/gateway/gateway.go",
+		"/go/src/app/pkg/gateway/nsq_proxy.go",
+		"/go/src/app/pkg/gateway/util.go"
+	],
+	"NonGoFiles": [],
+	"ImportMap": {
+		"encoding/json": "encoding/json",
+		"fmt": "fmt",
+		"github.com/gorilla/mux": "github.com/gorilla/mux",
+		"github.com/pkg/errors": "github.com/pkg/errors",
+		"github.com/sirupsen/logrus": "github.com/sirupsen/logrus",
+		"io": "io",
+		"net/http": "net/http",
+		"net/http/httputil": "net/http/httputil",
+		"net/url": "net/url"
+	},
+	"PackageFile": {
+		"encoding/json": "/usr/local/go/pkg/linux_amd64/encoding/json.a",
+		"fmt": "/usr/local/go/pkg/linux_amd64/fmt.a",
+		"github.com/gorilla/mux": "$WORK/b043/_pkg_.a",
+		"github.com/pkg/errors": "$WORK/b114/_pkg_.a",
+		"github.com/sirupsen/logrus": "$WORK/b115/_pkg_.a",
+		"io": "/usr/local/go/pkg/linux_amd64/io.a",
+		"net/http": "/usr/local/go/pkg/linux_amd64/net/http.a",
+		"net/http/httputil": "/usr/local/go/pkg/linux_amd64/net/http/httputil.a",
+		"net/url": "/usr/local/go/pkg/linux_amd64/net/url.a"
+	},
+	"Standard": {
+		"encoding/json": true,
+		"fmt": true,
+		"io": true,
+		"net/http": true,
+		"net/http/httputil": true,
+		"net/url": true
+	},
+	"PackageVetx": {
+		"encoding/json": "/root/.cache/go-build/0b/0b7efcf181fb9d7059dbb9ec39d8a28bfdd0b4695a71cb038e85cb7bb2225fe1-d",
+		"fmt": "/root/.cache/go-build/6f/6f1a3e1f52c31e8342fdd695153c6d7a005caa69858e5628fb700df89b134021-d",
+		"github.com/gorilla/mux": "$WORK/b043/vet.out",
+		"github.com/pkg/errors": "$WORK/b114/vet.out",
+		"github.com/sirupsen/logrus": "$WORK/b115/vet.out",
+		"io": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"net/http": "/root/.cache/go-build/5a/5a11dca4085a25e4428ea4aae826ee8a35049b8c435c4df2390e990446319569-d",
+		"net/http/httputil": "$WORK/b117/vet.out",
+		"net/url": "/root/.cache/go-build/88/8882d04b5e2b8dcb1bfaa0783318fc713e15a1ec4e5214a11c600230b413898e-d"
+	},
+	"VetxOnly": false,
+	"VetxOutput": "$WORK/b035/vet.out",
+	"SucceedOnTypecheckFailure": false
+}
+EOF
+[0m[91mcd /go/src/app/pkg/gateway
+TERM='dumb' /usr/local/go/pkg/tool/linux_amd64/vet -atomic -bool -buildtags -errorsas -ifaceassert -nilfunc -printf -stringintconv $WORK/b035/vet.cfg
+[0m[91mcat >$WORK/b119/vet.cfg << 'EOF' # internal
+{
+	"ID": "github.com/georgysavva/driver-app/gateway/pkg/httpmiddleware",
+	"Compiler": "gc",
+	"Dir": "/go/src/app/pkg/httpmiddleware",
+	"ImportPath": "github.com/georgysavva/driver-app/gateway/pkg/httpmiddleware",
+	"GoFiles": [
+		"/go/src/app/pkg/httpmiddleware/httpmiddleware.go"
+	],
+	"NonGoFiles": [],
+	"ImportMap": {
+		"github.com/sirupsen/logrus": "github.com/sirupsen/logrus",
+		"net/http": "net/http"
+	},
+	"PackageFile": {
+		"github.com/sirupsen/logrus": "$WORK/b115/_pkg_.a",
+		"net/http": "/usr/local/go/pkg/linux_amd64/net/http.a"
+	},
+	"Standard": {
+		"net/http": true
+	},
+	"PackageVetx": {
+		"github.com/sirupsen/logrus": "$WORK/b115/vet.out",
+		"net/http": "/root/.cache/go-build/5a/5a11dca4085a25e4428ea4aae826ee8a35049b8c435c4df2390e990446319569-d"
+	},
+	"VetxOnly": false,
+	"VetxOutput": "$WORK/b119/vet.out",
+	"SucceedOnTypecheckFailure": false
+}
+EOF
+[0m[91mcd /go/src/app/pkg/httpmiddleware
+TERM='dumb' /usr/local/go/pkg/tool/linux_amd64/vet -atomic -bool -buildtags -errorsas -ifaceassert -nilfunc -printf -stringintconv $WORK/b119/vet.cfg
+[0m[91mcat >$WORK/b034/vet.cfg << 'EOF' # internal
+{
+	"ID": "github.com/georgysavva/driver-app/gateway/pkg/config",
+	"Compiler": "gc",
+	"Dir": "/go/src/app/pkg/config",
+	"ImportPath": "github.com/georgysavva/driver-app/gateway/pkg/config",
+	"GoFiles": [
+		"/go/src/app/pkg/config/config.go"
+	],
+	"NonGoFiles": [],
+	"ImportMap": {
+		"github.com/georgysavva/driver-app/gateway/pkg/gateway": "github.com/georgysavva/driver-app/gateway/pkg/gateway",
+		"github.com/pkg/errors": "github.com/pkg/errors",
+		"gopkg.in/yaml.v2": "gopkg.in/yaml.v2",
+		"io/ioutil": "io/ioutil",
+		"path/filepath": "path/filepath",
+		"time": "time"
+	},
+	"PackageFile": {
+		"github.com/georgysavva/driver-app/gateway/pkg/gateway": "$WORK/b035/_pkg_.a",
+		"github.com/pkg/errors": "$WORK/b114/_pkg_.a",
+		"gopkg.in/yaml.v2": "$WORK/b118/_pkg_.a",
+		"io/ioutil": "/usr/local/go/pkg/linux_amd64/io/ioutil.a",
+		"path/filepath": "/usr/local/go/pkg/linux_amd64/path/filepath.a",
+		"time": "/usr/local/go/pkg/linux_amd64/time.a"
+	},
+	"Standard": {
+		"io/ioutil": true,
+		"path/filepath": true,
+		"time": true
+	},
+	"PackageVetx": {
+		"github.com/georgysavva/driver-app/gateway/pkg/gateway": "$WORK/b035/vet.out",
+		"github.com/pkg/errors": "$WORK/b114/vet.out",
+		"gopkg.in/yaml.v2": "$WORK/b118/vet.out",
+		"io/ioutil": "/root/.cache/go-build/5b/5b9172b5fe9e92464466e5c1459ae73de4a6c1cd1f7f4f795aa7a0e5ba8af6ac-d",
+		"path/filepath": "/root/.cache/go-build/37/376397066f40ef1fac96c02af9c4a0699a0e5aa019bc41dafa3d93954e7fe7c8-d",
+		"time": "/root/.cache/go-build/77/7703a56ffad7e2d1533a584fb504cc800de76c80580922a8bc5d78959e8316c1-d"
+	},
+	"VetxOnly": false,
+	"VetxOutput": "$WORK/b034/vet.out",
+	"SucceedOnTypecheckFailure": false
+}
+EOF
+[0m[91mcd /go/src/app/pkg/config
+TERM='dumb' /usr/local/go/pkg/tool/linux_amd64/vet -atomic -bool -buildtags -errorsas -ifaceassert -nilfunc -printf -stringintconv $WORK/b034/vet.cfg
+[0m[91mcat >$WORK/b121/vet.cfg << 'EOF' # internal
+{
+	"ID": "github.com/golang/snappy",
+	"Compiler": "gc",
+	"Dir": "/go/pkg/mod/github.com/golang/snappy@v0.0.1",
+	"ImportPath": "github.com/golang/snappy",
+	"GoFiles": [
+		"/go/pkg/mod/github.com/golang/snappy@v0.0.1/decode.go",
+		"/go/pkg/mod/github.com/golang/snappy@v0.0.1/decode_amd64.go",
+		"/go/pkg/mod/github.com/golang/snappy@v0.0.1/encode.go",
+		"/go/pkg/mod/github.com/golang/snappy@v0.0.1/encode_amd64.go",
+		"/go/pkg/mod/github.com/golang/snappy@v0.0.1/snappy.go"
+	],
+	"NonGoFiles": [
+		"/go/pkg/mod/github.com/golang/snappy@v0.0.1/decode_amd64.s",
+		"/go/pkg/mod/github.com/golang/snappy@v0.0.1/encode_amd64.s"
+	],
+	"ImportMap": {
+		"encoding/binary": "encoding/binary",
+		"errors": "errors",
+		"hash/crc32": "hash/crc32",
+		"io": "io"
+	},
+	"PackageFile": {
+		"encoding/binary": "/usr/local/go/pkg/linux_amd64/encoding/binary.a",
+		"errors": "/usr/local/go/pkg/linux_amd64/errors.a",
+		"hash/crc32": "/usr/local/go/pkg/linux_amd64/hash/crc32.a",
+		"io": "/usr/local/go/pkg/linux_amd64/io.a"
+	},
+	"Standard": {
+		"encoding/binary": true,
+		"errors": true,
+		"hash/crc32": true,
+		"io": true
+	},
+	"PackageVetx": {
+		"encoding/binary": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"errors": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"hash/crc32": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"io": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d"
+	},
+	"VetxOnly": true,
+	"VetxOutput": "$WORK/b121/vet.out",
+	"SucceedOnTypecheckFailure": false
+}
+EOF
+[0m[91mcd /go/pkg/mod/github.com/golang/snappy@v0.0.1
+TERM='dumb' /usr/local/go/pkg/tool/linux_amd64/vet -atomic -bool -buildtags -errorsas -ifaceassert -nilfunc -printf -stringintconv $WORK/b121/vet.cfg
+[0m[91mmkdir -p $WORK/b126/
+[0m[91mmkdir -p $WORK/b127/
+[0m[91mmkdir -p $WORK/b128/
+[0m[91mmkdir -p $WORK/b125/
+[0m[91mmkdir -p $WORK/b131/
+[0m[91mmkdir -p $WORK/b135/
+[0m[91mcat >$WORK/b135/importcfg << 'EOF' # internal
+# import config
+packagefile bytes=/usr/local/go/pkg/linux_amd64/bytes.a
+packagefile encoding/hex=/usr/local/go/pkg/linux_amd64/encoding/hex.a
+packagefile fmt=/usr/local/go/pkg/linux_amd64/fmt.a
+packagefile io=/usr/local/go/pkg/linux_amd64/io.a
+packagefile os=/usr/local/go/pkg/linux_amd64/os.a
+packagefile reflect=/usr/local/go/pkg/linux_amd64/reflect.a
+packagefile regexp=/usr/local/go/pkg/linux_amd64/regexp.a
+packagefile sort=/usr/local/go/pkg/linux_amd64/sort.a
+packagefile strconv=/usr/local/go/pkg/linux_amd64/strconv.a
+packagefile strings=/usr/local/go/pkg/linux_amd64/strings.a
+EOF
+[0m[91mcd /go/pkg/mod/github.com/davecgh/go-spew@v1.1.1/spew
+/usr/local/go/pkg/tool/linux_amd64/compile -o $WORK/b135/_pkg_.a -trimpath "$WORK/b135=>" -p github.com/davecgh/go-spew/spew -complete -buildid WHPmLq2yZplxYPhaa6BM/WHPmLq2yZplxYPhaa6BM -goversion go1.15.5 -D "" -importcfg $WORK/b135/importcfg -pack -c=2 ./bypass.go ./common.go ./config.go ./doc.go ./dump.go ./format.go ./spew.go
+[0m[91mcat >$WORK/b120/vet.cfg << 'EOF' # internal
+{
+	"ID": "github.com/nsqio/go-nsq",
+	"Compiler": "gc",
+	"Dir": "/go/pkg/mod/github.com/nsqio/go-nsq@v1.0.8",
+	"ImportPath": "github.com/nsqio/go-nsq",
+	"GoFiles": [
+		"/go/pkg/mod/github.com/nsqio/go-nsq@v1.0.8/api_request.go",
+		"/go/pkg/mod/github.com/nsqio/go-nsq@v1.0.8/command.go",
+		"/go/pkg/mod/github.com/nsqio/go-nsq@v1.0.8/config.go",
+		"/go/pkg/mod/github.com/nsqio/go-nsq@v1.0.8/config_flag.go",
+		"/go/pkg/mod/github.com/nsqio/go-nsq@v1.0.8/conn.go",
+		"/go/pkg/mod/github.com/nsqio/go-nsq@v1.0.8/consumer.go",
+		"/go/pkg/mod/github.com/nsqio/go-nsq@v1.0.8/delegates.go",
+		"/go/pkg/mod/github.com/nsqio/go-nsq@v1.0.8/doc.go",
+		"/go/pkg/mod/github.com/nsqio/go-nsq@v1.0.8/errors.go",
+		"/go/pkg/mod/github.com/nsqio/go-nsq@v1.0.8/message.go",
+		"/go/pkg/mod/github.com/nsqio/go-nsq@v1.0.8/producer.go",
+		"/go/pkg/mod/github.com/nsqio/go-nsq@v1.0.8/protocol.go",
+		"/go/pkg/mod/github.com/nsqio/go-nsq@v1.0.8/states.go",
+		"/go/pkg/mod/github.com/nsqio/go-nsq@v1.0.8/version.go"
+	],
+	"NonGoFiles": [],
+	"ImportMap": {
+		"bufio": "bufio",
+		"bytes": "bytes",
+		"compress/flate": "compress/flate",
+		"crypto/tls": "crypto/tls",
+		"crypto/x509": "crypto/x509",
+		"encoding/binary": "encoding/binary",
+		"encoding/json": "encoding/json",
+		"errors": "errors",
+		"fmt": "fmt",
+		"github.com/golang/snappy": "github.com/golang/snappy",
+		"io": "io",
+		"io/ioutil": "io/ioutil",
+		"log": "log",
+		"math": "math",
+		"math/rand": "math/rand",
+		"net": "net",
+		"net/http": "net/http",
+		"net/url": "net/url",
+		"os": "os",
+		"reflect": "reflect",
+		"regexp": "regexp",
+		"strconv": "strconv",
+		"strings": "strings",
+		"sync": "sync",
+		"sync/atomic": "sync/atomic",
+		"time": "time",
+		"unsafe": "unsafe"
+	},
+	"PackageFile": {
+		"bufio": "/usr/local/go/pkg/linux_amd64/bufio.a",
+		"bytes": "/usr/local/go/pkg/linux_amd64/bytes.a",
+		"compress/flate": "/usr/local/go/pkg/linux_amd64/compress/flate.a",
+		"crypto/tls": "/usr/local/go/pkg/linux_amd64/crypto/tls.a",
+		"crypto/x509": "/usr/local/go/pkg/linux_amd64/crypto/x509.a",
+		"encoding/binary": "/usr/local/go/pkg/linux_amd64/encoding/binary.a",
+		"encoding/json": "/usr/local/go/pkg/linux_amd64/encoding/json.a",
+		"errors": "/usr/local/go/pkg/linux_amd64/errors.a",
+		"fmt": "/usr/local/go/pkg/linux_amd64/fmt.a",
+		"github.com/golang/snappy": "$WORK/b121/_pkg_.a",
+		"io": "/usr/local/go/pkg/linux_amd64/io.a",
+		"io/ioutil": "/usr/local/go/pkg/linux_amd64/io/ioutil.a",
+		"log": "/usr/local/go/pkg/linux_amd64/log.a",
+		"math": "/usr/local/go/pkg/linux_amd64/math.a",
+		"math/rand": "/usr/local/go/pkg/linux_amd64/math/rand.a",
+		"net": "/usr/local/go/pkg/linux_amd64/net.a",
+		"net/http": "/usr/local/go/pkg/linux_amd64/net/http.a",
+		"net/url": "/usr/local/go/pkg/linux_amd64/net/url.a",
+		"os": "/usr/local/go/pkg/linux_amd64/os.a",
+		"reflect": "/usr/local/go/pkg/linux_amd64/reflect.a",
+		"regexp": "/usr/local/go/pkg/linux_amd64/regexp.a",
+		"strconv": "/usr/local/go/pkg/linux_amd64/strconv.a",
+		"strings": "/usr/local/go/pkg/linux_amd64/strings.a",
+		"sync": "/usr/local/go/pkg/linux_amd64/sync.a",
+		"sync/atomic": "/usr/local/go/pkg/linux_amd64/sync/atomic.a",
+		"time": "/usr/local/go/pkg/linux_amd64/time.a"
+	},
+	"Standard": {
+		"bufio": true,
+		"bytes": true,
+		"compress/flate": true,
+		"crypto/tls": true,
+		"crypto/x509": true,
+		"encoding/binary": true,
+		"encoding/json": true,
+		"errors": true,
+		"fmt": true,
+		"io": true,
+		"io/ioutil": true,
+		"log": true,
+		"math": true,
+		"math/rand": true,
+		"net": true,
+		"net/http": true,
+		"net/url": true,
+		"os": true,
+		"reflect": true,
+		"regexp": true,
+		"strconv": true,
+		"strings": true,
+		"sync": true,
+		"sync/atomic": true,
+		"time": true,
+		"unsafe": true
+	},
+	"PackageVetx": {
+		"bufio": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"bytes": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"compress/flate": "/root/.cache/go-build/88/8882d04b5e2b8dcb1bfaa0783318fc713e15a1ec4e5214a11c600230b413898e-d",
+		"crypto/tls": "/root/.cache/go-build/88/8882d04b5e2b8dcb1bfaa0783318fc713e15a1ec4e5214a11c600230b413898e-d",
+		"crypto/x509": "/root/.cache/go-build/40/40d3c5bce44e48416ab061ff34b467ec1ab50d5d46e789f1b914b488f95abe55-d",
+		"encoding/binary": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"encoding/json": "/root/.cache/go-build/0b/0b7efcf181fb9d7059dbb9ec39d8a28bfdd0b4695a71cb038e85cb7bb2225fe1-d",
+		"errors": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"fmt": "/root/.cache/go-build/6f/6f1a3e1f52c31e8342fdd695153c6d7a005caa69858e5628fb700df89b134021-d",
+		"github.com/golang/snappy": "$WORK/b121/vet.out",
+		"io": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"io/ioutil": "/root/.cache/go-build/5b/5b9172b5fe9e92464466e5c1459ae73de4a6c1cd1f7f4f795aa7a0e5ba8af6ac-d",
+		"log": "/root/.cache/go-build/76/76b9459e6e6ba3a56312401978135470861b5d3081d732284d55b15b625db629-d",
+		"math": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"math/rand": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"net": "/root/.cache/go-build/37/376397066f40ef1fac96c02af9c4a0699a0e5aa019bc41dafa3d93954e7fe7c8-d",
+		"net/http": "/root/.cache/go-build/5a/5a11dca4085a25e4428ea4aae826ee8a35049b8c435c4df2390e990446319569-d",
+		"net/url": "/root/.cache/go-build/88/8882d04b5e2b8dcb1bfaa0783318fc713e15a1ec4e5214a11c600230b413898e-d",
+		"os": "/root/.cache/go-build/37/376397066f40ef1fac96c02af9c4a0699a0e5aa019bc41dafa3d93954e7fe7c8-d",
+		"reflect": "/root/.cache/go-build/2d/2d26f8ed83dc6de73bc9496e28d0e378ec6945d8641b2016bae22f9c0ddb929b-d",
+		"regexp": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"strconv": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"strings": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"sync": "/root/.cache/go-build/2d/2d26f8ed83dc6de73bc9496e28d0e378ec6945d8641b2016bae22f9c0ddb929b-d",
+		"sync/atomic": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"time": "/root/.cache/go-build/77/7703a56ffad7e2d1533a584fb504cc800de76c80580922a8bc5d78959e8316c1-d"
+	},
+	"VetxOnly": true,
+	"VetxOutput": "$WORK/b120/vet.out",
+	"SucceedOnTypecheckFailure": false
+}
+EOF
+[0m[91mcd /go/pkg/mod/github.com/nsqio/go-nsq@v1.0.8
+TERM='dumb' /usr/local/go/pkg/tool/linux_amd64/vet -atomic -bool -buildtags -errorsas -ifaceassert -nilfunc -printf -stringintconv $WORK/b120/vet.cfg
+[0m[91mcat >$WORK/b001/vet.cfg << 'EOF' # internal
+{
+	"ID": "github.com/georgysavva/driver-app/gateway/cmd/gateway-server",
+	"Compiler": "gc",
+	"Dir": "/go/src/app/cmd/gateway-server",
+	"ImportPath": "github.com/georgysavva/driver-app/gateway/cmd/gateway-server",
+	"GoFiles": [
+		"/go/src/app/cmd/gateway-server/main.go"
+	],
+	"NonGoFiles": [],
+	"ImportMap": {
+		"context": "context",
+		"fmt": "fmt",
+		"github.com/georgysavva/driver-app/gateway/pkg/config": "github.com/georgysavva/driver-app/gateway/pkg/config",
+		"github.com/georgysavva/driver-app/gateway/pkg/gateway": "github.com/georgysavva/driver-app/gateway/pkg/gateway",
+		"github.com/georgysavva/driver-app/gateway/pkg/httpmiddleware": "github.com/georgysavva/driver-app/gateway/pkg/httpmiddleware",
+		"github.com/nsqio/go-nsq": "github.com/nsqio/go-nsq",
+		"github.com/pkg/errors": "github.com/pkg/errors",
+		"github.com/sirupsen/logrus": "github.com/sirupsen/logrus",
+		"net/http": "net/http",
+		"os": "os",
+		"os/signal": "os/signal",
+		"runtime": "runtime",
+		"syscall": "syscall"
+	},
+	"PackageFile": {
+		"context": "/usr/local/go/pkg/linux_amd64/context.a",
+		"fmt": "/usr/local/go/pkg/linux_amd64/fmt.a",
+		"github.com/georgysavva/driver-app/gateway/pkg/config": "$WORK/b034/_pkg_.a",
+		"github.com/georgysavva/driver-app/gateway/pkg/gateway": "$WORK/b035/_pkg_.a",
+		"github.com/georgysavva/driver-app/gateway/pkg/httpmiddleware": "$WORK/b119/_pkg_.a",
+		"github.com/nsqio/go-nsq": "$WORK/b120/_pkg_.a",
+		"github.com/pkg/errors": "$WORK/b114/_pkg_.a",
+		"github.com/sirupsen/logrus": "$WORK/b115/_pkg_.a",
+		"net/http": "/usr/local/go/pkg/linux_amd64/net/http.a",
+		"os": "/usr/local/go/pkg/linux_amd64/os.a",
+		"os/signal": "/usr/local/go/pkg/linux_amd64/os/signal.a",
+		"runtime": "/usr/local/go/pkg/linux_amd64/runtime.a",
+		"syscall": "/usr/local/go/pkg/linux_amd64/syscall.a"
+	},
+	"Standard": {
+		"context": true,
+		"fmt": true,
+		"net/http": true,
+		"os": true,
+		"os/signal": true,
+		"runtime": true,
+		"syscall": true
+	},
+	"PackageVetx": {
+		"context": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"fmt": "/root/.cache/go-build/6f/6f1a3e1f52c31e8342fdd695153c6d7a005caa69858e5628fb700df89b134021-d",
+		"github.com/georgysavva/driver-app/gateway/pkg/config": "$WORK/b034/vet.out",
+		"github.com/georgysavva/driver-app/gateway/pkg/gateway": "$WORK/b035/vet.out",
+		"github.com/georgysavva/driver-app/gateway/pkg/httpmiddleware": "$WORK/b119/vet.out",
+		"github.com/nsqio/go-nsq": "$WORK/b120/vet.out",
+		"github.com/pkg/errors": "$WORK/b114/vet.out",
+		"github.com/sirupsen/logrus": "$WORK/b115/vet.out",
+		"net/http": "/root/.cache/go-build/5a/5a11dca4085a25e4428ea4aae826ee8a35049b8c435c4df2390e990446319569-d",
+		"os": "/root/.cache/go-build/37/376397066f40ef1fac96c02af9c4a0699a0e5aa019bc41dafa3d93954e7fe7c8-d",
+		"os/signal": "/root/.cache/go-build/b1/b127c891cee16b68050229cdb3e43a4cffc91828d67a922a312dbfb43b53c02c-d",
+		"runtime": "/root/.cache/go-build/2d/2d26f8ed83dc6de73bc9496e28d0e378ec6945d8641b2016bae22f9c0ddb929b-d",
+		"syscall": "/root/.cache/go-build/77/7703a56ffad7e2d1533a584fb504cc800de76c80580922a8bc5d78959e8316c1-d"
+	},
+	"VetxOnly": false,
+	"VetxOutput": "$WORK/b001/vet.out",
+	"SucceedOnTypecheckFailure": false
+}
+EOF
+[0m[91mcd /go/src/app/cmd/gateway-server
+TERM='dumb' /usr/local/go/pkg/tool/linux_amd64/vet -atomic -bool -buildtags -errorsas -ifaceassert -nilfunc -printf -stringintconv $WORK/b001/vet.cfg
+[0m[91m/usr/local/go/pkg/tool/linux_amd64/buildid -w $WORK/b135/_pkg_.a # internal
+[0m[91mcp $WORK/b135/_pkg_.a /root/.cache/go-build/f1/f18a5eb3e2c42afd4248d4fdb2d5f120cccc82ff979178cc727b04d0aa192c7b-d # internal
+[0m[91mmkdir -p $WORK/b136/
+[0m[91mcat >$WORK/b136/importcfg << 'EOF' # internal
+# import config
+packagefile bufio=/usr/local/go/pkg/linux_amd64/bufio.a
+packagefile bytes=/usr/local/go/pkg/linux_amd64/bytes.a
+packagefile fmt=/usr/local/go/pkg/linux_amd64/fmt.a
+packagefile io=/usr/local/go/pkg/linux_amd64/io.a
+packagefile strings=/usr/local/go/pkg/linux_amd64/strings.a
+EOF
+[0m[91mcd /go/pkg/mod/github.com/pmezard/go-difflib@v1.0.0/difflib
+/usr/local/go/pkg/tool/linux_amd64/compile -o $WORK/b136/_pkg_.a -trimpath "$WORK/b136=>" -p github.com/pmezard/go-difflib/difflib -complete -buildid Q4Ml3vFCEFKW-rdlMsFk/Q4Ml3vFCEFKW-rdlMsFk -goversion go1.15.5 -D "" -importcfg $WORK/b136/importcfg -pack -c=2 ./difflib.go
+[0m?   	github.com/georgysavva/driver-app/gateway/cmd/gateway-server	[no test files]
+?   	github.com/georgysavva/driver-app/gateway/pkg/config	[no test files]
+[91mmkdir -p $WORK/b137/
+[0m[91mcat >$WORK/b137/importcfg << 'EOF' # internal
+# import config
+packagefile bytes=/usr/local/go/pkg/linux_amd64/bytes.a
+packagefile crypto/sha1=/usr/local/go/pkg/linux_amd64/crypto/sha1.a
+packagefile encoding/base64=/usr/local/go/pkg/linux_amd64/encoding/base64.a
+packagefile encoding/hex=/usr/local/go/pkg/linux_amd64/encoding/hex.a
+packagefile encoding/json=/usr/local/go/pkg/linux_amd64/encoding/json.a
+packagefile errors=/usr/local/go/pkg/linux_amd64/errors.a
+packagefile fmt=/usr/local/go/pkg/linux_amd64/fmt.a
+packagefile io/ioutil=/usr/local/go/pkg/linux_amd64/io/ioutil.a
+packagefile net/url=/usr/local/go/pkg/linux_amd64/net/url.a
+packagefile regexp=/usr/local/go/pkg/linux_amd64/regexp.a
+packagefile strconv=/usr/local/go/pkg/linux_amd64/strconv.a
+packagefile strings=/usr/local/go/pkg/linux_amd64/strings.a
+EOF
+[0m[91mcd /go/pkg/mod/github.com/stretchr/objx@v0.1.0
+/usr/local/go/pkg/tool/linux_amd64/compile -o $WORK/b137/_pkg_.a -trimpath "$WORK/b137=>" -p github.com/stretchr/objx -complete -buildid qpIAzQCx0AAiwftWJz8G/qpIAzQCx0AAiwftWJz8G -goversion go1.15.5 -D "" -importcfg $WORK/b137/importcfg -pack -c=2 ./accessors.go ./constants.go ./conversions.go ./doc.go ./map.go ./mutations.go ./security.go ./tests.go ./type_specific_codegen.go ./value.go
+[0m[91m/usr/local/go/pkg/tool/linux_amd64/buildid -w $WORK/b136/_pkg_.a # internal
+[0m[91mcp $WORK/b136/_pkg_.a /root/.cache/go-build/8b/8bd6416f4af898502d002f48f8868e3c743401ecf54d03fe29bab70b03ba837e-d # internal
+[0m[91mmkdir -p $WORK/b139/
+[0m[91mcat >$WORK/b139/importcfg << 'EOF' # internal
+# import config
+packagefile bytes=/usr/local/go/pkg/linux_amd64/bytes.a
+packagefile encoding=/usr/local/go/pkg/linux_amd64/encoding.a
+packagefile encoding/base64=/usr/local/go/pkg/linux_amd64/encoding/base64.a
+packagefile errors=/usr/local/go/pkg/linux_amd64/errors.a
+packagefile fmt=/usr/local/go/pkg/linux_amd64/fmt.a
+packagefile io=/usr/local/go/pkg/linux_amd64/io.a
+packagefile math=/usr/local/go/pkg/linux_amd64/math.a
+packagefile reflect=/usr/local/go/pkg/linux_amd64/reflect.a
+packagefile regexp=/usr/local/go/pkg/linux_amd64/regexp.a
+packagefile sort=/usr/local/go/pkg/linux_amd64/sort.a
+packagefile strconv=/usr/local/go/pkg/linux_amd64/strconv.a
+packagefile strings=/usr/local/go/pkg/linux_amd64/strings.a
+packagefile sync=/usr/local/go/pkg/linux_amd64/sync.a
+packagefile time=/usr/local/go/pkg/linux_amd64/time.a
+packagefile unicode=/usr/local/go/pkg/linux_amd64/unicode.a
+packagefile unicode/utf8=/usr/local/go/pkg/linux_amd64/unicode/utf8.a
+EOF
+[0m[91mcd /go/pkg/mod/gopkg.in/yaml.v3@v3.0.0-20200313102051-9f266ea9e77c
+/usr/local/go/pkg/tool/linux_amd64/compile -o $WORK/b139/_pkg_.a -trimpath "$WORK/b139=>" -p gopkg.in/yaml.v3 -complete -buildid gbRGp2R7yXepbLfVg15K/gbRGp2R7yXepbLfVg15K -goversion go1.15.5 -D "" -importcfg $WORK/b139/importcfg -pack -c=2 ./apic.go ./decode.go ./emitterc.go ./encode.go ./parserc.go ./readerc.go ./resolve.go ./scannerc.go ./sorter.go ./writerc.go ./yaml.go ./yamlh.go ./yamlprivateh.go
+[0m[91m/usr/local/go/pkg/tool/linux_amd64/buildid -w $WORK/b137/_pkg_.a # internal
+[0m[91mcp $WORK/b137/_pkg_.a /root/.cache/go-build/8b/8b653f52353758f309f9fe5a9ea06b56774ee583961bd049c5a9f834c2242607-d # internal
+[0m[91mmkdir -p $WORK/b140/
+[0m[91mmkdir -p $WORK/b143/
+[0m[91mmkdir -p $WORK/b142/
+[0m[91mmkdir -p $WORK/b141/
+[0m[91mcat >$WORK/b141/importcfg << 'EOF' # internal
+# import config
+packagefile encoding=/usr/local/go/pkg/linux_amd64/encoding.a
+packagefile errors=/usr/local/go/pkg/linux_amd64/errors.a
+packagefile fmt=/usr/local/go/pkg/linux_amd64/fmt.a
+packagefile io=/usr/local/go/pkg/linux_amd64/io.a
+packagefile os=/usr/local/go/pkg/linux_amd64/os.a
+packagefile reflect=/usr/local/go/pkg/linux_amd64/reflect.a
+packagefile regexp=/usr/local/go/pkg/linux_amd64/regexp.a
+packagefile strconv=/usr/local/go/pkg/linux_amd64/strconv.a
+packagefile strings=/usr/local/go/pkg/linux_amd64/strings.a
+packagefile text/tabwriter=/usr/local/go/pkg/linux_amd64/text/tabwriter.a
+packagefile text/template=/usr/local/go/pkg/linux_amd64/text/template.a
+packagefile time=/usr/local/go/pkg/linux_amd64/time.a
+EOF
+[0m[91mcd /go/pkg/mod/github.com/kelseyhightower/envconfig@v1.4.0
+/usr/local/go/pkg/tool/linux_amd64/compile -o $WORK/b141/_pkg_.a -trimpath "$WORK/b141=>" -p github.com/kelseyhightower/envconfig -complete -buildid 7ho2xnzpgG1AhsVeX3Q0/7ho2xnzpgG1AhsVeX3Q0 -goversion go1.15.5 -D "" -importcfg $WORK/b141/importcfg -pack -c=2 ./doc.go ./env_os.go ./envconfig.go ./usage.go
+[0m[91m/usr/local/go/pkg/tool/linux_amd64/buildid -w $WORK/b141/_pkg_.a # internal
+[0m[91mcp $WORK/b141/_pkg_.a /root/.cache/go-build/ba/bab7d77aefc927ce36d86cd729335db599bdb28e6cc6535964b2cf9d2f671c35-d # internal
+[0m[91mcat >$WORK/b135/vet.cfg << 'EOF' # internal
+{
+	"ID": "github.com/davecgh/go-spew/spew",
+	"Compiler": "gc",
+	"Dir": "/go/pkg/mod/github.com/davecgh/go-spew@v1.1.1/spew",
+	"ImportPath": "github.com/davecgh/go-spew/spew",
+	"GoFiles": [
+		"/go/pkg/mod/github.com/davecgh/go-spew@v1.1.1/spew/bypass.go",
+		"/go/pkg/mod/github.com/davecgh/go-spew@v1.1.1/spew/common.go",
+		"/go/pkg/mod/github.com/davecgh/go-spew@v1.1.1/spew/config.go",
+		"/go/pkg/mod/github.com/davecgh/go-spew@v1.1.1/spew/doc.go",
+		"/go/pkg/mod/github.com/davecgh/go-spew@v1.1.1/spew/dump.go",
+		"/go/pkg/mod/github.com/davecgh/go-spew@v1.1.1/spew/format.go",
+		"/go/pkg/mod/github.com/davecgh/go-spew@v1.1.1/spew/spew.go"
+	],
+	"NonGoFiles": [],
+	"ImportMap": {
+		"bytes": "bytes",
+		"encoding/hex": "encoding/hex",
+		"fmt": "fmt",
+		"io": "io",
+		"os": "os",
+		"reflect": "reflect",
+		"regexp": "regexp",
+		"sort": "sort",
+		"strconv": "strconv",
+		"strings": "strings",
+		"unsafe": "unsafe"
+	},
+	"PackageFile": {
+		"bytes": "/usr/local/go/pkg/linux_amd64/bytes.a",
+		"encoding/hex": "/usr/local/go/pkg/linux_amd64/encoding/hex.a",
+		"fmt": "/usr/local/go/pkg/linux_amd64/fmt.a",
+		"io": "/usr/local/go/pkg/linux_amd64/io.a",
+		"os": "/usr/local/go/pkg/linux_amd64/os.a",
+		"reflect": "/usr/local/go/pkg/linux_amd64/reflect.a",
+		"regexp": "/usr/local/go/pkg/linux_amd64/regexp.a",
+		"sort": "/usr/local/go/pkg/linux_amd64/sort.a",
+		"strconv": "/usr/local/go/pkg/linux_amd64/strconv.a",
+		"strings": "/usr/local/go/pkg/linux_amd64/strings.a"
+	},
+	"Standard": {
+		"bytes": true,
+		"encoding/hex": true,
+		"fmt": true,
+		"io": true,
+		"os": true,
+		"reflect": true,
+		"regexp": true,
+		"sort": true,
+		"strconv": true,
+		"strings": true,
+		"unsafe": true
+	},
+	"PackageVetx": {
+		"bytes": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"encoding/hex": "/root/.cache/go-build/88/8882d04b5e2b8dcb1bfaa0783318fc713e15a1ec4e5214a11c600230b413898e-d",
+		"fmt": "/root/.cache/go-build/6f/6f1a3e1f52c31e8342fdd695153c6d7a005caa69858e5628fb700df89b134021-d",
+		"io": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"os": "/root/.cache/go-build/37/376397066f40ef1fac96c02af9c4a0699a0e5aa019bc41dafa3d93954e7fe7c8-d",
+		"reflect": "/root/.cache/go-build/2d/2d26f8ed83dc6de73bc9496e28d0e378ec6945d8641b2016bae22f9c0ddb929b-d",
+		"regexp": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"sort": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"strconv": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"strings": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d"
+	},
+	"VetxOnly": true,
+	"VetxOutput": "$WORK/b135/vet.out",
+	"SucceedOnTypecheckFailure": false
+}
+EOF
+[0m[91mcd /go/pkg/mod/github.com/davecgh/go-spew@v1.1.1/spew
+TERM='dumb' /usr/local/go/pkg/tool/linux_amd64/vet -atomic -bool -buildtags -errorsas -ifaceassert -nilfunc -printf -stringintconv $WORK/b135/vet.cfg
+[0m[91mcat >$WORK/b136/vet.cfg << 'EOF' # internal
+{
+	"ID": "github.com/pmezard/go-difflib/difflib",
+	"Compiler": "gc",
+	"Dir": "/go/pkg/mod/github.com/pmezard/go-difflib@v1.0.0/difflib",
+	"ImportPath": "github.com/pmezard/go-difflib/difflib",
+	"GoFiles": [
+		"/go/pkg/mod/github.com/pmezard/go-difflib@v1.0.0/difflib/difflib.go"
+	],
+	"NonGoFiles": [],
+	"ImportMap": {
+		"bufio": "bufio",
+		"bytes": "bytes",
+		"fmt": "fmt",
+		"io": "io",
+		"strings": "strings"
+	},
+	"PackageFile": {
+		"bufio": "/usr/local/go/pkg/linux_amd64/bufio.a",
+		"bytes": "/usr/local/go/pkg/linux_amd64/bytes.a",
+		"fmt": "/usr/local/go/pkg/linux_amd64/fmt.a",
+		"io": "/usr/local/go/pkg/linux_amd64/io.a",
+		"strings": "/usr/local/go/pkg/linux_amd64/strings.a"
+	},
+	"Standard": {
+		"bufio": true,
+		"bytes": true,
+		"fmt": true,
+		"io": true,
+		"strings": true
+	},
+	"PackageVetx": {
+		"bufio": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"bytes": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"fmt": "/root/.cache/go-build/6f/6f1a3e1f52c31e8342fdd695153c6d7a005caa69858e5628fb700df89b134021-d",
+		"io": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"strings": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d"
+	},
+	"VetxOnly": true,
+	"VetxOutput": "$WORK/b136/vet.out",
+	"SucceedOnTypecheckFailure": false
+}
+EOF
+cd /go/pkg/mod/github.com/pmezard/go-difflib@v1.0.0/difflib
+TERM='dumb' /usr/local/go/pkg/tool/linux_amd64/vet -atomic -bool -buildtags -errorsas -ifaceassert -nilfunc -printf -stringintconv $WORK/b136/vet.cfg
+[0m[91mcat >$WORK/b137/vet.cfg << 'EOF' # internal
+{
+	"ID": "github.com/stretchr/objx",
+	"Compiler": "gc",
+	"Dir": "/go/pkg/mod/github.com/stretchr/objx@v0.1.0",
+	"ImportPath": "github.com/stretchr/objx",
+	"GoFiles": [
+		"/go/pkg/mod/github.com/stretchr/objx@v0.1.0/accessors.go",
+		"/go/pkg/mod/github.com/stretchr/objx@v0.1.0/constants.go",
+		"/go/pkg/mod/github.com/stretchr/objx@v0.1.0/conversions.go",
+		"/go/pkg/mod/github.com/stretchr/objx@v0.1.0/doc.go",
+		"/go/pkg/mod/github.com/stretchr/objx@v0.1.0/map.go",
+		"/go/pkg/mod/github.com/stretchr/objx@v0.1.0/mutations.go",
+		"/go/pkg/mod/github.com/stretchr/objx@v0.1.0/security.go",
+		"/go/pkg/mod/github.com/stretchr/objx@v0.1.0/tests.go",
+		"/go/pkg/mod/github.com/stretchr/objx@v0.1.0/type_specific_codegen.go",
+		"/go/pkg/mod/github.com/stretchr/objx@v0.1.0/value.go"
+	],
+	"NonGoFiles": [],
+	"ImportMap": {
+		"bytes": "bytes",
+		"crypto/sha1": "crypto/sha1",
+		"encoding/base64": "encoding/base64",
+		"encoding/hex": "encoding/hex",
+		"encoding/json": "encoding/json",
+		"errors": "errors",
+		"fmt": "fmt",
+		"io/ioutil": "io/ioutil",
+		"net/url": "net/url",
+		"regexp": "regexp",
+		"strconv": "strconv",
+		"strings": "strings"
+	},
+	"PackageFile": {
+		"bytes": "/usr/local/go/pkg/linux_amd64/bytes.a",
+		"crypto/sha1": "/usr/local/go/pkg/linux_amd64/crypto/sha1.a",
+		"encoding/base64": "/usr/local/go/pkg/linux_amd64/encoding/base64.a",
+		"encoding/hex": "/usr/local/go/pkg/linux_amd64/encoding/hex.a",
+		"encoding/json": "/usr/local/go/pkg/linux_amd64/encoding/json.a",
+		"errors": "/usr/local/go/pkg/linux_amd64/errors.a",
+		"fmt": "/usr/local/go/pkg/linux_amd64/fmt.a",
+		"io/ioutil": "/usr/local/go/pkg/linux_amd64/io/ioutil.a",
+		"net/url": "/usr/local/go/pkg/linux_amd64/net/url.a",
+		"regexp": "/usr/local/go/pkg/linux_amd64/regexp.a",
+		"strconv": "/usr/local/go/pkg/linux_amd64/strconv.a",
+		"strings": "/usr/local/go/pkg/linux_amd64/strings.a"
+	},
+	"Standard": {
+		"bytes": true,
+		"crypto/sha1": true,
+		"encoding/base64": true,
+		"encoding/hex": true,
+		"encoding/json": true,
+		"errors": true,
+		"fmt": true,
+		"io/ioutil": true,
+		"net/url": true,
+		"regexp": true,
+		"strconv": true,
+		"strings": true
+	},
+	"PackageVetx": {
+		"bytes": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"crypto/sha1": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"encoding/base64": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"encoding/hex": "/root/.cache/go-build/88/8882d04b5e2b8dcb1bfaa0783318fc713e15a1ec4e5214a11c600230b413898e-d",
+		"encoding/json": "/root/.cache/go-build/0b/0b7efcf181fb9d7059dbb9ec39d8a28bfdd0b4695a71cb038e85cb7bb2225fe1-d",
+		"errors": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"fmt": "/root/.cache/go-build/6f/6f1a3e1f52c31e8342fdd695153c6d7a005caa69858e5628fb700df89b134021-d",
+		"io/ioutil": "/root/.cache/go-build/5b/5b9172b5fe9e92464466e5c1459ae73de4a6c1cd1f7f4f795aa7a0e5ba8af6ac-d",
+		"net/url": "/root/.cache/go-build/88/8882d04b5e2b8dcb1bfaa0783318fc713e15a1ec4e5214a11c600230b413898e-d",
+		"regexp": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"strconv": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"strings": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d"
+	},
+	"VetxOnly": true,
+	"VetxOutput": "$WORK/b137/vet.out",
+	"SucceedOnTypecheckFailure": false
+}
+EOF
+[0m[91mcd /go/pkg/mod/github.com/stretchr/objx@v0.1.0
+TERM='dumb' /usr/local/go/pkg/tool/linux_amd64/vet -atomic -bool -buildtags -errorsas -ifaceassert -nilfunc -printf -stringintconv $WORK/b137/vet.cfg
+[0m[91mcat >$WORK/b141/vet.cfg << 'EOF' # internal
+{
+	"ID": "github.com/kelseyhightower/envconfig",
+	"Compiler": "gc",
+	"Dir": "/go/pkg/mod/github.com/kelseyhightower/envconfig@v1.4.0",
+	"ImportPath": "github.com/kelseyhightower/envconfig",
+	"GoFiles": [
+		"/go/pkg/mod/github.com/kelseyhightower/envconfig@v1.4.0/doc.go",
+		"/go/pkg/mod/github.com/kelseyhightower/envconfig@v1.4.0/env_os.go",
+		"/go/pkg/mod/github.com/kelseyhightower/envconfig@v1.4.0/envconfig.go",
+		"/go/pkg/mod/github.com/kelseyhightower/envconfig@v1.4.0/usage.go"
+	],
+	"NonGoFiles": [],
+	"ImportMap": {
+		"encoding": "encoding",
+		"errors": "errors",
+		"fmt": "fmt",
+		"io": "io",
+		"os": "os",
+		"reflect": "reflect",
+		"regexp": "regexp",
+		"strconv": "strconv",
+		"strings": "strings",
+		"text/tabwriter": "text/tabwriter",
+		"text/template": "text/template",
+		"time": "time"
+	},
+	"PackageFile": {
+		"encoding": "/usr/local/go/pkg/linux_amd64/encoding.a",
+		"errors": "/usr/local/go/pkg/linux_amd64/errors.a",
+		"fmt": "/usr/local/go/pkg/linux_amd64/fmt.a",
+		"io": "/usr/local/go/pkg/linux_amd64/io.a",
+		"os": "/usr/local/go/pkg/linux_amd64/os.a",
+		"reflect": "/usr/local/go/pkg/linux_amd64/reflect.a",
+		"regexp": "/usr/local/go/pkg/linux_amd64/regexp.a",
+		"strconv": "/usr/local/go/pkg/linux_amd64/strconv.a",
+		"strings": "/usr/local/go/pkg/linux_amd64/strings.a",
+		"text/tabwriter": "/usr/local/go/pkg/linux_amd64/text/tabwriter.a",
+		"text/template": "/usr/local/go/pkg/linux_amd64/text/template.a",
+		"time": "/usr/local/go/pkg/linux_amd64/time.a"
+	},
+	"Standard": {
+		"encoding": true,
+		"errors": true,
+		"fmt": true,
+		"io": true,
+		"os": true,
+		"reflect": true,
+		"regexp": true,
+		"strconv": true,
+		"strings": true,
+		"text/tabwriter": true,
+		"text/template": true,
+		"time": true
+	},
+	"PackageVetx": {
+		"encoding": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"errors": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"fmt": "/root/.cache/go-build/6f/6f1a3e1f52c31e8342fdd695153c6d7a005caa69858e5628fb700df89b134021-d",
+		"io": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"os": "/root/.cache/go-build/37/376397066f40ef1fac96c02af9c4a0699a0e5aa019bc41dafa3d93954e7fe7c8-d",
+		"reflect": "/root/.cache/go-build/2d/2d26f8ed83dc6de73bc9496e28d0e378ec6945d8641b2016bae22f9c0ddb929b-d",
+		"regexp": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"strconv": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"strings": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"text/tabwriter": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"text/template": "/root/.cache/go-build/95/9574bb1f444d8c32ff353cb3ff3d5e322fa5a36f2d0bd5e3f6bef20af5a3eeb3-d",
+		"time": "/root/.cache/go-build/77/7703a56ffad7e2d1533a584fb504cc800de76c80580922a8bc5d78959e8316c1-d"
+	},
+	"VetxOnly": true,
+	"VetxOutput": "$WORK/b141/vet.out",
+	"SucceedOnTypecheckFailure": false
+}
+EOF
+[0m[91mcd /go/pkg/mod/github.com/kelseyhightower/envconfig@v1.4.0
+TERM='dumb' /usr/local/go/pkg/tool/linux_amd64/vet -atomic -bool -buildtags -errorsas -ifaceassert -nilfunc -printf -stringintconv $WORK/b141/vet.cfg
+[0m[91m/usr/local/go/pkg/tool/linux_amd64/buildid -w $WORK/b139/_pkg_.a # internal
+[0m[91mcp $WORK/b139/_pkg_.a /root/.cache/go-build/aa/aa12c3b77d9d58a37259929811731fc1396d36e175b2dbb39dc16dafe5ee4f5b-d # internal
+[0m[91mcat >$WORK/b139/vet.cfg << 'EOF' # internal
+{
+	"ID": "gopkg.in/yaml.v3",
+	"Compiler": "gc",
+	"Dir": "/go/pkg/mod/gopkg.in/yaml.v3@v3.0.0-20200313102051-9f266ea9e77c",
+	"ImportPath": "gopkg.in/yaml.v3",
+	"GoFiles": [
+		"/go/pkg/mod/gopkg.in/yaml.v3@v3.0.0-20200313102051-9f266ea9e77c/apic.go",
+		"/go/pkg/mod/gopkg.in/yaml.v3@v3.0.0-20200313102051-9f266ea9e77c/decode.go",
+		"/go/pkg/mod/gopkg.in/yaml.v3@v3.0.0-20200313102051-9f266ea9e77c/emitterc.go",
+		"/go/pkg/mod/gopkg.in/yaml.v3@v3.0.0-20200313102051-9f266ea9e77c/encode.go",
+		"/go/pkg/mod/gopkg.in/yaml.v3@v3.0.0-20200313102051-9f266ea9e77c/parserc.go",
+		"/go/pkg/mod/gopkg.in/yaml.v3@v3.0.0-20200313102051-9f266ea9e77c/readerc.go",
+		"/go/pkg/mod/gopkg.in/yaml.v3@v3.0.0-20200313102051-9f266ea9e77c/resolve.go",
+		"/go/pkg/mod/gopkg.in/yaml.v3@v3.0.0-20200313102051-9f266ea9e77c/scannerc.go",
+		"/go/pkg/mod/gopkg.in/yaml.v3@v3.0.0-20200313102051-9f266ea9e77c/sorter.go",
+		"/go/pkg/mod/gopkg.in/yaml.v3@v3.0.0-20200313102051-9f266ea9e77c/writerc.go",
+		"/go/pkg/mod/gopkg.in/yaml.v3@v3.0.0-20200313102051-9f266ea9e77c/yaml.go",
+		"/go/pkg/mod/gopkg.in/yaml.v3@v3.0.0-20200313102051-9f266ea9e77c/yamlh.go",
+		"/go/pkg/mod/gopkg.in/yaml.v3@v3.0.0-20200313102051-9f266ea9e77c/yamlprivateh.go"
+	],
+	"NonGoFiles": [],
+	"ImportMap": {
+		"bytes": "bytes",
+		"encoding": "encoding",
+		"encoding/base64": "encoding/base64",
+		"errors": "errors",
+		"fmt": "fmt",
+		"io": "io",
+		"math": "math",
+		"reflect": "reflect",
+		"regexp": "regexp",
+		"sort": "sort",
+		"strconv": "strconv",
+		"strings": "strings",
+		"sync": "sync",
+		"time": "time",
+		"unicode": "unicode",
+		"unicode/utf8": "unicode/utf8"
+	},
+	"PackageFile": {
+		"bytes": "/usr/local/go/pkg/linux_amd64/bytes.a",
+		"encoding": "/usr/local/go/pkg/linux_amd64/encoding.a",
+		"encoding/base64": "/usr/local/go/pkg/linux_amd64/encoding/base64.a",
+		"errors": "/usr/local/go/pkg/linux_amd64/errors.a",
+		"fmt": "/usr/local/go/pkg/linux_amd64/fmt.a",
+		"io": "/usr/local/go/pkg/linux_amd64/io.a",
+		"math": "/usr/local/go/pkg/linux_amd64/math.a",
+		"reflect": "/usr/local/go/pkg/linux_amd64/reflect.a",
+		"regexp": "/usr/local/go/pkg/linux_amd64/regexp.a",
+		"sort": "/usr/local/go/pkg/linux_amd64/sort.a",
+		"strconv": "/usr/local/go/pkg/linux_amd64/strconv.a",
+		"strings": "/usr/local/go/pkg/linux_amd64/strings.a",
+		"sync": "/usr/local/go/pkg/linux_amd64/sync.a",
+		"time": "/usr/local/go/pkg/linux_amd64/time.a",
+		"unicode": "/usr/local/go/pkg/linux_amd64/unicode.a",
+		"unicode/utf8": "/usr/local/go/pkg/linux_amd64/unicode/utf8.a"
+	},
+	"Standard": {
+		"bytes": true,
+		"encoding": true,
+		"encoding/base64": true,
+		"errors": true,
+		"fmt": true,
+		"io": true,
+		"math": true,
+		"reflect": true,
+		"regexp": true,
+		"sort": true,
+		"strconv": true,
+		"strings": true,
+		"sync": true,
+		"time": true,
+		"unicode": true,
+		"unicode/utf8": true
+	},
+	"PackageVetx": {
+		"bytes": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"encoding": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"encoding/base64": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"errors": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"fmt": "/root/.cache/go-build/6f/6f1a3e1f52c31e8342fdd695153c6d7a005caa69858e5628fb700df89b134021-d",
+		"io": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"math": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"reflect": "/root/.cache/go-build/2d/2d26f8ed83dc6de73bc9496e28d0e378ec6945d8641b2016bae22f9c0ddb929b-d",
+		"regexp": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"sort": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"strconv": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"strings": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"sync": "/root/.cache/go-build/2d/2d26f8ed83dc6de73bc9496e28d0e378ec6945d8641b2016bae22f9c0ddb929b-d",
+		"time": "/root/.cache/go-build/77/7703a56ffad7e2d1533a584fb504cc800de76c80580922a8bc5d78959e8316c1-d",
+		"unicode": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"unicode/utf8": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d"
+	},
+	"VetxOnly": true,
+	"VetxOutput": "$WORK/b139/vet.out",
+	"SucceedOnTypecheckFailure": false
+}
+EOF
+[0m[91mcd /go/pkg/mod/gopkg.in/yaml.v3@v3.0.0-20200313102051-9f266ea9e77c
+TERM='dumb' /usr/local/go/pkg/tool/linux_amd64/vet -atomic -bool -buildtags -errorsas -ifaceassert -nilfunc -printf -stringintconv $WORK/b139/vet.cfg
+[0m[91mmkdir -p $WORK/b138/
+[0m[91mcat >$WORK/b138/importcfg << 'EOF' # internal
+# import config
+packagefile bufio=/usr/local/go/pkg/linux_amd64/bufio.a
+packagefile bytes=/usr/local/go/pkg/linux_amd64/bytes.a
+packagefile encoding/json=/usr/local/go/pkg/linux_amd64/encoding/json.a
+packagefile errors=/usr/local/go/pkg/linux_amd64/errors.a
+packagefile fmt=/usr/local/go/pkg/linux_amd64/fmt.a
+packagefile github.com/davecgh/go-spew/spew=$WORK/b135/_pkg_.a
+packagefile github.com/pmezard/go-difflib/difflib=$WORK/b136/_pkg_.a
+packagefile gopkg.in/yaml.v3=$WORK/b139/_pkg_.a
+packagefile math=/usr/local/go/pkg/linux_amd64/math.a
+packagefile net/http=/usr/local/go/pkg/linux_amd64/net/http.a
+packagefile net/http/httptest=/usr/local/go/pkg/linux_amd64/net/http/httptest.a
+packagefile net/url=/usr/local/go/pkg/linux_amd64/net/url.a
+packagefile os=/usr/local/go/pkg/linux_amd64/os.a
+packagefile reflect=/usr/local/go/pkg/linux_amd64/reflect.a
+packagefile regexp=/usr/local/go/pkg/linux_amd64/regexp.a
+packagefile runtime=/usr/local/go/pkg/linux_amd64/runtime.a
+packagefile runtime/debug=/usr/local/go/pkg/linux_amd64/runtime/debug.a
+packagefile strings=/usr/local/go/pkg/linux_amd64/strings.a
+packagefile time=/usr/local/go/pkg/linux_amd64/time.a
+packagefile unicode=/usr/local/go/pkg/linux_amd64/unicode.a
+packagefile unicode/utf8=/usr/local/go/pkg/linux_amd64/unicode/utf8.a
+EOF
+[0m[91mcd /go/pkg/mod/github.com/stretchr/testify@v1.6.1/assert
+/usr/local/go/pkg/tool/linux_amd64/compile -o $WORK/b138/_pkg_.a -trimpath "$WORK/b138=>" -p github.com/stretchr/testify/assert -lang=go1.13 -complete -buildid 2e2gzqPxzNpNw4VqVj3u/2e2gzqPxzNpNw4VqVj3u -goversion go1.15.5 -D "" -importcfg $WORK/b138/importcfg -pack -c=2 ./assertion_compare.go ./assertion_format.go ./assertion_forward.go ./assertions.go ./doc.go ./errors.go ./forward_assertions.go ./http_assertions.go
+[0m[91m/usr/local/go/pkg/tool/linux_amd64/buildid -w $WORK/b138/_pkg_.a # internal
+[0m[91mcp $WORK/b138/_pkg_.a /root/.cache/go-build/90/907bbf6f072806efa12e078df3b44f12efa1b75e07b6023f83ec79573b3d9c03-d # internal
+[0m[91mmkdir -p $WORK/b144/
+[0m[91mcat >$WORK/b144/importcfg << 'EOF' # internal
+# import config
+packagefile github.com/stretchr/testify/assert=$WORK/b138/_pkg_.a
+packagefile net/http=/usr/local/go/pkg/linux_amd64/net/http.a
+packagefile net/url=/usr/local/go/pkg/linux_amd64/net/url.a
+packagefile time=/usr/local/go/pkg/linux_amd64/time.a
+EOF
+[0m[91mcd /go/pkg/mod/github.com/stretchr/testify@v1.6.1/require
+/usr/local/go/pkg/tool/linux_amd64/compile -o $WORK/b144/_pkg_.a -trimpath "$WORK/b144=>" -p github.com/stretchr/testify/require -lang=go1.13 -complete -buildid GWgIpewFolax7cA2gv3X/GWgIpewFolax7cA2gv3X -goversion go1.15.5 -D "" -importcfg $WORK/b144/importcfg -pack -c=2 ./doc.go ./forward_requirements.go ./require.go ./require_forward.go ./requirements.go
+[0m[91mmkdir -p $WORK/b134/
+[0m[91mcat >$WORK/b134/importcfg << 'EOF' # internal
+# import config
+packagefile errors=/usr/local/go/pkg/linux_amd64/errors.a
+packagefile fmt=/usr/local/go/pkg/linux_amd64/fmt.a
+packagefile github.com/davecgh/go-spew/spew=$WORK/b135/_pkg_.a
+packagefile github.com/pmezard/go-difflib/difflib=$WORK/b136/_pkg_.a
+packagefile github.com/stretchr/objx=$WORK/b137/_pkg_.a
+packagefile github.com/stretchr/testify/assert=$WORK/b138/_pkg_.a
+packagefile reflect=/usr/local/go/pkg/linux_amd64/reflect.a
+packagefile regexp=/usr/local/go/pkg/linux_amd64/regexp.a
+packagefile runtime=/usr/local/go/pkg/linux_amd64/runtime.a
+packagefile strings=/usr/local/go/pkg/linux_amd64/strings.a
+packagefile sync=/usr/local/go/pkg/linux_amd64/sync.a
+packagefile time=/usr/local/go/pkg/linux_amd64/time.a
+EOF
+[0m[91mcd /go/pkg/mod/github.com/stretchr/testify@v1.6.1/mock
+/usr/local/go/pkg/tool/linux_amd64/compile -o $WORK/b134/_pkg_.a -trimpath "$WORK/b134=>" -p github.com/stretchr/testify/mock -lang=go1.13 -complete -buildid xuoaL4uYfSUYiME_l7Oh/xuoaL4uYfSUYiME_l7Oh -goversion go1.15.5 -D "" -importcfg $WORK/b134/importcfg -pack -c=2 ./doc.go ./mock.go
+[0m[91m/usr/local/go/pkg/tool/linux_amd64/buildid -w $WORK/b134/_pkg_.a # internal
+[0m[91mcp $WORK/b134/_pkg_.a /root/.cache/go-build/19/19bc088fd693014e89a7f73d143cc5cd89b9c462d77e23c6999a55d4bb26d115-d # internal
+[0m[91mmkdir -p $WORK/b133/
+[0m[91mcat >$WORK/b133/importcfg << 'EOF' # internal
+# import config
+packagefile github.com/stretchr/testify/mock=$WORK/b134/_pkg_.a
+EOF
+cd /go/src/app/pkg/gateway/mocks
+/usr/local/go/pkg/tool/linux_amd64/compile -o $WORK/b133/_pkg_.a -trimpath "$WORK/b133=>" -p github.com/georgysavva/driver-app/gateway/pkg/gateway/mocks -lang=go1.14 -complete -buildid Rvw36K_3O2uCtliJrQy5/Rvw36K_3O2uCtliJrQy5 -goversion go1.15.5 -D "" -importcfg $WORK/b133/importcfg -pack -c=2 ./NSQProducer.go
+[0m[91m/usr/local/go/pkg/tool/linux_amd64/buildid -w $WORK/b133/_pkg_.a # internal
+[0m[91mcp $WORK/b133/_pkg_.a /root/.cache/go-build/27/27006057fde46e244774b7d47bb41928e21b15c5eeae54eedbf342cf42ca46b1-d # internal
+[0m[91mcat >$WORK/b138/vet.cfg << 'EOF' # internal
+{
+	"ID": "github.com/stretchr/testify/assert",
+	"Compiler": "gc",
+	"Dir": "/go/pkg/mod/github.com/stretchr/testify@v1.6.1/assert",
+	"ImportPath": "github.com/stretchr/testify/assert",
+	"GoFiles": [
+		"/go/pkg/mod/github.com/stretchr/testify@v1.6.1/assert/assertion_compare.go",
+		"/go/pkg/mod/github.com/stretchr/testify@v1.6.1/assert/assertion_format.go",
+		"/go/pkg/mod/github.com/stretchr/testify@v1.6.1/assert/assertion_forward.go",
+		"/go/pkg/mod/github.com/stretchr/testify@v1.6.1/assert/assertions.go",
+		"/go/pkg/mod/github.com/stretchr/testify@v1.6.1/assert/doc.go",
+		"/go/pkg/mod/github.com/stretchr/testify@v1.6.1/assert/errors.go",
+		"/go/pkg/mod/github.com/stretchr/testify@v1.6.1/assert/forward_assertions.go",
+		"/go/pkg/mod/github.com/stretchr/testify@v1.6.1/assert/http_assertions.go"
+	],
+	"NonGoFiles": [],
+	"ImportMap": {
+		"bufio": "bufio",
+		"bytes": "bytes",
+		"encoding/json": "encoding/json",
+		"errors": "errors",
+		"fmt": "fmt",
+		"github.com/davecgh/go-spew/spew": "github.com/davecgh/go-spew/spew",
+		"github.com/pmezard/go-difflib/difflib": "github.com/pmezard/go-difflib/difflib",
+		"gopkg.in/yaml.v3": "gopkg.in/yaml.v3",
+		"math": "math",
+		"net/http": "net/http",
+		"net/http/httptest": "net/http/httptest",
+		"net/url": "net/url",
+		"os": "os",
+		"reflect": "reflect",
+		"regexp": "regexp",
+		"runtime": "runtime",
+		"runtime/debug": "runtime/debug",
+		"strings": "strings",
+		"time": "time",
+		"unicode": "unicode",
+		"unicode/utf8": "unicode/utf8"
+	},
+	"PackageFile": {
+		"bufio": "/usr/local/go/pkg/linux_amd64/bufio.a",
+		"bytes": "/usr/local/go/pkg/linux_amd64/bytes.a",
+		"encoding/json": "/usr/local/go/pkg/linux_amd64/encoding/json.a",
+		"errors": "/usr/local/go/pkg/linux_amd64/errors.a",
+		"fmt": "/usr/local/go/pkg/linux_amd64/fmt.a",
+		"github.com/davecgh/go-spew/spew": "$WORK/b135/_pkg_.a",
+		"github.com/pmezard/go-difflib/difflib": "$WORK/b136/_pkg_.a",
+		"gopkg.in/yaml.v3": "$WORK/b139/_pkg_.a",
+		"math": "/usr/local/go/pkg/linux_amd64/math.a",
+		"net/http": "/usr/local/go/pkg/linux_amd64/net/http.a",
+		"net/http/httptest": "/usr/local/go/pkg/linux_amd64/net/http/httptest.a",
+		"net/url": "/usr/local/go/pkg/linux_amd64/net/url.a",
+		"os": "/usr/local/go/pkg/linux_amd64/os.a",
+		"reflect": "/usr/local/go/pkg/linux_amd64/reflect.a",
+		"regexp": "/usr/local/go/pkg/linux_amd64/regexp.a",
+		"runtime": "/usr/local/go/pkg/linux_amd64/runtime.a",
+		"runtime/debug": "/usr/local/go/pkg/linux_amd64/runtime/debug.a",
+		"strings": "/usr/local/go/pkg/linux_amd64/strings.a",
+		"time": "/usr/local/go/pkg/linux_amd64/time.a",
+		"unicode": "/usr/local/go/pkg/linux_amd64/unicode.a",
+		"unicode/utf8": "/usr/local/go/pkg/linux_amd64/unicode/utf8.a"
+	},
+	"Standard": {
+		"bufio": true,
+		"bytes": true,
+		"encoding/json": true,
+		"errors": true,
+		"fmt": true,
+		"math": true,
+		"net/http": true,
+		"net/http/httptest": true,
+		"net/url": true,
+		"os": true,
+		"reflect": true,
+		"regexp": true,
+		"runtime": true,
+		"runtime/debug": true,
+		"strings": true,
+		"time": true,
+		"unicode": true,
+		"unicode/utf8": true
+	},
+	"PackageVetx": {
+		"bufio": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"bytes": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"encoding/json": "/root/.cache/go-build/0b/0b7efcf181fb9d7059dbb9ec39d8a28bfdd0b4695a71cb038e85cb7bb2225fe1-d",
+		"errors": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"fmt": "/root/.cache/go-build/6f/6f1a3e1f52c31e8342fdd695153c6d7a005caa69858e5628fb700df89b134021-d",
+		"github.com/davecgh/go-spew/spew": "$WORK/b135/vet.out",
+		"github.com/pmezard/go-difflib/difflib": "$WORK/b136/vet.out",
+		"gopkg.in/yaml.v3": "$WORK/b139/vet.out",
+		"math": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"net/http": "/root/.cache/go-build/5a/5a11dca4085a25e4428ea4aae826ee8a35049b8c435c4df2390e990446319569-d",
+		"net/http/httptest": "/root/.cache/go-build/d3/d3be2d96a6309b4cecca5235112ebfe6465538048feaac66dabf64ec1a3b5e80-d",
+		"net/url": "/root/.cache/go-build/88/8882d04b5e2b8dcb1bfaa0783318fc713e15a1ec4e5214a11c600230b413898e-d",
+		"os": "/root/.cache/go-build/37/376397066f40ef1fac96c02af9c4a0699a0e5aa019bc41dafa3d93954e7fe7c8-d",
+		"reflect": "/root/.cache/go-build/2d/2d26f8ed83dc6de73bc9496e28d0e378ec6945d8641b2016bae22f9c0ddb929b-d",
+		"regexp": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"runtime": "/root/.cache/go-build/2d/2d26f8ed83dc6de73bc9496e28d0e378ec6945d8641b2016bae22f9c0ddb929b-d",
+		"runtime/debug": "/root/.cache/go-build/7d/7d513fcf6ecfbc1b567a4f405fb6a1576ef05c49c8d868faa043913005d19976-d",
+		"strings": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"time": "/root/.cache/go-build/77/7703a56ffad7e2d1533a584fb504cc800de76c80580922a8bc5d78959e8316c1-d",
+		"unicode": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"unicode/utf8": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d"
+	},
+	"VetxOnly": true,
+	"VetxOutput": "$WORK/b138/vet.out",
+	"SucceedOnTypecheckFailure": false
+}
+EOF
+[0m[91mcd /go/pkg/mod/github.com/stretchr/testify@v1.6.1/assert
+TERM='dumb' /usr/local/go/pkg/tool/linux_amd64/vet -atomic -bool -buildtags -errorsas -ifaceassert -nilfunc -printf -stringintconv $WORK/b138/vet.cfg
+[0m[91m/usr/local/go/pkg/tool/linux_amd64/buildid -w $WORK/b144/_pkg_.a # internal
+[0m[91mcp $WORK/b144/_pkg_.a /root/.cache/go-build/7e/7eca335eb904fb15e8b899171f04aecf8bb0d91529039f4f8db6324701b37505-d # internal
+[0m[91mmkdir -p $WORK/b132/
+[0m[91mcat >$WORK/b132/importcfg << 'EOF' # internal
+# import config
+packagefile fmt=/usr/local/go/pkg/linux_amd64/fmt.a
+packagefile github.com/georgysavva/driver-app/gateway/pkg/gateway/mocks=$WORK/b133/_pkg_.a
+packagefile github.com/kelseyhightower/envconfig=$WORK/b141/_pkg_.a
+packagefile github.com/sirupsen/logrus=$WORK/b115/_pkg_.a
+packagefile github.com/stretchr/testify/assert=$WORK/b138/_pkg_.a
+packagefile github.com/stretchr/testify/mock=$WORK/b134/_pkg_.a
+packagefile github.com/stretchr/testify/require=$WORK/b144/_pkg_.a
+packagefile io/ioutil=/usr/local/go/pkg/linux_amd64/io/ioutil.a
+packagefile net/http=/usr/local/go/pkg/linux_amd64/net/http.a
+packagefile net/http/httptest=/usr/local/go/pkg/linux_amd64/net/http/httptest.a
+packagefile net/url=/usr/local/go/pkg/linux_amd64/net/url.a
+packagefile testing=/usr/local/go/pkg/linux_amd64/testing.a
+packagefile github.com/georgysavva/driver-app/gateway/pkg/gateway=$WORK/b035/_pkg_.a
+EOF
+cd /go/src/app/pkg/gateway
+/usr/local/go/pkg/tool/linux_amd64/compile -o $WORK/b132/_pkg_.a -trimpath "$WORK/b132=>" -p github.com/georgysavva/driver-app/gateway/pkg/gateway_test -complete -buildid eh8Mrpk_2fXAD1DFcbct/eh8Mrpk_2fXAD1DFcbct -goversion go1.15.5 -D "" -importcfg $WORK/b132/importcfg -pack -c=2 ./gateway_test.go
+[0m[91mcat >$WORK/b134/vet.cfg << 'EOF' # internal
+{
+	"ID": "github.com/stretchr/testify/mock",
+	"Compiler": "gc",
+	"Dir": "/go/pkg/mod/github.com/stretchr/testify@v1.6.1/mock",
+	"ImportPath": "github.com/stretchr/testify/mock",
+	"GoFiles": [
+		"/go/pkg/mod/github.com/stretchr/testify@v1.6.1/mock/doc.go",
+		"/go/pkg/mod/github.com/stretchr/testify@v1.6.1/mock/mock.go"
+	],
+	"NonGoFiles": [],
+	"ImportMap": {
+		"errors": "errors",
+		"fmt": "fmt",
+		"github.com/davecgh/go-spew/spew": "github.com/davecgh/go-spew/spew",
+		"github.com/pmezard/go-difflib/difflib": "github.com/pmezard/go-difflib/difflib",
+		"github.com/stretchr/objx": "github.com/stretchr/objx",
+		"github.com/stretchr/testify/assert": "github.com/stretchr/testify/assert",
+		"reflect": "reflect",
+		"regexp": "regexp",
+		"runtime": "runtime",
+		"strings": "strings",
+		"sync": "sync",
+		"time": "time"
+	},
+	"PackageFile": {
+		"errors": "/usr/local/go/pkg/linux_amd64/errors.a",
+		"fmt": "/usr/local/go/pkg/linux_amd64/fmt.a",
+		"github.com/davecgh/go-spew/spew": "$WORK/b135/_pkg_.a",
+		"github.com/pmezard/go-difflib/difflib": "$WORK/b136/_pkg_.a",
+		"github.com/stretchr/objx": "$WORK/b137/_pkg_.a",
+		"github.com/stretchr/testify/assert": "$WORK/b138/_pkg_.a",
+		"reflect": "/usr/local/go/pkg/linux_amd64/reflect.a",
+		"regexp": "/usr/local/go/pkg/linux_amd64/regexp.a",
+		"runtime": "/usr/local/go/pkg/linux_amd64/runtime.a",
+		"strings": "/usr/local/go/pkg/linux_amd64/strings.a",
+		"sync": "/usr/local/go/pkg/linux_amd64/sync.a",
+		"time": "/usr/local/go/pkg/linux_amd64/time.a"
+	},
+	"Standard": {
+		"errors": true,
+		"fmt": true,
+		"reflect": true,
+		"regexp": true,
+		"runtime": true,
+		"strings": true,
+		"sync": true,
+		"time": true
+	},
+	"PackageVetx": {
+		"errors": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"fmt": "/root/.cache/go-build/6f/6f1a3e1f52c31e8342fdd695153c6d7a005caa69858e5628fb700df89b134021-d",
+		"github.com/davecgh/go-spew/spew": "$WORK/b135/vet.out",
+		"github.com/pmezard/go-difflib/difflib": "$WORK/b136/vet.out",
+		"github.com/stretchr/objx": "$WORK/b137/vet.out",
+		"github.com/stretchr/testify/assert": "$WORK/b138/vet.out",
+		"reflect": "/root/.cache/go-build/2d/2d26f8ed83dc6de73bc9496e28d0e378ec6945d8641b2016bae22f9c0ddb929b-d",
+		"regexp": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"runtime": "/root/.cache/go-build/2d/2d26f8ed83dc6de73bc9496e28d0e378ec6945d8641b2016bae22f9c0ddb929b-d",
+		"strings": "/root/.cache/go-build/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855-d",
+		"sync": "/root/.cache/go-build/2d/2d26f8ed83dc6de73bc9496e28d0e378ec6945d8641b2016bae22f9c0ddb929b-d",
+		"time": "/root/.cache/go-build/77/7703a56ffad7e2d1533a584fb504cc800de76c80580922a8bc5d78959e8316c1-d"
+	},
+	"VetxOnly": true,
+	"VetxOutput": "$WORK/b134/vet.out",
+	"SucceedOnTypecheckFailure": false
+}
+EOF
+[0m[91mcd /go/pkg/mod/github.com/stretchr/testify@v1.6.1/mock
+TERM='dumb' /usr/local/go/pkg/tool/linux_amd64/vet -atomic -bool -buildtags -errorsas -ifaceassert -nilfunc -printf -stringintconv $WORK/b134/vet.cfg
+[0m[91mcat >$WORK/b133/vet.cfg << 'EOF' # internal
+{
+	"ID": "github.com/georgysavva/driver-app/gateway/pkg/gateway/mocks",
+	"Compiler": "gc",
+	"Dir": "/go/src/app/pkg/gateway/mocks",
+	"ImportPath": "github.com/georgysavva/driver-app/gateway/pkg/gateway/mocks",
+	"GoFiles": [
+		"/go/src/app/pkg/gateway/mocks/NSQProducer.go"
+	],
+	"NonGoFiles": [],
+	"ImportMap": {
+		"github.com/stretchr/testify/mock": "github.com/stretchr/testify/mock"
+	},
+	"PackageFile": {
+		"github.com/stretchr/testify/mock": "$WORK/b134/_pkg_.a"
+	},
+	"Standard": {},
+	"PackageVetx": {
+		"github.com/stretchr/testify/mock": "$WORK/b134/vet.out"
+	},
+	"VetxOnly": false,
+	"VetxOutput": "$WORK/b133/vet.out",
+	"SucceedOnTypecheckFailure": false
+}
+EOF
+[0m[91mcd /go/src/app/pkg/gateway/mocks
+TERM='dumb' /usr/local/go/pkg/tool/linux_amd64/vet -atomic -bool -buildtags -errorsas -ifaceassert -nilfunc -printf -stringintconv $WORK/b133/vet.cfg
+[0m[91mcat >$WORK/b144/vet.cfg << 'EOF' # internal
+{
+	"ID": "github.com/stretchr/testify/require",
+	"Compiler": "gc",
+	"Dir": "/go/pkg/mod/github.com/stretchr/testify@v1.6.1/require",
+	"ImportPath": "github.com/stretchr/testify/require",
+	"GoFiles": [
+		"/go/pkg/mod/github.com/stretchr/testify@v1.6.1/require/doc.go",
+		"/go/pkg/mod/github.com/stretchr/testify@v1.6.1/require/forward_requirements.go",
+		"/go/pkg/mod/github.com/stretchr/testify@v1.6.1/require/require.go",
+		"/go/pkg/mod/github.com/stretchr/testify@v1.6.1/require/require_forward.go",
+		"/go/pkg/mod/github.com/stretchr/testify@v1.6.1/require/requirements.go"
+	],
+	"NonGoFiles": [],
+	"ImportMap": {
+		"github.com/stretchr/testify/assert": "github.com/stretchr/testify/assert",
+		"net/http": "net/http",
+		"net/url": "net/url",
+		"time": "time"
+	},
+	"PackageFile": {
+		"github.com/stretchr/testify/assert": "$WORK/b138/_pkg_.a",
+		"net/http": "/usr/local/go/pkg/linux_amd64/net/http.a",
+		"net/url": "/usr/local/go/pkg/linux_amd64/net/url.a",
+		"time": "/usr/local/go/pkg/linux_amd64/time.a"
+	},
+	"Standard": {
+		"net/http": true,
+		"net/url": true,
+		"time": true
+	},
+	"PackageVetx": {
+		"github.com/stretchr/testify/assert": "$WORK/b138/vet.out",
+		"net/http": "/root/.cache/go-build/5a/5a11dca4085a25e4428ea4aae826ee8a35049b8c435c4df2390e990446319569-d",
+		"net/url": "/root/.cache/go-build/88/8882d04b5e2b8dcb1bfaa0783318fc713e15a1ec4e5214a11c600230b413898e-d",
+		"time": "/root/.cache/go-build/77/7703a56ffad7e2d1533a584fb504cc800de76c80580922a8bc5d78959e8316c1-d"
+	},
+	"VetxOnly": true,
+	"VetxOutput": "$WORK/b144/vet.out",
+	"SucceedOnTypecheckFailure": false
+}
+EOF
+[0m[91mcd /go/pkg/mod/github.com/stretchr/testify@v1.6.1/require
+TERM='dumb' /usr/local/go/pkg/tool/linux_amd64/vet -atomic -bool -buildtags -errorsas -ifaceassert -nilfunc -printf -stringintconv $WORK/b144/vet.cfg
+[0m[91m/usr/local/go/pkg/tool/linux_amd64/buildid -w $WORK/b132/_pkg_.a # internal
+[0m[91mcp $WORK/b132/_pkg_.a /root/.cache/go-build/6a/6a5d1b90bdc0333390b65e77a34c68d9ad82d43f760e0f4ca9329f1e4bb8610f-d # internal
+[0m[91mcat >$WORK/b123/importcfg << 'EOF' # internal
+# import config
+packagefile os=/usr/local/go/pkg/linux_amd64/os.a
+packagefile reflect=/usr/local/go/pkg/linux_amd64/reflect.a
+packagefile testing=/usr/local/go/pkg/linux_amd64/testing.a
+packagefile testing/internal/testdeps=/usr/local/go/pkg/linux_amd64/testing/internal/testdeps.a
+packagefile runtime=/usr/local/go/pkg/linux_amd64/runtime.a
+packagefile github.com/georgysavva/driver-app/gateway/pkg/gateway=$WORK/b035/_pkg_.a
+packagefile github.com/georgysavva/driver-app/gateway/pkg/gateway_test=$WORK/b132/_pkg_.a
+EOF
+[0m[91mcd $WORK/b123/
+/usr/local/go/pkg/tool/linux_amd64/compile -o ./_pkg_.a -trimpath "$WORK/b123=>" -p main -complete -buildid q6zDE9G361v-2X_vS0zy/q6zDE9G361v-2X_vS0zy -dwarf=false -goversion go1.15.5 -D "" -importcfg ./importcfg -pack -c=2 ./_testmain.go
+[0m[91m/usr/local/go/pkg/tool/linux_amd64/buildid -w $WORK/b123/_pkg_.a # internal
+[0m[91mcp $WORK/b123/_pkg_.a /root/.cache/go-build/bf/bf6f4840fbdc3d8c0631a7d4ef1cab6f51454b8e28887242b71bf0d571ed45ea-d # internal
+[0m[91mcat >$WORK/b123/importcfg.link << 'EOF' # internal
+packagefile github.com/georgysavva/driver-app/gateway/pkg/gateway.test=$WORK/b123/_pkg_.a
+packagefile os=/usr/local/go/pkg/linux_amd64/os.a
+packagefile reflect=/usr/local/go/pkg/linux_amd64/reflect.a
+packagefile testing=/usr/local/go/pkg/linux_amd64/testing.a
+packagefile testing/internal/testdeps=/usr/local/go/pkg/linux_amd64/testing/internal/testdeps.a
+packagefile runtime=/usr/local/go/pkg/linux_amd64/runtime.a
+packagefile github.com/georgysavva/driver-app/gateway/pkg/gateway=$WORK/b035/_pkg_.a
+packagefile github.com/georgysavva/driver-app/gateway/pkg/gateway_test=$WORK/b132/_pkg_.a
+packagefile errors=/usr/local/go/pkg/linux_amd64/errors.a
+packagefile internal/oserror=/usr/local/go/pkg/linux_amd64/internal/oserror.a
+packagefile internal/poll=/usr/local/go/pkg/linux_amd64/internal/poll.a
+packagefile internal/syscall/execenv=/usr/local/go/pkg/linux_amd64/internal/syscall/execenv.a
+packagefile internal/syscall/unix=/usr/local/go/pkg/linux_amd64/internal/syscall/unix.a
+packagefile internal/testlog=/usr/local/go/pkg/linux_amd64/internal/testlog.a
+packagefile io=/usr/local/go/pkg/linux_amd64/io.a
+packagefile sync=/usr/local/go/pkg/linux_amd64/sync.a
+packagefile sync/atomic=/usr/local/go/pkg/linux_amd64/sync/atomic.a
+packagefile syscall=/usr/local/go/pkg/linux_amd64/syscall.a
+packagefile time=/usr/local/go/pkg/linux_amd64/time.a
+packagefile internal/unsafeheader=/usr/local/go/pkg/linux_amd64/internal/unsafeheader.a
+packagefile math=/usr/local/go/pkg/linux_amd64/math.a
+packagefile strconv=/usr/local/go/pkg/linux_amd64/strconv.a
+packagefile unicode=/usr/local/go/pkg/linux_amd64/unicode.a
+packagefile unicode/utf8=/usr/local/go/pkg/linux_amd64/unicode/utf8.a
+packagefile bytes=/usr/local/go/pkg/linux_amd64/bytes.a
+packagefile flag=/usr/local/go/pkg/linux_amd64/flag.a
+packagefile fmt=/usr/local/go/pkg/linux_amd64/fmt.a
+packagefile internal/race=/usr/local/go/pkg/linux_amd64/internal/race.a
+packagefile io/ioutil=/usr/local/go/pkg/linux_amd64/io/ioutil.a
+packagefile runtime/debug=/usr/local/go/pkg/linux_amd64/runtime/debug.a
+packagefile runtime/trace=/usr/local/go/pkg/linux_amd64/runtime/trace.a
+packagefile sort=/usr/local/go/pkg/linux_amd64/sort.a
+packagefile strings=/usr/local/go/pkg/linux_amd64/strings.a
+packagefile bufio=/usr/local/go/pkg/linux_amd64/bufio.a
+packagefile regexp=/usr/local/go/pkg/linux_amd64/regexp.a
+packagefile runtime/pprof=/usr/local/go/pkg/linux_amd64/runtime/pprof.a
+packagefile internal/bytealg=/usr/local/go/pkg/linux_amd64/internal/bytealg.a
+packagefile internal/cpu=/usr/local/go/pkg/linux_amd64/internal/cpu.a
+packagefile runtime/internal/atomic=/usr/local/go/pkg/linux_amd64/runtime/internal/atomic.a
+packagefile runtime/internal/math=/usr/local/go/pkg/linux_amd64/runtime/internal/math.a
+packagefile runtime/internal/sys=/usr/local/go/pkg/linux_amd64/runtime/internal/sys.a
+packagefile encoding/json=/usr/local/go/pkg/linux_amd64/encoding/json.a
+packagefile github.com/gorilla/mux=$WORK/b043/_pkg_.a
+packagefile github.com/pkg/errors=$WORK/b114/_pkg_.a
+packagefile github.com/sirupsen/logrus=$WORK/b115/_pkg_.a
+packagefile net/http=/usr/local/go/pkg/linux_amd64/net/http.a
+packagefile net/http/httputil=/usr/local/go/pkg/linux_amd64/net/http/httputil.a
+packagefile net/url=/usr/local/go/pkg/linux_amd64/net/url.a
+packagefile github.com/georgysavva/driver-app/gateway/pkg/gateway/mocks=$WORK/b133/_pkg_.a
+packagefile github.com/kelseyhightower/envconfig=$WORK/b141/_pkg_.a
+packagefile github.com/stretchr/testify/assert=$WORK/b138/_pkg_.a
+packagefile github.com/stretchr/testify/mock=$WORK/b134/_pkg_.a
+packagefile github.com/stretchr/testify/require=$WORK/b144/_pkg_.a
+packagefile net/http/httptest=/usr/local/go/pkg/linux_amd64/net/http/httptest.a
+packagefile internal/reflectlite=/usr/local/go/pkg/linux_amd64/internal/reflectlite.a
+packagefile math/bits=/usr/local/go/pkg/linux_amd64/math/bits.a
+packagefile internal/fmtsort=/usr/local/go/pkg/linux_amd64/internal/fmtsort.a
+packagefile path/filepath=/usr/local/go/pkg/linux_amd64/path/filepath.a
+packagefile context=/usr/local/go/pkg/linux_amd64/context.a
+packagefile regexp/syntax=/usr/local/go/pkg/linux_amd64/regexp/syntax.a
+packagefile compress/gzip=/usr/local/go/pkg/linux_amd64/compress/gzip.a
+packagefile encoding/binary=/usr/local/go/pkg/linux_amd64/encoding/binary.a
+packagefile text/tabwriter=/usr/local/go/pkg/linux_amd64/text/tabwriter.a
+packagefile encoding=/usr/local/go/pkg/linux_amd64/encoding.a
+packagefile encoding/base64=/usr/local/go/pkg/linux_amd64/encoding/base64.a
+packagefile unicode/utf16=/usr/local/go/pkg/linux_amd64/unicode/utf16.a
+packagefile path=/usr/local/go/pkg/linux_amd64/path.a
+packagefile golang.org/x/sys/unix=$WORK/b116/_pkg_.a
+packagefile log=/usr/local/go/pkg/linux_amd64/log.a
+packagefile container/list=/usr/local/go/pkg/linux_amd64/container/list.a
+packagefile crypto/rand=/usr/local/go/pkg/linux_amd64/crypto/rand.a
+packagefile crypto/tls=/usr/local/go/pkg/linux_amd64/crypto/tls.a
+packagefile vendor/golang.org/x/net/http/httpguts=/usr/local/go/pkg/linux_amd64/vendor/golang.org/x/net/http/httpguts.a
+packagefile vendor/golang.org/x/net/http/httpproxy=/usr/local/go/pkg/linux_amd64/vendor/golang.org/x/net/http/httpproxy.a
+packagefile vendor/golang.org/x/net/http2/hpack=/usr/local/go/pkg/linux_amd64/vendor/golang.org/x/net/http2/hpack.a
+packagefile vendor/golang.org/x/net/idna=/usr/local/go/pkg/linux_amd64/vendor/golang.org/x/net/idna.a
+packagefile math/rand=/usr/local/go/pkg/linux_amd64/math/rand.a
+packagefile mime=/usr/local/go/pkg/linux_amd64/mime.a
+packagefile mime/multipart=/usr/local/go/pkg/linux_amd64/mime/multipart.a
+packagefile net=/usr/local/go/pkg/linux_amd64/net.a
+packagefile net/http/httptrace=/usr/local/go/pkg/linux_amd64/net/http/httptrace.a
+packagefile net/http/internal=/usr/local/go/pkg/linux_amd64/net/http/internal.a
+packagefile net/textproto=/usr/local/go/pkg/linux_amd64/net/textproto.a
+packagefile text/template=/usr/local/go/pkg/linux_amd64/text/template.a
+packagefile github.com/davecgh/go-spew/spew=$WORK/b135/_pkg_.a
+packagefile github.com/pmezard/go-difflib/difflib=$WORK/b136/_pkg_.a
+packagefile gopkg.in/yaml.v3=$WORK/b139/_pkg_.a
+packagefile github.com/stretchr/objx=$WORK/b137/_pkg_.a
+packagefile crypto/x509=/usr/local/go/pkg/linux_amd64/crypto/x509.a
+packagefile compress/flate=/usr/local/go/pkg/linux_amd64/compress/flate.a
+packagefile hash/crc32=/usr/local/go/pkg/linux_amd64/hash/crc32.a
+packagefile crypto/aes=/usr/local/go/pkg/linux_amd64/crypto/aes.a
+packagefile crypto/cipher=/usr/local/go/pkg/linux_amd64/crypto/cipher.a
+packagefile math/big=/usr/local/go/pkg/linux_amd64/math/big.a
+packagefile crypto=/usr/local/go/pkg/linux_amd64/crypto.a
+packagefile crypto/des=/usr/local/go/pkg/linux_amd64/crypto/des.a
+packagefile crypto/ecdsa=/usr/local/go/pkg/linux_amd64/crypto/ecdsa.a
+packagefile crypto/ed25519=/usr/local/go/pkg/linux_amd64/crypto/ed25519.a
+packagefile crypto/elliptic=/usr/local/go/pkg/linux_amd64/crypto/elliptic.a
+packagefile crypto/hmac=/usr/local/go/pkg/linux_amd64/crypto/hmac.a
+packagefile crypto/md5=/usr/local/go/pkg/linux_amd64/crypto/md5.a
+packagefile crypto/rc4=/usr/local/go/pkg/linux_amd64/crypto/rc4.a
+packagefile crypto/rsa=/usr/local/go/pkg/linux_amd64/crypto/rsa.a
+packagefile crypto/sha1=/usr/local/go/pkg/linux_amd64/crypto/sha1.a
+packagefile crypto/sha256=/usr/local/go/pkg/linux_amd64/crypto/sha256.a
+packagefile crypto/sha512=/usr/local/go/pkg/linux_amd64/crypto/sha512.a
+packagefile crypto/subtle=/usr/local/go/pkg/linux_amd64/crypto/subtle.a
+packagefile encoding/pem=/usr/local/go/pkg/linux_amd64/encoding/pem.a
+packagefile vendor/golang.org/x/crypto/chacha20poly1305=/usr/local/go/pkg/linux_amd64/vendor/golang.org/x/crypto/chacha20poly1305.a
+packagefile vendor/golang.org/x/crypto/cryptobyte=/usr/local/go/pkg/linux_amd64/vendor/golang.org/x/crypto/cryptobyte.a
+packagefile vendor/golang.org/x/crypto/curve25519=/usr/local/go/pkg/linux_amd64/vendor/golang.org/x/crypto/curve25519.a
+packagefile vendor/golang.org/x/crypto/hkdf=/usr/local/go/pkg/linux_amd64/vendor/golang.org/x/crypto/hkdf.a
+packagefile hash=/usr/local/go/pkg/linux_amd64/hash.a
+packagefile vendor/golang.org/x/text/secure/bidirule=/usr/local/go/pkg/linux_amd64/vendor/golang.org/x/text/secure/bidirule.a
+packagefile vendor/golang.org/x/text/unicode/bidi=/usr/local/go/pkg/linux_amd64/vendor/golang.org/x/text/unicode/bidi.a
+packagefile vendor/golang.org/x/text/unicode/norm=/usr/local/go/pkg/linux_amd64/vendor/golang.org/x/text/unicode/norm.a
+packagefile mime/quotedprintable=/usr/local/go/pkg/linux_amd64/mime/quotedprintable.a
+packagefile vendor/golang.org/x/net/dns/dnsmessage=/usr/local/go/pkg/linux_amd64/vendor/golang.org/x/net/dns/dnsmessage.a
+packagefile internal/nettrace=/usr/local/go/pkg/linux_amd64/internal/nettrace.a
+packagefile internal/singleflight=/usr/local/go/pkg/linux_amd64/internal/singleflight.a
+packagefile runtime/cgo=/usr/local/go/pkg/linux_amd64/runtime/cgo.a
+packagefile text/template/parse=/usr/local/go/pkg/linux_amd64/text/template/parse.a
+packagefile encoding/hex=/usr/local/go/pkg/linux_amd64/encoding/hex.a
+packagefile crypto/dsa=/usr/local/go/pkg/linux_amd64/crypto/dsa.a
+packagefile crypto/x509/pkix=/usr/local/go/pkg/linux_amd64/crypto/x509/pkix.a
+packagefile encoding/asn1=/usr/local/go/pkg/linux_amd64/encoding/asn1.a
+packagefile vendor/golang.org/x/crypto/cryptobyte/asn1=/usr/local/go/pkg/linux_amd64/vendor/golang.org/x/crypto/cryptobyte/asn1.a
+packagefile crypto/internal/subtle=/usr/local/go/pkg/linux_amd64/crypto/internal/subtle.a
+packagefile crypto/internal/randutil=/usr/local/go/pkg/linux_amd64/crypto/internal/randutil.a
+packagefile crypto/ed25519/internal/edwards25519=/usr/local/go/pkg/linux_amd64/crypto/ed25519/internal/edwards25519.a
+packagefile vendor/golang.org/x/crypto/chacha20=/usr/local/go/pkg/linux_amd64/vendor/golang.org/x/crypto/chacha20.a
+packagefile vendor/golang.org/x/crypto/internal/subtle=/usr/local/go/pkg/linux_amd64/vendor/golang.org/x/crypto/internal/subtle.a
+packagefile vendor/golang.org/x/crypto/poly1305=/usr/local/go/pkg/linux_amd64/vendor/golang.org/x/crypto/poly1305.a
+packagefile vendor/golang.org/x/sys/cpu=/usr/local/go/pkg/linux_amd64/vendor/golang.org/x/sys/cpu.a
+packagefile vendor/golang.org/x/text/transform=/usr/local/go/pkg/linux_amd64/vendor/golang.org/x/text/transform.a
+EOF
+[0m[91mcd .
+/usr/local/go/pkg/tool/linux_amd64/link -o $WORK/b123/gateway.test -importcfg $WORK/b123/importcfg.link -s -w -buildmode=exe -buildid=twZbJt3mDZ00-LekhXaC/q6zDE9G361v-2X_vS0zy/OveSITWSJNk6qzEdJiQe/twZbJt3mDZ00-LekhXaC -extld=gcc $WORK/b123/_pkg_.a
+[0m[91mcat >$WORK/b132/vet.cfg << 'EOF' # internal
+{
+	"ID": "github.com/georgysavva/driver-app/gateway/pkg/gateway_test",
+	"Compiler": "gc",
+	"Dir": "/go/src/app/pkg/gateway",
+	"ImportPath": "github.com/georgysavva/driver-app/gateway/pkg/gateway_test",
+	"GoFiles": [
+		"/go/src/app/pkg/gateway/gateway_test.go"
+	],
+	"NonGoFiles": [],
+	"ImportMap": {
+		"fmt": "fmt",
+		"github.com/georgysavva/driver-app/gateway/pkg/gateway": "github.com/georgysavva/driver-app/gateway/pkg/gateway",
+		"github.com/georgysavva/driver-app/gateway/pkg/gateway/mocks": "github.com/georgysavva/driver-app/gateway/pkg/gateway/mocks",
+		"github.com/kelseyhightower/envconfig": "github.com/kelseyhightower/envconfig",
+		"github.com/sirupsen/logrus": "github.com/sirupsen/logrus",
+		"github.com/stretchr/testify/assert": "github.com/stretchr/testify/assert",
+		"github.com/stretchr/testify/mock": "github.com/stretchr/testify/mock",
+		"github.com/stretchr/testify/require": "github.com/stretchr/testify/require",
+		"io/ioutil": "io/ioutil",
+		"net/http": "net/http",
+		"net/http/httptest": "net/http/httptest",
+		"net/url": "net/url",
+		"testing": "testing"
+	},
+	"PackageFile": {
+		"fmt": "/usr/local/go/pkg/linux_amd64/fmt.a",
+		"github.com/georgysavva/driver-app/gateway/pkg/gateway": "$WORK/b035/_pkg_.a",
+		"github.com/georgysavva/driver-app/gateway/pkg/gateway/mocks": "$WORK/b133/_pkg_.a",
+		"github.com/kelseyhightower/envconfig": "$WORK/b141/_pkg_.a",
+		"github.com/sirupsen/logrus": "$WORK/b115/_pkg_.a",
+		"github.com/stretchr/testify/assert": "$WORK/b138/_pkg_.a",
+		"github.com/stretchr/testify/mock": "$WORK/b134/_pkg_.a",
+		"github.com/stretchr/testify/require": "$WORK/b144/_pkg_.a",
+		"io/ioutil": "/usr/local/go/pkg/linux_amd64/io/ioutil.a",
+		"net/http": "/usr/local/go/pkg/linux_amd64/net/http.a",
+		"net/http/httptest": "/usr/local/go/pkg/linux_amd64/net/http/httptest.a",
+		"net/url": "/usr/local/go/pkg/linux_amd64/net/url.a",
+		"testing": "/usr/local/go/pkg/linux_amd64/testing.a"
+	},
+	"Standard": {
+		"fmt": true,
+		"io/ioutil": true,
+		"net/http": true,
+		"net/http/httptest": true,
+		"net/url": true,
+		"testing": true
+	},
+	"PackageVetx": {
+		"fmt": "/root/.cache/go-build/6f/6f1a3e1f52c31e8342fdd695153c6d7a005caa69858e5628fb700df89b134021-d",
+		"github.com/georgysavva/driver-app/gateway/pkg/gateway": "$WORK/b035/vet.out",
+		"github.com/georgysavva/driver-app/gateway/pkg/gateway/mocks": "$WORK/b133/vet.out",
+		"github.com/kelseyhightower/envconfig": "$WORK/b141/vet.out",
+		"github.com/sirupsen/logrus": "$WORK/b115/vet.out",
+		"github.com/stretchr/testify/assert": "$WORK/b138/vet.out",
+		"github.com/stretchr/testify/mock": "$WORK/b134/vet.out",
+		"github.com/stretchr/testify/require": "$WORK/b144/vet.out",
+		"io/ioutil": "/root/.cache/go-build/5b/5b9172b5fe9e92464466e5c1459ae73de4a6c1cd1f7f4f795aa7a0e5ba8af6ac-d",
+		"net/http": "/root/.cache/go-build/5a/5a11dca4085a25e4428ea4aae826ee8a35049b8c435c4df2390e990446319569-d",
+		"net/http/httptest": "/root/.cache/go-build/d3/d3be2d96a6309b4cecca5235112ebfe6465538048feaac66dabf64ec1a3b5e80-d",
+		"net/url": "/root/.cache/go-build/88/8882d04b5e2b8dcb1bfaa0783318fc713e15a1ec4e5214a11c600230b413898e-d",
+		"testing": "/root/.cache/go-build/b4/b498e06c7950c7340d58bb00bea7e5178e197b2e50ce118ef05a726701692326-d"
+	},
+	"VetxOnly": false,
+	"VetxOutput": "$WORK/b132/vet.out",
+	"SucceedOnTypecheckFailure": false
+}
+EOF
+cd /go/src/app/pkg/gateway
+TERM='dumb' /usr/local/go/pkg/tool/linux_amd64/vet -atomic -bool -buildtags -errorsas -ifaceassert -nilfunc -printf -stringintconv $WORK/b132/vet.cfg
+[0m[91m$WORK/b123/gateway.test -test.testlogfile=$WORK/b123/testlog.txt -test.timeout=10m0s -test.v=true
+[0m[91mrm -r $WORK/b123/
+[0m=== RUN   TestNSQProxy
+=== PAUSE TestNSQProxy
+=== RUN   TestHTTPProxy
+=== PAUSE TestHTTPProxy
+=== CONT  TestNSQProxy
+=== CONT  TestHTTPProxy
+=== CONT  TestNSQProxy
+    gateway_test.go:51: PASS:	Publish(string,mock.AnythingOfTypeArgument)
+--- PASS: TestNSQProxy (0.00s)
+--- PASS: TestHTTPProxy (0.00s)
+PASS
+ok  	github.com/georgysavva/driver-app/gateway/pkg/gateway	0.008s
+?   	github.com/georgysavva/driver-app/gateway/pkg/gateway/mocks	[no test files]
+?   	github.com/georgysavva/driver-app/gateway/pkg/httpmiddleware	[no test files]
+Removing intermediate container 9193d4eb9589
+ ---> f36acad845c9
+Step 8/12 : FROM alpine:3.12 as final
+ ---> d6e46aa2470d
+Step 9/12 : RUN apk --no-cache add ca-certificates
+ ---> Using cache
+ ---> 82aa291b1855
+Step 10/12 : WORKDIR /root/
+ ---> Using cache
+ ---> 94c61544cb53
+Step 11/12 : COPY --from=build /go/bin/gateway-server /go/src/app/config.yaml ./
+COPY failed: stat /var/lib/docker/overlay2/b186aec83c6ff4690ae99b331813918ad5e9b010442b39aadb698fa4e30ad9cf/merged/go/bin/gateway-server: no such file or directory
+make: *** [all] Error 1
